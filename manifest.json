@@ -1,0 +1,19 @@
+{
+  "name": "2026 간사이 여행 일정",
+  "short_name": "간사이여행",
+  "description": "오사카·교토·나라 3박 4일 여행 일정 관리 앱",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#08111f",
+  "theme_color": "#111827",
+  "lang": "ko-KR",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
