@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="description" content="2026 오사카·교토·나라 3박 4일 여행 일정 관리 앱" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+  <title>간사이 여행 일정</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">2026.11.25 - 11.28</p>
+        <h1>오사카 · 교토 · 나라</h1>
+      </div>
+      <button id="installBtn" class="ghost-btn" hidden>앱 설치</button>
+    </header>
+
+    <main>
+      <section class="hero-card">
+        <div>
+          <span id="tripBadge" class="badge">여행 준비 중</span>
+          <h2 id="tripHeadline">여행까지 남은 시간 계산 중</h2>
+          <p>오사카 2일 · 교토 1일 · 나라 반일 · 16:00 전 KIX 도착</p>
+        </div>
+        <div class="hero-stats">
+          <div><strong id="doneCount">0</strong><span>완료 일정</span></div>
+          <div><strong id="expenseTotal">¥0</strong><span>기록 지출</span></div>
+          <div><strong id="checkCount">0</strong><span>체크리스트</span></div>
+        </div>
+      </section>
+
+      <nav id="dayTabs" class="day-tabs" aria-label="여행 일차 선택"></nav>
+      <section id="todaySummary" class="summary-card"></section>
+
+      <section class="section-heading">
+        <div><p class="eyebrow">DAY PLAN</p><h2 id="dayTitle">일정</h2></div>
+        <button id="addPlanBtn" class="primary-btn">+ 일정 추가</button>
+      </section>
+      <section id="timeline" class="timeline"></section>
+
+      <section class="grid-two">
+        <article class="panel">
+          <div class="panel-head"><div><p class="eyebrow">QUICK INFO</p><h3>오늘 핵심 메모</h3></div></div>
+          <div id="dayNotes" class="notes-list"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head">
+            <div><p class="eyebrow">EXPENSE</p><h3>지출 기록</h3></div>
+            <button id="addExpenseBtn" class="ghost-btn">+ 추가</button>
+          </div>
+          <div id="expenseList" class="expense-list"></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">CHECKLIST</p><h3>출발 전 · 당일 체크</h3></div></div>
+        <div id="checklist" class="checklist"></div>
+      </section>
+
+      <section class="panel danger-panel">
+        <div class="panel-head"><div><p class="eyebrow">BACKUP PLAN</p><h3>일정이 밀렸을 때</h3></div></div>
+        <div id="fallbackList" class="notes-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">LOCAL DATA</p><h3>데이터 관리</h3></div></div>
+        <p class="muted">완료 체크, 수정 일정, 지출 내역은 이 기기의 브라우저에 저장됩니다.</p>
+        <div class="button-row">
+          <button id="exportBtn" class="ghost-btn">백업 내보내기</button>
+          <label class="ghost-btn file-label">백업 불러오기<input id="importInput" type="file" accept="application/json" hidden /></label>
+          <button id="resetBtn" class="danger-btn">초기화</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>일정 정보 기준 2026-09-10 · 운영시간/요금/시간표는 출발 직전 재확인 권장</footer>
+  </div>
+
+  <dialog id="planDialog" class="modal">
+    <form method="dialog" id="planForm">
+      <input id="planId" type="hidden" />
+      <h3 id="planDialogTitle">일정 추가</h3>
+      <label>시간<input id="planTime" required placeholder="예: 14:30-16:00" /></label>
+      <label>일정명<input id="planName" required /></label>
+      <label>요금<input id="planFee" placeholder="예: 무료 / 1,500엔" /></label>
+      <label>메모<textarea id="planNote" rows="4"></textarea></label>
+      <label>지도 검색어<input id="planMap" placeholder="예: Kiyomizu-dera Kyoto" /></label>
+      <label class="check-row"><input id="planOptional" type="checkbox" /> 선택 일정으로 표시</label>
+      <div class="modal-actions">
+        <button value="cancel" class="ghost-btn">취소</button>
+        <button id="deletePlanBtn" type="button" class="danger-btn" hidden>삭제</button>
+        <button value="default" class="primary-btn">저장</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="expenseDialog" class="modal">
+    <form method="dialog" id="expenseForm">
+      <h3>지출 추가</h3>
+      <label>항목<input id="expenseName" required placeholder="예: 저녁, 교통, 기념품" /></label>
+      <label>금액(엔)<input id="expenseAmount" type="number" min="0" step="1" required /></label>
+      <label>분류<select id="expenseCategory"><option>식비</option><option>교통</option><option>입장료</option><option>쇼핑</option><option>기타</option></select></label>
+      <div class="modal-actions"><button value="cancel" class="ghost-btn">취소</button><button value="default" class="primary-btn">저장</button></div>
+    </form>
+  </dialog>
+
+  <template id="timelineItemTemplate">
+    <article class="timeline-item">
+      <button class="check-btn" aria-label="일정 완료 표시"></button>
+      <div class="timeline-content">
+        <div class="timeline-meta"><span class="time"></span><span class="fee"></span><span class="optional-tag" hidden>선택</span></div>
+        <h3 class="plan-name"></h3><p class="plan-note"></p>
+        <div class="plan-actions"><a class="map-link" target="_blank" rel="noopener">지도</a><button class="edit-link">수정</button></div>
+      </div>
+    </article>
+  </template>
+  <script src="./app.js"></script>
+</body>
+</html>
