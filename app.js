@@ -75,16 +75,67 @@ const defaults={
       ]
     }
   ],
-  checklist:[
-    {id:'c1',text:'11/28 나라→KIX 실제 JR/하루카 시간표 확인 후 15:00 전후 도착 가능한 조합 2개 이상 저장'},
-    {id:'c2',text:'HARUKA One-way Ticket 사용 자격·구매조건 확인'},
-    {id:'c3',text:'쓰텐카쿠 시간지정 입장권 필요 여부 확인·구매'},
-    {id:'c4',text:'우메다 스카이빌딩 티켓 필요 여부 확인'},
-    {id:'c5',text:'출발 1주 전 청수사·에이칸도·고다이지·난젠지 최신 운영/공사/입장료 재확인'},
-    {id:'c6',text:'교토 단풍 진행상황·혼잡 예측 확인'},
-    {id:'c7',text:'일몰·기온·비 예보 확인 후 방풍/보온 겉옷과 미끄럼 방지 신발 준비'},
-    {id:'c8',text:'보조배터리 · 작은 우산/경량 우비 준비'},
-    {id:'c9',text:'도다이지·코인로커 대비 엔화 현금과 100엔 동전 준비'}
+  preTripChecklist:[
+    {id:'pre-passport',text:'여권 유효기간, 영문 이름, 항공권 예약 정보 일치 확인'},
+    {id:'pre-vjw',text:'Visit Japan Web에 입국심사·세관 정보 등록하고 QR 화면 준비',url:'https://www.vjw.digital.go.jp/',linkLabel:'Visit Japan Web'},
+    {id:'pre-flight',text:'이스타항공 ZE0611 / ZE0614 예약내역, 출발시간, 터미널 최종 확인'},
+    {id:'pre-baggage',text:'이스타항공 수하물 규정 확인 — 이번 예약 무료 위탁수하물 15kg',url:'https://www.eastarjet.com/newstar/PGWIK00005',linkLabel:'수하물 규정'},
+    {id:'pre-battery',text:'보조배터리·전자기기 기내 반입 조건 확인하고 위탁수하물에 넣지 않기'},
+    {id:'pre-data',text:'일본용 eSIM·로밍 준비 및 출국 전 개통 방법 저장'},
+    {id:'pre-money',text:'해외결제 카드, 소액 엔화 현금, 100엔 동전용 여유 현금 준비'},
+    {id:'pre-tickets',text:'쓰텐카쿠·우메다 스카이빌딩 등 사전예약/시간지정 티켓 필요 여부 확인'},
+    {id:'pre-haruka',text:'11/28 JR나라→덴노지→KIX 실제 열차 시각과 HARUKA 할인권 조건 확인'},
+    {id:'pre-kyoto',text:'출발 1주 전 청수사·에이칸도·고다이지·난젠지 운영시간·공사·입장료 재확인'},
+    {id:'pre-weather',text:'오사카·교토·나라 날씨와 일몰시간 확인 후 방풍·보온 겉옷 준비'},
+    {id:'pre-shoes',text:'교토 돌길·낙엽 대비 접지력 좋은 편한 신발 준비'},
+    {id:'pre-essentials',text:'충전기, 보조배터리, 작은 우산/경량 우비, 상비품 챙기기'},
+    {id:'pre-backup',text:'항공권·숙소·여행 일정·여권 사본을 휴대폰 오프라인으로 저장'}
+  ],
+  dailyChecklist:[
+    {
+      date:'2026-11-25',
+      items:[
+        {id:'day1-passport',text:'집에서 출발 전 여권·지갑·휴대폰·보조배터리 최종 확인'},
+        {id:'day1-flight',text:'ZE0611 09:05 ICN 출발 — 공항 도착 후 체크인/수하물 위탁 여유 확보'},
+        {id:'day1-bag',text:'위탁수하물 15kg 초과 여부 확인'},
+        {id:'day1-vjw',text:'KIX 입국 전 Visit Japan Web QR 화면 바로 열 수 있게 준비',url:'https://www.vjw.digital.go.jp/',linkLabel:'QR 확인'},
+        {id:'day1-nankai',text:'KIX 도착 후 난카이 난바 이동편 확인'},
+        {id:'day1-market',text:'구로몬시장 늦은 오후 마감 대비 도착 후 우선 방문'}
+      ]
+    },
+    {
+      date:'2026-11-26',
+      items:[
+        {id:'day2-tsuten',text:'쓰텐카쿠 시간지정 입장권/예약시간 확인'},
+        {id:'day2-castle',text:'오사카성 천수각 최종입장 17:30보다 충분히 일찍 도착'},
+        {id:'day2-umeda',text:'우메다 스카이빌딩 입장권과 입장 동선 확인'},
+        {id:'day2-warm',text:'우메다 옥상 강풍 대비 얇은 장갑·방풍 겉옷 챙기기'},
+        {id:'day2-power',text:'저녁 야경 촬영 전 휴대폰·보조배터리 잔량 확인'}
+      ]
+    },
+    {
+      date:'2026-11-27',
+      items:[
+        {id:'day3-wakeup',text:'05:30 이동 시작에 맞춰 전날 알람·교통편 준비'},
+        {id:'day3-shoes',text:'긴 도보와 돌계단 대비 편한 신발·우비/우산 준비'},
+        {id:'day3-cash',text:'청수사·에이칸도 등 입장료용 엔화 현금 준비'},
+        {id:'day3-eikando',text:'에이칸도 주간 최종접수 16:00 — 15:00 도착 목표 지키기'},
+        {id:'day3-night',text:'청수사 야간 재입장용 입장료 별도 준비'},
+        {id:'day3-rest',text:'점심 휴식 60분 이상 확보하고 수분 보충'}
+      ]
+    },
+    {
+      date:'2026-11-28',
+      items:[
+        {id:'day4-bag',text:'체크아웃 전 여권·충전기·개인물품 빠짐없이 확인'},
+        {id:'day4-locker',text:'긴테쓰나라역 도착 즉시 코인로커 확보'},
+        {id:'day4-cash',text:'도다이지 현금 800엔과 코인로커용 현금 준비'},
+        {id:'day4-train',text:'JR나라→덴노지→하루카 실시간 운행상태와 승강장 확인'},
+        {id:'day4-kix',text:'15:00 전후 KIX 도착 목표 — 관광 일정 때문에 공항 이동 미루지 않기'},
+        {id:'day4-flight',text:'ZE0614 18:00 KIX 출발 — 체크인·수하물 위탁 마감시간 확인'},
+        {id:'day4-baggage',text:'귀국편도 무료 위탁수하물 15kg 기준으로 쇼핑 짐 무게 확인',url:'https://www.eastarjet.com/newstar/PGWIK00005',linkLabel:'수하물 규정'}
+      ]
+    }
   ]
 };
 
@@ -94,7 +145,14 @@ function freshState(){return {data:clone(defaults),completed:{},checklistDone:{}
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if(x&&x.data&&x.data.days)return x;
+    if(x&&x.data&&x.data.days){
+      if(!Array.isArray(x.data.preTripChecklist))x.data.preTripChecklist=clone(defaults.preTripChecklist);
+      if(!Array.isArray(x.data.dailyChecklist))x.data.dailyChecklist=clone(defaults.dailyChecklist);
+      if(!x.completed)x.completed={};
+      if(!x.checklistDone)x.checklistDone={};
+      if(!Array.isArray(x.expenses))x.expenses=[];
+      return x;
+    }
   }catch(e){}
   return freshState();
 }
@@ -110,6 +168,11 @@ function chooseInitialDay(){
 }
 function yen(n){return '¥'+Number(n||0).toLocaleString('ko-KR');}
 function daysBetween(a,b){return Math.ceil((b-a)/86400000);}
+function allChecklistItems(){
+  const pre=state.data.preTripChecklist||[];
+  const daily=(state.data.dailyChecklist||[]).flatMap(function(group){return group.items||[];});
+  return pre.concat(daily);
+}
 
 function renderHero(){
   const now=new Date(); now.setHours(0,0,0,0);
@@ -123,7 +186,9 @@ function renderHero(){
 function renderStats(){
   document.querySelector('#doneCount').textContent=Object.values(state.completed).filter(Boolean).length;
   document.querySelector('#expenseTotal').textContent=yen(state.expenses.reduce(function(a,b){return a+Number(b.amount||0);},0));
-  document.querySelector('#checkCount').textContent=Object.values(state.checklistDone).filter(Boolean).length+'/'+state.data.checklist.length;
+  const all=allChecklistItems();
+  const done=all.filter(function(item){return state.checklistDone[item.id];}).length;
+  document.querySelector('#checkCount').textContent=done+'/'+all.length;
 }
 function renderTabs(){
   const tabs=document.querySelector('#dayTabs'); tabs.innerHTML='';
@@ -166,15 +231,49 @@ function renderFallback(){
   const wrap=document.querySelector('#fallbackList'); wrap.innerHTML='';
   state.data.days.forEach(function(d,i){const x=document.createElement('div');x.className='note-card';x.innerHTML='<strong>DAY '+(i+1)+'</strong><br>'+d.fallback;wrap.appendChild(x);});
 }
-function renderChecklist(){
-  const wrap=document.querySelector('#checklist'); wrap.innerHTML='';
-  state.data.checklist.forEach(function(item){
-    const l=document.createElement('label'); l.className='check-item'+(state.checklistDone[item.id]?' done':'');
-    l.innerHTML='<input type="checkbox" '+(state.checklistDone[item.id]?'checked':'')+'><span>'+item.text+'</span>';
-    l.querySelector('input').onchange=function(e){state.checklistDone[item.id]=e.target.checked;save();renderChecklist();renderStats();};
-    wrap.appendChild(l);
-  });
+function makeChecklistItem(item){
+  const row=document.createElement('div');
+  row.className='check-item'+(state.checklistDone[item.id]?' done':'');
+  const input=document.createElement('input');
+  input.type='checkbox'; input.checked=!!state.checklistDone[item.id];
+  input.setAttribute('aria-label',item.text+' 완료');
+  input.onchange=function(e){
+    state.checklistDone[item.id]=e.target.checked;
+    save();
+    renderChecklists();
+    renderStats();
+  };
+  const copy=document.createElement('div'); copy.className='check-copy';
+  if(item.url){
+    const a=document.createElement('a');
+    a.href=item.url; a.target='_blank'; a.rel='noopener'; a.className='check-link';
+    const text=document.createElement('span'); text.textContent=item.text;
+    const badge=document.createElement('small'); badge.textContent=(item.linkLabel||'바로가기')+' ↗';
+    a.appendChild(text); a.appendChild(badge); copy.appendChild(a);
+  }else{
+    const span=document.createElement('span'); span.textContent=item.text; copy.appendChild(span);
+  }
+  row.appendChild(input); row.appendChild(copy);
+  return row;
 }
+function renderPreTripChecklist(){
+  const wrap=document.querySelector('#preTripChecklist'); wrap.innerHTML='';
+  const items=state.data.preTripChecklist||[];
+  items.forEach(function(item){wrap.appendChild(makeChecklistItem(item));});
+  const done=items.filter(function(item){return state.checklistDone[item.id];}).length;
+  document.querySelector('#preTripProgress').textContent=done+'/'+items.length;
+}
+function renderDailyChecklist(){
+  const day=state.data.days[selectedDay];
+  const group=(state.data.dailyChecklist||[]).find(function(x){return x.date===day.date;})||{items:[]};
+  const items=group.items||[];
+  const wrap=document.querySelector('#dailyChecklist'); wrap.innerHTML='';
+  items.forEach(function(item){wrap.appendChild(makeChecklistItem(item));});
+  const done=items.filter(function(item){return state.checklistDone[item.id];}).length;
+  document.querySelector('#dailyProgress').textContent=done+'/'+items.length;
+  document.querySelector('#dailyChecklistTitle').textContent='DAY '+(selectedDay+1)+' · '+day.date.slice(5).replace('-','/')+' 체크리스트';
+}
+function renderChecklists(){renderPreTripChecklist();renderDailyChecklist();}
 function renderExpenses(){
   const wrap=document.querySelector('#expenseList'); wrap.innerHTML='';
   const rows=state.expenses.filter(function(e){return e.day===selectedDay;});
@@ -186,7 +285,7 @@ function renderExpenses(){
     wrap.appendChild(row);
   });
 }
-function render(){renderHero();renderTabs();renderSummary();renderTimeline();renderNotes();renderExpenses();renderChecklist();renderFallback();}
+function render(){renderHero();renderTabs();renderSummary();renderChecklists();renderTimeline();renderNotes();renderExpenses();renderFallback();}
 
 const planDialog=document.querySelector('#planDialog');
 function openPlanDialog(plan){
@@ -229,14 +328,20 @@ document.querySelector('#expenseForm').addEventListener('submit',function(e){
   save();expenseDialog.close();renderExpenses();renderStats();
 });
 
-document.querySelector('#resetBtn').onclick=function(){if(confirm('완료 체크, 수정 일정, 지출 기록을 모두 초기화할까요?')){localStorage.removeItem(STORAGE_KEY);state=freshState();selectedDay=chooseInitialDay();render();}};
+document.querySelector('#resetBtn').onclick=function(){if(confirm('완료 체크, 수정 일정, 체크리스트, 지출 기록을 모두 초기화할까요?')){localStorage.removeItem(STORAGE_KEY);state=freshState();selectedDay=chooseInitialDay();render();}};
 document.querySelector('#exportBtn').onclick=function(){
   const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');
   a.href=url;a.download='kansai-trip-backup.json';a.click();URL.revokeObjectURL(url);
 };
 document.querySelector('#importInput').onchange=async function(e){
   const file=e.target.files&&e.target.files[0];if(!file)return;
-  try{const imported=JSON.parse(await file.text());if(!imported.data||!imported.data.days)throw new Error();state=imported;save();render();alert('백업을 불러왔습니다.');}
+  try{
+    const imported=JSON.parse(await file.text());
+    if(!imported.data||!imported.data.days)throw new Error();
+    if(!Array.isArray(imported.data.preTripChecklist))imported.data.preTripChecklist=clone(defaults.preTripChecklist);
+    if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
+    state=imported;save();render();alert('백업을 불러왔습니다.');
+  }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
 };
