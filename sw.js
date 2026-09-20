@@ -1,4 +1,4 @@
-const CACHE='kansai-trip-pwa-v2';
+const CACHE='kansai-trip-pwa-v3';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.json','./icon.svg'];
 self.addEventListener('install',function(e){
   e.waitUntil(caches.open(CACHE).then(function(c){return c.addAll(ASSETS);}).then(function(){return self.skipWaiting();}));
