@@ -34,8 +34,52 @@
         </div>
       </section>
 
+      <section class="panel flight-panel">
+        <div class="panel-head">
+          <div><p class="eyebrow">FLIGHT</p><h3>항공편 정보</h3></div>
+          <a class="ghost-btn compact-btn" href="https://www.eastarjet.com/newstar/PGWIK00005" target="_blank" rel="noopener">수하물 규정</a>
+        </div>
+        <div class="flight-grid">
+          <article class="flight-card">
+            <div class="flight-card-head"><span class="flight-direction">가는편</span><strong>이스타항공 ZE0611</strong></div>
+            <div class="flight-route">
+              <div><span>2026.11.25 (수)</span><strong>09:05</strong><small>서울 ICN 출발</small></div>
+              <div class="flight-arrow">→<small>1시간 50분</small></div>
+              <div><span>2026.11.25 (수)</span><strong>10:55</strong><small>오사카 KIX 도착</small></div>
+            </div>
+            <p class="flight-baggage">일반석 · 무료 위탁수하물 15kg</p>
+          </article>
+          <article class="flight-card">
+            <div class="flight-card-head"><span class="flight-direction">오는편</span><strong>이스타항공 ZE0614</strong></div>
+            <div class="flight-route">
+              <div><span>2026.11.28 (토)</span><strong>18:00</strong><small>오사카 KIX 출발</small></div>
+              <div class="flight-arrow">→<small>1시간 50분</small></div>
+              <div><span>2026.11.28 (토)</span><strong>19:50</strong><small>서울 ICN 도착</small></div>
+            </div>
+            <p class="flight-baggage">일반석 · 무료 위탁수하물 15kg</p>
+          </article>
+        </div>
+        <p class="muted flight-note">항공편 시간·터미널·수하물 조건은 출발 직전 예약내역과 항공사에서 최종 확인.</p>
+      </section>
+
+      <section class="panel checklist-panel pretrip-panel">
+        <div class="panel-head">
+          <div><p class="eyebrow">BEFORE TRIP</p><h3>여행 전 체크리스트</h3></div>
+          <span id="preTripProgress" class="progress-pill">0/0</span>
+        </div>
+        <div id="preTripChecklist" class="checklist"></div>
+      </section>
+
       <nav id="dayTabs" class="day-tabs" aria-label="여행 일차 선택"></nav>
       <section id="todaySummary" class="summary-card"></section>
+
+      <section class="panel checklist-panel daily-panel">
+        <div class="panel-head">
+          <div><p class="eyebrow">DAILY CHECK</p><h3 id="dailyChecklistTitle">날짜별 체크리스트</h3></div>
+          <span id="dailyProgress" class="progress-pill">0/0</span>
+        </div>
+        <div id="dailyChecklist" class="checklist"></div>
+      </section>
 
       <section class="section-heading">
         <div><p class="eyebrow">DAY PLAN</p><h2 id="dayTitle">일정</h2></div>
@@ -57,11 +101,6 @@
         </article>
       </section>
 
-      <section class="panel">
-        <div class="panel-head"><div><p class="eyebrow">CHECKLIST</p><h3>출발 전 · 당일 체크</h3></div></div>
-        <div id="checklist" class="checklist"></div>
-      </section>
-
       <section class="panel danger-panel">
         <div class="panel-head"><div><p class="eyebrow">BACKUP PLAN</p><h3>일정이 밀렸을 때</h3></div></div>
         <div id="fallbackList" class="notes-list"></div>
@@ -69,7 +108,7 @@
 
       <section class="panel">
         <div class="panel-head"><div><p class="eyebrow">LOCAL DATA</p><h3>데이터 관리</h3></div></div>
-        <p class="muted">완료 체크, 수정 일정, 지출 내역은 이 기기의 브라우저에 저장됩니다.</p>
+        <p class="muted">완료 체크, 수정 일정, 체크리스트, 지출 내역은 이 기기의 브라우저에 저장됩니다.</p>
         <div class="button-row">
           <button id="exportBtn" class="ghost-btn">백업 내보내기</button>
           <label class="ghost-btn file-label">백업 불러오기<input id="importInput" type="file" accept="application/json" hidden /></label>
