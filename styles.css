@@ -87,3 +87,6 @@ footer{color:#718096;font-size:12px;text-align:center;padding:26px 8px 0}
   .flight-card{padding:14px}.flight-route{gap:6px}.flight-route strong{font-size:21px}.flight-route span{font-size:9px}.flight-route small{font-size:11px}
   .check-link{align-items:flex-start}.check-link small{margin-top:1px}
 }
+
+
+.next-plan{display:flex;flex-wrap:wrap;gap:8px}.next-plan p{width:100%;margin-bottom:4px}.deadline-note{border-left:3px solid #fbbf24;padding:10px 12px;background:#2b251b;color:#fde68a;line-height:1.6}.timeline-content{min-width:0;overflow-wrap:anywhere}.plan-actions{flex-wrap:wrap}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #22d3ee;outline-offset:3px}.check-btn{min-width:30px;min-height:30px}#admissionTotal{color:#fde68a;margin-left:8px}

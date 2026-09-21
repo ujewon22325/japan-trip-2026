@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
   <meta name="description" content="2026 오사카·교토·나라 3박 4일 여행 일정 관리 앱" />
-  <link rel="manifest" href="./manifest.json?v=5" />
+  <link rel="manifest" href="./manifest.json?v=6" />
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <title>간사이 여행 일정</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=6" />
 </head>
 <body>
   <div class="app-shell">
@@ -73,6 +73,7 @@
 
       <nav id="dayTabs" class="day-tabs" aria-label="여행 일차 선택"></nav>
       <section id="todaySummary" class="summary-card"></section>
+      <section class="panel"><h3>다음 일정</h3><div id="nextPlan" class="next-plan"></div><p id="deadlineNote" class="deadline-note"></p><small class="muted">선택한 날짜의 미완료 순서 기준 · 시각은 계획값이며 실시간 알림이 아닙니다.</small></section>
 
       <section class="panel checklist-panel daily-panel">
         <div class="panel-head">
@@ -102,6 +103,10 @@
         </article>
       </section>
 
+      <section class="panel"><h3>예상 입장료 <strong id="admissionTotal">¥8,600</strong></h3><p class="muted">첨부 가이드 기준 성인 1인 · 1일차 ¥0 / 2일차 ¥5,300 / 3일차 ¥2,500 / 4일차 ¥800</p><div class="checklist">
+<label class="check-item"><input type="checkbox" data-admission="kodaiji"><span>고다이지 +800엔</span></label>
+<label class="check-item"><input type="checkbox" data-admission="garden"><span>난젠지 방장정원 +600엔</span></label>
+<label class="check-item"><input type="checkbox" data-admission="sanmon"><span>난젠지 삼문 +600엔</span></label></div><p class="muted">교통·식비·쇼핑·로커 제외. 가이드의 기본 코스 기준이며 개인 일정 수정·실제 지출과는 별도 계산됩니다.</p></section>
       <section class="panel danger-panel">
         <div class="panel-head"><div><p class="eyebrow">BACKUP PLAN</p><h3>일정이 밀렸을 때</h3></div></div>
         <div id="fallbackList" class="notes-list"></div>
@@ -111,6 +116,7 @@
         <div class="panel-head"><div><p class="eyebrow">LOCAL DATA</p><h3>데이터 관리</h3></div></div>
         <p class="muted">완료 체크, 수정 일정, 체크리스트, 지출 내역은 이 기기의 브라우저에 저장됩니다.</p>
         <div class="button-row">
+          <button id="previousBackupBtn" class="ghost-btn" hidden>변경 전 일정 백업</button>
           <button id="exportBtn" class="ghost-btn">백업 내보내기</button>
           <label class="ghost-btn file-label">백업 불러오기<input id="importInput" type="file" accept="application/json" hidden /></label>
           <button id="resetBtn" class="danger-btn">초기화</button>
@@ -118,7 +124,7 @@
       </section>
     </main>
 
-    <footer>일정 정보 기준 2026-09-10 · 운영시간/요금/시간표는 출발 직전 재확인 권장</footer>
+    <footer>2026-09-21 첨부 여행가이드 반영 · 앱 v6 · 운영시간/요금/시간표는 출발 직전 재확인 권장</footer>
   </div>
 
   <dialog id="planDialog" class="modal">
@@ -132,7 +138,7 @@
       <label>지도 검색어<input id="planMap" placeholder="예: Kiyomizu-dera Kyoto" /></label>
       <label class="check-row"><input id="planOptional" type="checkbox" /> 선택 일정으로 표시</label>
       <div class="modal-actions">
-        <button value="cancel" class="ghost-btn">취소</button>
+        <button value="cancel" formnovalidate class="ghost-btn">취소</button>
         <button id="deletePlanBtn" type="button" class="danger-btn" hidden>삭제</button>
         <button value="default" class="primary-btn">저장</button>
       </div>
@@ -145,7 +151,7 @@
       <label>항목<input id="expenseName" required placeholder="예: 저녁, 교통, 기념품" /></label>
       <label>금액(엔)<input id="expenseAmount" type="number" min="0" step="1" required /></label>
       <label>분류<select id="expenseCategory"><option>식비</option><option>교통</option><option>입장료</option><option>쇼핑</option><option>기타</option></select></label>
-      <div class="modal-actions"><button value="cancel" class="ghost-btn">취소</button><button value="default" class="primary-btn">저장</button></div>
+      <div class="modal-actions"><button value="cancel" formnovalidate class="ghost-btn">취소</button><button value="default" class="primary-btn">저장</button></div>
     </form>
   </dialog>
 
@@ -159,6 +165,7 @@
       </div>
     </article>
   </template>
-  <script src="./app.js"></script>
+  <script src="./app.js?v=6"></script>
 </body>
 </html>
+

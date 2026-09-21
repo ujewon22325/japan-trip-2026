@@ -2,6 +2,7 @@ const TRIP_START='2026-11-25';
 const TRIP_END='2026-11-28';
 const STORAGE_KEY='kansai-trip-manager-v2';
 
+const SCHEDULE_VERSION='2026-09-21-museum';
 const defaults={
   days:[
     {
@@ -9,13 +10,13 @@ const defaults={
       notes:[
         '첫날은 항공편 지연에 대응하기 쉽도록 난바 중심으로 이동.',
         '구로몬시장은 늦은 오후부터 일부 점포가 닫을 수 있어 도착 후 우선 방문.',
-        '항공편이 늦으면 난바파크스/덴덴타운을 먼저 생략.'
+        '항공편이 늦으면 난바 야사카 신사을 먼저 생략.'
       ],
-      fallback:'난바파크스/덴덴타운 → 신사이바시 일부 순서로 생략',
+      fallback:'난바 야사카 신사 → 신사이바시 일부 순서로 생략',
       plans:[
         {id:'d1p1',time:'공항 도착 후',name:'KIX → 난바 (난카이)',fee:'교통비 별도',note:'라피트 최단 약 34분. 항공편 도착시간에 맞춰 선택.',map:'Nankai Namba Station Osaka'},
         {id:'d1p2',time:'14:30-16:00',name:'구로몬시장',fee:'무료',note:'먹거리부터 우선. 점포별 영업시간 상이, 늦은 오후 이른 마감 주의.',map:'Kuromon Ichiba Market Osaka'},
-        {id:'d1p3',time:'16:00-17:00',name:'난바파크스 또는 덴덴타운',fee:'무료',note:'쇼핑·식사면 난바파크스, 전자기기·서브컬처면 덴덴타운. 지연 시 생략 가능.',map:'Namba Parks Osaka',optional:true},
+        {id:'d1-yasaka',time:'16:00-17:00',name:'난바 야사카 신사',fee:'무료',note:'06:00-17:00 개문. 구로몬시장에서 이동 포함, 17시 폐문 전에 관람. 지연 시 먼저 생략.',map:'Namba Yasaka Shrine Osaka'},
         {id:'d1p4',time:'17:00-18:00',name:'호젠지 · 호젠지요코초',fee:'무료',note:'경내 상시 참배 가능. 사무소/고슈인 10:00-18:00 기준.',map:'Hozenji Temple Osaka'},
         {id:'d1p5',time:'18:00-20:00',name:'도톤보리',fee:'무료',note:'저녁 인파가 많고 식당 대기 가능. 다리 위 통행 방해 주의.',map:'Dotonbori Osaka'},
         {id:'d1p6',time:'20:00-21:30',name:'신사이바시스지',fee:'무료',note:'점포별 폐점시간 상이. 쇼핑이 중요하면 도톤보리 저녁을 조금 앞당겨도 됨.',map:'Shinsaibashi-suji Shopping Street Osaka'}
@@ -25,14 +26,16 @@ const defaults={
       date:'2026-11-26',city:'오사카 핵심 명소',short:'오사카',
       notes:[
         '쓰텐카쿠는 시간지정 입장제라 사전구매가 편함.',
-        '오사카성공원 산책까지 포함해 약 2시간 확보.',
+        '오사카성공원·천수각은 90분 핵심 관람 후 오테마에 주변 점심.',
         '우메다 스카이빌딩 옥상은 11월 하순 강풍·추위 대비.'
       ],
-      fallback:'우메다 쇼핑·카페 시간을 줄이고 전망대는 유지',
+      fallback:'우메다 쇼핑시간 축소 → 역사박물관을 60분 안팎으로 압축. 전망대는 유지',
       plans:[
         {id:'d2p1',time:'09:00-10:30',name:'신세카이 + 쓰텐카쿠',fee:'1,500엔',note:'09:00-21:45, 최종입장 21:15. 시간지정 입장제.',map:'Tsutenkaku Osaka'},
-        {id:'d2p2',time:'11:00-13:00',name:'오사카성공원 + 천수각',fee:'1,200엔',note:'천수각 09:00-18:00, 최종 17:30. 공원 자체는 무료.',map:'Osaka Castle'},
-        {id:'d2p3',time:'14:30-16:15',name:'우메다 쇼핑 · 카페',fee:'무료',note:'시설별 운영시간 상이.',map:'Umeda Osaka'},
+        {id:'d2p2',time:'11:00-12:30',name:'오사카성공원 + 천수각',fee:'1,200엔',note:'천수각 09:00-18:00, 최종 17:30. 공원 자체는 무료.',map:'Osaka Castle'},
+        {id:'d2-lunch',time:'12:30-13:20',name:'점심 · 오사카성·오테마에 주변',fee:'식비 별도',note:'박물관 인근에서 식사해 이동 손실 줄이기.',map:'Otemae Osaka'},
+        {id:'d2-museum',time:'13:20-14:40',name:'오사카 역사박물관',fee:'600엔',note:'09:30-17:00, 최종입장 16:30. 화요일 휴관. 상설전 핵심 관람 약 80분. 이후 다니마치욘초메역에서 우메다 방향 이동.',map:'Osaka Museum of History'},
+        {id:'d2p3',time:'15:15-16:00',name:'우메다 쇼핑 · 카페',fee:'무료',note:'시설별 운영시간 상이.',map:'Umeda Osaka'},
         {id:'d2p4',time:'16:15-18:30',name:'우메다 스카이빌딩 공중정원',fee:'2,000엔',note:'09:30-22:30, 최종 22:00. 일몰 전부터 야경까지 이어서 관람.',map:'Umeda Sky Building Osaka'}
       ]
     },
@@ -85,7 +88,7 @@ const defaults={
     {id:'pre-money',text:'해외결제 카드, 소액 엔화 현금, 100엔 동전용 여유 현금 준비'},
     {id:'pre-tickets',text:'쓰텐카쿠·우메다 스카이빌딩 등 사전예약/시간지정 티켓 필요 여부 확인'},
     {id:'pre-haruka',text:'11/28 JR나라→덴노지→KIX 실제 열차 시각과 HARUKA 할인권 조건 확인'},
-    {id:'pre-kyoto',text:'출발 1주 전 청수사·에이칸도·고다이지·난젠지 운영시간·공사·입장료 재확인'},
+    {id:'pre-kyoto',text:'출발 1주 전 청수사·에이칸도·고다이지·난젠지·오사카 역사박물관 운영시간·공사·입장료 재확인'},
     {id:'pre-weather',text:'오사카·교토·나라 날씨와 일몰시간 확인 후 방풍·보온 겉옷 준비'},
     {id:'pre-shoes',text:'교토 돌길·낙엽 대비 접지력 좋은 편한 신발 준비'},
     {id:'pre-essentials',text:'충전기, 보조배터리, 작은 우산/경량 우비, 상비품 챙기기'},
@@ -108,6 +111,7 @@ const defaults={
       items:[
         {id:'day2-tsuten',text:'쓰텐카쿠 시간지정 입장권/예약시간 확인'},
         {id:'day2-castle',text:'오사카성 천수각 최종입장 17:30보다 충분히 일찍 도착'},
+        {id:'day2-museum',text:'오사카 역사박물관 13:20 도착 목표 · 상설전 600엔 준비'},
         {id:'day2-umeda',text:'우메다 스카이빌딩 입장권과 입장 동선 확인'},
         {id:'day2-warm',text:'우메다 옥상 강풍 대비 얇은 장갑·방풍 겉옷 챙기기'},
         {id:'day2-power',text:'저녁 야경 촬영 전 휴대폰·보조배터리 잔량 확인'}
@@ -141,7 +145,29 @@ const defaults={
 
 function clone(v){return JSON.parse(JSON.stringify(v));}
 function newId(){return (crypto.randomUUID&&crypto.randomUUID())||('id'+Date.now()+Math.random().toString(16).slice(2));}
-function freshState(){return {data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
+function freshState(){return {scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
+function migrateSchedule(x){
+  if(x.scheduleVersion===SCHEDULE_VERSION)return x;
+  // Keep the complete pre-update state recoverable, including personal edits.
+  const backupKey=STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
+  if(!localStorage.getItem(backupKey))localStorage.setItem(backupKey,JSON.stringify(x));
+  const oldDays=x.data.days;
+  x.data.days=clone(defaults.days).map(function(day){
+    const old=oldDays.find(function(d){return d.date===day.date;});
+    if(old)day.plans.push(...old.plans.filter(function(p){return !/^d[1-4]p\d+$/.test(p.id)&&!day.plans.some(function(n){return n.id===p.id;});}));
+    return day;
+  });
+  const mergeItems=function(old,items){const ids=new Set(old.map(function(i){return i.id;}));return old.concat(items.filter(function(i){return !ids.has(i.id);}));};
+  x.data.preTripChecklist=mergeItems(x.data.preTripChecklist||[],defaults.preTripChecklist);
+  defaults.dailyChecklist.forEach(function(group){
+    const old=x.data.dailyChecklist.find(function(g){return g.date===group.date;});
+    if(old)old.items=mergeItems(old.items,group.items);else x.data.dailyChecklist.push(clone(group));
+  });
+  x.scheduleVersion=SCHEDULE_VERSION;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -151,7 +177,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return x;
+      return migrateSchedule(x);
     }
   }catch(e){}
   return freshState();
@@ -166,6 +192,7 @@ function chooseInitialDay(){
   const i=defaults.days.findIndex(function(d){return d.date===key;});
   return i>=0?i:0;
 }
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function yen(n){return '¥'+Number(n||0).toLocaleString('ko-KR');}
 function daysBetween(a,b){return Math.ceil((b-a)/86400000);}
 function allChecklistItems(){
@@ -184,7 +211,7 @@ function renderHero(){
   renderStats();
 }
 function renderStats(){
-  document.querySelector('#doneCount').textContent=Object.values(state.completed).filter(Boolean).length;
+  document.querySelector('#doneCount').textContent=state.data.days.flatMap(d=>d.plans).filter(p=>state.completed[p.id]).length;
   document.querySelector('#expenseTotal').textContent=yen(state.expenses.reduce(function(a,b){return a+Number(b.amount||0);},0));
   const all=allChecklistItems();
   const done=all.filter(function(item){return state.checklistDone[item.id];}).length;
@@ -194,7 +221,7 @@ function renderTabs(){
   const tabs=document.querySelector('#dayTabs'); tabs.innerHTML='';
   state.data.days.forEach(function(d,i){
     const b=document.createElement('button'); b.className='day-tab'+(i===selectedDay?' active':'');
-    b.innerHTML='DAY '+(i+1)+'<small>'+d.short+' · '+d.date.slice(5).replace('-','/')+'</small>';
+    b.innerHTML='DAY '+(i+1)+'<small>'+esc(d.short)+' · '+d.date.slice(5).replace('-','/')+'</small>';
     b.onclick=function(){selectedDay=i;render();};
     tabs.appendChild(b);
   });
@@ -203,20 +230,22 @@ function renderSummary(){
   const d=state.data.days[selectedDay];
   document.querySelector('#dayTitle').textContent='DAY '+(selectedDay+1)+' · '+d.city;
   const done=d.plans.filter(function(p){return state.completed[p.id];}).length;
-  document.querySelector('#todaySummary').innerHTML='<div><strong>'+d.date+' · '+d.city+'</strong><span>'+d.plans.length+'개 일정 중 '+done+'개 완료</span></div><span class="critical">'+d.fallback+'</span>';
+  document.querySelector('#todaySummary').innerHTML='<div><strong>'+d.date+' · '+esc(d.city)+'</strong><span>'+d.plans.length+'개 일정 중 '+done+'개 완료</span></div><span class="critical">'+esc(d.fallback)+'</span>';
 }
 function renderTimeline(){
   const wrap=document.querySelector('#timeline'); wrap.innerHTML='';
   const tpl=document.querySelector('#timelineItemTemplate');
   state.data.days[selectedDay].plans.forEach(function(plan){
     const node=tpl.content.cloneNode(true); const item=node.querySelector('.timeline-item');
+    item.id='plan-'+plan.id;
     if(state.completed[plan.id])item.classList.add('completed');
+    node.querySelector('.check-btn').setAttribute('aria-pressed',String(!!state.completed[plan.id]));
     node.querySelector('.time').textContent=plan.time;
     node.querySelector('.fee').textContent=plan.fee||'';
     if(plan.optional)node.querySelector('.optional-tag').hidden=false;
     node.querySelector('.plan-name').textContent=plan.name;
     node.querySelector('.plan-note').textContent=plan.note||'';
-    node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();};
+    node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
     const map=node.querySelector('.map-link');
     if(plan.map)map.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(plan.map); else map.hidden=true;
     node.querySelector('.edit-link').onclick=function(){openPlanDialog(plan);};
@@ -280,12 +309,12 @@ function renderExpenses(){
   if(!rows.length){wrap.innerHTML='<div class="note-card muted">아직 기록된 지출이 없습니다.</div>';return;}
   rows.forEach(function(e){
     const row=document.createElement('div');row.className='expense-row';
-    row.innerHTML='<div><strong>'+e.name+'</strong><small>'+e.category+'</small></div><strong>'+yen(e.amount)+'</strong><button class="icon-btn" aria-label="삭제">×</button>';
+    row.innerHTML='<div><strong>'+esc(e.name)+'</strong><small>'+esc(e.category)+'</small></div><strong>'+yen(e.amount)+'</strong><button class="icon-btn" aria-label="삭제">×</button>';
     row.querySelector('button').onclick=function(){state.expenses=state.expenses.filter(function(x){return x.id!==e.id;});save();renderExpenses();renderStats();};
     wrap.appendChild(row);
   });
 }
-function render(){renderHero();renderTabs();renderSummary();renderChecklists();renderTimeline();renderNotes();renderExpenses();renderFallback();}
+function render(){renderHero();renderTabs();renderSummary();renderChecklists();renderTimeline();renderNotes();renderExpenses();renderFallback();renderTravelTools();}
 
 const planDialog=document.querySelector('#planDialog');
 function openPlanDialog(plan){
@@ -340,7 +369,9 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!imported.data||!imported.data.days)throw new Error();
     if(!Array.isArray(imported.data.preTripChecklist))imported.data.preTripChecklist=clone(defaults.preTripChecklist);
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
-    state=imported;save();render();alert('백업을 불러왔습니다.');
+    if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
+    imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
+    state=migrateSchedule(imported);selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
@@ -350,3 +381,32 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();def
 document.querySelector('#installBtn').onclick=async function(){if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;document.querySelector('#installBtn').hidden=true;};
 if('serviceWorker' in navigator)window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(function(){});});
 render();
+
+
+function renderTravelTools(){
+  const day=state.data.days[selectedDay];
+  const next=day.plans.find(p=>!state.completed[p.id]);
+  const wrap=document.querySelector('#nextPlan');wrap.replaceChildren();
+  const label=document.createElement('p');label.className='muted';
+  label.textContent=next?'다음 미완료 · '+next.time+' · '+next.name:'이 날의 일정을 모두 완료했어요.';wrap.appendChild(label);
+  if(next){
+    const b=document.createElement('button');b.className='ghost-btn';b.textContent='일정으로 이동';
+    b.onclick=()=>document.getElementById('plan-'+next.id).scrollIntoView({behavior:'smooth',block:'center'});wrap.appendChild(b);
+    if(next.map){const a=document.createElement('a');a.className='ghost-btn';a.textContent='현재 위치에서 길찾기 ↗';a.target='_blank';a.rel='noopener';a.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(next.map);wrap.appendChild(a);}
+  }
+  document.querySelector('#deadlineNote').textContent=[
+    '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
+    '역사박물관 최종입장 16:30 · 우메다 전망대는 16:15 도착 목표.',
+    '에이칸도 15:00 도착 목표 / 16:00 접수 마감 · 청수사 야간 최종입장 21:00.',
+    '12:20 공항 이동 시작 · 긴테쓰나라에서 짐 회수 후 JR나라로 이동 · KIX 15:00 목표, 16:00 전 도착.'
+  ][selectedDay];
+  const choices=state.admissionOptions||{};
+  document.querySelectorAll('[data-admission]').forEach(el=>{el.checked=!!choices[el.dataset.admission];el.onchange=()=>{state.admissionOptions=state.admissionOptions||{};state.admissionOptions[el.dataset.admission]=el.checked;save();renderTravelTools();};});
+  const extra=(choices.kodaiji?800:0)+(choices.garden?600:0)+(choices.sanmon?600:0);
+  document.querySelector('#admissionTotal').textContent=yen(8600+extra);
+  document.querySelector('#previousBackupBtn').hidden=!localStorage.getItem(STORAGE_KEY+'-before-'+SCHEDULE_VERSION);
+}
+document.querySelector('#previousBackupBtn').onclick=function(){
+  const raw=localStorage.getItem(STORAGE_KEY+'-before-'+SCHEDULE_VERSION);if(!raw)return;
+  const url=URL.createObjectURL(new Blob([raw],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='kansai-before-schedule-update.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};

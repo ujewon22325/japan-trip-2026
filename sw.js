@@ -1,6 +1,6 @@
 const CACHE_PREFIX='kansai-trip-pwa-';
-const CACHE=CACHE_PREFIX+'v5';
-const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.json','./icon.svg','./icon-192.png','./icon-512.png'];
+const CACHE=CACHE_PREFIX+'v6';
+const ASSETS=['./','./index.html','./styles.css?v=6','./app.js?v=6','./manifest.json?v=6','./icon.svg','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',function(e){
   e.waitUntil(
@@ -32,6 +32,7 @@ self.addEventListener('fetch',function(e){
   if(e.request.mode==='navigate'){
     e.respondWith(
       fetch(e.request).then(function(res){
+        if(!res.ok)return res;
         const copy=res.clone();
         caches.open(CACHE).then(function(c){c.put('./index.html',copy);});
         return res;
@@ -44,6 +45,7 @@ self.addEventListener('fetch',function(e){
     caches.match(e.request).then(function(hit){
       if(hit)return hit;
       return fetch(e.request).then(function(res){
+        if(!res.ok)return res;
         const copy=res.clone();
         caches.open(CACHE).then(function(c){c.put(e.request,copy);});
         return res;
@@ -51,3 +53,4 @@ self.addEventListener('fetch',function(e){
     })
   );
 });
+
