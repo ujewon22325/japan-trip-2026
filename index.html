@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
   <meta name="description" content="2026 오사카·교토·나라 3박 4일 여행 일정 관리 앱" />
-  <link rel="manifest" href="./manifest.json?v=6" />
+  <link rel="manifest" href="./manifest.json?v=7" />
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <title>간사이 여행 일정</title>
-  <link rel="stylesheet" href="./styles.css?v=6" />
+  <link rel="stylesheet" href="./styles.css?v=7" />
 </head>
 <body>
   <div class="app-shell">
@@ -103,10 +103,11 @@
         </article>
       </section>
 
-      <section class="panel"><h3>예상 입장료 <strong id="admissionTotal">¥8,600</strong></h3><p class="muted">첨부 가이드 기준 성인 1인 · 1일차 ¥0 / 2일차 ¥5,300 / 3일차 ¥2,500 / 4일차 ¥800</p><div class="checklist">
+      <section class="panel"><h3>예상 입장료 <strong id="admissionTotal">¥9,100</strong></h3><p class="muted">패스 미사용 일반요금 기준 성인 1인 · 1일차 ¥0 / 2일차 ¥5,800 / 3일차 ¥2,500 / 4일차 ¥800</p><div class="checklist">
+<label class="check-item"><input type="checkbox" data-admission="shitenGarden"><span>시텐노지 정원 +300엔 (주유패스 무료)</span></label>
 <label class="check-item"><input type="checkbox" data-admission="kodaiji"><span>고다이지 +800엔</span></label>
 <label class="check-item"><input type="checkbox" data-admission="garden"><span>난젠지 방장정원 +600엔</span></label>
-<label class="check-item"><input type="checkbox" data-admission="sanmon"><span>난젠지 삼문 +600엔</span></label></div><p class="muted">교통·식비·쇼핑·로커 제외. 가이드의 기본 코스 기준이며 개인 일정 수정·실제 지출과는 별도 계산됩니다.</p></section>
+<label class="check-item"><input type="checkbox" data-admission="sanmon"><span>난젠지 삼문 +600엔</span></label></div><p class="muted">주유패스 비용·할인은 반영하지 않은 단순 입장료 합계. 교통·식비·쇼핑·로커 제외. 가이드의 기본 코스 기준이며 개인 일정 수정·실제 지출과는 별도 계산됩니다.</p></section>
       <section class="panel danger-panel">
         <div class="panel-head"><div><p class="eyebrow">BACKUP PLAN</p><h3>일정이 밀렸을 때</h3></div></div>
         <div id="fallbackList" class="notes-list"></div>
@@ -124,7 +125,7 @@
       </section>
     </main>
 
-    <footer>2026-09-21 첨부 여행가이드 반영 · 앱 v6 · 운영시간/요금/시간표는 출발 직전 재확인 권장</footer>
+    <footer>2026-09-22 시텐노지 포함 일정 반영 · 앱 v7 · 운영시간/요금/시간표는 출발 직전 재확인 권장</footer>
   </div>
 
   <dialog id="planDialog" class="modal">
@@ -165,7 +166,7 @@
       </div>
     </article>
   </template>
-  <script src="./app.js?v=6"></script>
+  <script src="./app.js?v=7"></script>
 </body>
 </html>
 

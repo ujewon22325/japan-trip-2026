@@ -2,7 +2,7 @@ const TRIP_START='2026-11-25';
 const TRIP_END='2026-11-28';
 const STORAGE_KEY='kansai-trip-manager-v2';
 
-const SCHEDULE_VERSION='2026-09-21-museum';
+const SCHEDULE_VERSION='2026-09-22-shitennoji';
 const defaults={
   days:[
     {
@@ -23,20 +23,26 @@ const defaults={
       ]
     },
     {
-      date:'2026-11-26',city:'오사카 핵심 명소',short:'오사카',
+      date:'2026-11-26',city:'오사카 핵심 명소 · 시텐노지',short:'오사카',
       notes:[
-        '쓰텐카쿠는 시간지정 입장제라 사전구매가 편함.',
-        '오사카성공원·천수각은 90분 핵심 관람 후 오테마에 주변 점심.',
-        '우메다 스카이빌딩 옥상은 11월 하순 강풍·추위 대비.'
+        '쓰텐카쿠 → 시텐노지 → 오사카성 → 역사박물관 → 공중정원. 이동시간은 예상값.',
+        '주유패스 이용자는 쓰텐카쿠 1층 티켓센터에서 당일 시간지정권 교환. 09:00 입장은 확정이 아니므로 일찍 방문.',
+        '시텐노지는 중심가람 45분 우선. 정원은 여유가 있을 때만. 중심가람·정원은 주유패스 무료, 보물관은 별도.',
+        '주유패스 사용 시 포함 지하철은 패스로 입장. 트래블로그를 태그하면 별도 운임 발생.',
+        '우메다 공중정원 16:15 입장은 주유패스 무료 시간대가 아님. 옥상 강풍·추위 대비.'
       ],
-      fallback:'우메다 쇼핑시간 축소 → 역사박물관을 60분 안팎으로 압축. 전망대는 유지',
+      fallback:'시텐노지 정원 생략 → 중심가람 관람 단축. 크게 지연되면 시텐노지 생략, 공중정원 16:15 유지',
       plans:[
-        {id:'d2p1',time:'09:00-10:30',name:'신세카이 + 쓰텐카쿠',fee:'1,500엔',note:'09:00-21:45, 최종입장 21:15. 시간지정 입장제.',map:'Tsutenkaku Osaka'},
-        {id:'d2p2',time:'11:00-12:30',name:'오사카성공원 + 천수각',fee:'1,200엔',note:'천수각 09:00-18:00, 최종 17:30. 공원 자체는 무료.',map:'Osaka Castle'},
-        {id:'d2-lunch',time:'12:30-13:20',name:'점심 · 오사카성·오테마에 주변',fee:'식비 별도',note:'박물관 인근에서 식사해 이동 손실 줄이기.',map:'Otemae Osaka'},
-        {id:'d2-museum',time:'13:20-14:40',name:'오사카 역사박물관',fee:'600엔',note:'09:30-17:00, 최종입장 16:30. 화요일 휴관. 상설전 핵심 관람 약 80분. 이후 다니마치욘초메역에서 우메다 방향 이동.',map:'Osaka Museum of History'},
-        {id:'d2p3',time:'15:15-16:00',name:'우메다 쇼핑 · 카페',fee:'무료',note:'시설별 운영시간 상이.',map:'Umeda Osaka'},
-        {id:'d2p4',time:'16:15-18:30',name:'우메다 스카이빌딩 공중정원',fee:'2,000엔',note:'09:30-22:30, 최종 22:00. 일몰 전부터 야경까지 이어서 관람.',map:'Umeda Sky Building Osaka'}
+        {id:'d2p1',time:'09:00-10:15',name:'신세카이 + 쓰텐카쿠',fee:'1,500엔 · 주유패스 무료',note:'시간지정 입장제. 패스는 당일 현장 시간지정권 교환 필요. 늦은 입장 배정 시 뒤 일정 조정.',map:'Tsutenkaku Osaka'},
+        {id:'d2-walk-shitennoji',time:'10:15-10:40',name:'시텐노지로 도보 이동',fee:'무료',note:'도보 약 25분 예상. 실제 출구·보행속도에 따라 달라짐.',map:'Shitennoji Temple Osaka'},
+        {id:'d2-shitennoji',time:'10:40-11:25',name:'시텐노지 · 중심가람',fee:'500엔 · 주유패스 무료',note:'11월 08:30-16:00. 중심가람 우선, 정원은 여유 시 추가 300엔(주유패스 무료). 일반 경내 무료. 보물관 500엔 별도·이번 코스 제외. 정원 휴원일 확인.',map:'Shitennoji Temple Osaka'},
+        {id:'d2-to-castle',time:'11:25-12:05',name:'시텐노지 → 오사카성 이동',fee:'교통비 별도 · 주유패스 포함',note:'시텐노지마에유히가오카역까지 도보 → 다니마치선 다니마치욘초메역 → 오사카성 도보. 총 40분 예상.',map:'Osaka Castle'},
+        {id:'d2p2',time:'12:05-13:15',name:'오사카성공원 + 천수각',fee:'1,200엔 · 주유패스 무료',note:'공원·천수각 핵심 70분. 천수각 09:00-18:00, 최종 17:30. 공원 자체 무료.',map:'Osaka Castle'},
+        {id:'d2-lunch',time:'13:15-14:05',name:'박물관 방향 이동 · 점심',fee:'식비 별도',note:'도보 이동 포함 50분. 오테마에·박물관 인근에서 식사, 대기 긴 식당 피하기.',map:'Otemae Osaka'},
+        {id:'d2-museum',time:'14:05-15:05',name:'오사카 역사박물관',fee:'600엔 · 상설전 주유패스 무료',note:'상설전 핵심 60분. 09:30-17:00, 최종입장 16:30. 화요일 휴관.',map:'Osaka Museum of History'},
+        {id:'d2-to-umeda',time:'15:05-16:00',name:'우메다 스카이빌딩으로 이동',fee:'교통비 별도 · 주유패스 포함',note:'다니마치욘초메 → 다니마치선 히가시우메다 → 스카이빌딩 도보. 총 55분 예상, 쇼핑 일정 없음.',map:'Umeda Sky Building Osaka'},
+        {id:'d2-sky-entry',time:'16:00-16:15',name:'공중정원 입장 준비 · 대기',fee:'아래 입장료에 포함',note:'입장 대기 여유 15분. 혼잡에 따라 더 걸릴 수 있음.',map:'Umeda Sky Building Osaka'},
+        {id:'d2p4',time:'16:15-18:30',name:'우메다 스카이빌딩 공중정원',fee:'2,000엔 · 패스 할인 조건 확인',note:'일몰부터 야경까지 관람. 이 시간은 주유패스 무료입장 대상이 아님. 09:30-22:30, 최종 22:00.',map:'Umeda Sky Building Osaka'}
       ]
     },
     {
@@ -110,8 +116,9 @@ const defaults={
       date:'2026-11-26',
       items:[
         {id:'day2-tsuten',text:'쓰텐카쿠 시간지정 입장권/예약시간 확인'},
+        {id:'day2-shitennoji',text:'시텐노지 10:40 도착 목표 · 중심가람 우선 · 주유패스 QR 및 정원 휴원일 확인',url:'https://www.shitennoji.or.jp/admission.html',linkLabel:'시텐노지 안내'},
         {id:'day2-castle',text:'오사카성 천수각 최종입장 17:30보다 충분히 일찍 도착'},
-        {id:'day2-museum',text:'오사카 역사박물관 13:20 도착 목표 · 상설전 600엔 준비'},
+        {id:'day2-museum',text:'오사카 역사박물관 14:05 도착 목표 · 상설전 주유패스/입장권 준비'},
         {id:'day2-umeda',text:'우메다 스카이빌딩 입장권과 입장 동선 확인'},
         {id:'day2-warm',text:'우메다 옥상 강풍 대비 얇은 장갑·방풍 겉옷 챙기기'},
         {id:'day2-power',text:'저녁 야경 촬영 전 휴대폰·보조배터리 잔량 확인'}
@@ -154,6 +161,7 @@ function migrateSchedule(x){
   const oldDays=x.data.days;
   x.data.days=clone(defaults.days).map(function(day){
     const old=oldDays.find(function(d){return d.date===day.date;});
+    if(old&&x.scheduleVersion==='2026-09-21-museum'&&day.date!=='2026-11-26')return old;
     if(old)day.plans.push(...old.plans.filter(function(p){return !/^d[1-4]p\d+$/.test(p.id)&&!day.plans.some(function(n){return n.id===p.id;});}));
     return day;
   });
@@ -161,7 +169,10 @@ function migrateSchedule(x){
   x.data.preTripChecklist=mergeItems(x.data.preTripChecklist||[],defaults.preTripChecklist);
   defaults.dailyChecklist.forEach(function(group){
     const old=x.data.dailyChecklist.find(function(g){return g.date===group.date;});
-    if(old)old.items=mergeItems(old.items,group.items);else x.data.dailyChecklist.push(clone(group));
+    if(old){
+      old.items=mergeItems(old.items,group.items);
+      if(group.date==='2026-11-26')old.items=old.items.map(item=>item.id==='day2-museum'?clone(group.items.find(n=>n.id===item.id)):item);
+    }else x.data.dailyChecklist.push(clone(group));
   });
   x.scheduleVersion=SCHEDULE_VERSION;
   localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
@@ -396,14 +407,14 @@ function renderTravelTools(){
   }
   document.querySelector('#deadlineNote').textContent=[
     '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
-    '역사박물관 최종입장 16:30 · 우메다 전망대는 16:15 도착 목표.',
+    '시텐노지 10:40 → 역사박물관 14:05 → 공중정원 16:15 목표 · 지연 시 시텐노지 정원부터 생략.',
     '에이칸도 15:00 도착 목표 / 16:00 접수 마감 · 청수사 야간 최종입장 21:00.',
     '12:20 공항 이동 시작 · 긴테쓰나라에서 짐 회수 후 JR나라로 이동 · KIX 15:00 목표, 16:00 전 도착.'
   ][selectedDay];
   const choices=state.admissionOptions||{};
   document.querySelectorAll('[data-admission]').forEach(el=>{el.checked=!!choices[el.dataset.admission];el.onchange=()=>{state.admissionOptions=state.admissionOptions||{};state.admissionOptions[el.dataset.admission]=el.checked;save();renderTravelTools();};});
-  const extra=(choices.kodaiji?800:0)+(choices.garden?600:0)+(choices.sanmon?600:0);
-  document.querySelector('#admissionTotal').textContent=yen(8600+extra);
+  const extra=(choices.kodaiji?800:0)+(choices.garden?600:0)+(choices.sanmon?600:0)+(choices.shitenGarden?300:0);
+  document.querySelector('#admissionTotal').textContent=yen(9100+extra);
   document.querySelector('#previousBackupBtn').hidden=!localStorage.getItem(STORAGE_KEY+'-before-'+SCHEDULE_VERSION);
 }
 document.querySelector('#previousBackupBtn').onclick=function(){
