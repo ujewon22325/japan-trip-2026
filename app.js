@@ -258,6 +258,25 @@ function renderTimeline(){
     node.querySelector('.plan-note').textContent=plan.note||'';
     appendWalkingGuide(node,plan);
     node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
+    const naverQueries={
+      'd1p2':'오사카 구로몬시장','d1-yasaka':'오사카 난바 야사카 신사',
+      'd1p4':'오사카 호젠지','d1p5':'오사카 도톤보리','d1p6':'오사카 신사이바시스지',
+      'd2p1':'오사카 쓰텐카쿠','d2-shitennoji':'오사카 시텐노지',
+      'd2p2':'오사카성 천수각','d2-museum':'오사카 역사박물관','d2p4':'오사카 우메다 스카이빌딩 공중정원',
+      'd3p2':'교토 청수사 기요미즈데라','d3p3':'교토 산넨자카 니넨자카',
+      'd3p4':'교토 고다이지','d3p5':'교토 기온 하나미코지','d3p6':'교토 난젠지',
+      'd3p7':'교토 에이칸도','d3p8':'교토 청수사 기요미즈데라',
+      'd4p3':'일본 나라공원','d4p4':'일본 나라 도다이지'
+    };
+    const naver=node.querySelector('.naver-link');
+    const original=defaults.days.flatMap(d=>d.plans).find(p=>p.id===plan.id);
+    const isOriginal=original&&original.name===plan.name&&original.map===plan.map;
+    const query=isOriginal?naverQueries[plan.id]:plan.name+' '+state.data.days[selectedDay].short+' 일본';
+    if(query){
+      naver.href='https://search.naver.com/search.naver?query='+encodeURIComponent(query);
+      naver.title='네이버에서 '+query+' 장소 정보 검색';
+      naver.setAttribute('aria-label',plan.name+' 네이버 장소 정보 검색 (새 창)');
+    }else naver.hidden=true;
     const map=node.querySelector('.map-link');
     if(plan.map)map.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(plan.map); else map.hidden=true;
     node.querySelector('.edit-link').onclick=function(){openPlanDialog(plan);};
