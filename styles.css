@@ -90,3 +90,5 @@ footer{color:#718096;font-size:12px;text-align:center;padding:26px 8px 0}
 
 
 .next-plan{display:flex;flex-wrap:wrap;gap:8px}.next-plan p{width:100%;margin-bottom:4px}.deadline-note{border-left:3px solid #fbbf24;padding:10px 12px;background:#2b251b;color:#fde68a;line-height:1.6}.timeline-content{min-width:0;overflow-wrap:anywhere}.plan-actions{flex-wrap:wrap}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #22d3ee;outline-offset:3px}.check-btn{min-width:30px;min-height:30px}#admissionTotal{color:#fde68a;margin-left:8px}
+
+.walking-guide{margin:12px 0;padding:10px 12px;border:1px solid #355365;border-radius:10px;background:#152a35;color:#d3ebf2;font-size:13px;line-height:1.6}.walking-guide summary{cursor:pointer;font-weight:700;color:#8ce1e8;overflow-wrap:anywhere}.walking-guide p{margin:8px 0}.walking-guide small{display:block;color:#a5bac6;line-height:1.6}

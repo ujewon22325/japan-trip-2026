@@ -256,6 +256,7 @@ function renderTimeline(){
     if(plan.optional)node.querySelector('.optional-tag').hidden=false;
     node.querySelector('.plan-name').textContent=plan.name;
     node.querySelector('.plan-note').textContent=plan.note||'';
+    appendWalkingGuide(node,plan);
     node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
     const map=node.querySelector('.map-link');
     if(plan.map)map.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(plan.map); else map.hidden=true;
