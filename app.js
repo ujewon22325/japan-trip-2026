@@ -257,6 +257,7 @@ function renderTimeline(){
     node.querySelector('.plan-name').textContent=plan.name;
     node.querySelector('.plan-note').textContent=plan.note||'';
     appendWalkingGuide(node,plan);
+    appendRouteGuide(node,plan);
     node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
     const naverQueries={
       'd1p2':'오사카 구로몬시장','d1-yasaka':'오사카 난바 야사카 신사',
