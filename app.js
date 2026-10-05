@@ -19,7 +19,7 @@ const defaults={
         {id:'d1p2',time:'14:30-16:00',name:'구로몬시장',fee:'무료',note:'먹거리부터 우선. 점포별 영업시간 상이, 늦은 오후 이른 마감 주의.',map:'Kuromon Ichiba Market Osaka'},
         {id:'d1-yasaka',time:'16:00-17:00',name:'난바 야사카 신사',fee:'무료',note:'06:00-17:00 개문. 구로몬시장에서 이동 포함, 17시 폐문 전에 관람. 지연 시 먼저 생략.',map:'Namba Yasaka Shrine Osaka'},
         {id:'d1p4',time:'17:00-18:00',name:'호젠지 · 호젠지요코초',fee:'무료',note:'경내 상시 참배 가능. 사무소/고슈인 10:00-18:00 기준.',map:'Hozenji Temple Osaka'},
-        {id:'d1p5',time:'18:00-20:00',name:'도톤보리',fee:'무료',note:'저녁 인파가 많고 식당 대기 가능. 다리 위 통행 방해 주의.',map:'Dotonbori Osaka'},
+        {id:'d1p5',time:'18:00-20:00',name:'도톤보리',fee:'무료',note:"저녁 인파가 많고 식당 대기 가능. 다리 위 통행 방해 주의.\n타코야키 선택 후보 (둘 중 원하는 곳 방문 · 도톤보리 18:00~20:00 안에 20~30분, 대기 별도):\n① 크레오루 도톤보리점 くれおーる: 道頓堀1-6-4. 공식 10:00~23:00·무휴. 기본 8개 803엔 / 반숙계란+파 6개 803엔(공식 매장식사 메뉴; 포장 가격 다를 수 있음). 카드 Visa·Mastercard 등 가능 안내, 포장 판매대는 확인. 매장 식사는 1인 1음료·1주문 안내.\n② 오도리다코 도톤보리점 踊りだこ: 道頓堀1-7-24. 11:00~21:00·부정기 휴무 안내. 한 알마다 통쭈꾸미 1마리. 4개 600엔 / 6개 800엔 / 8개 1,200엔(게시 메뉴 기준). 카드·전자머니·QR 불가 안내, 현금 준비.\n2026-10-05 확인, 여행 전 가격·영업 재확인. 두 곳 모두 방문할 필요 없이 현장에서 선택.",map:'Dotonbori Osaka'},
         {id:'d1p6',time:'20:00-21:30',name:'신사이바시스지',fee:'무료',note:'점포별 폐점시간 상이. 쇼핑이 중요하면 도톤보리 저녁을 조금 앞당겨도 됨.',map:'Shinsaibashi-suji Shopping Street Osaka'}
       ]
     },
@@ -196,6 +196,14 @@ function addOokiniLunch(x){
   return x;
 }
 
+function addTakoyakiChoices(x){
+  if(x.takoyakiUpdate==='2026-10-05')return x;
+  const plan=x.data.days.find(d=>d.date==='2026-11-25')?.plans.find(p=>p.id==='d1p5');
+  if(plan&&!String(plan.note||'').includes('타코야키 선택 후보'))plan.note=(plan.note||'')+"\n타코야키 선택 후보 (둘 중 원하는 곳 방문 · 도톤보리 18:00~20:00 안에 20~30분, 대기 별도):\n① 크레오루 도톤보리점 くれおーる: 道頓堀1-6-4. 공식 10:00~23:00·무휴. 기본 8개 803엔 / 반숙계란+파 6개 803엔(공식 매장식사 메뉴; 포장 가격 다를 수 있음). 카드 Visa·Mastercard 등 가능 안내, 포장 판매대는 확인. 매장 식사는 1인 1음료·1주문 안내.\n② 오도리다코 도톤보리점 踊りだこ: 道頓堀1-7-24. 11:00~21:00·부정기 휴무 안내. 한 알마다 통쭈꾸미 1마리. 4개 600엔 / 6개 800엔 / 8개 1,200엔(게시 메뉴 기준). 카드·전자머니·QR 불가 안내, 현금 준비.\n2026-10-05 확인, 여행 전 가격·영업 재확인. 두 곳 모두 방문할 필요 없이 현장에서 선택.";
+  x.takoyakiUpdate='2026-10-05';
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -205,7 +213,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return addOokiniLunch(migrateSchedule(x));
+      return addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)));
     }
   }catch(e){}
   return freshState();
@@ -278,6 +286,12 @@ function renderTimeline(){
       [['매장 공식 정보 ↗','https://www.fujiofood.com/shop_search/shokudo/shop_1061.php'],['結제·예산 정보 ↗','https://tabelog.com/osaka/A2701/A270202/27048770/']].forEach(([label,url])=>{
         const a=document.createElement('a');a.className='map-link';a.textContent=label.replace('結','결');a.href=url;a.target='_blank';a.rel='noopener noreferrer';links.appendChild(a);
       });
+    }
+    if(plan.id==='d1p5'){
+      const detail=document.createElement('details');detail.className='route-guide';
+      const summary=document.createElement('summary');summary.textContent='타코야키 후보 · 둘 중 골라 방문';detail.appendChild(summary);
+      [['크레오루 지도 ↗','https://www.google.com/maps/search/?api=1&query=くれおーる+道頓堀1-6-4'],['크레오루 공식 메뉴 ↗','https://creo-ru.com/creo-ru-store/tenpo/dotonbori/'],['오도리다코 지도 ↗','https://www.google.com/maps/search/?api=1&query=踊りだこ+道頓堀1-7-24'],['오도리다코 메뉴·영업 ↗','https://tabelog.com/osaka/A2701/A270202/27092198/']].forEach(([label,url])=>{const p=document.createElement('p');const a=document.createElement('a');a.href=url;a.textContent=label;a.target='_blank';a.rel='noopener noreferrer';p.appendChild(a);detail.appendChild(p);});
+      node.querySelector('.plan-note').after(detail);
     }
     appendWalkingGuide(node,plan);
     appendRouteGuide(node,plan);
@@ -426,7 +440,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=addOokiniLunch(migrateSchedule(imported));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
