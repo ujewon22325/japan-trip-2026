@@ -15,6 +15,7 @@ const defaults={
       fallback:'난바 야사카 신사 → 신사이바시 일부 순서로 생략',
       plans:[
         {id:'d1p1',time:'공항 도착 후',name:'KIX → 난바 (난카이)',fee:'교통비 별도',note:'라피트 최단 약 34분. 항공편 도착시간에 맞춰 선택.',map:'Nankai Namba Station Osaka'},
+        {"id":"d1-naniwa-lunch","time":"13:30-14:15 (도착 후 조정)","name":"점심 · 마이도 오오키니 浪速日本橋食堂","fee":"1인 약 1,000~2,000엔 · 4인 약 4,000~8,000엔","note":"난바 도착·숙소 짐 보관 후 점심 30~45분. 닛폰바시역 10번 출구 옆 → 구로몬시장까지 도보 약 2~5분. 14:15까지 식사가 어렵거나 시장 먹거리를 먹으려면 생략. 주소: 大阪府大阪市中央区日本橋1-17-20 日本橋丸中ビル 1F. 공식 영업 09:00~다음 날 07:00, 일요일 휴무. 다른 사이트와 영업시간 차이가 있어 출발 전 재확인. 타베로그: 신용카드·전자머니 불가, QR결제 가능(브랜드 미확인); 엔화 현금 준비. 반찬을 고르고 밥·국을 추가하는 셀프 식당. 예약 불가 안내. 전화 +81-6-6630-7595. 2026-10-05 확인.","map":"浪速日本橋食堂 大阪府大阪市中央区日本橋1-17-20","optional":true},
         {id:'d1p2',time:'14:30-16:00',name:'구로몬시장',fee:'무료',note:'먹거리부터 우선. 점포별 영업시간 상이, 늦은 오후 이른 마감 주의.',map:'Kuromon Ichiba Market Osaka'},
         {id:'d1-yasaka',time:'16:00-17:00',name:'난바 야사카 신사',fee:'무료',note:'06:00-17:00 개문. 구로몬시장에서 이동 포함, 17시 폐문 전에 관람. 지연 시 먼저 생략.',map:'Namba Yasaka Shrine Osaka'},
         {id:'d1p4',time:'17:00-18:00',name:'호젠지 · 호젠지요코초',fee:'무료',note:'경내 상시 참배 가능. 사무소/고슈인 10:00-18:00 기준.',map:'Hozenji Temple Osaka'},
@@ -179,6 +180,22 @@ function migrateSchedule(x){
   return x;
 }
 
+
+function addOokiniLunch(x){
+  if(x.ookiniUpdate==='2026-10-05')return x;
+  const backupKey=STORAGE_KEY+'-before-ookini-2026-10-05';
+  if(!localStorage.getItem(backupKey))localStorage.setItem(backupKey,JSON.stringify(x));
+  const day=x.data.days.find(d=>d.date==='2026-11-25');
+  if(day&&!day.plans.some(p=>p.id==='d1-naniwa-lunch')){
+    const lunch=clone(defaults.days[0].plans.find(p=>p.id==='d1-naniwa-lunch'));
+    const market=day.plans.findIndex(p=>p.id==='d1p2');
+    day.plans.splice(market>=0?market:Math.min(1,day.plans.length),0,lunch);
+  }
+  x.ookiniUpdate='2026-10-05';
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -188,7 +205,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return migrateSchedule(x);
+      return addOokiniLunch(migrateSchedule(x));
     }
   }catch(e){}
   return freshState();
@@ -256,11 +273,17 @@ function renderTimeline(){
     if(plan.optional)node.querySelector('.optional-tag').hidden=false;
     node.querySelector('.plan-name').textContent=plan.name;
     node.querySelector('.plan-note').textContent=plan.note||'';
+    if(plan.id==='d1-naniwa-lunch'){
+      const links=node.querySelector('.plan-actions');
+      [['매장 공식 정보 ↗','https://www.fujiofood.com/shop_search/shokudo/shop_1061.php'],['結제·예산 정보 ↗','https://tabelog.com/osaka/A2701/A270202/27048770/']].forEach(([label,url])=>{
+        const a=document.createElement('a');a.className='map-link';a.textContent=label.replace('結','결');a.href=url;a.target='_blank';a.rel='noopener noreferrer';links.appendChild(a);
+      });
+    }
     appendWalkingGuide(node,plan);
     appendRouteGuide(node,plan);
     node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
     const naverQueries={
-      'd1p2':'오사카 구로몬시장','d1-yasaka':'오사카 난바 야사카 신사',
+      'd1-naniwa-lunch':'浪速日本橋食堂 오사카','d1p2':'오사카 구로몬시장','d1-yasaka':'오사카 난바 야사카 신사',
       'd1p4':'오사카 호젠지','d1p5':'오사카 도톤보리','d1p6':'오사카 신사이바시스지',
       'd2p1':'오사카 쓰텐카쿠','d2-shitennoji':'오사카 시텐노지',
       'd2p2':'오사카성 천수각','d2-museum':'오사카 역사박물관','d2p4':'오사카 우메다 스카이빌딩 공중정원',
@@ -403,7 +426,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=migrateSchedule(imported);selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=addOokiniLunch(migrateSchedule(imported));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
