@@ -193,6 +193,41 @@ ATM_STOPS.forEach(stop=>{
 
 function clone(v){return JSON.parse(JSON.stringify(v));}
 function newId(){return (crypto.randomUUID&&crypto.randomUUID())||('id'+Date.now()+Math.random().toString(16).slice(2));}
+const ICOCA_INFO={"checked": "2026-10-06", "stops": [{"date": "2026-11-25", "plan": {"id": "d1-icoca-buy", "time": "입국 후 · 난카이 탑승 전 (10~20분·대기 별도)", "name": "교통카드 구매 · 간사이공항역 JR ICOCA", "fee": "1인 2,000엔 (잔액 1,500엔＋보증금 500엔)", "note": "실물 무기명 ICOCA 권장. 제1터미널 입국장 → 2층 연결다리 → 간사이공항역 개찰구 밖 JR 쪽 ICOCA 표시 자동발매기. 사용 가능한 기계가 없거나 도움이 필요하면 JR 미도리노마도구치(05:30~23:00). 구입은 엔화 현금; 1인 1매, 4명 각 2,000엔 구매 시 8,000엔. 이미 Suica/PASMO/ICOCA가 있으면 신규 구매 생략 가능. 현금이 없으면 제1터미널 1층 도착층 세븐은행 ATM에서 먼저 출금. 구매 뒤 JR 개찰구로 들어가지 않고 난카이 쪽으로 이동해 난바행 탑승. 처음 2,000엔으로 시작하고 필요할 때 현금 추가 충전. 삼성월렛 트래블로그와 별개의 선불 교통카드. 자세한 구매·환불 방법은 교통카드 안내. 2026-10-06 공식 확인.", "map": "JR Kansai-airport Station Ticket Office", "optional": true}, "route": {"kind": "공항 내 도보 · 교통카드 구매", "title": "KIX 제1터미널 입국장 → JR ICOCA 구매 → 난카이 탑승", "steps": ["입국·수하물 수취·세관 통과 후 제1터미널 1층 도착장으로 나옴. 현금이 없으면 도착층 세븐은행 ATM에서 실물 해외출금 카드로 출금.", "2층으로 올라가 Railway/鉄道 표지를 따라 연결다리를 건너 간사이공항역으로 이동.", "개찰구 밖 JR 쪽 ICOCA 표시 발매기에서 무기명 성인용 카드를 현금 구매. 창구가 필요하면 JR 미도리노마도구치(05:30~23:00).", "카드 수령 뒤 같은 역의 난카이 쪽으로 이동해 난바행 열차 탑승. JR에서 카드를 샀어도 난카이에서 사용 가능."], "tip": "카드 구매·충전 10~20분 확보, 창구 대기는 별도. 난카이 할인권/라피트 티켓을 샀다면 해당 티켓으로 입장하고 ICOCA를 중복 태그하지 않기.", "origin": "Kansai International Airport Terminal 1", "destination": "JR Kansai-airport Station Ticket Office"}, "note": "ICOCA 구매: 입국 후 난카이 탑승 전에 JR 간사이공항역 발매기/창구에서 현금 구매. 2,000엔 중 500엔은 보증금, 잔액은 1,500엔. 1인 1매."}, {"date": "2026-11-28", "plan": {"id": "d4-icoca-return", "time": "15:00 전후 KIX 도착 직후 · 10~20분 (대기 별도)", "name": "ICOCA 반납 · JR 간사이공항역 미도리노마도구치", "fee": "환불액＝잔액에서 최대 220엔 공제＋보증금 500엔", "note": "하루카로 간사이공항역 도착 → 사용한 하루카 티켓/QR로 출구 개찰 → 개찰구 밖 JR 미도리노마도구치에서 카드 반납·환불 → 제1터미널로 이동. 창구 05:30~23:00. 실물 ICOCA와 여권 준비; 어린이용은 본인확인 서류 필요. 무기명 성인용은 반납 가능 표시가 있는 JR 발매기도 대안, 취급 조건·기기 안내 확인. 잔액 0엔이면 500엔 반환 / 100엔이면 500엔 / 500엔이면 780엔. 반납한 카드는 회수되어 사용할 수 없음. 환불은 공항 보안검색 전에 완료. 역 매점에서 남은 잔액부터 쓰려면 반납 전 결제하고, 현금 병용은 점원에게 확인. 대기가 길면 면세 반출 확인·체크인을 우선하고 카드는 다음 일본 여행용으로 보관. 반납을 위해 나라 출발·공항 도착을 늦추지 않기. 2026-10-06 공식 확인.", "map": "JR Kansai-airport Station Ticket Office", "optional": true}, "route": {"kind": "역내 이동 · 카드 환불", "title": "하루카 하차 → JR 개찰 밖 ICOCA 반납 → 면세 반출 확인·체크인", "steps": ["JR 간사이공항역에서 하루카 하차. 사용한 할인권/QR로 출구 개찰을 통과하며 ICOCA를 중복 태그하지 않기.", "개찰구 밖 JR 미도리노마도구치로 이동. 잔액을 매점에서 먼저 쓰려면 반납 전에 결제하고 현금 병용 가능 여부는 점원에게 확인.", "실물 ICOCA를 내고 환불 요청: ‘ICOCAの払い戻しをお願いします’(이코카 환불 부탁합니다). 카드와 보증금 포함 환불액을 확인.", "2층 연결다리로 제1터미널 이동. 면세 구매품 반출 확인을 마친 뒤 수하물 위탁·체크인·보안검색. 창구 대기가 길면 면세·체크인을 우선."], "tip": "반납은 선택. 15:00 전후 공항 도착 목표 유지. 나라/덴노지에서 미리 반납하려고 이동을 지연시키지 않기.", "origin": "JR Kansai-airport Station", "destination": "Kansai International Airport Terminal 1"}, "note": "ICOCA 반납: 하루카 도착·출구 개찰 후 JR 간사이공항역 창구(05:30~23:00). 10~20분＋대기 여유; 줄이 길면 면세·체크인 우선. 반납은 선택."}], "pre": {"id": "pre-icoca", "text": "실물 ICOCA 구매·충전용 엔화 현금 준비 · 기존 Suica/PASMO/ICOCA가 있으면 지참 · 구매·반납 위치 저장", "url": "#icoca-guide", "linkLabel": "교통카드 안내"}, "daily": [{"date": "2026-11-25", "item": {"id": "day1-icoca-buy", "text": "난카이 탑승 전 JR 간사이공항역에서 실물 ICOCA 구매 · 1인 2,000엔 현금 · 기존 IC카드 있으면 생략", "url": "#icoca-guide", "linkLabel": "구매 동선"}}, {"date": "2026-11-27", "item": {"id": "day3-icoca-balance", "text": "교토 출발 전 ICOCA 잔액 확인·충전 · 개별 결제 기준 오늘 교통비 약 2,160엔(기본 동선·성인 1인)", "url": "#icoca-guide", "linkLabel": "충전·사용 안내"}}, {"date": "2026-11-28", "item": {"id": "day4-icoca-return", "text": "긴테쓰 나라행 전에 잔액 확인 · KIX 도착·하루카 출구 개찰 후 ICOCA 반납 여부 결정 · 대기 길면 면세·체크인 우선", "url": "#icoca-guide", "linkLabel": "반납·환불 안내"}}]};
+function applyIcocaInfo(x,saveBackup=true){
+  if(x.icocaUpdate==='2026-10-06')return x;
+  if(saveBackup){
+    const key=STORAGE_KEY+'-before-icoca-2026-10-06';
+    if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(x));
+  }
+  ICOCA_INFO.stops.forEach(function(stop){
+    const day=x.data.days.find(d=>d.date===stop.date);
+    if(!day)return;
+    if(!day.plans.some(p=>p.id===stop.plan.id)){
+      if(stop.date===TRIP_START)day.plans.unshift(clone(stop.plan));
+      else{
+        const i=day.plans.findIndex(p=>p.id==='day4-tax-refund');
+        day.plans.splice(i>=0?i:day.plans.length,0,clone(stop.plan));
+      }
+    }
+    if(!Array.isArray(day.notes))day.notes=[];
+    if(!day.notes.some(n=>n===stop.note))day.notes.push(stop.note);
+  });
+  x.data.preTripChecklist=x.data.preTripChecklist||[];
+  if(!x.data.preTripChecklist.some(i=>i.id===ICOCA_INFO.pre.id))x.data.preTripChecklist.push(clone(ICOCA_INFO.pre));
+  x.data.dailyChecklist=x.data.dailyChecklist||[];
+  ICOCA_INFO.daily.forEach(function(entry){
+    let group=x.data.dailyChecklist.find(g=>g.date===entry.date);
+    if(!group){group={date:entry.date,items:[]};x.data.dailyChecklist.push(group);}
+    if(!group.items.some(i=>i.id===entry.item.id))group.items.push(clone(entry.item));
+  });
+  x.icocaUpdate='2026-10-06';
+  if(saveBackup)localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+ICOCA_INFO.stops.forEach(stop=>{ROUTE_DETAILS[stop.plan.id]=stop.route;});
+applyIcocaInfo({data:defaults},false);
+
 function freshState(){return {scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
@@ -272,7 +307,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))));
+      return applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))));
     }
   }catch(e){}
   return freshState();
@@ -503,7 +538,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
