@@ -151,6 +151,16 @@ const defaults={
   ]
 };
 
+const TAX_REFUND_NOTICE="면세 환급: KIX 도착 후 짐을 부치기 전에 여권·구매품 전부로 반출 확인 → 초록색은 완료, 빨간색은 세관 검사 → 수하물 위탁. 환급 방법·시기·수수료는 구매 매장 안내 확인.";
+const TAX_REFUND_PLAN={"id": "day4-tax-refund", "time": "15:00 도착 후 · 짐 위탁 전", "name": "KIX 면세 반출 확인 → 수하물 위탁", "fee": "환급 수수료는 매장·업체 조건 확인", "note": "면세 환급: KIX 도착 후 짐을 부치기 전에 여권·구매품 전부로 반출 확인 → 초록색은 완료, 빨간색은 세관 검사 → 수하물 위탁. 환급 방법·시기·수수료는 구매 매장 안내 확인. 단말기 또는 출국장 전용 Wi-Fi의 Visit Japan Web 이용. 구매자 여권·영수증·환급 안내서 준비. 자세한 내용은 면세 환급 안내에서 확인.", "map": "Kansai International Airport"};
+const TAX_REFUND_PRE={"id": "pre-tax-refund", "text": "11월부터 새 면세 환급제 적용: 매장 환급 등록·구매품 보관·귀국일 짐 위탁 전 반출 확인 절차 읽기", "url": "#tax-refund", "linkLabel": "면세 환급 안내"};
+const TAX_REFUND_DAILY=[{"id": "day4-tax-goods", "text": "면세 등록한 구매품 전부·구매자 여권·영수증·환급 안내서 준비"}, {"id": "day4-tax-before-bag", "text": "KIX 짐 위탁 전 면세 단말기/Visit Japan Web 반출 확인 → 빨간색이면 검사 → 확인 후 짐 위탁", "url": "#tax-refund", "linkLabel": "공항 절차"}];
+const refundDay=defaults.days.find(d=>d.date===TRIP_END);
+refundDay.notes.push(TAX_REFUND_NOTICE);
+refundDay.plans.push(TAX_REFUND_PLAN);
+defaults.preTripChecklist.push(TAX_REFUND_PRE);
+defaults.dailyChecklist.find(d=>d.date===TRIP_END).items.push(...TAX_REFUND_DAILY);
+
 function clone(v){return JSON.parse(JSON.stringify(v));}
 function newId(){return (crypto.randomUUID&&crypto.randomUUID())||('id'+Date.now()+Math.random().toString(16).slice(2));}
 function freshState(){return {scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
@@ -204,6 +214,25 @@ function addTakoyakiChoices(x){
   localStorage.setItem(STORAGE_KEY,JSON.stringify(x));return x;
 }
 
+function addTaxRefundInfo(x){
+  if(x.taxRefundUpdate==='2026-10-06')return x;
+  const backupKey=STORAGE_KEY+'-before-tax-refund-2026-10-06';
+  if(!localStorage.getItem(backupKey))localStorage.setItem(backupKey,JSON.stringify(x));
+  const day=x.data.days.find(d=>d.date===TRIP_END);
+  if(day){
+    if(!day.plans.some(p=>p.id===TAX_REFUND_PLAN.id))day.plans.push(clone(TAX_REFUND_PLAN));
+    if(!Array.isArray(day.notes))day.notes=[];
+    if(!day.notes.includes(TAX_REFUND_NOTICE))day.notes.push(TAX_REFUND_NOTICE);
+  }
+  if(!x.data.preTripChecklist.some(i=>i.id===TAX_REFUND_PRE.id))x.data.preTripChecklist.push(clone(TAX_REFUND_PRE));
+  let group=x.data.dailyChecklist.find(g=>g.date===TRIP_END);
+  if(!group){group={date:TRIP_END,items:[]};x.data.dailyChecklist.push(group);}
+  TAX_REFUND_DAILY.forEach(i=>{if(!group.items.some(n=>n.id===i.id))group.items.push(clone(i));});
+  x.taxRefundUpdate='2026-10-06';
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -213,7 +242,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)));
+      return addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))));
     }
   }catch(e){}
   return freshState();
@@ -467,7 +496,7 @@ function renderTravelTools(){
     '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
     '시텐노지 10:40 → 역사박물관 14:05 → 공중정원 16:15 목표 · 지연 시 시텐노지 정원부터 생략.',
     '에이칸도 15:00 도착 목표 / 16:00 접수 마감 · 청수사 야간 최종입장 21:00.',
-    '12:20 공항 이동 시작 · 긴테쓰나라에서 짐 회수 후 JR나라로 이동 · KIX 15:00 목표, 16:00 전 도착.'
+    '12:20 공항 이동 시작 · 긴테쓰나라에서 짐 회수 후 JR나라로 이동 · KIX 15:00 목표, 16:00 전 도착 · 면세 반출 확인 후 수하물 위탁.'
   ][selectedDay];
   const choices=state.admissionOptions||{};
   document.querySelectorAll('[data-admission]').forEach(el=>{el.checked=!!choices[el.dataset.admission];el.onchange=()=>{state.admissionOptions=state.admissionOptions||{};state.admissionOptions[el.dataset.admission]=el.checked;save();renderTravelTools();};});
