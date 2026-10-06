@@ -161,6 +161,36 @@ refundDay.plans.push(TAX_REFUND_PLAN);
 defaults.preTripChecklist.push(TAX_REFUND_PRE);
 defaults.dailyChecklist.find(d=>d.date===TRIP_END).items.push(...TAX_REFUND_DAILY);
 
+const ATM_STOPS=[{"date": "2026-11-25", "plan": {"id": "d1-seven-atm", "time": "난바 도착 후 · 점심 전 (5~10분)", "name": "출금 · 세븐일레븐 오사카 닛폰바시역 동쪽점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.\n주소: 大阪府大阪市中央区日本橋1-4-12. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12", "optional": true, "atm": {"label": "세븐일레븐 오사카 닛폰바시역 동쪽점", "jp": "セブン-イレブン 大阪日本橋駅東店", "address": "大阪府大阪市中央区日本橋1-4-12", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000020877", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "난바 → 닛폰바시역 동쪽 세븐일레븐 → 점심", "steps": ["난카이 난바역 도착 후 숙소 짐 보관. 숙소 미정이므로 점포까지 실제 길찾기 확인.", "센니치마에 거리에서 닛폰바시역 방향으로 이동해 日本橋1-4-12 점포의 세븐은행 ATM에서 출금.", "출금 후 浪速日本橋食堂까지 도보 약 3~5분 추정. 식당을 생략하면 구로몬시장으로 바로 이동."], "tip": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.", "origin": "Nankai Namba Station", "destination": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12"}, "walk": ["출금 경유", "점포 → 식당", "약 3~5분 추정", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정."}, {"date": "2026-11-26", "plan": {"id": "d2-seven-atm", "time": "08:15-08:25 (출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "메트로 미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역 → 신세카이·쓰텐카쿠."], "tip": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}, {"date": "2026-11-27", "plan": {"id": "d3-seven-atm", "time": "05:05-05:15 (05:30 출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "숙소 → 점포 출금 → 메트로 난바역 → 05:30 교토 이동 시작. 05:15까지 출금을 마치고 첫차·환승 시간을 우선. 부족하면 전날 저녁 같은 점포에서 출금. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "메트로 미도스지선 신오사카·미노오카야노 방면 → 요도야바시역 → 게이한 환승."], "tip": "숙소 → 점포 출금 → 메트로 난바역 → 05:30 교토 이동 시작. 05:15까지 출금을 마치고 첫차·환승 시간을 우선. 부족하면 전날 저녁 같은 점포에서 출금. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "숙소 → 점포 출금 → 메트로 난바역 → 05:30 교토 이동 시작. 05:15까지 출금을 마치고 첫차·환승 시간을 우선. 부족하면 전날 저녁 같은 점포에서 출금. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}, {"date": "2026-11-28", "plan": {"id": "d4-seven-atm", "time": "07:05-07:15 (07:30 출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "긴테쓰 오사카난바역의 나라 방면 승강장으로 이동."], "tip": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}];
+function applyAtmStops(x){
+  if(x.sevenAtmUpdate==='2026-10-06')return x;
+  const key=STORAGE_KEY+'-before-seven-atm-2026-10-06';
+  if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(x));
+  ATM_STOPS.forEach(stop=>{
+    const day=x.data.days.find(d=>d.date===stop.date);
+    if(!day)return;
+    if(!day.plans.some(p=>p.id===stop.plan.id)){
+      const at=stop.date===TRIP_START?day.plans.findIndex(p=>p.id==='d1-naniwa-lunch'||p.id==='d1p2'):0;
+      day.plans.splice(at<0?Math.min(1,day.plans.length):at,0,clone(stop.plan));
+    }
+    if(!Array.isArray(day.notes))day.notes=[];
+    const note='出金 / 출금: '+stop.note;
+    if(!day.notes.includes(note))day.notes.push(note);
+    let group=x.data.dailyChecklist.find(g=>g.date===stop.date);
+    if(!group){group={date:stop.date,items:[]};x.data.dailyChecklist.push(group);}
+    const id=stop.plan.id+'-check';
+    if(!group.items.some(i=>i.id===id))group.items.unshift({id,text:stop.plan.time+' · '+stop.plan.atm.label+'에서 필요 시 출금 · 실물 카드·PIN·엔화 잔액 확인',url:stop.plan.atm.official,linkLabel:'공식 ATM 위치'});
+  });
+  x.sevenAtmUpdate='2026-10-06';localStorage.setItem(STORAGE_KEY,JSON.stringify(x));return x;
+}
+ATM_STOPS.forEach(stop=>{
+  const day=defaults.days.find(d=>d.date===stop.date);
+  const at=stop.date===TRIP_START?day.plans.findIndex(p=>p.id==='d1-naniwa-lunch'):0;
+  day.plans.splice(at<0?1:at,0,clone(stop.plan));
+  day.notes.push('出金 / 출금: '+stop.note);
+  defaults.dailyChecklist.find(g=>g.date===stop.date).items.unshift({id:stop.plan.id+'-check',text:stop.plan.time+' · '+stop.plan.atm.label+'에서 필요 시 출금 · 실물 카드·PIN·엔화 잔액 확인',url:stop.plan.atm.official,linkLabel:'공식 ATM 위치'});
+});
+
 function clone(v){return JSON.parse(JSON.stringify(v));}
 function newId(){return (crypto.randomUUID&&crypto.randomUUID())||('id'+Date.now()+Math.random().toString(16).slice(2));}
 function freshState(){return {scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
@@ -242,7 +272,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))));
+      return applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))));
     }
   }catch(e){}
   return freshState();
@@ -310,6 +340,10 @@ function renderTimeline(){
     if(plan.optional)node.querySelector('.optional-tag').hidden=false;
     node.querySelector('.plan-name').textContent=plan.name;
     node.querySelector('.plan-note').textContent=plan.note||'';
+    const atmStop=ATM_STOPS.find(s=>s.plan.id===plan.id);
+    if(atmStop){
+      const a=document.createElement('a');a.className='map-link';a.textContent='공식 ATM 위치·영업 ↗';a.href=atmStop.plan.atm.official;a.target='_blank';a.rel='noopener noreferrer';node.querySelector('.plan-actions').appendChild(a);
+    }
     if(plan.id==='d1-naniwa-lunch'){
       const links=node.querySelector('.plan-actions');
       [['매장 공식 정보 ↗','https://www.fujiofood.com/shop_search/shokudo/shop_1061.php'],['結제·예산 정보 ↗','https://tabelog.com/osaka/A2701/A270202/27048770/']].forEach(([label,url])=>{
