@@ -376,7 +376,7 @@ function applyIcocaInfo(x,saveBackup=true){
 ICOCA_INFO.stops.forEach(stop=>{ROUTE_DETAILS[stop.plan.id]=stop.route;});
 applyIcocaInfo({data:defaults},false);
 
-ATM_STOPS.forEach(stop=>{const p=HOTEL_TRIP_UPDATE.plans[stop.plan.id];if(p)Object.assign(stop.plan,clone(p));});
+ATM_STOPS.forEach(stop=>{const p=HOTEL_TRIP_UPDATE.plans[stop.plan.id];if(p){Object.assign(stop.plan,clone(p));stop.note=p.note;if(HOTEL_TRIP_UPDATE.routes[stop.plan.id])stop.route=clone(HOTEL_TRIP_UPDATE.routes[stop.plan.id]);}});
 updateHotelTripData(defaults);
 
 const KYOTO_UPDATE='2026-10-22-arashiyama';

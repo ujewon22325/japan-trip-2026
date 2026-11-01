@@ -1,5 +1,5 @@
 const HOTEL_TRIP_UPDATE={
-  "version": "2026-11-01-eslead-south-iii",
+  "version": "2026-11-01-eslead-south-iii-r2",
   "lodging": {
     "name": "에슬리드 호텔 난바 사우스 III",
     "en": "Eslead Hotel Namba South III",
