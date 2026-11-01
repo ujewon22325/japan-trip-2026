@@ -1,39 +1,508 @@
 {
-  "d1p1": {"kind":"전철","title":"간사이공항 → 난카이 난바역","steps":["KIX 제1터미널 입국장 2층 연결 통로를 따라 간사이공항역(関西空港駅) 난카이 개찰구로 이동.","난카이 공항선 라피트(지정석 별도권) 또는 공항급행을 타고 난카이 난바역(南海なんば駅) 종점에서 하차.","난카이 난바역에서 숙소 방향 출구를 확인. 숙소 위치가 아직 없으므로 역 이후 이동은 별도 길찾기."],"tip":"JR 간사이공항역과 난카이 간사이공항역은 같은 공항 철도 건물에 있지만 개찰구가 다름.","origin":"Kansai-Airport Station Nankai","destination":"Nankai Namba Station"},
-  "d1p2": {"kind":"도보","title":"난카이 난바역 → 구로몬시장","steps":["난카이 난바역 북쪽/난바 중심부로 나와 닛폰바시(日本橋)·구로몬시장 표지를 따라 동쪽으로 이동.","센니치마에 거리에서 닛폰바시 2초메 쪽으로 가서 구로몬시장 서쪽 입구로 진입. 지하철을 타면 오사카 메트로 난바역 → 닛폰바시역(센니치마에선, 1정거장) 후 10번 출구 부근."],"origin":"Nankai Namba Station","destination":"Kuromon Ichiba Market"},
-  "d1-yasaka": {"kind":"도보","title":"구로몬시장 → 난바 야사카 신사","steps":["구로몬시장 서쪽 입구로 돌아와 난카이 난바역 쪽으로 서쪽 이동.","난카이 난바역 남쪽을 지나 난바나카(難波中) 방향으로 내려가 난바 야사카 신사 정문으로 이동."],"tip":"구로몬시장의 어느 점포에서 출발하는지에 따라 거리 차이 있음.","origin":"Kuromon Ichiba Market","destination":"Namba Yasaka Shrine"},
-  "d1p4": {"kind":"도보","title":"난바 야사카 신사 → 호젠지","steps":["신사에서 북쪽 난카이 난바역·난바시티 방향으로 이동.","센니치마에 상점가를 지나 호젠지 요코초 표지를 찾아 골목으로 진입. 호젠지는 도톤보리 남쪽."],"origin":"Namba Yasaka Shrine","destination":"Hozenji Temple Osaka"},
-  "d1p5": {"kind":"도보","title":"호젠지 → 도톤보리 에비스바시","steps":["호젠지 요코초에서 북쪽 도톤보리 강변으로 이동.","글리코 간판 앞 에비스바시(戎橋) 쪽으로 서쪽 이동해 저녁 동선을 시작."],"origin":"Hozenji Temple Osaka","destination":"Ebisubashi Bridge Dotonbori"},
-  "d1p6": {"kind":"도보","title":"도톤보리 → 신사이바시스지","steps":["에비스바시를 북쪽으로 건너 에비스바시스지·신사이바시스지 아케이드를 따라 직진.","다이마루 신사이바시점·오사카 메트로 신사이바시역 주변에서 종료. 숙소 복귀는 숙소 위치에 맞춰 선택."],"origin":"Ebisubashi Bridge Dotonbori","destination":"Shinsaibashi-suji Shopping Street"},
-  "d2p1": {"kind":"지하철 + 도보","title":"난바역 → 도부쓰엔마에역 → 쓰텐카쿠","steps":["오사카 메트로 난바역(M20)에서 미도스지선 덴노지·나카모즈 방면 승차.","도부쓰엔마에역(M22)에서 하차(다이코쿠초역 다음); 1번 출구·신세카이 방면으로 이동.","잔잔요코초·신세카이 거리를 따라 쓰텐카쿠 1층 티켓센터까지 도보."],"tip":"숙소 출발역이 난카이 난바역이면 메트로 난바역까지 지하 연결 통로 이동이 추가됨.","origin":"Osaka Metro Namba Station","destination":"Tsutenkaku"},
-  "d2-walk-shitennoji": {"kind":"도보","title":"쓰텐카쿠 → 시텐노지 서문","steps":["쓰텐카쿠에서 덴노지 동물원 북쪽의 에비스히가시를 지나 북동쪽으로 이동.","마쓰야마치스지를 따라 북상하여 시텐노지 서대문(石鳥居·西大門) 쪽으로 진입."],"origin":"Tsutenkaku","destination":"Shitennoji Temple west gate"},
-  "d2-shitennoji": {"kind":"경내 도보","title":"시텐노지 서문 → 중심가람","steps":["서대문에서 경내 안쪽 중심가람 입구를 찾아 입장권·주유패스 대상 구역을 확인.","중심가람 관람 후 북서쪽 시텐노지마에유히가오카역 방면으로 이동할 준비."],"origin":"Shitennoji Temple west gate","destination":"Shitennoji Temple"},
-  "d2-to-castle": {"kind":"지하철 + 도보","title":"시텐노지마에유히가오카역 → 다니마치욘초메역 → 오사카성","steps":["시텐노지 서쪽에서 북쪽으로 걸어 오사카 메트로 시텐노지마에유히가오카역(T26)으로 이동.","다니마치선 다이니치 방면 승차, 다니마치욘초메역(T23) 하차(다니마치큐초메·다니마치로쿠초메 다음). 환승 없음.","9번 출구 쪽으로 나와 바바초·오테몬 방향으로 걸어 오사카성 공원 진입 → 오테몬·사쿠라몬을 지나 천수각."],"tip":"하차역부터 천수각까지 공원 내 보행이 길어 40분 이동칸은 빠듯할 수 있음.","origin":"Shitennoji-mae Yuhigaoka Station","destination":"Osaka Castle Main Tower"},
-  "d2p2": {"kind":"경내 도보","title":"오사카성 천수각 → 사쿠라몬·오테몬","steps":["천수각 본마루에서 내려와 사쿠라몬을 거쳐 서쪽 오테몬으로 이동.","오테몬 밖 오테마에 식당가와 역사박물관 쪽으로 나올 수 있도록 서쪽 출구 사용."],"origin":"Osaka Castle Main Tower","destination":"Otemon Gate Osaka Castle"},
-  "d2-lunch": {"kind":"도보","title":"오사카성 오테몬 → 오테마에·역사박물관","steps":["오테몬을 나와 서쪽 오테마에 거리·오사카부청 앞을 따라 이동.","오사카 역사박물관(다니마치욘초메역 9번 출구 바로 옆) 근처에서 식사 후 박물관으로 이동."],"tip":"원래 50분 칸에 걷기와 점심이 모두 포함되므로 대기가 길면 박물관 관람을 줄여야 함.","origin":"Otemon Gate Osaka Castle","destination":"Osaka Museum of History"},
-  "d2-museum": {"kind":"박물관 내 이동","title":"오사카 역사박물관 입구 → 상설전시","steps":["오테마에 거리의 박물관 입구로 진입. 가까운 지하철역은 다니마치욘초메역(T23/C18), 9번 출구.","상설전시 관람 후 같은 출입구로 나와 지하철 다니마치선 개찰구로 이동."],"origin":"Osaka Museum of History","destination":"Tanimachi 4-chome Station"},
-  "d2-to-umeda": {"kind":"지하철 + 도보","title":"다니마치욘초메역 → 히가시우메다역 → 스카이빌딩","steps":["역사박물관 앞 다니마치욘초메역(T23)에서 다니마치선 다이니치 방면 승차.","히가시우메다역(T20) 하차(덴마바시·미나미모리마치 다음). 환승 없이 중앙 개찰구에서 JR 오사카역·그랜드프런트 오사카 안내를 따라 서쪽 이동.","오사카역 북쪽 우메키타 광장 쪽으로 나와 스카이빌딩·공중정원 표지를 따라 도보 이동."],"tip":"히가시우메다역에서 빌딩까지 역내 통로와 지상 보행이 길다. 횡단보도·공사 동선은 현장 표지 우선.","origin":"Tanimachi 4-chome Station","destination":"Umeda Sky Building"},
-  "d2-sky-entry": {"kind":"건물 내 이동","title":"우메다 스카이빌딩 1층 → 공중정원 접수","steps":["스카이빌딩 사이의 공중정원(空中庭園展望台) 입구 표지를 찾아 입장 동선으로 이동.","엘리베이터·에스컬레이터를 따라 39층 티켓 카운터로 올라가 입장 준비."],"origin":"Umeda Sky Building","destination":"Kuchu Teien Observatory"},
-  "d2p4": {"kind":"관람·복귀","title":"공중정원 → 숙소 방향","steps":["공중정원 관람 뒤 같은 동선으로 스카이빌딩 1층까지 내려옴.","난바 숙소 복귀 시 JR 오사카역 남쪽 오사카 메트로 우메다역(M16)까지 걸어가 미도스지선 나카모즈 방면 → 난바역(M20) 하차."],"tip":"이날 마지막 일정 뒤 복귀편을 함께 표기했으며 숙소 정확한 위치에 맞춰 최종 도보를 확인.","origin":"Umeda Sky Building","destination":"Osaka Metro Namba Station"},
-  "d3-arashiyama-transit": {"kind": "지하철 + 한큐 + 도보", "title": "난바 → 우메다·오사카우메다 → 가쓰라 → 한큐 아라시야마 → 도게츠교", "steps": ["메트로 난바역(M20)에서 미도스지선 신오사카·미노오카야노 방면 → 우메다역(M16). 숙소→승강장 이동은 별도 여유 확보.", "우메다역에서 한큐전철 오사카우메다역 표지 따라 도보 환승(약 10~15분 추정). 한큐 교토선 교토가와라마치 방면에서 가쓰라(桂) 정차편 승차.", "가쓰라역에서 한큐 아라시야마선 아라시야마행으로 환승 → 종점 아라시야마역 하차 → 도게츠교까지 도보 약 10분."], "origin": "Osaka Metro Namba Station", "destination": "Togetsukyo Bridge", "tip": "05:30~07:20은 계획값. 11/27 금요일 실제 열차편·첫차를 재확인. 한큐 아라시야마역과 JR사가아라시야마역은 서로 다른 역. 가쓰라 환승은 교토시 공식 철도 안내 참고: https://ja.kyoto.travel/feature/traffic/train.php"},
-  "d3-togetsukyo": {"kind": "도보", "title": "도게츠교 → 덴류지 정원 접수처", "steps": ["도게츠교 북쪽에서 아라시야마 상점가 큰길을 북쪽으로 이동.", "덴류지 정문 쪽으로 들어가 정원 접수처 이용. 07:50에는 북문 입장이 아닌 정원 접수처에서 조조관람."], "origin": "Togetsukyo Bridge", "destination": "Tenryu-ji Temple", "tip": "약 5~10분 추정. 07:45~07:50 이동 여유는 빠듯할 수 있음."},
-  "d3-tenryuji": {"kind": "경내 도보", "title": "덴류지 정원 → 북문 → 대나무숲", "steps": ["소겐치 정원·백화원을 관람. 조조관람은 정원만 먼저 입장.", "08:30 이후 열린 북문으로 나와 대나무숲 산책길로 연결."], "origin": "Tenryu-ji Temple", "destination": "Arashiyama Bamboo Grove", "tip": "조조관람 11/14~30 07:30, 북문 접수 08:30부터. 공식: https://www.tenryuji.com/visit/"},
-  "d3-bamboo": {"kind": "도보", "title": "덴류지 북문 → 대나무숲", "steps": ["덴류지 북문 인근 대나무숲 산책로를 걷고 사진 촬영.", "09:30에는 JR사가아라시야마역 방향 출발. 노노미야 신사 방향에서 동쪽 역으로 이동하며 다음 75분 이동칸에 포함."], "origin": "Tenryu-ji North Gate", "destination": "Arashiyama Bamboo Grove"},
-  "d3-to-eikando": {"kind": "JR 전철 + 지하철 + 도보", "title": "JR사가아라시야마 → 니조 → 게아게 → 에이칸도", "steps": ["대나무숲에서 JR사가아라시야마역까지 도보 약 15~20분. 한큐/란덴 아라시야마역과 혼동하지 않기.", "JR사가노선 교토 방면 → 니조(二条)역 하차. 지하철 도자이선으로 환승.", "도자이선 로쿠지조·비와코하마오쓰 방면 → 게아게(蹴上, T09)역 하차 → 에이칸도까지 도보 약 20~25분."], "origin": "Arashiyama Bamboo Grove", "destination": "Eikando Zenrinji", "tip": "환승·열차대기·역 접근까지 75분 계획. 지연 시 에이칸도 도착도 조정. 정확한 열차 시각은 미확정."},
-  "d3p7": {"kind": "경내 도보", "title": "에이칸도 주간 관람", "steps": ["주간 접수 후 경내 단풍과 본당을 관람.", "12:00에는 남쪽 난젠지 방향으로 나갈 준비. 계단·신발을 벗는 구역과 접수 대기를 고려."], "origin": "Eikando Zenrinji", "destination": "Eikando Zenrinji"},
-  "d3p6": {"kind": "도보", "title": "에이칸도 → 난젠지 경내·수로각", "steps": ["에이칸도 입구에서 남쪽 난젠지 방면으로 도보 약 10~15분.", "삼문 주변 경내를 지나 수로각으로 이동. 12:30 점심 시작에 맞춰 유료구역은 생략."], "origin": "Eikando Zenrinji", "destination": "Nanzen-ji Suirokaku", "tip": "30분은 접근 도보 포함. 혼잡하면 사진 촬영·관람시간이 짧아짐."},
-  "d3-lunch": {"kind": "도보", "title": "난젠지 → 점심·게아게 주변", "steps": ["난젠지·게아게 주변 식당에서 점심. 식당 미정으로 실제 길찾기는 선택 후 확인.", "13:30에 게아게역 방향으로 이동 시작할 수 있도록 식사·휴식 배분."], "origin": "Nanzen-ji Suirokaku", "destination": "Keage Station"},
-  "d3-to-gion": {"kind": "지하철 + 도보", "title": "게아게 → 산조케이한 → 기온 하나미코지", "steps": ["게아게역(T09)에서 도자이선 우즈마사텐진가와 방면 → 산조케이한역(T11).", "지상 산조대교 방면으로 나와 가와바타도리·시조도리 방향으로 남하 → 하나미코지. 도보 약 15~20분 추정."], "origin": "Keage Station", "destination": "Hanamikoji Street Kyoto", "tip": "식당→게아게역 도보·승강장·대기를 포함해 약 40분 계획."},
-  "d3p5": {"kind": "도보", "title": "기온 · 하나미코지 산책", "steps": ["하나미코지 공공도로 산책. 사유지·촬영금지 표지 준수.", "15:00에는 야사카 신사 남쪽·네네노미치 방면으로 히가시야마 이동."], "origin": "Hanamikoji Street Kyoto", "destination": "Hanamikoji Street Kyoto"},
-  "d3p3": {"kind": "도보", "title": "기온 → 야사카노토·니넨자카·산넨자카 → 청수사", "steps": ["하나미코지에서 야사카 신사 남쪽·네네노미치 방향으로 이동.", "야사카노토 외관과 니넨자카·산넨자카 골목을 연결해 산책. 사진의 묶음 일정 안에서 청수사 방향으로 진행.", "산넨자카에서 기요미즈자카 오르막을 따라 청수사 니오몬으로 이동, 17:10 도착 목표."], "origin": "Hanamikoji Street Kyoto", "destination": "Kiyomizu-dera Niomon", "tip": "고다이지 내부는 이번 코스에서 제외. 돌계단·젖은 낙엽·인파 주의."},
-  "d3-night-entry": {"kind": "입장 준비 · 도보", "title": "청수사 니오몬 → 입장 준비", "steps": ["17:10부터 화장실·입장권·입장 줄 확인.", "17:30 야간 조명 시작에 맞춰 관람하되 정각 입장은 혼잡에 따라 달라짐."], "origin": "Kiyomizu-dera Niomon", "destination": "Kiyomizu-dera"},
-  "d3p8": {"kind": "경내 도보", "title": "청수사 야간 단풍관람", "steps": ["17:30~19:00 본당·무대와 단풍 야경 관람.", "관람 후 기요미즈고조역 방향으로 내려가 저녁·복귀 준비. 이번 일정의 청수사 방문은 야간 1회."], "origin": "Kiyomizu-dera", "destination": "Kiyomizu-dera", "tip": "11/21~30, 21:00 접수 종료·21:30 폐문. 예약 불필요. 공식: https://www.kiyomizudera.or.jp/event/yakan.php"},
-  "d3-dinner": {"kind": "도보", "title": "청수사 → 저녁 → 기요미즈고조역", "steps": ["기요미즈자카·고조자카를 내려와 고조도리를 서쪽으로 이동.", "기요미즈고조역까지 약 25~35분. 19:00~20:00 안에 간단히 저녁까지 하므로 긴 대기 식당은 피하기."], "origin": "Kiyomizu-dera", "destination": "Kiyomizu-Gojo Station", "tip": "저녁 장소는 미정. 20:00은 목표 출발시각으로 식사·혼잡에 따라 조정."},
-  "d3-return": {"kind": "게이한 전철 + 지하철 + 도보", "title": "기요미즈고조 → 요도야바시 → 난바 숙소", "steps": ["게이한 기요미즈고조역(KH38)에서 요도야바시 방면 보통·준급 승차. 특급은 이 역에 정차하지 않음.", "단바바시 등 특급 정차역에서 더 빠른 요도야바시행 환승을 선택하고 요도야바시역(KH01) 하차.", "메트로 요도야바시역(M17) → 미도스지선 덴노지·나카모즈 방면 → 난바역(M20), 숙소까지 도보."], "origin": "Kiyomizu-Gojo Station", "destination": "Osaka Metro Namba Station", "tip": "20:00~21:30 이후는 90분 이상 계획. 역 환승·숙소 위치에 따라 더 늦어질 수 있음."},
-  "d4p1": {"kind":"긴테쓰","title":"오사카난바역 → 긴테쓰나라역","steps":["난카이 난바역/메트로 난바역과 구분해 긴테쓰 오사카난바역(A01) 개찰구로 이동.","긴테쓰 나라선 긴테쓰나라행 쾌속급행 또는 급행을 타고 긴테쓰나라역(A28) 종점 하차. 열차 행선지가 야마토사이다이지까지만이면 거기서 나라행으로 환승."],"tip":"추가 요금이 드는 긴테쓰 특급을 선택할 필요는 없음. 토요일 시간표를 직전 확인.","origin":"Osaka-Namba Station Kintetsu","destination":"Kintetsu-Nara Station"},
-  "d4p2": {"kind":"역내 이동","title":"긴테쓰나라역 개찰구 → 코인로커 → 공원 방향 출구","steps":["긴테쓰나라역 지하 개찰구를 나온 후 역 구내 ‘Coin Lockers/コインロッカー’ 표지에서 짐 보관.","히가시무키 상점가가 아닌 나라공원·현청(県庁) 방면 1번 출구를 기준으로 지상 이동."],"tip":"큰 짐 로커가 없으면 역내 유인 보관소 운영 시간 확인.","origin":"Kintetsu-Nara Station","destination":"Kintetsu Nara Station Exit 1"},
-  "d4p3": {"kind":"도보","title":"긴테쓰나라역 1번 출구 → 나라공원","steps":["긴테쓰나라역 1번 출구에서 노보리오지(登大路)를 따라 동쪽으로 이동.","나라현청·고후쿠지 북쪽을 지나 노보리오지엔치(登大路園地) 부근 나라공원 진입."],"origin":"Kintetsu Nara Station Exit 1","destination":"Nara Park Noborioji Enchi"},
-  "d4p4": {"kind":"도보","title":"나라공원 → 도다이지 대불전","steps":["노보리오지엔치에서 동쪽 나라국립박물관 북쪽을 따라 이동.","도다이지 남대문(南大門)을 지나 북쪽 대불전(大仏殿) 매표소로 진입."],"origin":"Nara Park Noborioji Enchi","destination":"Todai-ji Daibutsuden"},
-  "d4p5": {"kind":"도보","title":"도다이지 → 긴테쓰나라역 → JR나라역 준비","steps":["대불전에서 남대문으로 내려와 노보리오지 서쪽을 따라 긴테쓰나라역으로 복귀.","지하 코인로커에서 짐을 꺼내고 역 주변에서 빠르게 점심.","공항행 JR을 타려면 긴테쓰나라역에서 JR나라역까지 서쪽으로 약 1.0~1.2km를 더 이동해야 함(다음 카드)."],"origin":"Todai-ji Daibutsuden","destination":"Kintetsu-Nara Station"},
-  "d4p6": {"kind":"도보 + JR + 하루카","title":"긴테쓰나라역 → JR나라역 → 덴노지역 → 간사이공항역","steps":["긴테쓰나라역에서 히가시무키 상점가를 남하해 산조도리(三条通)에 합류한 뒤 서쪽 JR나라역 동쪽 출입구까지 이동. 두 나라역은 서로 다른 건물이며 도보 약 15~20분.","JR나라역에서 야마토지선 오사카·덴노지 방면 야마토지쾌속/쾌속 승차 → JR 덴노지역 하차.","JR 덴노지역에서 공항행 특급 하루카(별도 특급권 조건 확인)로 환승 → JR 간사이공항역 종점 하차. 간사이공항 제1터미널은 역 2층 연결 통로 이용."],"tip":"JR 간사이공항역과 난카이 간사이공항역 개찰구를 혼동하지 말 것. 비행편 출발시각·터미널 기준 탑승 전 공항 도착 여유 확보.","origin":"Kintetsu-Nara Station","destination":"Kansai International Airport Terminal 1"}
+  "d1p1": {
+    "kind": "난카이 전철 + 도보",
+    "title": "KIX → 신이마미야역 북쪽 출구 → 호텔",
+    "steps": [
+      "제1터미널 2층 연결통로 → 간사이공항역 난카이 개찰. 난바 방면 공항급행에 승차. 라피트는 별도 지정석 티켓 필요.",
+      "신이마미야역에서 하차(난바 종점 이전). 난카이 북쪽 출구에서 恵美須西2-8-6 호텔까지 도보 약 10분. 이동 약 55~75분 계획.",
+      "보행을 줄이는 대안: 덴가차야역에서 사카이스지선 북행 환승 → 에비스초역 4번 출구 → 호텔 약 1~2분. 엘리베이터는 3번 출구라 지상 보행이 달라짐."
+    ],
+    "origin": "Kansai-Airport Station Nankai",
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "tip": "출처: 호텔 공식 접근 안내. 열차 대기·보행 예상이며 실제 출발편은 미확정."
+  },
+  "d1p2": {
+    "kind": "도보",
+    "title": "점심 식당 → 구로몬시장",
+    "steps": [
+      "浪速日本橋食堂에서 시장 북서쪽 입구로 약 2~5분 도보.",
+      "식당 생략 시 호텔 → 에비스초역 → 사카이스지선 닛폰바시역 → 구로몬시장."
+    ],
+    "origin": "浪速日本橋食堂 大阪府大阪市中央区日本橋1-17-20",
+    "destination": "Kuromon Ichiba Market",
+    "tip": ""
+  },
+  "d1-yasaka": {
+    "kind": "도보",
+    "title": "구로몬시장 → 난바 야사카 신사",
+    "steps": [
+      "구로몬시장 서쪽 입구로 돌아와 난카이 난바역 쪽으로 서쪽 이동.",
+      "난카이 난바역 남쪽을 지나 난바나카(難波中) 방향으로 내려가 난바 야사카 신사 정문으로 이동."
+    ],
+    "tip": "구로몬시장의 어느 점포에서 출발하는지에 따라 거리 차이 있음.",
+    "origin": "Kuromon Ichiba Market",
+    "destination": "Namba Yasaka Shrine"
+  },
+  "d1p4": {
+    "kind": "도보",
+    "title": "난바 야사카 신사 → 호젠지",
+    "steps": [
+      "신사에서 북쪽 난카이 난바역·난바시티 방향으로 이동.",
+      "센니치마에 상점가를 지나 호젠지 요코초 표지를 찾아 골목으로 진입. 호젠지는 도톤보리 남쪽."
+    ],
+    "origin": "Namba Yasaka Shrine",
+    "destination": "Hozenji Temple Osaka"
+  },
+  "d1p5": {
+    "kind": "도보",
+    "title": "호젠지 → 도톤보리 에비스바시",
+    "steps": [
+      "호젠지 요코초에서 북쪽 도톤보리 강변으로 이동.",
+      "글리코 간판 앞 에비스바시(戎橋) 쪽으로 서쪽 이동해 저녁 동선을 시작."
+    ],
+    "origin": "Hozenji Temple Osaka",
+    "destination": "Ebisubashi Bridge Dotonbori"
+  },
+  "d1p6": {
+    "kind": "도보",
+    "title": "도톤보리 → 신사이바시스지",
+    "steps": [
+      "에비스바시를 북쪽으로 건너 에비스바시스지·신사이바시스지 아케이드를 따라 직진.",
+      "다이마루 신사이바시점·오사카 메트로 신사이바시역 주변에서 종료. 숙소 복귀는 숙소 위치에 맞춰 선택."
+    ],
+    "origin": "Ebisubashi Bridge Dotonbori",
+    "destination": "Shinsaibashi-suji Shopping Street"
+  },
+  "d2p1": {
+    "kind": "도보",
+    "title": "호텔 → 신세카이·쓰텐카쿠",
+    "steps": [
+      "호텔에서 동쪽 신세카이·쓰텐카쿠 방향으로 도보 약 5분(호텔 공식).",
+      "08:45 전후 출발, 시간지정권 교환과 대기 여유 확보. 09:00 입장은 보장되지 않음."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Tsutenkaku Osaka",
+    "tip": ""
+  },
+  "d2-walk-shitennoji": {
+    "kind": "도보",
+    "title": "쓰텐카쿠 → 시텐노지 서문",
+    "steps": [
+      "쓰텐카쿠에서 덴노지 동물원 북쪽의 에비스히가시를 지나 북동쪽으로 이동.",
+      "마쓰야마치스지를 따라 북상하여 시텐노지 서대문(石鳥居·西大門) 쪽으로 진입."
+    ],
+    "origin": "Tsutenkaku",
+    "destination": "Shitennoji Temple west gate"
+  },
+  "d2-shitennoji": {
+    "kind": "경내 도보",
+    "title": "시텐노지 서문 → 중심가람",
+    "steps": [
+      "서대문에서 경내 안쪽 중심가람 입구를 찾아 입장권·주유패스 대상 구역을 확인.",
+      "중심가람 관람 후 북서쪽 시텐노지마에유히가오카역 방면으로 이동할 준비."
+    ],
+    "origin": "Shitennoji Temple west gate",
+    "destination": "Shitennoji Temple"
+  },
+  "d2-to-castle": {
+    "kind": "지하철 + 도보",
+    "title": "시텐노지마에유히가오카역 → 다니마치욘초메역 → 오사카성",
+    "steps": [
+      "시텐노지 서쪽에서 북쪽으로 걸어 오사카 메트로 시텐노지마에유히가오카역(T26)으로 이동.",
+      "다니마치선 다이니치 방면 승차, 다니마치욘초메역(T23) 하차(다니마치큐초메·다니마치로쿠초메 다음). 환승 없음.",
+      "9번 출구 쪽으로 나와 바바초·오테몬 방향으로 걸어 오사카성 공원 진입 → 오테몬·사쿠라몬을 지나 천수각."
+    ],
+    "tip": "하차역부터 천수각까지 공원 내 보행이 길어 40분 이동칸은 빠듯할 수 있음.",
+    "origin": "Shitennoji-mae Yuhigaoka Station",
+    "destination": "Osaka Castle Main Tower"
+  },
+  "d2p2": {
+    "kind": "경내 도보",
+    "title": "오사카성 천수각 → 사쿠라몬·오테몬",
+    "steps": [
+      "천수각 본마루에서 내려와 사쿠라몬을 거쳐 서쪽 오테몬으로 이동.",
+      "오테몬 밖 오테마에 식당가와 역사박물관 쪽으로 나올 수 있도록 서쪽 출구 사용."
+    ],
+    "origin": "Osaka Castle Main Tower",
+    "destination": "Otemon Gate Osaka Castle"
+  },
+  "d2-lunch": {
+    "kind": "도보",
+    "title": "오사카성 오테몬 → 오테마에·역사박물관",
+    "steps": [
+      "오테몬을 나와 서쪽 오테마에 거리·오사카부청 앞을 따라 이동.",
+      "오사카 역사박물관(다니마치욘초메역 9번 출구 바로 옆) 근처에서 식사 후 박물관으로 이동."
+    ],
+    "tip": "원래 50분 칸에 걷기와 점심이 모두 포함되므로 대기가 길면 박물관 관람을 줄여야 함.",
+    "origin": "Otemon Gate Osaka Castle",
+    "destination": "Osaka Museum of History"
+  },
+  "d2-museum": {
+    "kind": "박물관 내 이동",
+    "title": "오사카 역사박물관 입구 → 상설전시",
+    "steps": [
+      "오테마에 거리의 박물관 입구로 진입. 가까운 지하철역은 다니마치욘초메역(T23/C18), 9번 출구.",
+      "상설전시 관람 후 같은 출입구로 나와 지하철 다니마치선 개찰구로 이동."
+    ],
+    "origin": "Osaka Museum of History",
+    "destination": "Tanimachi 4-chome Station"
+  },
+  "d2-to-umeda": {
+    "kind": "지하철 + 도보",
+    "title": "다니마치욘초메역 → 히가시우메다역 → 스카이빌딩",
+    "steps": [
+      "역사박물관 앞 다니마치욘초메역(T23)에서 다니마치선 다이니치 방면 승차.",
+      "히가시우메다역(T20) 하차(덴마바시·미나미모리마치 다음). 환승 없이 중앙 개찰구에서 JR 오사카역·그랜드프런트 오사카 안내를 따라 서쪽 이동.",
+      "오사카역 북쪽 우메키타 광장 쪽으로 나와 스카이빌딩·공중정원 표지를 따라 도보 이동."
+    ],
+    "tip": "히가시우메다역에서 빌딩까지 역내 통로와 지상 보행이 길다. 횡단보도·공사 동선은 현장 표지 우선.",
+    "origin": "Tanimachi 4-chome Station",
+    "destination": "Umeda Sky Building"
+  },
+  "d2-sky-entry": {
+    "kind": "건물 내 이동",
+    "title": "우메다 스카이빌딩 1층 → 공중정원 접수",
+    "steps": [
+      "스카이빌딩 사이의 공중정원(空中庭園展望台) 입구 표지를 찾아 입장 동선으로 이동.",
+      "엘리베이터·에스컬레이터를 따라 39층 티켓 카운터로 올라가 입장 준비."
+    ],
+    "origin": "Umeda Sky Building",
+    "destination": "Kuchu Teien Observatory"
+  },
+  "d2p4": {
+    "kind": "관람 중 도보",
+    "title": "공중정원 관람 → 숙소 복귀 준비",
+    "steps": [
+      "공중정원 실내·옥상 관람.",
+      "18:30 관람 종료 뒤 아래 숙소 복귀 카드 참고."
+    ],
+    "origin": "Kuchu Teien Observatory",
+    "destination": "Umeda Sky Building",
+    "tip": ""
+  },
+  "d3-arashiyama-transit": {
+    "kind": "지하철 + 한큐 전철 + 도보",
+    "title": "호텔 → 에비스초 → 아와지 → 가쓰라 → 아라시야마",
+    "steps": [
+      "05:30 호텔 출발 목표. 에비스초역(K18)에서 사카이스지선 북행 기타센리·다카쓰키시 방면 승차.",
+      "한큐 직통이면 덴진바시스지로쿠초메에서 계속 탑승해 아와지(淡路) 하차. 덴진바시스지로쿠초메 종착편이면 그 역에서 한큐 센리선 아와지 방면으로 환승.",
+      "아와지에서 한큐 교토선 교토가와라마치 방면 가쓰라(桂) 정차편 승차. 가쓰라에서 아라시야마선 아라시야마행 환승.",
+      "한큐 아라시야마역 종점 → 도게츠교 도보 약 10분. 숙소부터 약 110분 계획, 07:20 도착 목표."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Togetsukyo Bridge Kyoto",
+    "tip": "11/27 실제 첫차·종착역·환승편을 직전 확인. 운행 시각 확정 아님. 노선: https://www.hankyu.co.jp/station/kyoto/index.html"
+  },
+  "d3-togetsukyo": {
+    "kind": "도보",
+    "title": "도게츠교 → 덴류지 정원 접수처",
+    "steps": [
+      "도게츠교 북쪽에서 아라시야마 상점가 큰길을 북쪽으로 이동.",
+      "덴류지 정문 쪽으로 들어가 정원 접수처 이용. 07:50에는 북문 입장이 아닌 정원 접수처에서 조조관람."
+    ],
+    "origin": "Togetsukyo Bridge",
+    "destination": "Tenryu-ji Temple",
+    "tip": "약 5~10분 추정. 07:45~07:50 이동 여유는 빠듯할 수 있음."
+  },
+  "d3-tenryuji": {
+    "kind": "경내 도보",
+    "title": "덴류지 정원 → 북문 → 대나무숲",
+    "steps": [
+      "소겐치 정원·백화원을 관람. 조조관람은 정원만 먼저 입장.",
+      "08:30 이후 열린 북문으로 나와 대나무숲 산책길로 연결."
+    ],
+    "origin": "Tenryu-ji Temple",
+    "destination": "Arashiyama Bamboo Grove",
+    "tip": "조조관람 11/14~30 07:30, 북문 접수 08:30부터. 공식: https://www.tenryuji.com/visit/"
+  },
+  "d3-bamboo": {
+    "kind": "도보",
+    "title": "덴류지 북문 → 대나무숲",
+    "steps": [
+      "덴류지 북문 인근 대나무숲 산책로를 걷고 사진 촬영.",
+      "09:30에는 JR사가아라시야마역 방향 출발. 노노미야 신사 방향에서 동쪽 역으로 이동하며 다음 75분 이동칸에 포함."
+    ],
+    "origin": "Tenryu-ji North Gate",
+    "destination": "Arashiyama Bamboo Grove"
+  },
+  "d3-to-eikando": {
+    "kind": "JR 전철 + 지하철 + 도보",
+    "title": "JR사가아라시야마 → 니조 → 게아게 → 에이칸도",
+    "steps": [
+      "대나무숲에서 JR사가아라시야마역까지 도보 약 15~20분. 한큐/란덴 아라시야마역과 혼동하지 않기.",
+      "JR사가노선 교토 방면 → 니조(二条)역 하차. 지하철 도자이선으로 환승.",
+      "도자이선 로쿠지조·비와코하마오쓰 방면 → 게아게(蹴上, T09)역 하차 → 에이칸도까지 도보 약 20~25분."
+    ],
+    "origin": "Arashiyama Bamboo Grove",
+    "destination": "Eikando Zenrinji",
+    "tip": "환승·열차대기·역 접근까지 75분 계획. 지연 시 에이칸도 도착도 조정. 정확한 열차 시각은 미확정."
+  },
+  "d3p7": {
+    "kind": "경내 도보",
+    "title": "에이칸도 주간 관람",
+    "steps": [
+      "주간 접수 후 경내 단풍과 본당을 관람.",
+      "12:00에는 남쪽 난젠지 방향으로 나갈 준비. 계단·신발을 벗는 구역과 접수 대기를 고려."
+    ],
+    "origin": "Eikando Zenrinji",
+    "destination": "Eikando Zenrinji"
+  },
+  "d3p6": {
+    "kind": "도보",
+    "title": "에이칸도 → 난젠지 경내·수로각",
+    "steps": [
+      "에이칸도 입구에서 남쪽 난젠지 방면으로 도보 약 10~15분.",
+      "삼문 주변 경내를 지나 수로각으로 이동. 12:30 점심 시작에 맞춰 유료구역은 생략."
+    ],
+    "origin": "Eikando Zenrinji",
+    "destination": "Nanzen-ji Suirokaku",
+    "tip": "30분은 접근 도보 포함. 혼잡하면 사진 촬영·관람시간이 짧아짐."
+  },
+  "d3-lunch": {
+    "kind": "도보",
+    "title": "난젠지 → 점심·게아게 주변",
+    "steps": [
+      "난젠지·게아게 주변 식당에서 점심. 식당 미정으로 실제 길찾기는 선택 후 확인.",
+      "13:30에 게아게역 방향으로 이동 시작할 수 있도록 식사·휴식 배분."
+    ],
+    "origin": "Nanzen-ji Suirokaku",
+    "destination": "Keage Station"
+  },
+  "d3-to-gion": {
+    "kind": "지하철 + 도보",
+    "title": "게아게 → 산조케이한 → 기온 하나미코지",
+    "steps": [
+      "게아게역(T09)에서 도자이선 우즈마사텐진가와 방면 → 산조케이한역(T11).",
+      "지상 산조대교 방면으로 나와 가와바타도리·시조도리 방향으로 남하 → 하나미코지. 도보 약 15~20분 추정."
+    ],
+    "origin": "Keage Station",
+    "destination": "Hanamikoji Street Kyoto",
+    "tip": "식당→게아게역 도보·승강장·대기를 포함해 약 40분 계획."
+  },
+  "d3p5": {
+    "kind": "도보",
+    "title": "기온 · 하나미코지 산책",
+    "steps": [
+      "하나미코지 공공도로 산책. 사유지·촬영금지 표지 준수.",
+      "15:00에는 야사카 신사 남쪽·네네노미치 방면으로 히가시야마 이동."
+    ],
+    "origin": "Hanamikoji Street Kyoto",
+    "destination": "Hanamikoji Street Kyoto"
+  },
+  "d3p3": {
+    "kind": "도보",
+    "title": "기온 → 야사카노토·니넨자카·산넨자카 → 청수사",
+    "steps": [
+      "하나미코지에서 야사카 신사 남쪽·네네노미치 방향으로 이동.",
+      "야사카노토 외관과 니넨자카·산넨자카 골목을 연결해 산책. 사진의 묶음 일정 안에서 청수사 방향으로 진행.",
+      "산넨자카에서 기요미즈자카 오르막을 따라 청수사 니오몬으로 이동, 17:10 도착 목표."
+    ],
+    "origin": "Hanamikoji Street Kyoto",
+    "destination": "Kiyomizu-dera Niomon",
+    "tip": "고다이지 내부는 이번 코스에서 제외. 돌계단·젖은 낙엽·인파 주의."
+  },
+  "d3-night-entry": {
+    "kind": "입장 준비 · 도보",
+    "title": "청수사 니오몬 → 입장 준비",
+    "steps": [
+      "17:10부터 화장실·입장권·입장 줄 확인.",
+      "17:30 야간 조명 시작에 맞춰 관람하되 정각 입장은 혼잡에 따라 달라짐."
+    ],
+    "origin": "Kiyomizu-dera Niomon",
+    "destination": "Kiyomizu-dera"
+  },
+  "d3p8": {
+    "kind": "경내 도보",
+    "title": "청수사 야간 단풍관람",
+    "steps": [
+      "17:30~19:00 본당·무대와 단풍 야경 관람.",
+      "관람 후 기요미즈고조역 방향으로 내려가 저녁·복귀 준비. 이번 일정의 청수사 방문은 야간 1회."
+    ],
+    "origin": "Kiyomizu-dera",
+    "destination": "Kiyomizu-dera",
+    "tip": "11/21~30, 21:00 접수 종료·21:30 폐문. 예약 불필요. 공식: https://www.kiyomizudera.or.jp/event/yakan.php"
+  },
+  "d3-dinner": {
+    "kind": "도보",
+    "title": "청수사 → 저녁 → 기요미즈고조역",
+    "steps": [
+      "기요미즈자카·고조자카를 내려와 고조도리를 서쪽으로 이동.",
+      "기요미즈고조역까지 약 25~35분. 19:00~20:00 안에 간단히 저녁까지 하므로 긴 대기 식당은 피하기."
+    ],
+    "origin": "Kiyomizu-dera",
+    "destination": "Kiyomizu-Gojo Station",
+    "tip": "저녁 장소는 미정. 20:00은 목표 출발시각으로 식사·혼잡에 따라 조정."
+  },
+  "d3-return": {
+    "kind": "게이한 전철 + 지하철 + 도보",
+    "title": "기요미즈고조 → 기타하마 → 에비스초 → 호텔",
+    "steps": [
+      "기요미즈고조역(KH38)에서 게이한 요도야바시 방면 보통·준급. 특급은 이 역에 정차하지 않으므로 필요 시 단바바시 등에서 특급 환승.",
+      "기타하마역(KH02) 하차 → 메트로 사카이스지선 기타하마역(K14)으로 도보 환승.",
+      "덴가차야 방면 → 에비스초역(K18) 하차, 4번 출구에서 호텔 약 1~2분(엘리베이터 3번)."
+    ],
+    "origin": "Kiyomizu-Gojo Station Kyoto",
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "tip": "20:00 출발·21:30 이후 복귀는 목표값. 기타하마 환승 공식: https://www.keihan.co.jp/traffic/station/011/info.html"
+  },
+  "d4p1": {
+    "kind": "지하철 + 긴테쓰 전철",
+    "title": "호텔 → 에비스초 → 긴테쓰닛폰바시 → 긴테쓰나라",
+    "steps": [
+      "에비스초역(K18)에서 사카이스지선 북행 → 닛폰바시역(K17) 한 정거장.",
+      "지하 연결통로로 긴테쓰닛폰바시역(A02) 환승. 표준 환승 약 5분, 캐리어·승강장 접근 여유 추가.",
+      "긴테쓰나라행 급행·쾌속급행 → 긴테쓰나라역(A28) 종점. 야마토사이다이지 종착이면 나라행 추가 환승. 특급은 별도 요금.",
+      "08:20 도착 목표로 로커 확보. 호텔 출발부터 약 60~75분 예상."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Kintetsu Nara Station Exit 1",
+    "tip": "07:20 전후 출발 권장. 역간 환승 공식: https://www.kintetsu.co.jp/soukatsu/kounai/nipponbashi.html"
+  },
+  "d4p2": {
+    "kind": "역내 이동",
+    "title": "긴테쓰나라역 개찰구 → 코인로커 → 공원 방향 출구",
+    "steps": [
+      "긴테쓰나라역 지하 개찰구를 나온 후 역 구내 ‘Coin Lockers/コインロッカー’ 표지에서 짐 보관.",
+      "히가시무키 상점가가 아닌 나라공원·현청(県庁) 방면 1번 출구를 기준으로 지상 이동."
+    ],
+    "tip": "큰 짐 로커가 없으면 역내 유인 보관소 운영 시간 확인.",
+    "origin": "Kintetsu-Nara Station",
+    "destination": "Kintetsu Nara Station Exit 1"
+  },
+  "d4p3": {
+    "kind": "도보",
+    "title": "긴테쓰나라역 1번 출구 → 나라공원",
+    "steps": [
+      "긴테쓰나라역 1번 출구에서 노보리오지(登大路)를 따라 동쪽으로 이동.",
+      "나라현청·고후쿠지 북쪽을 지나 노보리오지엔치(登大路園地) 부근 나라공원 진입."
+    ],
+    "origin": "Kintetsu Nara Station Exit 1",
+    "destination": "Nara Park Noborioji Enchi"
+  },
+  "d4p4": {
+    "kind": "도보",
+    "title": "나라공원 → 도다이지 대불전",
+    "steps": [
+      "노보리오지엔치에서 동쪽 나라국립박물관 북쪽을 따라 이동.",
+      "도다이지 남대문(南大門)을 지나 북쪽 대불전(大仏殿) 매표소로 진입."
+    ],
+    "origin": "Nara Park Noborioji Enchi",
+    "destination": "Todai-ji Daibutsuden"
+  },
+  "d4p5": {
+    "kind": "도보",
+    "title": "도다이지 → 긴테쓰나라역 → JR나라역 준비",
+    "steps": [
+      "대불전에서 남대문으로 내려와 노보리오지 서쪽을 따라 긴테쓰나라역으로 복귀.",
+      "지하 코인로커에서 짐을 꺼내고 역 주변에서 빠르게 점심.",
+      "공항행 JR을 타려면 긴테쓰나라역에서 JR나라역까지 서쪽으로 약 1.0~1.2km를 더 이동해야 함(다음 카드)."
+    ],
+    "origin": "Todai-ji Daibutsuden",
+    "destination": "Kintetsu-Nara Station"
+  },
+  "d4p6": {
+    "kind": "도보 + JR + 하루카",
+    "title": "긴테쓰나라역 → JR나라역 → 덴노지역 → 간사이공항역",
+    "steps": [
+      "긴테쓰나라역에서 히가시무키 상점가를 남하해 산조도리(三条通)에 합류한 뒤 서쪽 JR나라역 동쪽 출입구까지 이동. 두 나라역은 서로 다른 건물이며 도보 약 15~20분.",
+      "JR나라역에서 야마토지선 오사카·덴노지 방면 야마토지쾌속/쾌속 승차 → JR 덴노지역 하차.",
+      "JR 덴노지역에서 공항행 특급 하루카(별도 특급권 조건 확인)로 환승 → JR 간사이공항역 종점 하차. 간사이공항 제1터미널은 역 2층 연결 통로 이용."
+    ],
+    "tip": "JR 간사이공항역과 난카이 간사이공항역 개찰구를 혼동하지 말 것. 비행편 출발시각·터미널 기준 탑승 전 공항 도착 여유 확보.",
+    "origin": "Kintetsu-Nara Station",
+    "destination": "Kansai International Airport Terminal 1"
+  },
+  "d1-hotel-bags": {
+    "kind": "호텔 내 이동",
+    "title": "호텔 로비 셀프 짐 보관 → 점심 출발",
+    "steps": [
+      "체크인 전에는 로비 체인 잠금식 셀프 짐 보관 공간의 빈자리 확인.",
+      "캐리어를 잠그고 여권·귀중품은 지참. 호텔에서 에비스초역으로 이동해 점심·시장 관광 시작."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Ebisucho Station",
+    "tip": "공식 체크인 15:00~00:30. 사전등록과 예약 안내 확인. 빈자리 없으면 역 코인로커 이용 여부 검토."
+  },
+  "d1-seven-atm": {
+    "kind": "지하철 + 도보 · 출금",
+    "title": "호텔 → 에비스초 → 닛폰바시역 동쪽점 → 점심",
+    "steps": [
+      "호텔에서 에비스초역 → 사카이스지선 덴진바시스지로쿠초메·기타센리 방면 → 닛폰바시역(1정거장).",
+      "지상 닛폰바시역 동쪽점(日本橋1-4-12) ATM에서 필요 시 출금.",
+      "浪速日本橋食堂 또는 구로몬시장으로 도보 이동."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12",
+    "tip": "공항에서 출금했다면 생략 가능. 점심 전 출금·대기 포함 여유 확보."
+  },
+  "d1-naniwa-lunch": {
+    "kind": "지하철 + 도보",
+    "title": "호텔 → 에비스초 → 닛폰바시역 10번 출구 → 식당",
+    "steps": [
+      "호텔에서 에비스초역으로 이동.",
+      "사카이스지선 북행 → 닛폰바시역(K17) 한 정거장. 10번 출구 옆 日本橋1-17-20 식당으로 이동.",
+      "식사 뒤 구로몬시장 북서쪽 입구까지 도보 약 2~5분."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "浪速日本橋食堂 大阪府大阪市中央区日本橋1-17-20",
+    "tip": "호텔부터 약 10~20분 추정, 출금·식사는 별도."
+  },
+  "d1-return-hotel": {
+    "kind": "지하철 + 도보",
+    "title": "신사이바시 → 도부쓰엔마에 → 호텔",
+    "steps": [
+      "신사이바시역(M19) → 미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역(M22).",
+      "지상에서 호텔까지 도보 약 10~15분 추정. 호텔 지도와 현장 표지 우선.",
+      "00:30 전 태블릿 체크인 → 보관한 짐 회수 → 객실. 입장·체크인 안내를 휴대폰에 저장."
+    ],
+    "origin": "Shinsaibashi Station Osaka",
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "tip": ""
+  },
+  "d2-return-hotel": {
+    "kind": "지하철 + 도보",
+    "title": "스카이빌딩 → 우메다 → 도부쓰엔마에 → 호텔",
+    "steps": [
+      "스카이빌딩에서 오사카역 남쪽 메트로 우메다역(M16)까지 도보 약 15~25분 추정.",
+      "미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역(M22).",
+      "호텔까지 도보 약 10~15분 추정. 저녁 식사는 별도 배분."
+    ],
+    "origin": "Umeda Sky Building",
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "tip": "전체 약 40~60분 계획. 주유패스 유효·대상 구간은 해당 패스로 입장."
+  },
+  "d4-hotel-checkout": {
+    "kind": "호텔 내 이동",
+    "title": "호텔 체크아웃 → 에비스초역",
+    "steps": [
+      "07:00 전후 짐을 모두 챙기고 태블릿 체크아웃.",
+      "캐리어·여권을 지참해 에비스초역으로 출발. 나라에서 짐을 찾고 공항으로 직행하므로 호텔에 짐을 남기지 않기."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Ebisucho Station",
+    "tip": ""
+  },
+  "d2-seven-atm": {
+    "kind": "도보 · 출금",
+    "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
+    "steps": [
+      "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
+      "출금 후 쓰텐카쿠까지 도보, 09:00 전후 접수 목표."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+    "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."
+  },
+  "d3-seven-atm": {
+    "kind": "도보 · 출금",
+    "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
+    "steps": [
+      "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
+      "출금 후 호텔/에비스초역에서 05:30 교토 출발 준비. 첫차가 빠듯하면 전날 저녁 출금."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+    "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."
+  },
+  "d4-seven-atm": {
+    "kind": "도보 · 출금",
+    "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
+    "steps": [
+      "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
+      "체크아웃·짐 지참 → 출금 → 에비스초역에서 07:20 전후 나라 이동."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+    "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."
+  }
 }

@@ -376,6 +376,9 @@ function applyIcocaInfo(x,saveBackup=true){
 ICOCA_INFO.stops.forEach(stop=>{ROUTE_DETAILS[stop.plan.id]=stop.route;});
 applyIcocaInfo({data:defaults},false);
 
+ATM_STOPS.forEach(stop=>{const p=HOTEL_TRIP_UPDATE.plans[stop.plan.id];if(p)Object.assign(stop.plan,clone(p));});
+updateHotelTripData(defaults);
+
 const KYOTO_UPDATE='2026-10-22-arashiyama';
 function applyKyotoUpdate(x, persist=true){
   if(x.kyotoUpdate===KYOTO_UPDATE)return x;
@@ -405,12 +408,24 @@ function applyKyotoUpdate(x, persist=true){
   if(persist)localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
   return x;
 }
+function applyHotelUpdate(x){
+  if(x.hotelUpdate===HOTEL_TRIP_UPDATE.version)return x;
+  const key=STORAGE_KEY+'-before-'+HOTEL_TRIP_UPDATE.version;
+  if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(x));
+  updateHotelTripData(x.data);
+  x.hotelUpdate=HOTEL_TRIP_UPDATE.version;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function scheduleBackupKey(){
+  const hotel=STORAGE_KEY+'-before-'+HOTEL_TRIP_UPDATE.version;
+  if(localStorage.getItem(hotel))return hotel;
   const kyoto=STORAGE_KEY+'-before-'+KYOTO_UPDATE;
   return localStorage.getItem(kyoto)?kyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
-function freshState(){return {kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
+function freshState(){return {hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
   // Keep the complete pre-update state recoverable, including personal edits.
@@ -489,7 +504,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))));
+      return applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))))));
     }
   }catch(e){}
   return freshState();
@@ -720,7 +735,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
@@ -746,7 +761,7 @@ function renderTravelTools(){
   document.querySelector('#deadlineNote').textContent=[
     '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
     '시텐노지 10:40 → 역사박물관 14:05 → 공중정원 16:15 목표 · 지연 시 시텐노지 정원부터 생략.',
-    '덴류지 정원 07:50 → 에이칸도 10:45 → 청수사 입장 준비 17:10 · 야간 17:30~19:00 · 난바 복귀 21:30 이후 가능.',
+    '덴류지 정원 07:50 → 에이칸도 10:45 → 청수사 입장 준비 17:10 · 야간 17:30~19:00 · 에비스초·호텔 복귀 21:30 이후 가능.',
     '12:20 공항 이동 시작 · 긴테쓰나라에서 짐 회수 후 JR나라로 이동 · KIX 15:00 목표, 16:00 전 도착 · 면세 반출 확인 후 수하물 위탁.'
   ][selectedDay];
   const choices=state.admissionOptions||{};
