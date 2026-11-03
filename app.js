@@ -378,6 +378,7 @@ applyIcocaInfo({data:defaults},false);
 
 ATM_STOPS.forEach(stop=>{const p=HOTEL_TRIP_UPDATE.plans[stop.plan.id];if(p){Object.assign(stop.plan,clone(p));stop.note=p.note;if(HOTEL_TRIP_UPDATE.routes[stop.plan.id])stop.route=clone(HOTEL_TRIP_UPDATE.routes[stop.plan.id]);}});
 updateHotelTripData(defaults);
+updateFlightTripData(defaults);
 
 const KYOTO_UPDATE='2026-10-22-arashiyama';
 function applyKyotoUpdate(x, persist=true){
@@ -418,14 +419,26 @@ function applyHotelUpdate(x){
   return x;
 }
 
+function applyFlightUpdate(x){
+  if(x.flightUpdate===FLIGHT_BOOKING.version)return x;
+  const key=STORAGE_KEY+'-before-'+FLIGHT_BOOKING.version;
+  if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(x));
+  updateFlightTripData(x.data);
+  x.flightUpdate=FLIGHT_BOOKING.version;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function scheduleBackupKey(){
+  const flight=STORAGE_KEY+'-before-'+FLIGHT_BOOKING.version;
+  if(localStorage.getItem(flight))return flight;
   const hotel=STORAGE_KEY+'-before-'+HOTEL_TRIP_UPDATE.version;
   if(localStorage.getItem(hotel))return hotel;
   const kyoto=STORAGE_KEY+'-before-'+KYOTO_UPDATE;
   return localStorage.getItem(kyoto)?kyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
-function freshState(){return {hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
+function freshState(){return {flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
   // Keep the complete pre-update state recoverable, including personal edits.
@@ -504,7 +517,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))))));
+      return applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))));
     }
   }catch(e){}
   return freshState();
@@ -735,7 +748,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';

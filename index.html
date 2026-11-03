@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
   <meta name="description" content="2026 오사카·교토·나라 3박 4일 여행 일정 관리 앱" />
-  <link rel="manifest" href="./manifest.json?v=18" />
+  <link rel="manifest" href="./manifest.json?v=19" />
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <title>간사이 여행 일정</title>
-  <link rel="stylesheet" href="./styles.css?v=18" />
+  <link rel="stylesheet" href="./styles.css?v=19" />
 <style>.tax-refund-guide{margin:24px 0;padding:22px;border:1px solid #b8cbbd;border-radius:12px;background:#f4f6ed;color:#253b30;line-height:1.8;overflow-wrap:anywhere}.tax-refund-guide h2{margin:0 0 12px;font-size:22px}.tax-refund-guide h3{font-size:17px;margin:24px 0 8px}.tax-refund-guide p{margin:10px 0}.tax-refund-alert{padding:12px;background:#e6ebdc;border-radius:6px}.tax-refund-guide summary{cursor:pointer;font-weight:700;padding:12px 0;line-height:1.7}.tax-refund-guide summary:focus-visible{outline:3px solid #e6a35e}.tax-refund-body{font-size:14px}.tax-refund-body ul,.tax-refund-body ol{padding-left:22px;margin:10px 0}.tax-refund-body li{margin:8px 0}.tax-refund-sources a{display:inline-block;color:#875039;text-decoration:underline;margin:6px 12px 0 0}.tax-refund-sources{font-size:12px}@media(max-width:600px){.tax-refund-guide{padding:17px}.tax-refund-guide h2{font-size:19px}}</style>
 <style>.atm-guide{margin:24px 0;padding:22px;border:1px solid #a5c8be;border-radius:12px;background:#edf6f2;color:#253b30;line-height:1.8}.atm-guide h2{margin:0 0 12px;font-size:22px}.atm-guide ul{padding-left:22px}.atm-guide li{margin:10px 0}.atm-guide summary{cursor:pointer;font-weight:700;padding:10px 0}.atm-guide a{color:#875039;text-decoration:underline}.atm-guide summary:focus-visible{outline:3px solid #e6a35e}@media(max-width:600px){.atm-guide{padding:17px}.atm-guide h2{font-size:19px}}</style>
 </head>
@@ -37,33 +37,8 @@
         </div>
       </section>
 
-      <section class="panel flight-panel">
-        <div class="panel-head">
-          <div><p class="eyebrow">FLIGHT</p><h3>항공편 정보</h3></div>
-          <a class="ghost-btn compact-btn" href="https://www.eastarjet.com/newstar/PGWIK00005" target="_blank" rel="noopener">수하물 규정</a>
-        </div>
-        <div class="flight-grid">
-          <article class="flight-card">
-            <div class="flight-card-head"><span class="flight-direction">가는편</span><strong>이스타항공 ZE0611</strong></div>
-            <div class="flight-route">
-              <div><span>2026.11.25 (수)</span><strong>09:05</strong><small>서울 ICN 출발</small></div>
-              <div class="flight-arrow">→<small>1시간 50분</small></div>
-              <div><span>2026.11.25 (수)</span><strong>10:55</strong><small>오사카 KIX 도착</small></div>
-            </div>
-            <p class="flight-baggage">일반석 · 무료 위탁수하물 15kg</p>
-          </article>
-          <article class="flight-card">
-            <div class="flight-card-head"><span class="flight-direction">오는편</span><strong>이스타항공 ZE0614</strong></div>
-            <div class="flight-route">
-              <div><span>2026.11.28 (토)</span><strong>18:00</strong><small>오사카 KIX 출발</small></div>
-              <div class="flight-arrow">→<small>1시간 50분</small></div>
-              <div><span>2026.11.28 (토)</span><strong>19:50</strong><small>서울 ICN 도착</small></div>
-            </div>
-            <p class="flight-baggage">일반석 · 무료 위탁수하물 15kg</p>
-          </article>
-        </div>
-        <p class="muted flight-note">항공편 시간·터미널·수하물 조건은 출발 직전 예약내역과 항공사에서 최종 확인.</p>
-      </section>
+<section id="flight-guide" class="panel flight-panel" aria-labelledby="flight-guide-title"><div class="panel-head"><div><p class="eyebrow">FLIGHT</p><h3 id="flight-guide-title">항공 예약 · 왕복 일정</h3></div></div><p class="flight-booking-meta"><strong>발권 완료 · 성인 4명 · 2026.11.25(수)~11.28(토)</strong><br>NOL 예약 · 발권일 2026.09.13 · 예약 화면 확인 2026.11.03</p><div class="flight-grid"><article class="flight-card"><div class="flight-card-head"><span class="flight-direction">가는편</span><strong>이스타항공 ZE0611</strong></div><p class="flight-confirm">2026.11.25 (수) · 예약 화면 확인</p><div class="flight-route"><div><span>인천 ICN</span><strong>09:05</strong><small>출발 · 터미널 1</small></div><div class="flight-arrow">→</div><div><span>오사카 간사이 KIX</span><strong>10:55</strong><small>도착</small></div></div><p class="flight-time-source">위 시각은 기존 여행 계획 · 첨부 예약 화면에 시각 미표기</p><p class="flight-baggage">무료 수하물 15kg · 출발 터미널 1</p></article>
+<article class="flight-card"><div class="flight-card-head"><span class="flight-direction">오는편</span><strong>이스타항공 ZE0614</strong></div><p class="flight-confirm">2026.11.28 (토) · 예약 화면 확인</p><div class="flight-route"><div><span>오사카 간사이 KIX</span><strong>18:00</strong><small>출발 · 터미널 1</small></div><div class="flight-arrow">→</div><div><span>인천 ICN</span><strong>19:50</strong><small>도착</small></div></div><p class="flight-time-source">위 시각은 기존 여행 계획 · 첨부 예약 화면에 시각 미표기</p><p class="flight-baggage">무료 수하물 15kg · 출발 터미널 1</p></article></div><p class="flight-note">예약 화면으로 확인한 정보는 편명·날짜·인원·무료 수하물·출발 터미널입니다. 출발·도착 시각은 기존 계획을 유지했으며 최신 E-Ticket에서 확인하세요. 도착 터미널·좌석·탑승구는 이번 화면에 표시되지 않았습니다.</p><p class="flight-note"><a class="map-link" href="https://kansai-autumn-route-2026.benjamin1121847735.chatgpt.site#flight-booking" target="_blank" rel="noopener noreferrer">비공개 사이트에서 예약번호 확인 ↗</a></p></section>
 
       <section class="panel checklist-panel pretrip-panel">
         <div class="panel-head">
@@ -157,7 +132,7 @@
       </section>
     </main>
 
-    <footer>2026-11-01 에슬리드 난바 사우스 III 3박·숙소 출발/복귀 반영 · 앱 v18 · 운영시간/요금/시간표는 출발 직전 재확인 권장</footer>
+    <footer>2026-11-03 NOL 항공 예약·출발 터미널·수하물 반영 · 앱 v19 · 운영시간/요금/시간표는 출발 직전 재확인 권장</footer>
   </div>
 
   <dialog id="planDialog" class="modal">
@@ -198,9 +173,10 @@
       </div>
     </article>
   </template>
-  <script src="./hotel.js?v=18"></script>
-  <script src="./walking.js?v=18"></script>
-  <script src="./route-details.js?v=18"></script>
-  <script src="./app.js?v=18"></script>
+  <script src="./flight.js?v=19"></script>
+  <script src="./hotel.js?v=19"></script>
+  <script src="./walking.js?v=19"></script>
+  <script src="./route-details.js?v=19"></script>
+  <script src="./app.js?v=19"></script>
 </body>
 </html>
