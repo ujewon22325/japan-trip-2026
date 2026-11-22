@@ -627,12 +627,61 @@ function renderStats(){
   const done=all.filter(function(item){return state.checklistDone[item.id];}).length;
   document.querySelector('#checkCount').textContent=done+'/'+all.length;
 }
+function initViewTabs(){
+  const tabs=[...document.querySelectorAll('.view-tabs [role="tab"]')];
+  function showTab(activeTab){
+    for(const tab of tabs){
+      const selected=tab===activeTab;
+      tab.setAttribute('aria-selected',String(selected));
+      tab.tabIndex=selected?0:-1;
+      document.getElementById(tab.getAttribute('aria-controls')).hidden=!selected;
+    }
+  }
+  function openTab(tab){
+    if(tab.getAttribute('aria-selected')==='true')return;
+    if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);
+    showTab(tab);
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  function openHash(){
+    if(!location.hash){
+      showTab(tabs[0]);
+      return;
+    }
+    const target=document.getElementById(location.hash.slice(1));
+    const view=target?.closest('.app-view');
+    if(!view)return;
+    showTab(tabs.find(tab=>tab.getAttribute('aria-controls')===view.id));
+    target.scrollIntoView({block:'start',behavior:'instant'});
+  }
+  tabs.forEach((tab,index)=>{
+    tab.addEventListener('click',()=>openTab(tab));
+    tab.addEventListener('keydown',event=>{
+      const order={ArrowLeft:(index+tabs.length-1)%tabs.length,ArrowRight:(index+1)%tabs.length,Home:0,End:tabs.length-1};
+      if(!Object.hasOwn(order,event.key))return;
+      event.preventDefault();
+      const next=tabs[order[event.key]];
+      openTab(next);
+      next.focus({preventScroll:true});
+    });
+  });
+  window.addEventListener('hashchange',openHash);
+  openHash();
+}
 function renderTabs(){
   const tabs=document.querySelector('#dayTabs'); tabs.innerHTML='';
   state.data.days.forEach(function(d,i){
     const b=document.createElement('button'); b.className='day-tab'+(i===selectedDay?' active':'');
+    b.type='button';
+    b.setAttribute('aria-pressed',String(i===selectedDay));
     b.innerHTML='DAY '+(i+1)+'<small>'+esc(d.short)+' · '+d.date.slice(5).replace('-','/')+'</small>';
-    b.onclick=function(){selectedDay=i;render();};
+    b.onclick=function(){
+      const keepFocus=document.activeElement===b;
+      selectedDay=i;
+      render();
+      if(keepFocus)tabs.children[i].focus({preventScroll:true});
+      window.scrollTo({top:0,behavior:'instant'});
+    };
     tabs.appendChild(b);
   });
 }
@@ -640,7 +689,7 @@ function renderSummary(){
   const d=state.data.days[selectedDay];
   document.querySelector('#dayTitle').textContent='DAY '+(selectedDay+1)+' · '+d.city;
   const done=d.plans.filter(function(p){return state.completed[p.id];}).length;
-  document.querySelector('#todaySummary').innerHTML='<div><strong>'+d.date+' · '+esc(d.city)+'</strong><span>'+d.plans.length+'개 일정 중 '+done+'개 완료</span></div><span class="critical">'+esc(d.fallback)+'</span>';
+  document.querySelector('#todaySummary').textContent=d.plans.length+'개 일정 중 '+done+'개 완료';
 }
 function appendSanpeiInfo(node,plan){
   const restaurant=KUROMON_SANPEI_PLAN.restaurant;
@@ -750,7 +799,8 @@ function makeChecklistItem(item){
   const copy=document.createElement('div'); copy.className='check-copy';
   if(item.url){
     const a=document.createElement('a');
-    a.href=item.url; a.target='_blank'; a.rel='noopener'; a.className='check-link';
+    a.href=item.url; a.className='check-link';
+    if(!String(item.url).startsWith('#')){a.target='_blank';a.rel='noopener';}
     const text=document.createElement('span'); text.textContent=item.text;
     const badge=document.createElement('small'); badge.textContent=(item.linkLabel||'바로가기')+' ↗';
     a.appendChild(text); a.appendChild(badge); copy.appendChild(a);
@@ -856,7 +906,7 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();def
 document.querySelector('#installBtn').onclick=async function(){if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;document.querySelector('#installBtn').hidden=true;};
 if('serviceWorker' in navigator)window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(function(){});});
 render();
-
+initViewTabs();
 
 function renderTravelTools(){
   const day=state.data.days[selectedDay];
