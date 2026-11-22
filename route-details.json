@@ -171,103 +171,65 @@
     "tip": ""
   },
   "d3-arashiyama-transit": {
-    "kind": "지하철 + 한큐 전철 + 도보",
-    "title": "호텔 → 에비스초 → 아와지 → 가쓰라 → 아라시야마",
+    "kind": "JR 전철 + 도보",
+    "title": "호텔 → 신이마미야 → 오사카 → 교토 → 우마호리",
     "steps": [
-      "05:30 호텔 출발 목표. 에비스초역(K18)에서 사카이스지선 북행 기타센리·다카쓰키시 방면 승차.",
-      "한큐 직통이면 덴진바시스지로쿠초메에서 계속 탑승해 아와지(淡路) 하차. 덴진바시스지로쿠초메 종착편이면 그 역에서 한큐 센리선 아와지 방면으로 환승.",
-      "아와지에서 한큐 교토선 교토가와라마치 방면 가쓰라(桂) 정차편 승차. 가쓰라에서 아라시야마선 아라시야마행 환승.",
-      "한큐 아라시야마역 종점 → 도게츠교 도보 약 10분. 숙소부터 약 110분 계획, 07:20 도착 목표."
+      "호텔에서 JR 신이마미야역까지 도보 약 7~10분. 오사카 방면 JR 열차를 타고 오사카역에서 JR 교토선으로 환승.",
+      "오사카역에서 교토 정차 신쾌속을 이용해 교토역 08:05 전후 도착 목표. 08:16 사가노선 소노베행 보통은 31번 승강장 기준이며 현장 안내판을 확인해요.",
+      "JR 우마호리(馬堀)역 08:42 하차 후 도롯코 가메오카역(トロッコ亀岡駅)까지 도보 약 10분. 교토역 08:27 출발·우마호리 08:57 도착편도 있어요."
     ],
     "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
-    "destination": "Togetsukyo Bridge Kyoto",
-    "tip": "11/27 실제 첫차·종착역·환승편을 직전 확인. 운행 시각 확정 아님. 노선: https://www.hankyu.co.jp/station/kyoto/index.html"
+    "destination": "Torokko Kameoka Station Kyoto"
   },
   "d3-togetsukyo": {
     "kind": "도보",
-    "title": "도게츠교 → 덴류지 정원 접수처",
+    "title": "덴류지 정문 → 도게츠교 북쪽 → 다리 남쪽",
     "steps": [
-      "도게츠교 북쪽에서 아라시야마 상점가 큰길을 북쪽으로 이동.",
-      "덴류지 정문 쪽으로 들어가 정원 접수처 이용. 07:50에는 북문 입장이 아닌 정원 접수처에서 조조관람."
+      "덴류지 정문에서 상점가를 남쪽으로 걸어 도게츠교 북쪽 강변에 도착.",
+      "가쓰라강과 다리를 보고 남쪽으로 건너요. 일정의 40분에는 정문에서의 걸음과 관람이 모두 포함돼요."
     ],
-    "origin": "Togetsukyo Bridge",
-    "destination": "Tenryu-ji Temple",
-    "tip": "약 5~10분 추정. 07:45~07:50 이동 여유는 빠듯할 수 있음."
+    "origin": "Tenryu-ji Main Gate Kyoto",
+    "destination": "Togetsukyo Bridge Kyoto"
   },
   "d3-tenryuji": {
     "kind": "경내 도보",
-    "title": "덴류지 정원 → 북문 → 대나무숲",
+    "title": "덴류지 북문 → 백화원·소겐치 정원 → 정문",
     "steps": [
-      "소겐치 정원·백화원을 관람. 조조관람은 정원만 먼저 입장.",
-      "08:30 이후 열린 북문으로 나와 대나무숲 산책길로 연결."
+      "북문 매표소에서 정원 입장권 구매. 정원 관람과 사진에 약 55분 배정.",
+      "소겐치 정원을 본 뒤 정문 쪽으로 나와 상점가 큰길을 따라 남쪽 도게츠교 방향으로 걸어요."
     ],
-    "origin": "Tenryu-ji Temple",
-    "destination": "Arashiyama Bamboo Grove",
-    "tip": "조조관람 11/14~30 07:30, 북문 접수 08:30부터. 공식: https://www.tenryuji.com/visit/"
+    "origin": "Tenryu-ji North Gate Kyoto",
+    "destination": "Tenryu-ji Main Gate Kyoto"
   },
   "d3-bamboo": {
     "kind": "도보",
-    "title": "덴류지 북문 → 대나무숲",
+    "title": "도롯코 아라시야마역 → 대나무숲 → 덴류지 북문",
     "steps": [
-      "덴류지 북문 인근 대나무숲 산책로를 걷고 사진 촬영.",
-      "09:30에는 JR사가아라시야마역 방향 출발. 노노미야 신사 방향에서 동쪽 역으로 이동하며 다음 75분 이동칸에 포함."
+      "역 출구에서 왼쪽 대나무숲 산책길로 들어가요.",
+      "대나무숲에서 사진을 찍고 덴류지 북문 표지를 따라 정원 입구로 이동해요."
     ],
-    "origin": "Tenryu-ji North Gate",
-    "destination": "Arashiyama Bamboo Grove"
-  },
-  "d3-to-eikando": {
-    "kind": "JR 전철 + 지하철 + 도보",
-    "title": "JR사가아라시야마 → 니조 → 게아게 → 에이칸도",
-    "steps": [
-      "대나무숲에서 JR사가아라시야마역까지 도보 약 15~20분. 한큐/란덴 아라시야마역과 혼동하지 않기.",
-      "JR사가노선 교토 방면 → 니조(二条)역 하차. 지하철 도자이선으로 환승.",
-      "도자이선 로쿠지조·비와코하마오쓰 방면 → 게아게(蹴上, T09)역 하차 → 에이칸도까지 도보 약 20~25분."
-    ],
-    "origin": "Arashiyama Bamboo Grove",
-    "destination": "Eikando Zenrinji",
-    "tip": "환승·열차대기·역 접근까지 75분 계획. 지연 시 에이칸도 도착도 조정. 정확한 열차 시각은 미확정."
-  },
-  "d3p7": {
-    "kind": "경내 도보",
-    "title": "에이칸도 주간 관람",
-    "steps": [
-      "주간 접수 후 경내 단풍과 본당을 관람.",
-      "12:00에는 남쪽 난젠지 방향으로 나갈 준비. 계단·신발을 벗는 구역과 접수 대기를 고려."
-    ],
-    "origin": "Eikando Zenrinji",
-    "destination": "Eikando Zenrinji"
-  },
-  "d3p6": {
-    "kind": "도보",
-    "title": "에이칸도 → 난젠지 경내·수로각",
-    "steps": [
-      "에이칸도 입구에서 남쪽 난젠지 방면으로 도보 약 10~15분.",
-      "삼문 주변 경내를 지나 수로각으로 이동. 12:30 점심 시작에 맞춰 유료구역은 생략."
-    ],
-    "origin": "Eikando Zenrinji",
-    "destination": "Nanzen-ji Suirokaku",
-    "tip": "30분은 접근 도보 포함. 혼잡하면 사진 촬영·관람시간이 짧아짐."
+    "origin": "Torokko Arashiyama Station Kyoto",
+    "destination": "Tenryu-ji North Gate Kyoto"
   },
   "d3-lunch": {
     "kind": "도보",
-    "title": "난젠지 → 점심·게아게 주변",
+    "title": "교토가와라마치역 → 시조오하시 → 기온",
     "steps": [
-      "난젠지·게아게 주변 식당에서 점심. 식당 미정으로 실제 길찾기는 선택 후 확인.",
-      "13:30에 게아게역 방향으로 이동 시작할 수 있도록 식사·휴식 배분."
+      "시조도리 주변에서 점심 식사. 식당이 가와라마치 쪽이면 하나미코지까지 걷는 시간도 고려해요."
     ],
-    "origin": "Nanzen-ji Suirokaku",
-    "destination": "Keage Station"
+    "origin": "Hankyu Kyoto-Kawaramachi Station Kyoto",
+    "destination": "Hanamikoji Street Kyoto"
   },
   "d3-to-gion": {
-    "kind": "지하철 + 도보",
-    "title": "게아게 → 산조케이한 → 기온 하나미코지",
+    "kind": "도보 + 한큐 전철",
+    "title": "도게츠교 → 한큐 아라시야마 → 가쓰라 → 교토가와라마치",
     "steps": [
-      "게아게역(T09)에서 도자이선 우즈마사텐진가와 방면 → 산조케이한역(T11).",
-      "지상 산조대교 방면으로 나와 가와바타도리·시조도리 방향으로 남하 → 하나미코지. 도보 약 15~20분 추정."
+      "도게츠교 남쪽에서 한큐 아라시야마역(阪急嵐山駅)까지 도보 약 5~10분.",
+      "한큐 아라시야마선 가쓰라행. 12:27 또는 12:44 출발을 이용하고, 가쓰라역에서 교토가와라마치행으로 환승해요.",
+      "교토가와라마치역에서 점심 장소로 이동해요. 기온에서 식사한다면 동쪽 출구로 나와 시조오하시를 건너요."
     ],
-    "origin": "Keage Station",
-    "destination": "Hanamikoji Street Kyoto",
-    "tip": "식당→게아게역 도보·승강장·대기를 포함해 약 40분 계획."
+    "origin": "Hankyu Arashiyama Station Kyoto",
+    "destination": "Hankyu Kyoto-Kawaramachi Station Kyoto"
   },
   "d3p5": {
     "kind": "도보",
@@ -488,7 +450,7 @@
     "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
     "steps": [
       "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
-      "출금 후 호텔/에비스초역에서 05:30 교토 출발 준비. 첫차가 빠듯하면 전날 저녁 출금."
+      "출금 후 호텔에 돌아와 06:50 출발. 전날 저녁 출금도 가능해요."
     ],
     "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
     "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
@@ -504,5 +466,16 @@
     "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
     "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
     "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."
+  },
+  "d3-romantic-train": {
+    "kind": "관광열차",
+    "title": "도롯코 가메오카 → 도롯코 아라시야마",
+    "steps": [
+      "09:00 전후 도롯코 가메오카역 도착 목표. 티켓에 표시된 승차역과 하차역, 탑승 안내를 확인해요.",
+      "도롯코 아라시야마역에서 하차. 승강장에서 출구로 올라가는 계단이 약 60개 있어요."
+    ],
+    "origin": "Torokko Kameoka Station Kyoto",
+    "destination": "Torokko Arashiyama Station Kyoto",
+    "tip": "사가노 2호. 예약 화면에서 도롯코 가메오카 출발·도롯코 아라시야마 하차를 확인해요."
   }
 }

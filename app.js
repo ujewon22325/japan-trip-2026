@@ -51,86 +51,68 @@ const defaults={
       "city": "교토 · 아라시야마와 단풍 야경",
       "short": "교토",
       "notes": [
-        "2026-10-22 수정 · 아라시야마 → 에이칸도 → 난젠지 → 기온 → 히가시야마 → 청수사 야간 순서. 첨부 시간표 기준.",
-        "05:30 난바 출발·07:20 도게츠교 도착은 목표 시각. 숙소 출발·첫차·우메다 환승에 따라 늦어질 수 있어 출발 1주 전 11/27 금요일 실제 열차편 확인.",
-        "덴류지 정원은 2026/11/14~30 특별 조조관람 07:30 개장(정원 접수처). 북문·건물은 08:30부터라 07:50에는 정원부터 입장, 08:45 북문으로 나와 대나무숲 연결. 정원 500엔.",
-        "청수사 아침·고다이지 내부 관람은 이번 일정에서 제외. 청수사 야간 11/21~30, 17:30 시작·21:00 접수 종료·21:30 폐문. 17:10부터 입장 준비.",
-        "09:30~10:45 아라시야마→에이칸도 이동에는 대나무숲→JR사가아라시야마역 도보를 포함. 난젠지 12:00~12:30은 에이칸도→난젠지 도보 포함이라 경내·수로각만 빠르게 관람.",
-        "점심 12:30~13:30 휴식 60분 유지. 단풍철 버스 정체를 피해 철도·도보 우선. 20:00 교토 출발·21:30 전후 난바 복귀는 계획값이며 대기·저녁·보행에 따라 더 늦어질 수 있음."
+        "09:30 단풍열차를 타고 도롯코 아라시야마역에서 내려 대나무숲 → 덴류지 정원 → 도게츠교 순으로 걸어요. 덴류지는 북문 입장, 정문 쪽 출구를 이용해요.",
+        "한큐 아라시야마역에서 가쓰라역을 거쳐 교토가와라마치역으로 이동. 가와라마치·기온에서 점심을 먹어요.",
+        "17:10 청수사 입구 도착 목표. 11/21~30 야간관람은 17:30 시작, 21:00 접수 종료, 21:30 폐문.",
+        "저녁에는 기요미즈고조 → 기타하마 → 에비스초로 숙소에 돌아와요."
       ],
-      "fallback": "아침 지연 시 도게츠교·대나무숲 체류를 줄이고 에이칸도 도착을 조정. 난젠지 유료구역은 제외, 오후 골목 쇼핑부터 단축. 청수사 17:30 야간관람과 점심 휴식은 우선 유지.",
+      "fallback": "아라시야마 세 곳은 모두 들르고 체류시간을 조정해요. 오후에는 카페·쇼핑 시간을 줄여 17:10 청수사 입구 도착을 목표로 해요.",
       "plans": [
         {
           "id": "d3-arashiyama-transit",
-          "time": "05:30-07:20",
-          "name": "난바 → 아라시야마",
-          "fee": "교통비 별도",
-          "note": "메트로 난바 → 우메다 → 도보로 한큐 오사카우메다 → 교토선 가쓰라 → 아라시야마선 아라시야마 → 도게츠교. 약 110분 계획, 정확한 출발편·첫차·숙소 접근은 여행 전 재확인.",
-          "map": "Hankyu Arashiyama Station"
+          "time": "06:50-09:00 전후",
+          "name": "숙소 → JR 우마호리 → 도롯코 가메오카역",
+          "fee": "JR 교통비 별도",
+          "note": "06:50 호텔 출발 목표. JR 신이마미야→오사카→교토. 교토역 08:16 사가노선 보통으로 우마호리 08:42 하차, 도롯코 가메오카역까지 도보 약 10분.",
+          "map": "Torokko Kameoka Station Kyoto"
         },
         {
-          "id": "d3-togetsukyo",
-          "time": "07:20-07:45",
-          "name": "도게츠교",
-          "fee": "무료",
-          "note": "다리·가쓰라강 주변 산책 25분. 07:45 출발해 덴류지 정원 접수처까지 약 5~10분 도보.",
-          "map": "Togetsukyo Bridge Kyoto"
-        },
-        {
-          "id": "d3-tenryuji",
-          "time": "07:50-08:45",
-          "name": "덴류지 정원",
-          "fee": "500엔",
-          "note": "2026/11/14~30 정원 특별 조조관람 07:30 개장. 정문 쪽 정원 접수처 이용(북문 접수·건물 관람 08:30부터). 정원 55분 관람 후 북문으로 나와 대나무숲 연결. 건물·운룡도 관람은 포함하지 않음. 공식 2026-10-22 확인.",
-          "map": "Tenryu-ji Temple Kyoto"
+          "id": "d3-romantic-train",
+          "time": "09:30-09:53 전후",
+          "name": "사가노 도롯코 단풍열차",
+          "fee": "별도 지정석 승차권",
+          "note": "도롯코 가메오카역 09:30 출발 사가노 2호. 도롯코 아라시야마역에서 09:53 전후 내려 대나무숲으로 이어가요.",
+          "map": "Torokko Arashiyama Station Kyoto"
         },
         {
           "id": "d3-bamboo",
-          "time": "08:45-09:30",
+          "time": "10:00-10:40",
           "name": "아라시야마 대나무숲",
           "fee": "무료",
-          "note": "덴류지 북문에서 대나무숲 산책. 09:30에는 JR사가아라시야마역 방향으로 출발; 역까지 약 15~20분은 다음 이동 시간에 포함.",
+          "note": "도롯코 아라시야마역에서 나와 대나무숲을 걸어 덴류지 북문으로 이동. 사진과 인파를 고려해 40분을 배정했어요.",
           "map": "Arashiyama Bamboo Grove Kyoto"
         },
         {
-          "id": "d3-to-eikando",
-          "time": "09:30-10:45",
-          "name": "JR·지하철로 에이칸도 이동",
-          "fee": "교통비 별도",
-          "note": "대나무숲 → JR사가아라시야마역 도보 → 사가노선 교토 방면 니조역 → 지하철 도자이선 게아게역 → 에이칸도 도보. 총 75분 계획(역 접근·환승·대기 포함), 단풍철 혼잡에 따라 더 걸릴 수 있음.",
-          "map": "Eikando Zenrinji Kyoto"
+          "id": "d3-tenryuji",
+          "time": "10:40-11:35",
+          "name": "덴류지 정원",
+          "fee": "성인 500엔",
+          "note": "대나무숲 쪽 북문에서 정원권을 사서 백화원과 소겐치 정원을 산책해요. 정문 쪽으로 나와 도게츠교 방향으로 이어가요.",
+          "map": "Tenryu-ji Kyoto"
         },
         {
-          "id": "d3p7",
-          "time": "10:45-12:00",
-          "name": "에이칸도 주간 단풍",
-          "fee": "1,500엔",
-          "note": "75분 관람(입장 대기 포함). 가을 특별관람 요금 기준, 당일 접수·혼잡은 직전 재확인. 12:00에는 난젠지 방향 출발. 신발을 벗는 구역 대비 신발주머니 준비.",
-          "map": "Eikando Zenrinji Kyoto"
-        },
-        {
-          "id": "d3p6",
-          "time": "12:00-12:30",
-          "name": "난젠지 경내 · 수로각",
+          "id": "d3-togetsukyo",
+          "time": "11:35-12:15",
+          "name": "도게츠교 · 가쓰라강",
           "fee": "무료",
-          "note": "에이칸도에서 난젠지까지 도보 약 10~15분 포함 30분. 경내·수로각 위주 짧게 관람. 방장정원·삼문 유료 관람은 기본 코스에서 제외.",
-          "map": "Nanzen-ji Suirokaku Kyoto"
-        },
-        {
-          "id": "d3-lunch",
-          "time": "12:30-13:30",
-          "name": "점심 식사",
-          "fee": "식비 별도",
-          "note": "난젠지·게아게 주변에서 점심과 휴식 60분 확보. 대기 긴 식당을 피하고 13:30 기온 이동 시작. 식당 미정, 메뉴·영업시간은 선택 후 확인.",
-          "map": "Nanzenji Kyoto"
+          "note": "덴류지 정문에서 도게츠교까지 도보 약 5~10분. 강변과 다리에서 사진을 찍고 다리를 건너 남쪽에서 한큐역으로 이동해요.",
+          "map": "Togetsukyo Bridge Kyoto"
         },
         {
           "id": "d3-to-gion",
-          "time": "13:30-14:10",
-          "name": "기온 방면 이동",
-          "fee": "교통비 별도",
-          "note": "게아게역 → 도자이선 우즈마사텐진가와 방면 산조케이한역 → 산조대교·기온 하나미코지까지 도보. 총 40분 계획, 식당 위치에 따라 역 접근 시간 조정.",
-          "map": "Hanamikoji Street Kyoto"
+          "time": "12:15-13:10 전후",
+          "name": "한큐로 가와라마치·기온 이동",
+          "fee": "한큐 교통비 별도",
+          "note": "도게츠교 남쪽 → 한큐 아라시야마역 → 가쓰라역 환승 → 교토가와라마치역. 역 접근과 열차 대기까지 약 55분을 잡아요.",
+          "map": "Hankyu Kyoto-Kawaramachi Station Kyoto"
+        },
+        {
+          "id": "d3-lunch",
+          "time": "13:10-14:10",
+          "name": "가와라마치·기온 점심",
+          "fee": "식비 별도",
+          "note": "교토가와라마치역과 기온 사이에서 식사하고 쉬어요. 14:10 하나미코지 산책으로 이어가요.",
+          "map": "Gion Shijo Kyoto"
         },
         {
           "id": "d3p5",
@@ -211,7 +193,7 @@ const defaults={
     {id:'pre-money',text:'해외결제 카드, 소액 엔화 현금, 100엔 동전용 여유 현금 준비'},
     {id:'pre-tickets',text:'쓰텐카쿠·우메다 스카이빌딩 등 사전예약/시간지정 티켓 필요 여부 확인'},
     {id:'pre-haruka',text:'11/28 JR나라→덴노지→KIX 실제 열차 시각과 HARUKA 할인권 조건 확인'},
-    {id:'pre-kyoto',text:'출발 1주 전 덴류지·청수사·에이칸도·난젠지·오사카 역사박물관 운영시간·공사·입장료 재확인'},
+    {id:'pre-kyoto',text:'11/27 도롯코 지정석권과 덴류지·청수사 관람시간 확인'},
     {id:'pre-weather',text:'오사카·교토·나라 날씨와 일몰시간 확인 후 방풍·보온 겉옷 준비'},
     {id:'pre-shoes',text:'교토 돌길·낙엽 대비 접지력 좋은 편한 신발 준비'},
     {id:'pre-essentials',text:'충전기, 보조배터리, 작은 우산/경량 우비, 상비품 챙기기'},
@@ -246,12 +228,18 @@ const defaults={
       "items": [
         {
           "id": "day3-wakeup",
-          "text": "05:30 난바 출발 · 우메다→한큐 오사카우메다→가쓰라→아라시야마 실제 열차편 확인"
+          "text": "06:50 호텔 출발 · JR 신이마미야→오사카→교토 · 교토 08:16 출발→우마호리 08:42 도착 목표."
+        },
+        {
+          "id": "day3-torokko",
+          "text": "09:30 도롯코 가메오카 출발편의 승차권 확인. 09:00 전후 도롯코역 도착 목표.",
+          "url": "https://www.sagano-kanko.co.jp/en/train-info/",
+          "linkLabel": "도롯코 공식 시간표"
         },
         {
           "id": "day3-tenryuji",
-          "text": "덴류지 07:50 정원 접수처 입장 · 조조관람 07:30부터, 북문 08:30부터",
-          "url": "https://www.tenryuji.com/visit/",
+          "text": "10:40 덴류지 북문 입장 · 대나무숲에서 진입해 정원 관람 후 정문 쪽으로 나오기.",
+          "url": "https://www.tenryuji.com/en/visit/index.html",
           "linkLabel": "덴류지 공식"
         },
         {
@@ -260,11 +248,7 @@ const defaults={
         },
         {
           "id": "day3-cash",
-          "text": "덴류지 500엔＋에이칸도 1,500엔＋청수사 500엔 · 기본 입장료 1인 2,500엔 현금 준비"
-        },
-        {
-          "id": "day3-eikando",
-          "text": "09:30 대나무숲 출발 → 10:45 에이칸도 목표 · 12:00 난젠지로 출발"
+          "text": "덴류지 500엔＋청수사 500엔 · 기본 입장료 1인 1,000엔. 도롯코 승차권 별도."
         },
         {
           "id": "day3-night",
@@ -274,11 +258,11 @@ const defaults={
         },
         {
           "id": "day3-rest",
-          "text": "12:30~13:30 점심·휴식 60분 유지 · 19:00~20:00 저녁과 역 이동"
+          "text": "13:10~14:10 가와라마치·기온 점심 및 휴식 · 19:00~20:00 저녁과 역 이동."
         },
         {
           "id": "day3-icoca-balance",
-          "text": "한큐·JR·교토 지하철·게이한·오사카 메트로 이용 전 ICOCA 잔액 확인·충전 · 실제 경로 운임은 직전 재확인",
+          "text": "JR·한큐·게이한·오사카 메트로 이용 전 ICOCA 잔액 확인. 도롯코는 별도 지정석 승차권 확인.",
           "url": "#icoca-guide",
           "linkLabel": "충전·사용 안내"
         }
@@ -309,7 +293,7 @@ refundDay.plans.push(TAX_REFUND_PLAN);
 defaults.preTripChecklist.push(TAX_REFUND_PRE);
 defaults.dailyChecklist.find(d=>d.date===TRIP_END).items.push(...TAX_REFUND_DAILY);
 
-const ATM_STOPS=[{"date": "2026-11-25", "plan": {"id": "d1-seven-atm", "time": "난바 도착 후 · 점심 전 (5~10분)", "name": "출금 · 세븐일레븐 오사카 닛폰바시역 동쪽점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.\n주소: 大阪府大阪市中央区日本橋1-4-12. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12", "optional": true, "atm": {"label": "세븐일레븐 오사카 닛폰바시역 동쪽점", "jp": "セブン-イレブン 大阪日本橋駅東店", "address": "大阪府大阪市中央区日本橋1-4-12", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000020877", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "난바 → 닛폰바시역 동쪽 세븐일레븐 → 점심", "steps": ["난카이 난바역 도착 후 숙소 짐 보관. 숙소 미정이므로 점포까지 실제 길찾기 확인.", "센니치마에 거리에서 닛폰바시역 방향으로 이동해 日本橋1-4-12 점포의 세븐은행 ATM에서 출금.", "출금 후 浪速日本橋食堂까지 도보 약 3~5분 추정. 식당을 생략하면 구로몬시장으로 바로 이동."], "tip": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.", "origin": "Nankai Namba Station", "destination": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12"}, "walk": ["출금 경유", "점포 → 식당", "약 3~5분 추정", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정."}, {"date": "2026-11-26", "plan": {"id": "d2-seven-atm", "time": "08:15-08:25 (출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "메트로 미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역 → 신세카이·쓰텐카쿠."], "tip": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}, {"date": "2026-11-27", "plan": {"id": "d3-seven-atm", "time": "05:05-05:15 (05:30 출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "숙소 → 점포 출금 → 메트로 난바역 → 05:30 교토 이동 시작. 05:15까지 출금을 마치고 첫차·환승 시간을 우선. 부족하면 전날 저녁 같은 점포에서 출금. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "메트로 미도스지선 신오사카·미노오카야노 방면 → 우메다역 → 한큐 오사카우메다역 → 가쓰라 환승 → 아라시야마."], "tip": "숙소 → 점포 출금 → 메트로 난바역 → 05:30 교토 이동 시작. 05:15까지 출금을 마치고 첫차·환승 시간을 우선. 부족하면 전날 저녁 같은 점포에서 출금. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "숙소 → 점포 출금 → 메트로 난바역 → 05:30 교토 이동 시작. 05:15까지 출금을 마치고 첫차·환승 시간을 우선. 부족하면 전날 저녁 같은 점포에서 출금. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}, {"date": "2026-11-28", "plan": {"id": "d4-seven-atm", "time": "07:05-07:15 (07:30 출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "긴테쓰 오사카난바역의 나라 방면 승강장으로 이동."], "tip": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}];
+const ATM_STOPS=[{"date": "2026-11-25", "plan": {"id": "d1-seven-atm", "time": "난바 도착 후 · 점심 전 (5~10분)", "name": "출금 · 세븐일레븐 오사카 닛폰바시역 동쪽점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.\n주소: 大阪府大阪市中央区日本橋1-4-12. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12", "optional": true, "atm": {"label": "세븐일레븐 오사카 닛폰바시역 동쪽점", "jp": "セブン-イレブン 大阪日本橋駅東店", "address": "大阪府大阪市中央区日本橋1-4-12", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000020877", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "난바 → 닛폰바시역 동쪽 세븐일레븐 → 점심", "steps": ["난카이 난바역 도착 후 숙소 짐 보관. 숙소 미정이므로 점포까지 실제 길찾기 확인.", "센니치마에 거리에서 닛폰바시역 방향으로 이동해 日本橋1-4-12 점포의 세븐은행 ATM에서 출금.", "출금 후 浪速日本橋食堂까지 도보 약 3~5분 추정. 식당을 생략하면 구로몬시장으로 바로 이동."], "tip": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.", "origin": "Nankai Namba Station", "destination": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12"}, "walk": ["출금 경유", "점포 → 식당", "약 3~5분 추정", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정."}, {"date": "2026-11-26", "plan": {"id": "d2-seven-atm", "time": "08:15-08:25 (출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "메트로 미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역 → 신세카이·쓰텐카쿠."], "tip": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}, {"date": "2026-11-27", "plan": {"id": "d3-seven-atm", "time": "06:25-06:40 (필요 시)", "name": "출금 · 세븐일레븐 오사카 에비스니시 1초메점", "fee": "인출금은 지출 아님 · 수수료 조건 확인", "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금 후 06:50 호텔 출발에 맞춰 돌아와요. 전날 저녁 출금도 가능해요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도.", "map": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1", "atm": {"label": "세븐일레븐 오사카 에비스니시 1초메점", "jp": "セブン-イレブン 大阪恵美須西1丁目店", "address": "大阪府大阪市浪速区恵美須西1-2-1", "hours": "24시간 · ATM 1대 (점검·카드사 제한 별도)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000007338", "checked": "2026-11-01"}, "optional": true}, "route": {"kind": "도보 · 출금", "title": "호텔 → 에비스니시 1초메점 → 다음 일정", "steps": ["호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.", "출금 후 호텔에 돌아와 06:50 출발. 전날 저녁 출금도 가능해요."], "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6", "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1", "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."}, "walk": ["출금 경유", "호텔 → 에비스니시 1초메점", "약 3~5분 추정", "숙소 주변 출금 동선. 다음 목적지까지 걷기는 각 이동 안내 참고."], "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금 후 06:50 호텔 출발에 맞춰 돌아와요. 전날 저녁 출금도 가능해요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도."}, {"date": "2026-11-28", "plan": {"id": "d4-seven-atm", "time": "07:05-07:15 (07:30 출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "긴테쓰 오사카난바역의 나라 방면 승강장으로 이동."], "tip": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}];
 function applyAtmStops(x){
   if(x.sevenAtmUpdate==='2026-10-06')return x;
   const key=STORAGE_KEY+'-before-seven-atm-2026-10-06';
@@ -380,7 +364,8 @@ ATM_STOPS.forEach(stop=>{const p=HOTEL_TRIP_UPDATE.plans[stop.plan.id];if(p){Obj
 updateHotelTripData(defaults);
 updateFlightTripData(defaults);
 
-const KYOTO_UPDATE='2026-10-22-arashiyama';
+const KYOTO_UPDATE='2026-11-22-torokko';
+const PREVIOUS_KYOTO_UPDATE='2026-10-22-arashiyama';
 function applyKyotoUpdate(x, persist=true){
   if(x.kyotoUpdate===KYOTO_UPDATE)return x;
   const key=STORAGE_KEY+'-before-'+KYOTO_UPDATE;
@@ -389,22 +374,32 @@ function applyKyotoUpdate(x, persist=true){
   const index=x.data.days.findIndex(d=>d.date===target.date);
   if(index>=0){
     const old=x.data.days[index];
-    const managed=new Set(target.plans.map(p=>p.id).concat(['d3p1','d3p2','d3p4']));
+    const managed=new Set(target.plans.map(p=>p.id).concat(['d3p1','d3p2','d3p4','d3-to-eikando','d3p7','d3p6']));
     const custom=old.plans.filter(p=>!managed.has(p.id));
     x.data.days[index]=clone(target);
+    if(x.kyotoUpdate===PREVIOUS_KYOTO_UPDATE){
+      const afternoonIds=new Set(['d3p5','d3p3','d3-night-entry','d3p8','d3-dinner','d3-return']);
+      x.data.days[index].plans=x.data.days[index].plans.map(plan=>
+        afternoonIds.has(plan.id)?(old.plans.find(p=>p.id===plan.id)||plan):plan
+      );
+    }
     x.data.days[index].plans.push(...custom);
-    const customNotes=(old.notes||[]).filter(n=>!/(청수사|에이칸도|고다이지|동부 교토|교토 단풍|보행량|出金|2026-10-22|덴류지|아라시야마|09:30|점심 12:30)/.test(n));
+    const customNotes=(old.notes||[]).filter(n=>!(/^(?:2026-10-22 수정|05:30 (?:난바 |숙소·)|덴류지 정원은 2026|청수사 아침·고다이지|09:30~10:45 아라시야마|점심 12:30~13:30|교토 관람 순서·식사|出金 \/ 출금: 숙소 (?:→ 점포 출금|근처 大阪市浪速区恵美須西1-2-1).*05:30)/.test(n)));
     customNotes.forEach(n=>{if(!x.data.days[index].notes.includes(n))x.data.days[index].notes.push(n);});
   }else x.data.days.push(clone(target));
   const group=defaults.dailyChecklist.find(g=>g.date===target.date);
   const existing=x.data.dailyChecklist.find(g=>g.date===target.date);
   if(existing){
     const ids=new Set(group.items.map(i=>i.id));
-    existing.items=clone(group.items).concat(existing.items.filter(i=>!ids.has(i.id)));
+    existing.items=clone(group.items).concat(existing.items.filter(i=>i.id!=='day3-eikando'&&!ids.has(i.id)));
   }else x.data.dailyChecklist.push(clone(group));
   const pre=x.data.preTripChecklist.find(i=>i.id==='pre-kyoto');
   if(pre)pre.text=defaults.preTripChecklist.find(i=>i.id==='pre-kyoto').text;
-  if(x.admissionOptions)delete x.admissionOptions.kodaiji;
+  if(x.admissionOptions){
+    delete x.admissionOptions.kodaiji;
+    delete x.admissionOptions.garden;
+    delete x.admissionOptions.sanmon;
+  }
   x.kyotoUpdate=KYOTO_UPDATE;
   if(persist)localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
   return x;
@@ -430,12 +425,14 @@ function applyFlightUpdate(x){
 }
 
 function scheduleBackupKey(){
+  const kyoto=STORAGE_KEY+'-before-'+KYOTO_UPDATE;
+  if(localStorage.getItem(kyoto))return kyoto;
   const flight=STORAGE_KEY+'-before-'+FLIGHT_BOOKING.version;
   if(localStorage.getItem(flight))return flight;
   const hotel=STORAGE_KEY+'-before-'+HOTEL_TRIP_UPDATE.version;
   if(localStorage.getItem(hotel))return hotel;
-  const kyoto=STORAGE_KEY+'-before-'+KYOTO_UPDATE;
-  return localStorage.getItem(kyoto)?kyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
+  const previousKyoto=STORAGE_KEY+'-before-'+PREVIOUS_KYOTO_UPDATE;
+  return localStorage.getItem(previousKyoto)?previousKyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
 function freshState(){return {flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
@@ -610,8 +607,7 @@ function renderTimeline(){
       'd2p1':'오사카 쓰텐카쿠','d2-shitennoji':'오사카 시텐노지',
       'd2p2':'오사카성 천수각','d2-museum':'오사카 역사박물관','d2p4':'오사카 우메다 스카이빌딩 공중정원',
       'd3-togetsukyo':'교토 도게츠교','d3-tenryuji':'교토 덴류지','d3-bamboo':'교토 아라시야마 대나무숲','d3p3':'교토 산넨자카 니넨자카',
-      'd3p5':'교토 기온 하나미코지','d3p6':'교토 난젠지',
-      'd3p7':'교토 에이칸도','d3p8':'교토 청수사 기요미즈데라',
+      'd3p5':'교토 기온 하나미코지','d3-romantic-train':'사가노 도롯코 단풍열차','d3p8':'교토 청수사 기요미즈데라',
       'd4p3':'일본 나라공원','d4p4':'일본 나라 도다이지'
     };
     const naver=node.querySelector('.naver-link');
@@ -774,13 +770,13 @@ function renderTravelTools(){
   document.querySelector('#deadlineNote').textContent=[
     '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
     '시텐노지 10:40 → 역사박물관 14:05 → 공중정원 16:15 목표 · 지연 시 시텐노지 정원부터 생략.',
-    '덴류지 정원 07:50 → 에이칸도 10:45 → 청수사 입장 준비 17:10 · 야간 17:30~19:00 · 에비스초·호텔 복귀 21:30 이후 가능.',
+    '09:30 도롯코 가메오카 출발 → 아라시야마 오전 관람 → 청수사 입장 준비 17:10 · 야간 17:30~19:00.',
     '12:20 공항 이동 시작 · 긴테쓰나라에서 짐 회수 후 JR나라로 이동 · KIX 15:00 목표, 16:00 전 도착 · 면세 반출 확인 후 수하물 위탁.'
   ][selectedDay];
   const choices=state.admissionOptions||{};
   document.querySelectorAll('[data-admission]').forEach(el=>{el.checked=!!choices[el.dataset.admission];el.onchange=()=>{state.admissionOptions=state.admissionOptions||{};state.admissionOptions[el.dataset.admission]=el.checked;save();renderTravelTools();};});
-  const extra=(choices.garden?600:0)+(choices.sanmon?600:0)+(choices.shitenGarden?300:0);
-  document.querySelector('#admissionTotal').textContent=yen(9100+extra);
+  const extra=choices.shitenGarden?300:0;
+  document.querySelector('#admissionTotal').textContent=yen(7600+extra);
   document.querySelector('#previousBackupBtn').hidden=!localStorage.getItem(scheduleBackupKey());
 }
 document.querySelector('#previousBackupBtn').onclick=function(){
