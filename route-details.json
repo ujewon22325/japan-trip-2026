@@ -22,6 +22,17 @@
     "destination": "Kuromon Ichiba Market",
     "tip": ""
   },
+  "d1-kuromon-sanpei": {
+    "kind": "도보",
+    "title": "구로몬시장 입구 → 구로몬 산페이",
+    "steps": [
+      "닛폰바시역 10번 출구 또는 기존 점심 식당에서 구로몬시장 아케이드로 들어가요.",
+      "시장 안의 黒門三平(日本橋1-22-25) 간판을 찾아 들어가요. 식사 후 같은 시장 통로에서 구경을 이어가요.",
+      "다음 일정은 16:00 출발 기준 난바 야사카 신사예요."
+    ],
+    "origin": "Osaka Metro Nippombashi Station Exit 10",
+    "destination": "黒門三平 黒門市場店 大阪府大阪市中央区日本橋1-22-25"
+  },
   "d1-yasaka": {
     "kind": "도보",
     "title": "구로몬시장 → 난바 야사카 신사",

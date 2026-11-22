@@ -3,6 +3,62 @@ const TRIP_END='2026-11-28';
 const STORAGE_KEY='kansai-trip-manager-v2';
 
 const SCHEDULE_VERSION='2026-09-22-shitennoji';
+const KUROMON_SANPEI_PLAN={
+  "id": "d1-kuromon-sanpei",
+  "time": "14:40-15:10 전후 (구로몬시장 일정 내)",
+  "name": "해산물 식당 · 구로몬 산페이 (黒門三平)",
+  "fee": "해산물덮밥 1,650엔 · 4인 6,600엔",
+  "note": "구로몬시장 안에서 20~30분 들르는 선택 일정이에요. 오오키니에서 점심을 먹었다면 포장 초밥·사시미를 골라 매장에서 나눠 먹고, 점심을 건너뛰었다면 덮밥을 주문해요. 대기가 길면 시장 구경을 이어가고 16:00에는 난바 야사카 신사로 출발해요.",
+  "map": "黒門三平 黒門市場店 大阪府大阪市中央区日本橋1-22-25",
+  "optional": true,
+  "restaurant": {
+    "facts": [
+      {
+        "label": "위치",
+        "value": "구로몬시장 안 · 大阪府大阪市中央区日本橋1-22-25"
+      },
+      {
+        "label": "영업시간",
+        "value": "일본어 공식 점포 정보 08:00~19:30(주문 마감 19:00) · 한국어 공식 안내는 20:00 마감으로 표기. 11/25 수요일 14시대는 공통 영업시간이에요."
+      },
+      {
+        "label": "대표 메뉴",
+        "value": "해산물덮밥·연어알 연어덮밥·모둠 초밥 각각 1,650엔, 참치 중뱃살덮밥 2,200엔, 성게·연어알덮밥 3,850엔. 해산물덮밥 구성은 당일 입고에 따라 달라요."
+      },
+      {
+        "label": "주문·좌석",
+        "value": "포장 초밥·사시미는 계산 후 빈자리를 이용해요. 덮밥은 계산대에서 주문·결제하고 번호표를 받은 뒤 앉으면 직원이 가져다줘요. 좌석 예약도 가능해요."
+      },
+      {
+        "label": "결제",
+        "value": "타베로그 안내 기준 Visa·Mastercard·JCB·AMEX·UnionPay와 교통계 IC 결제가 가능해요. 삼성월렛·카드 탭 결제 지원은 매장에서 확인하세요."
+      }
+    ],
+    "sources": [
+      {
+        "label": "공식 점포 안내",
+        "url": "https://kuromon-sanpei.co.jp/company-2/business/shop/kuromonichibamise/"
+      },
+      {
+        "label": "공식 메뉴·가격",
+        "url": "https://kuromon-sanpei.co.jp/company-2/business/shop/kuromonichibamise/kuromonmenu/"
+      },
+      {
+        "label": "한국어 주문·좌석 예약 안내",
+        "url": "https://kuromon-sanpei.co.jp/ko/%EC%BF%A0%EB%A1%9C%EB%AA%AC-%EC%82%B0%ED%8E%98%EC%9D%B4%EC%97%90-%EC%98%A4%EC%8B%A0-%EA%B2%83%EC%9D%84-%ED%99%98%EC%98%81%ED%95%A9%EB%8B%88%EB%8B%A4/"
+      },
+      {
+        "label": "타베로그 결제 정보",
+        "url": "https://tabelog.com/osaka/A2701/A270202/27050275/dtlratings/"
+      },
+      {
+        "label": "구로몬시장 행사 공지",
+        "url": "https://prtimes.jp/main/html/rd/p/000000001.000194545.html"
+      }
+    ]
+  }
+};
+const KUROMON_MARKET_EVENT="11/25는 구로몬시장 블랙프라이데이 기간(11/18~28)이에요. 참여 점포의 행사 상품은 현장에서 확인하세요.";
 const defaults={
   days:[
     {
@@ -10,13 +66,15 @@ const defaults={
       notes:[
         '첫날은 항공편 지연에 대응하기 쉽도록 난바 중심으로 이동.',
         '구로몬시장은 늦은 오후부터 일부 점포가 닫을 수 있어 도착 후 우선 방문.',
-        '항공편이 늦으면 난바 야사카 신사을 먼저 생략.'
+        '항공편이 늦으면 난바 야사카 신사을 먼저 생략.',
+        KUROMON_MARKET_EVENT
       ],
       fallback:'난바 야사카 신사 → 신사이바시 일부 순서로 생략',
       plans:[
         {id:'d1p1',time:'공항 도착 후',name:'KIX → 난바 (난카이)',fee:'교통비 별도',note:'라피트 최단 약 34분. 항공편 도착시간에 맞춰 선택.',map:'Nankai Namba Station Osaka'},
         {"id":"d1-naniwa-lunch","time":"13:30-14:15 (도착 후 조정)","name":"점심 · 마이도 오오키니 浪速日本橋食堂","fee":"1인 약 1,000~2,000엔 · 4인 약 4,000~8,000엔","note":"난바 도착·숙소 짐 보관 후 점심 30~45분. 닛폰바시역 10번 출구 옆 → 구로몬시장까지 도보 약 2~5분. 14:15까지 식사가 어렵거나 시장 먹거리를 먹으려면 생략. 주소: 大阪府大阪市中央区日本橋1-17-20 日本橋丸中ビル 1F. 공식 영업 09:00~다음 날 07:00, 일요일 휴무. 다른 사이트와 영업시간 차이가 있어 출발 전 재확인. 타베로그: 신용카드·전자머니 불가, QR결제 가능(브랜드 미확인); 엔화 현금 준비. 반찬을 고르고 밥·국을 추가하는 셀프 식당. 예약 불가 안내. 전화 +81-6-6630-7595. 2026-10-05 확인.","map":"浪速日本橋食堂 大阪府大阪市中央区日本橋1-17-20","optional":true},
         {id:'d1p2',time:'14:30-16:00',name:'구로몬시장',fee:'무료',note:'먹거리부터 우선. 점포별 영업시간 상이, 늦은 오후 이른 마감 주의.',map:'Kuromon Ichiba Market Osaka'},
+        KUROMON_SANPEI_PLAN,
         {id:'d1-yasaka',time:'16:00-17:00',name:'난바 야사카 신사',fee:'무료',note:'06:00-17:00 개문. 구로몬시장에서 이동 포함, 17시 폐문 전에 관람. 지연 시 먼저 생략.',map:'Namba Yasaka Shrine Osaka'},
         {id:'d1p4',time:'17:00-18:00',name:'호젠지 · 호젠지요코초',fee:'무료',note:'경내 상시 참배 가능. 사무소/고슈인 10:00-18:00 기준.',map:'Hozenji Temple Osaka'},
         {id:'d1p5',time:'18:00-20:00',name:'도톤보리',fee:'무료',note:"저녁 인파가 많고 식당 대기 가능. 다리 위 통행 방해 주의.\n타코야키 선택 후보 (둘 중 원하는 곳 방문 · 도톤보리 18:00~20:00 안에 20~30분, 대기 별도):\n① 크레오루 도톤보리점 くれおーる: 道頓堀1-6-4. 공식 10:00~23:00·무휴. 기본 8개 803엔 / 반숙계란+파 6개 803엔(공식 매장식사 메뉴; 포장 가격 다를 수 있음). 카드 Visa·Mastercard 등 가능 안내, 포장 판매대는 확인. 매장 식사는 1인 1음료·1주문 안내.\n② 오도리다코 도톤보리점 踊りだこ: 道頓堀1-7-24. 11:00~21:00·부정기 휴무 안내. 한 알마다 통쭈꾸미 1마리. 4개 600엔 / 6개 800엔 / 8개 1,200엔(게시 메뉴 기준). 카드·전자머니·QR 불가 안내, 현금 준비.\n2026-10-05 확인, 여행 전 가격·영업 재확인. 두 곳 모두 방문할 필요 없이 현장에서 선택.",map:'Dotonbori Osaka'},
@@ -435,7 +493,7 @@ function scheduleBackupKey(){
   return localStorage.getItem(previousKyoto)?previousKyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
-function freshState(){return {flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
+function freshState(){return {kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
   // Keep the complete pre-update state recoverable, including personal edits.
@@ -505,6 +563,21 @@ function addTaxRefundInfo(x){
   return x;
 }
 
+function applyKuromonSanpeiUpdate(x){
+  if(x.kuromonSanpeiUpdate)return x;
+  const day=x.data.days.find(d=>d.date===TRIP_START);
+  if(day){
+    const marketIndex=day.plans.findIndex(plan=>plan.id==='d1p2');
+    const existing=day.plans.find(plan=>plan.id===KUROMON_SANPEI_PLAN.id || /[쿠구]로몬\s*산페이|黒門三平/.test(plan.name));
+    if(marketIndex>=0&&!existing)day.plans.splice(marketIndex+1,0,clone(KUROMON_SANPEI_PLAN));
+    if(!Array.isArray(day.notes))day.notes=[];
+    if(!day.notes.includes(KUROMON_MARKET_EVENT))day.notes.push(KUROMON_MARKET_EVENT);
+  }
+  x.kuromonSanpeiUpdate=true;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -514,7 +587,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))));
+      return applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))))))));
     }
   }catch(e){}
   return freshState();
@@ -569,6 +642,34 @@ function renderSummary(){
   const done=d.plans.filter(function(p){return state.completed[p.id];}).length;
   document.querySelector('#todaySummary').innerHTML='<div><strong>'+d.date+' · '+esc(d.city)+'</strong><span>'+d.plans.length+'개 일정 중 '+done+'개 완료</span></div><span class="critical">'+esc(d.fallback)+'</span>';
 }
+function appendSanpeiInfo(node,plan){
+  const restaurant=KUROMON_SANPEI_PLAN.restaurant;
+  if(plan.id!==KUROMON_SANPEI_PLAN.id||plan.map!==KUROMON_SANPEI_PLAN.map)return;
+  const details=document.createElement('details');
+  details.className='route-guide';
+  const summary=document.createElement('summary');
+  summary.textContent='식당 정보 · 메뉴·가격·주문·결제';
+  details.appendChild(summary);
+  for(const fact of restaurant.facts){
+    const row=document.createElement('p');
+    const label=document.createElement('strong');
+    label.textContent=fact.label+' ';
+    row.append(label,fact.value);
+    details.appendChild(row);
+  }
+  for(const source of restaurant.sources){
+    const row=document.createElement('p');
+    const link=document.createElement('a');
+    link.href=source.url;
+    link.textContent=source.label+' ↗';
+    link.target='_blank';
+    link.rel='noopener noreferrer';
+    row.appendChild(link);
+    details.appendChild(row);
+  }
+  node.querySelector('.plan-note').after(details);
+}
+
 function renderTimeline(){
   const wrap=document.querySelector('#timeline'); wrap.innerHTML='';
   const tpl=document.querySelector('#timelineItemTemplate');
@@ -598,11 +699,12 @@ function renderTimeline(){
       [['크레오루 지도 ↗','https://www.google.com/maps/search/?api=1&query=くれおーる+道頓堀1-6-4'],['크레오루 공식 메뉴 ↗','https://creo-ru.com/creo-ru-store/tenpo/dotonbori/'],['오도리다코 지도 ↗','https://www.google.com/maps/search/?api=1&query=踊りだこ+道頓堀1-7-24'],['오도리다코 메뉴·영업 ↗','https://tabelog.com/osaka/A2701/A270202/27092198/']].forEach(([label,url])=>{const p=document.createElement('p');const a=document.createElement('a');a.href=url;a.textContent=label;a.target='_blank';a.rel='noopener noreferrer';p.appendChild(a);detail.appendChild(p);});
       node.querySelector('.plan-note').after(detail);
     }
+    appendSanpeiInfo(node,plan);
     appendWalkingGuide(node,plan);
     appendRouteGuide(node,plan);
     node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
     const naverQueries={
-      'd1-naniwa-lunch':'浪速日本橋食堂 오사카','d1p2':'오사카 구로몬시장','d1-yasaka':'오사카 난바 야사카 신사',
+      'd1-naniwa-lunch':'浪速日本橋食堂 오사카','d1p2':'오사카 구로몬시장','d1-kuromon-sanpei':'오사카 구로몬 산페이','d1-yasaka':'오사카 난바 야사카 신사',
       'd1p4':'오사카 호젠지','d1p5':'오사카 도톤보리','d1p6':'오사카 신사이바시스지',
       'd2p1':'오사카 쓰텐카쿠','d2-shitennoji':'오사카 시텐노지',
       'd2p2':'오사카성 천수각','d2-museum':'오사카 역사박물관','d2p4':'오사카 우메다 스카이빌딩 공중정원',
@@ -744,7 +846,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
