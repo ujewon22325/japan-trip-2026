@@ -74,26 +74,15 @@
     "origin": "Ebisubashi Bridge Dotonbori",
     "destination": "Shinsaibashi-suji Shopping Street"
   },
-  "d2p1": {
-    "kind": "도보",
-    "title": "호텔 → 신세카이·쓰텐카쿠",
-    "steps": [
-      "호텔에서 동쪽 신세카이·쓰텐카쿠 방향으로 도보 약 5분(호텔 공식).",
-      "08:45 전후 출발, 시간지정권 교환과 대기 여유 확보. 09:00 입장은 보장되지 않음."
-    ],
-    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
-    "destination": "Tsutenkaku Osaka",
-    "tip": ""
-  },
   "d2-walk-shitennoji": {
     "kind": "도보",
-    "title": "쓰텐카쿠 → 시텐노지 서문",
+    "title": "숙소 → 시텐노지 서문",
     "steps": [
-      "쓰텐카쿠에서 덴노지 동물원 북쪽의 에비스히가시를 지나 북동쪽으로 이동.",
-      "마쓰야마치스지를 따라 북상하여 시텐노지 서대문(石鳥居·西大門) 쪽으로 진입."
+      "숙소에서 동쪽 덴노지 방면으로 걸어 시텐노지 서문(石鳥居·西大門) 쪽으로 접근.",
+      "서문에서 중심가람 안내 표지를 따라 이동."
     ],
-    "origin": "Tsutenkaku",
-    "destination": "Shitennoji Temple west gate"
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Shitennoji Temple West Gate Osaka"
   },
   "d2-shitennoji": {
     "kind": "경내 도보",
@@ -308,73 +297,6 @@
     "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
     "tip": "20:00 출발·21:30 이후 복귀는 목표값. 기타하마 환승 공식: https://www.keihan.co.jp/traffic/station/011/info.html"
   },
-  "d4p1": {
-    "kind": "지하철 + 긴테쓰 전철",
-    "title": "호텔 → 에비스초 → 긴테쓰닛폰바시 → 긴테쓰나라",
-    "steps": [
-      "에비스초역(K18)에서 사카이스지선 북행 → 닛폰바시역(K17) 한 정거장.",
-      "지하 연결통로로 긴테쓰닛폰바시역(A02) 환승. 표준 환승 약 5분, 캐리어·승강장 접근 여유 추가.",
-      "긴테쓰나라행 급행·쾌속급행 → 긴테쓰나라역(A28) 종점. 야마토사이다이지 종착이면 나라행 추가 환승. 특급은 별도 요금.",
-      "08:20 도착 목표로 로커 확보. 호텔 출발부터 약 60~75분 예상."
-    ],
-    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
-    "destination": "Kintetsu Nara Station Exit 1",
-    "tip": "07:20 전후 출발 권장. 역간 환승 공식: https://www.kintetsu.co.jp/soukatsu/kounai/nipponbashi.html"
-  },
-  "d4p2": {
-    "kind": "역내 이동",
-    "title": "긴테쓰나라역 개찰구 → 코인로커 → 공원 방향 출구",
-    "steps": [
-      "긴테쓰나라역 지하 개찰구를 나온 후 역 구내 ‘Coin Lockers/コインロッカー’ 표지에서 짐 보관.",
-      "히가시무키 상점가가 아닌 나라공원·현청(県庁) 방면 1번 출구를 기준으로 지상 이동."
-    ],
-    "tip": "큰 짐 로커가 없으면 역내 유인 보관소 운영 시간 확인.",
-    "origin": "Kintetsu-Nara Station",
-    "destination": "Kintetsu Nara Station Exit 1"
-  },
-  "d4p3": {
-    "kind": "도보",
-    "title": "긴테쓰나라역 1번 출구 → 나라공원",
-    "steps": [
-      "긴테쓰나라역 1번 출구에서 노보리오지(登大路)를 따라 동쪽으로 이동.",
-      "나라현청·고후쿠지 북쪽을 지나 노보리오지엔치(登大路園地) 부근 나라공원 진입."
-    ],
-    "origin": "Kintetsu Nara Station Exit 1",
-    "destination": "Nara Park Noborioji Enchi"
-  },
-  "d4p4": {
-    "kind": "도보",
-    "title": "나라공원 → 도다이지 대불전",
-    "steps": [
-      "노보리오지엔치에서 동쪽 나라국립박물관 북쪽을 따라 이동.",
-      "도다이지 남대문(南大門)을 지나 북쪽 대불전(大仏殿) 매표소로 진입."
-    ],
-    "origin": "Nara Park Noborioji Enchi",
-    "destination": "Todai-ji Daibutsuden"
-  },
-  "d4p5": {
-    "kind": "도보",
-    "title": "도다이지 → 긴테쓰나라역 → JR나라역 준비",
-    "steps": [
-      "대불전에서 남대문으로 내려와 노보리오지 서쪽을 따라 긴테쓰나라역으로 복귀.",
-      "지하 코인로커에서 짐을 꺼내고 역 주변에서 빠르게 점심.",
-      "공항행 JR을 타려면 긴테쓰나라역에서 JR나라역까지 서쪽으로 약 1.0~1.2km를 더 이동해야 함(다음 카드)."
-    ],
-    "origin": "Todai-ji Daibutsuden",
-    "destination": "Kintetsu-Nara Station"
-  },
-  "d4p6": {
-    "kind": "도보 + JR + 하루카",
-    "title": "긴테쓰나라역 → JR나라역 → 덴노지역 → 간사이공항역",
-    "steps": [
-      "긴테쓰나라역에서 히가시무키 상점가를 남하해 산조도리(三条通)에 합류한 뒤 서쪽 JR나라역 동쪽 출입구까지 이동. 두 나라역은 서로 다른 건물이며 도보 약 15~20분.",
-      "JR나라역에서 야마토지선 오사카·덴노지 방면 야마토지쾌속/쾌속 승차 → JR 덴노지역 하차.",
-      "JR 덴노지역에서 공항행 특급 하루카(별도 특급권 조건 확인)로 환승 → JR 간사이공항역 종점 하차. 간사이공항 제1터미널은 역 2층 연결 통로 이용."
-    ],
-    "tip": "JR 간사이공항역과 난카이 간사이공항역 개찰구를 혼동하지 말 것. 비행편 출발시각·터미널 기준 탑승 전 공항 도착 여유 확보.",
-    "origin": "Kintetsu-Nara Station",
-    "destination": "Kansai International Airport Terminal 1"
-  },
   "d1-hotel-bags": {
     "kind": "호텔 내 이동",
     "title": "호텔 로비 셀프 짐 보관 → 점심 출발",
@@ -435,22 +357,22 @@
     "tip": "전체 약 40~60분 계획. 주유패스 유효·대상 구간은 해당 패스로 입장."
   },
   "d4-hotel-checkout": {
-    "kind": "호텔 내 이동",
-    "title": "호텔 체크아웃 → 에비스초역",
+    "kind": "도보",
+    "title": "객실 → 로비 셀프 보관함",
     "steps": [
-      "07:00 전후 짐을 모두 챙기고 태블릿 체크아웃.",
-      "캐리어·여권을 지참해 에비스초역으로 출발. 나라에서 짐을 찾고 공항으로 직행하므로 호텔에 짐을 남기지 않기."
+      "태블릿으로 체크아웃한 뒤 로비 체인 잠금식 보관함에 캐리어를 맡겨요.",
+      "빈자리가 없으면 난카이 신이마미야역 코인로커를 확인하고 공항행 열차 타기 전에 회수해요."
     ],
     "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
-    "destination": "Ebisucho Station",
-    "tip": ""
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "tip": "호텔 공식: https://www.eslead-hotel.com/en/namba-3/"
   },
   "d2-seven-atm": {
     "kind": "도보 · 출금",
     "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
     "steps": [
       "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
-      "출금 후 쓰텐카쿠까지 도보, 09:00 전후 접수 목표."
+      "출금 후 10:15 전후 시텐노지로 이동할 준비를 해요."
     ],
     "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
     "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
@@ -472,7 +394,7 @@
     "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
     "steps": [
       "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
-      "체크아웃·짐 지참 → 출금 → 에비스초역에서 07:20 전후 나라 이동."
+      "호텔에 짐을 맡기고 출금한 뒤 쓰텐카쿠로 걸어요."
     ],
     "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
     "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
@@ -488,5 +410,72 @@
     "origin": "Torokko Kameoka Station Kyoto",
     "destination": "Torokko Arashiyama Station Kyoto",
     "tip": "사가노 2호. 예약 화면에서 도롯코 가메오카 출발·도롯코 아라시야마 하차를 확인해요."
+  },
+  "d4-tsutenkaku": {
+    "kind": "도보",
+    "title": "호텔 → 신세카이 쓰텐카쿠",
+    "steps": [
+      "숙소에서 신세카이 방향으로 도보 약 5분.",
+      "쓰텐카쿠 일반 전망대는 시간지정 입장. 09:00 전후 입장을 목표로 해요."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Tsutenkaku Osaka",
+    "tip": "운영·요금: https://www.tsutenkaku.co.jp/annai/"
+  },
+  "d4-tennoji": {
+    "kind": "도보",
+    "title": "쓰텐카쿠 → 덴노지공원 텐시바",
+    "steps": [
+      "신세카이에서 덴노지역 방향으로 걸어 덴노지공원 텐시바(てんしば)로 이동해요.",
+      "텐시바 산책 후 덴노지역 앞을 지나 아베노 하루카스 쪽으로 이어가요."
+    ],
+    "origin": "Tsutenkaku Osaka",
+    "destination": "Tenshiba Tennoji Park Osaka",
+    "tip": "지도에서 공원 입구를 확인하세요. 동물원 입장은 이 동선에 포함되지 않아요."
+  },
+  "d4-harukas": {
+    "kind": "도보",
+    "title": "텐시바 → 아베노 하루카스 16층 → 전망대",
+    "steps": [
+      "덴노지역 앞에서 아베노 하루카스 타워관으로 가요.",
+      "B1층 또는 2층에서 셔틀 엘리베이터로 16층 이동. 현장권을 사거나 공식 사전권 QR로 입장해요.",
+      "16층 입장 게이트에서 전망대 전용 엘리베이터를 이용해요."
+    ],
+    "origin": "Tenshiba Tennoji Park Osaka",
+    "destination": "Harukas 300 Observatory Osaka",
+    "tip": "공식 티켓: https://www.abenoharukas-300.jp/observatory/ticket/"
+  },
+  "d4-bag-pickup": {
+    "kind": "지하철 + 도보",
+    "title": "덴노지역 → 도부쓰엔마에역 → 숙소",
+    "steps": [
+      "하루카스에서 오사카 메트로 덴노지역(M23)으로 이동.",
+      "미도스지선 우메다·신오사카 방면 한 정거장 → 도부쓰엔마에역(M22) → 도보로 숙소.",
+      "로비 보관함에서 짐을 찾아요. 신이마미야역 코인로커를 썼다면 그 역에서 회수해요."
+    ],
+    "origin": "Harukas 300 Observatory Osaka",
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6"
+  },
+  "d4-nankai-kix": {
+    "kind": "난카이 전철 + 도보",
+    "title": "숙소 → 난카이 신이마미야역 → 간사이공항역 → 제1터미널",
+    "steps": [
+      "호텔에서 신이마미야역까지 도보 약 7~10분. JR 개찰이 아닌 난카이 개찰로 이동해요.",
+      "간사이공항행 공항급행을 타고 종점 간사이공항역 하차. 배차·승강장은 당일 재확인.",
+      "제1터미널 연결통로를 지나 출국 절차를 진행해요."
+    ],
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Kansai International Airport Terminal 1",
+    "tip": "난카이 공식 시간표: https://www.nankai.co.jp/en_railway/access-timetable"
+  },
+  "d4-icoca-return": {
+    "kind": "도보",
+    "title": "난카이 간사이공항역 개찰 밖 → JR 창구",
+    "steps": [
+      "난카이 개찰을 나와 같은 역사 개찰구 밖 JR 미도리노마도구치로 이동.",
+      "반납 여부는 선택. 10~20분과 대기를 고려하고 줄이 길면 면세 반출 확인·체크인 우선."
+    ],
+    "origin": "Nankai Kansai Airport Station",
+    "destination": "JR Kansai Airport Station Ticket Office"
   }
 }

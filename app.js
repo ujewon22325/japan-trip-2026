@@ -83,17 +83,15 @@ const defaults={
     },
     {
       date:'2026-11-26',city:'오사카 핵심 명소 · 시텐노지',short:'오사카',
-      notes:[
-        '쓰텐카쿠 → 시텐노지 → 오사카성 → 역사박물관 → 공중정원. 이동시간은 예상값.',
-        '주유패스 이용자는 쓰텐카쿠 1층 티켓센터에서 당일 시간지정권 교환. 09:00 입장은 확정이 아니므로 일찍 방문.',
-        '시텐노지는 중심가람 45분 우선. 정원은 여유가 있을 때만. 중심가람·정원은 주유패스 무료, 보물관은 별도.',
-        '주유패스 사용 시 포함 지하철은 패스로 입장. 트래블로그를 태그하면 별도 운임 발생.',
-        '우메다 공중정원 16:15 입장은 주유패스 무료 시간대가 아님. 옥상 강풍·추위 대비.'
+      notes: [
+        "10:15 전 관광 일정은 미정. 10:40 시텐노지 → 오사카성 → 역사박물관 → 우메다 공중정원 순서.",
+        "시텐노지는 중심가람 45분 우선. 정원은 여유가 있을 때만. 중심가람·정원은 주유패스 무료, 보물관은 별도.",
+        "주유패스 사용 시 포함 지하철은 패스로 입장. 트래블로그를 태그하면 별도 운임 발생.",
+        "우메다 공중정원 16:15 입장은 주유패스 무료 시간대가 아님. 옥상 강풍·추위 대비."
       ],
       fallback:'시텐노지 정원 생략 → 중심가람 관람 단축. 크게 지연되면 시텐노지 생략, 공중정원 16:15 유지',
       plans:[
-        {id:'d2p1',time:'09:00-10:15',name:'신세카이 + 쓰텐카쿠',fee:'1,500엔 · 주유패스 무료',note:'시간지정 입장제. 패스는 당일 현장 시간지정권 교환 필요. 늦은 입장 배정 시 뒤 일정 조정.',map:'Tsutenkaku Osaka'},
-        {id:'d2-walk-shitennoji',time:'10:15-10:40',name:'시텐노지로 도보 이동',fee:'무료',note:'도보 약 25분 예상. 실제 출구·보행속도에 따라 달라짐.',map:'Shitennoji Temple Osaka'},
+        {"id": "d2-walk-shitennoji", "time": "10:15-10:40", "name": "숙소 → 시텐노지로 도보 이동", "fee": "무료", "note": "10:40 시텐노지 관람에 맞춰 숙소에서 서문 쪽으로 이동해요. 도보 약 20~25분 예상. 10:15 전 관광 일정은 비워뒀어요.", "map": "Shitennoji Temple West Gate Osaka"},
         {id:'d2-shitennoji',time:'10:40-11:25',name:'시텐노지 · 중심가람',fee:'500엔 · 주유패스 무료',note:'11월 08:30-16:00. 중심가람 우선, 정원은 여유 시 추가 300엔(주유패스 무료). 일반 경내 무료. 보물관 500엔 별도·이번 코스 제외. 정원 휴원일 확인.',map:'Shitennoji Temple Osaka'},
         {id:'d2-to-castle',time:'11:25-12:05',name:'시텐노지 → 오사카성 이동',fee:'교통비 별도 · 주유패스 포함',note:'시텐노지마에유히가오카역까지 도보 → 다니마치선 다니마치욘초메역 → 오사카성 도보. 총 40분 예상.',map:'Osaka Castle'},
         {id:'d2p2',time:'12:05-13:15',name:'오사카성공원 + 천수각',fee:'1,200엔 · 주유패스 무료',note:'공원·천수각 핵심 70분. 천수각 09:00-18:00, 최종 17:30. 공원 자체 무료.',map:'Osaka Castle'},
@@ -223,21 +221,56 @@ const defaults={
       ]
     },
     {
-      date:'2026-11-28',city:'나라 반일 → KIX',short:'나라',
-      notes:[
-        '16:00 전 공항 도착이 목표지만 실제 이동은 15:00 전후 KIX 도착 목표.',
-        '긴테쓰나라역 도착 즉시 짐 보관. 유인 수하물 보관은 09:00부터.',
-        '나라→KIX 추천은 JR나라 → 덴노지 → 하루카.',
-        '정확한 11/28 열차 시간은 출발 1개월 전과 여행 직전 재확인.'
+      "date": "2026-11-28",
+      "city": "오사카 · 신세카이·덴노지 → KIX",
+      "short": "오사카",
+      "notes": [
+        "체크아웃 후 호텔 로비 셀프 보관함에 짐을 두고 오전에 쓰텐카쿠 → 덴노지 텐시바 → 하루카스 300. 여권과 귀중품은 지참해요.",
+        "쓰텐카쿠는 시간지정 입장이라 09:00 전후를 목표로 해요. 하루카스 300은 일반 성인 현장 2,200엔, 공식 웹 사전권 1,980엔이에요.",
+        "12:00 전후 전망대에서 나와 호텔 짐을 회수해요. 13:00 전후 숙소에서 출발해 난카이 신이마미야역에서 공항급행을 타고, KIX 제1터미널에 14:30 전후 도착을 목표로 해요."
       ],
-      fallback:'나라공원 산책시간 축소 → 점심 테이크아웃. 공항 이동은 지연시키지 않기',
-      plans:[
-        {id:'d4p1',time:'07:30-08:20',name:'오사카난바 → 긴테쓰나라',fee:'약 680엔',note:'일반열차 중심. 도착 즉시 짐 보관.',map:'Kintetsu Nara Station'},
-        {id:'d4p2',time:'08:20-08:35',name:'긴테쓰나라역 코인로커',fee:'약 400-1,500엔+',note:'대형 로커 성수기 소진 가능. 현금형은 100엔 동전 필요할 수 있음.',map:'Kintetsu Nara Station'},
-        {id:'d4p3',time:'08:35-09:35',name:'나라공원',fee:'무료',note:'사슴은 야생동물. 비닐·종이 관리, 먹이를 오래 들고 놀리지 않기.',map:'Nara Park'},
-        {id:'d4p4',time:'09:35-11:00',name:'도다이지 대불전',fee:'800엔',note:'11-3월 08:00-17:00. 공식 안내 기준 현금.',map:'Todai-ji Nara'},
-        {id:'d4p5',time:'11:00-12:20',name:'긴테쓰나라 복귀 · 짐 회수 · 점심',fee:'식비 별도',note:'늦으면 테이크아웃.',map:'Kintetsu Nara Station'},
-        {id:'d4p6',time:'12:20-15:00',name:'JR나라 → 덴노지 → 하루카 → KIX',fee:'교통비 별도',note:'공항 15:00 전후 도착 목표. HARUKA One-way Ticket은 자격·구매조건 재확인.',map:'Kansai International Airport'}
+      "fallback": "쓰텐카쿠 입장 대기가 길면 신세카이에서 시간을 줄이고, 하루카스 관람은 12:00 전후에 마쳐요. 짐 회수와 13:00 전후 공항 이동을 우선해요.",
+      "plans": [
+        {
+          "id": "d4-tsutenkaku",
+          "time": "09:00-10:15",
+          "name": "신세카이 · 쓰텐카쿠 일반 전망대",
+          "fee": "성인 1,500엔",
+          "note": "숙소에서 도보 약 5분. 일반 전망대 09:00 개장, 시간지정 입장. 대기와 관람을 함께 잡은 시간이에요.",
+          "map": "Tsutenkaku Osaka"
+        },
+        {
+          "id": "d4-tennoji",
+          "time": "10:15-10:55",
+          "name": "덴노지 · 텐시바 산책",
+          "fee": "무료",
+          "note": "신세카이에서 덴노지공원 텐시바를 지나 덴노지역 쪽으로 걸어요. 도보와 짧은 산책 포함 약 40분.",
+          "map": "Tenshiba Tennoji Park Osaka"
+        },
+        {
+          "id": "d4-harukas",
+          "time": "10:55-12:00",
+          "name": "아베노 하루카스 300 전망대",
+          "fee": "성인 현장 2,200엔 · 공식 웹 사전권 1,980엔",
+          "note": "B1층 또는 2층에서 셔틀 엘리베이터를 타고 16층 입장 게이트로 가요. 현장권은 16층에서 구매. 기본 운영 09:00~22:00.",
+          "map": "Harukas 300 Observatory Osaka"
+        },
+        {
+          "id": "d4-bag-pickup",
+          "time": "12:00-12:45",
+          "name": "숙소 복귀 · 짐 회수",
+          "fee": "교통비 별도",
+          "note": "오사카 메트로 덴노지역에서 미도스지선 우메다 방면으로 한 정거장, 도부쓰엔마에역 하차 후 숙소로 이동해 짐을 찾아요.",
+          "map": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6"
+        },
+        {
+          "id": "d4-nankai-kix",
+          "time": "13:00-14:30 전후",
+          "name": "숙소 → 난카이 신이마미야 → 간사이공항",
+          "fee": "교통비 별도",
+          "note": "숙소에서 난카이 신이마미야역까지 도보 약 7~10분. 간사이공항행 공항급행으로 직행, 승차 약 40~45분. 14:30 전후 제1터미널 도착 목표. ZE0614 최신 출발 시각은 E-Ticket에서 확인해요.",
+          "map": "Kansai International Airport Terminal 1"
+        }
       ]
     }
   ],
@@ -249,10 +282,10 @@ const defaults={
     {id:'pre-battery',text:'보조배터리·전자기기 기내 반입 조건 확인하고 위탁수하물에 넣지 않기'},
     {id:'pre-data',text:'일본용 eSIM·로밍 준비 및 출국 전 개통 방법 저장'},
     {id:'pre-money',text:'해외결제 카드, 소액 엔화 현금, 100엔 동전용 여유 현금 준비'},
-    {id:'pre-tickets',text:'쓰텐카쿠·우메다 스카이빌딩 등 사전예약/시간지정 티켓 필요 여부 확인'},
-    {id:'pre-haruka',text:'11/28 JR나라→덴노지→KIX 실제 열차 시각과 HARUKA 할인권 조건 확인'},
+    {id:'pre-tickets',text:'쓰텐카쿠 시간지정 입장과 우메다 스카이빌딩·하루카스 300 예매 조건 확인'},
+    {id:'pre-haruka',text:'11/28 난카이 신이마미야→간사이공항행 공항급행 시각과 체크인 마감 확인'},
     {id:'pre-kyoto',text:'11/27 도롯코 지정석권과 덴류지·청수사 관람시간 확인'},
-    {id:'pre-weather',text:'오사카·교토·나라 날씨와 일몰시간 확인 후 방풍·보온 겉옷 준비'},
+    {id:'pre-weather',text:'오사카·교토 날씨와 일몰시간 확인 후 방풍·보온 겉옷 준비'},
     {id:'pre-shoes',text:'교토 돌길·낙엽 대비 접지력 좋은 편한 신발 준비'},
     {id:'pre-essentials',text:'충전기, 보조배터리, 작은 우산/경량 우비, 상비품 챙기기'},
     {id:'pre-backup',text:'항공권·숙소·여행 일정·여권 사본을 휴대폰 오프라인으로 저장'}
@@ -272,7 +305,6 @@ const defaults={
     {
       date:'2026-11-26',
       items:[
-        {id:'day2-tsuten',text:'쓰텐카쿠 시간지정 입장권/예약시간 확인'},
         {id:'day2-shitennoji',text:'시텐노지 10:40 도착 목표 · 중심가람 우선 · 주유패스 QR 및 정원 휴원일 확인',url:'https://www.shitennoji.or.jp/admission.html',linkLabel:'시텐노지 안내'},
         {id:'day2-castle',text:'오사카성 천수각 최종입장 17:30보다 충분히 일찍 도착'},
         {id:'day2-museum',text:'오사카 역사박물관 14:05 도착 목표 · 상설전 주유패스/입장권 준비'},
@@ -327,22 +359,53 @@ const defaults={
       ]
     },
     {
-      date:'2026-11-28',
-      items:[
-        {id:'day4-bag',text:'체크아웃 전 여권·충전기·개인물품 빠짐없이 확인'},
-        {id:'day4-locker',text:'긴테쓰나라역 도착 즉시 코인로커 확보'},
-        {id:'day4-cash',text:'도다이지 현금 800엔과 코인로커용 현금 준비'},
-        {id:'day4-train',text:'JR나라→덴노지→하루카 실시간 운행상태와 승강장 확인'},
-        {id:'day4-kix',text:'15:00 전후 KIX 도착 목표 — 관광 일정 때문에 공항 이동 미루지 않기'},
-        {id:'day4-flight',text:'ZE0614 18:00 KIX 출발 — 체크인·수하물 위탁 마감시간 확인'},
-        {id:'day4-baggage',text:'귀국편도 무료 위탁수하물 15kg 기준으로 쇼핑 짐 무게 확인',url:'https://www.eastarjet.com/newstar/PGWIK00005',linkLabel:'수하물 규정'}
+      "date": "2026-11-28",
+      "items": [
+        {
+          "id": "day4-bag",
+          "text": "08:25 전후 체크아웃 · 로비 셀프 보관함에 짐 보관 · 여권·귀중품 지참",
+          "url": "https://www.eslead-hotel.com/en/namba-3/",
+          "linkLabel": "호텔 보관 안내"
+        },
+        {
+          "id": "day4-tsuten",
+          "text": "쓰텐카쿠 09:00 전후 일반 전망대 입장 시간 확인",
+          "url": "https://www.tsutenkaku.co.jp/annai/",
+          "linkLabel": "쓰텐카쿠"
+        },
+        {
+          "id": "day4-harukas",
+          "text": "하루카스 300 현장권은 16층에서 구매 · 공식 웹 사전권 조건 확인",
+          "url": "https://www.abenoharukas-300.jp/observatory/ticket/",
+          "linkLabel": "하루카스 예약"
+        },
+        {
+          "id": "day4-train",
+          "text": "짐 회수 후 13:00 전후 숙소 출발 · 난카이 신이마미야역에서 간사이공항행 공항급행 확인",
+          "url": "https://www.nankai.co.jp/en_railway/access-timetable",
+          "linkLabel": "난카이 시간표"
+        },
+        {
+          "id": "day4-kix",
+          "text": "KIX 제1터미널 14:30 전후 도착 목표 · 체크인 마감 확인"
+        },
+        {
+          "id": "day4-flight",
+          "text": "11/28 ZE0614 간사이 KIX 터미널 1 출발 · 18:00은 기존 계획값, E-Ticket 최신 시각·마감 확인"
+        },
+        {
+          "id": "day4-baggage",
+          "text": "오는편 예약 무료 수하물 15kg 확인 · 쇼핑 짐 무게와 기내 반입품 구분",
+          "url": "https://www.eastarjet.com/newstar/PGWIK00005",
+          "linkLabel": "수하물 규정"
+        }
       ]
     }
   ]
 };
 
 const TAX_REFUND_NOTICE="면세 환급: KIX 도착 후 짐을 부치기 전에 여권·구매품 전부로 반출 확인 → 초록색은 완료, 빨간색은 세관 검사 → 수하물 위탁. 환급 방법·시기·수수료는 구매 매장 안내 확인.";
-const TAX_REFUND_PLAN={"id": "day4-tax-refund", "time": "15:00 도착 후 · 짐 위탁 전", "name": "KIX 면세 반출 확인 → 수하물 위탁", "fee": "환급 수수료는 매장·업체 조건 확인", "note": "면세 환급: KIX 도착 후 짐을 부치기 전에 여권·구매품 전부로 반출 확인 → 초록색은 완료, 빨간색은 세관 검사 → 수하물 위탁. 환급 방법·시기·수수료는 구매 매장 안내 확인. 단말기 또는 출국장 전용 Wi-Fi의 Visit Japan Web 이용. 구매자 여권·영수증·환급 안내서 준비. 자세한 내용은 면세 환급 안내에서 확인.", "map": "Kansai International Airport"};
+const TAX_REFUND_PLAN={"id": "day4-tax-refund", "time": "KIX 도착 후 · 짐 위탁 전", "name": "KIX 면세 반출 확인 → 수하물 위탁", "fee": "환급 수수료는 매장·업체 조건 확인", "note": "면세 환급: KIX 도착 후 짐을 부치기 전에 여권·구매품 전부로 반출 확인 → 초록색은 완료, 빨간색은 세관 검사 → 수하물 위탁. 환급 방법·시기·수수료는 구매 매장 안내 확인. 단말기 또는 출국장 전용 Wi-Fi의 Visit Japan Web 이용. 구매자 여권·영수증·환급 안내서 준비. 자세한 내용은 면세 환급 안내에서 확인.", "map": "Kansai International Airport"};
 const TAX_REFUND_PRE={"id": "pre-tax-refund", "text": "11월부터 새 면세 환급제 적용: 매장 환급 등록·구매품 보관·귀국일 짐 위탁 전 반출 확인 절차 읽기", "url": "#tax-refund", "linkLabel": "면세 환급 안내"};
 const TAX_REFUND_DAILY=[{"id": "day4-tax-goods", "text": "면세 등록한 구매품 전부·구매자 여권·영수증·환급 안내서 준비"}, {"id": "day4-tax-before-bag", "text": "KIX 짐 위탁 전 면세 단말기/Visit Japan Web 반출 확인 → 빨간색이면 검사 → 확인 후 짐 위탁", "url": "#tax-refund", "linkLabel": "공항 절차"}];
 const refundDay=defaults.days.find(d=>d.date===TRIP_END);
@@ -351,7 +414,161 @@ refundDay.plans.push(TAX_REFUND_PLAN);
 defaults.preTripChecklist.push(TAX_REFUND_PRE);
 defaults.dailyChecklist.find(d=>d.date===TRIP_END).items.push(...TAX_REFUND_DAILY);
 
-const ATM_STOPS=[{"date": "2026-11-25", "plan": {"id": "d1-seven-atm", "time": "난바 도착 후 · 점심 전 (5~10분)", "name": "출금 · 세븐일레븐 오사카 닛폰바시역 동쪽점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.\n주소: 大阪府大阪市中央区日本橋1-4-12. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12", "optional": true, "atm": {"label": "세븐일레븐 오사카 닛폰바시역 동쪽점", "jp": "セブン-イレブン 大阪日本橋駅東店", "address": "大阪府大阪市中央区日本橋1-4-12", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000020877", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "난바 → 닛폰바시역 동쪽 세븐일레븐 → 점심", "steps": ["난카이 난바역 도착 후 숙소 짐 보관. 숙소 미정이므로 점포까지 실제 길찾기 확인.", "센니치마에 거리에서 닛폰바시역 방향으로 이동해 日本橋1-4-12 점포의 세븐은행 ATM에서 출금.", "출금 후 浪速日本橋食堂까지 도보 약 3~5분 추정. 식당을 생략하면 구로몬시장으로 바로 이동."], "tip": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.", "origin": "Nankai Namba Station", "destination": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12"}, "walk": ["출금 경유", "점포 → 식당", "약 3~5분 추정", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정."}, {"date": "2026-11-26", "plan": {"id": "d2-seven-atm", "time": "08:15-08:25 (출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "메트로 미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역 → 신세카이·쓰텐카쿠."], "tip": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "숙소 → 점포 출금 → 메트로 난바역 → 도부쓰엔마에역 → 09:00 신세카이·쓰텐카쿠. 난바역 출발 전 출금 위치로 선정. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}, {"date": "2026-11-27", "plan": {"id": "d3-seven-atm", "time": "06:25-06:40 (필요 시)", "name": "출금 · 세븐일레븐 오사카 에비스니시 1초메점", "fee": "인출금은 지출 아님 · 수수료 조건 확인", "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금 후 06:50 호텔 출발에 맞춰 돌아와요. 전날 저녁 출금도 가능해요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도.", "map": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1", "atm": {"label": "세븐일레븐 오사카 에비스니시 1초메점", "jp": "セブン-イレブン 大阪恵美須西1丁目店", "address": "大阪府大阪市浪速区恵美須西1-2-1", "hours": "24시간 · ATM 1대 (점검·카드사 제한 별도)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000007338", "checked": "2026-11-01"}, "optional": true}, "route": {"kind": "도보 · 출금", "title": "호텔 → 에비스니시 1초메점 → 다음 일정", "steps": ["호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.", "출금 후 호텔에 돌아와 06:50 출발. 전날 저녁 출금도 가능해요."], "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6", "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1", "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."}, "walk": ["출금 경유", "호텔 → 에비스니시 1초메점", "약 3~5분 추정", "숙소 주변 출금 동선. 다음 목적지까지 걷기는 각 이동 안내 참고."], "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금 후 06:50 호텔 출발에 맞춰 돌아와요. 전날 저녁 출금도 가능해요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도."}, {"date": "2026-11-28", "plan": {"id": "d4-seven-atm", "time": "07:05-07:15 (07:30 출발 전 · 필요 시)", "name": "출금 · 세븐일레븐 오사카 도톤보리 2초메점", "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인", "note": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.\n주소: 大阪府大阪市中央区道頓堀2-2-9. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.", "map": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9", "optional": true, "atm": {"label": "세븐일레븐 오사카 도톤보리 2초메점", "jp": "セブン-イレブン 大阪道頓堀2丁目店", "address": "大阪府大阪市中央区道頓堀2-2-9", "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)", "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000024463", "checked": "2026-10-06"}}, "route": {"kind": "도보 · 출금", "title": "숙소 → 도톤보리 2초메점 → 난바역", "steps": ["숙소에서 道頓堀2-2-9 세븐일레븐으로 이동. 새벽에도 이용할 수 있는 24시간 점포 기준.", "세븐은행 ATM에서 출금 후 난바역/오사카난바역 25번 출구 쪽으로 도보 약 90m·1분(공식 길찾기 기준).", "긴테쓰 오사카난바역의 나라 방면 승강장으로 이동."], "tip": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도.", "origin": "Osaka Metro Namba Station Exit 25", "destination": "セブン-イレブン 大阪道頓堀2丁目店 大阪市中央区道頓堀2-2-9"}, "walk": ["출금 경유", "난바역 25번 출구 ↔ 점포", "약 90m · 1분 (공식 출구 기준)", "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."], "note": "체크아웃 → 점포 출금 → 오사카난바역 → 07:30 나라 이동. 07:15까지 출금 완료 목표. 나라 도착 후 도다이지·로커용 현금 확보. 공식 길찾기 기준 난바/오사카난바역 25번 출구에서 약 90m·1분. 숙소에서 점포까지와 출구에서 승강장까지의 시간은 별도."}];
+const ATM_STOPS=[
+  {
+    "date": "2026-11-25",
+    "plan": {
+      "id": "d1-seven-atm",
+      "time": "난바 도착 후 · 점심 전 (5~10분)",
+      "name": "출금 · 세븐일레븐 오사카 닛폰바시역 동쪽점",
+      "fee": "인출금은 지출 아님 · 수수료는 카드/ATM 조건 확인",
+      "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.\n주소: 大阪府大阪市中央区日本橋1-4-12. 세븐은행 공식: 24시간·ATM 2대. 출금 5~10분(대기 별도). Mastercard 실물 트래블로그 카드·카드 PIN·엔화 잔액 준비. 삼성월렛 휴대폰 태그 출금 지원은 확인되지 않아 실물 카드 기준. 점검·카드사 제한 시 이용 불가할 수 있음. 2026-10-06 확인.",
+      "map": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12",
+      "optional": true,
+      "atm": {
+        "label": "세븐일레븐 오사카 닛폰바시역 동쪽점",
+        "jp": "セブン-イレブン 大阪日本橋駅東店",
+        "address": "大阪府大阪市中央区日本橋1-4-12",
+        "hours": "24시간 (ATM 2대 · 점검·카드사 이용시간 제외)",
+        "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000020877",
+        "checked": "2026-10-06"
+      }
+    },
+    "route": {
+      "kind": "도보 · 출금",
+      "title": "난바 → 닛폰바시역 동쪽 세븐일레븐 → 점심",
+      "steps": [
+        "난카이 난바역 도착 후 숙소 짐 보관. 숙소 미정이므로 점포까지 실제 길찾기 확인.",
+        "센니치마에 거리에서 닛폰바시역 방향으로 이동해 日本橋1-4-12 점포의 세븐은행 ATM에서 출금.",
+        "출금 후 浪速日本橋食堂까지 도보 약 3~5분 추정. 식당을 생략하면 구로몬시장으로 바로 이동."
+      ],
+      "tip": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정.",
+      "origin": "Nankai Namba Station",
+      "destination": "セブン-イレブン 大阪日本橋駅東店 大阪市中央区日本橋1-4-12"
+    },
+    "walk": [
+      "출금 경유",
+      "점포 → 식당",
+      "약 3~5분 추정",
+      "숙소 출발·추가 거리 미정. 기존 여행 총 도보거리에는 ATM 경유를 중복 가산하지 않음. 출금 5~10분·대기 별도."
+    ],
+    "note": "난카이 난바 도착·숙소 짐 보관 후 닛폰바시역 동쪽 점포에서 출금 → 오오키니 식당/구로몬시장. 도착일은 일본 아침 일정이 없어 첫 식사 전에 배치. 식당까지 도보 약 3~5분 추정; 숙소 경유·추가 거리는 미정."
+  },
+  {
+    "date": "2026-11-26",
+    "plan": {
+      "id": "d2-seven-atm",
+      "time": "08:35-08:45 (필요 시)",
+      "name": "출금 · 세븐일레븐 오사카 에비스니시 1초메점",
+      "fee": "인출금은 지출 아님 · 수수료 조건 확인",
+      "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금 후 시텐노지로 이동할 준비를 해요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도.",
+      "map": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+      "atm": {
+        "label": "세븐일레븐 오사카 에비스니시 1초메점",
+        "jp": "セブン-イレブン 大阪恵美須西1丁目店",
+        "address": "大阪府大阪市浪速区恵美須西1-2-1",
+        "hours": "24시간 · ATM 1대 (점검·카드사 제한 별도)",
+        "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000007338",
+        "checked": "2026-11-01"
+      },
+      "optional": true
+    },
+    "route": {
+      "kind": "도보 · 출금",
+      "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
+      "steps": [
+        "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
+        "출금 후 10:15 전후 시텐노지로 이동할 준비를 해요."
+      ],
+      "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+      "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+      "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."
+    },
+    "walk": [
+      "출금 경유",
+      "호텔 → 에비스니시 1초메점",
+      "약 3~5분 추정",
+      "숙소 주변 출금 동선. 다음 목적지까지 걷기는 각 이동 안내 참고."
+    ],
+    "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금 후 시텐노지로 이동할 준비를 해요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도."
+  },
+  {
+    "date": "2026-11-27",
+    "plan": {
+      "id": "d3-seven-atm",
+      "time": "06:25-06:40 (필요 시)",
+      "name": "출금 · 세븐일레븐 오사카 에비스니시 1초메점",
+      "fee": "인출금은 지출 아님 · 수수료 조건 확인",
+      "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금 후 06:50 호텔 출발에 맞춰 돌아와요. 전날 저녁 출금도 가능해요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도.",
+      "map": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+      "atm": {
+        "label": "세븐일레븐 오사카 에비스니시 1초메점",
+        "jp": "セブン-イレブン 大阪恵美須西1丁目店",
+        "address": "大阪府大阪市浪速区恵美須西1-2-1",
+        "hours": "24시간 · ATM 1대 (점검·카드사 제한 별도)",
+        "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000007338",
+        "checked": "2026-11-01"
+      },
+      "optional": true
+    },
+    "route": {
+      "kind": "도보 · 출금",
+      "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
+      "steps": [
+        "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
+        "출금 후 호텔에 돌아와 06:50 출발. 전날 저녁 출금도 가능해요."
+      ],
+      "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+      "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+      "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."
+    },
+    "walk": [
+      "출금 경유",
+      "호텔 → 에비스니시 1초메점",
+      "약 3~5분 추정",
+      "숙소 주변 출금 동선. 다음 목적지까지 걷기는 각 이동 안내 참고."
+    ],
+    "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금 후 06:50 호텔 출발에 맞춰 돌아와요. 전날 저녁 출금도 가능해요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도."
+  },
+  {
+    "date": "2026-11-28",
+    "plan": {
+      "id": "d4-seven-atm",
+      "time": "08:40-08:50 (필요 시)",
+      "name": "출금 · 세븐일레븐 오사카 에비스니시 1초메점",
+      "fee": "인출금은 지출 아님 · 수수료 조건 확인",
+      "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 호텔에 짐을 맡긴 뒤 필요 시 출금하고 쓰텐카쿠 쪽으로 걸어요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도.",
+      "map": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+      "atm": {
+        "label": "세븐일레븐 오사카 에비스니시 1초메점",
+        "jp": "セブン-イレブン 大阪恵美須西1丁目店",
+        "address": "大阪府大阪市浪速区恵美須西1-2-1",
+        "hours": "24시간 · ATM 1대 (점검·카드사 제한 별도)",
+        "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000007338",
+        "checked": "2026-11-01"
+      },
+      "optional": true
+    },
+    "route": {
+      "kind": "도보 · 출금",
+      "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
+      "steps": [
+        "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
+        "호텔에 짐을 맡기고 출금한 뒤 쓰텐카쿠로 걸어요."
+      ],
+      "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+      "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+      "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."
+    },
+    "walk": [
+      "출금 경유",
+      "호텔 → 에비스니시 1초메점",
+      "약 3~5분 추정",
+      "숙소 주변 출금 동선. 다음 목적지까지 걷기는 각 이동 안내 참고."
+    ],
+    "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 호텔에 짐을 맡긴 뒤 필요 시 출금하고 쓰텐카쿠 쪽으로 걸어요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도."
+  }
+];
 function applyAtmStops(x){
   if(x.sevenAtmUpdate==='2026-10-06')return x;
   const key=STORAGE_KEY+'-before-seven-atm-2026-10-06';
@@ -383,7 +600,95 @@ ATM_STOPS.forEach(stop=>{
 
 function clone(v){return JSON.parse(JSON.stringify(v));}
 function newId(){return (crypto.randomUUID&&crypto.randomUUID())||('id'+Date.now()+Math.random().toString(16).slice(2));}
-const ICOCA_INFO={"checked": "2026-10-06", "stops": [{"date": "2026-11-25", "plan": {"id": "d1-icoca-buy", "time": "입국 후 · 난카이 탑승 전 (10~20분·대기 별도)", "name": "교통카드 구매 · 간사이공항역 JR ICOCA", "fee": "1인 2,000엔 (잔액 1,500엔＋보증금 500엔)", "note": "실물 무기명 ICOCA 권장. 제1터미널 입국장 → 2층 연결다리 → 간사이공항역 개찰구 밖 JR 쪽 ICOCA 표시 자동발매기. 사용 가능한 기계가 없거나 도움이 필요하면 JR 미도리노마도구치(05:30~23:00). 구입은 엔화 현금; 1인 1매, 4명 각 2,000엔 구매 시 8,000엔. 이미 Suica/PASMO/ICOCA가 있으면 신규 구매 생략 가능. 현금이 없으면 제1터미널 1층 도착층 세븐은행 ATM에서 먼저 출금. 구매 뒤 JR 개찰구로 들어가지 않고 난카이 쪽으로 이동해 난바행 탑승. 처음 2,000엔으로 시작하고 필요할 때 현금 추가 충전. 삼성월렛 트래블로그와 별개의 선불 교통카드. 자세한 구매·환불 방법은 교통카드 안내. 2026-10-06 공식 확인.", "map": "JR Kansai-airport Station Ticket Office", "optional": true}, "route": {"kind": "공항 내 도보 · 교통카드 구매", "title": "KIX 제1터미널 입국장 → JR ICOCA 구매 → 난카이 탑승", "steps": ["입국·수하물 수취·세관 통과 후 제1터미널 1층 도착장으로 나옴. 현금이 없으면 도착층 세븐은행 ATM에서 실물 해외출금 카드로 출금.", "2층으로 올라가 Railway/鉄道 표지를 따라 연결다리를 건너 간사이공항역으로 이동.", "개찰구 밖 JR 쪽 ICOCA 표시 발매기에서 무기명 성인용 카드를 현금 구매. 창구가 필요하면 JR 미도리노마도구치(05:30~23:00).", "카드 수령 뒤 같은 역의 난카이 쪽으로 이동해 난바행 열차 탑승. JR에서 카드를 샀어도 난카이에서 사용 가능."], "tip": "카드 구매·충전 10~20분 확보, 창구 대기는 별도. 난카이 할인권/라피트 티켓을 샀다면 해당 티켓으로 입장하고 ICOCA를 중복 태그하지 않기.", "origin": "Kansai International Airport Terminal 1", "destination": "JR Kansai-airport Station Ticket Office"}, "note": "ICOCA 구매: 입국 후 난카이 탑승 전에 JR 간사이공항역 발매기/창구에서 현금 구매. 2,000엔 중 500엔은 보증금, 잔액은 1,500엔. 1인 1매."}, {"date": "2026-11-28", "plan": {"id": "d4-icoca-return", "time": "15:00 전후 KIX 도착 직후 · 10~20분 (대기 별도)", "name": "ICOCA 반납 · JR 간사이공항역 미도리노마도구치", "fee": "환불액＝잔액에서 최대 220엔 공제＋보증금 500엔", "note": "하루카로 간사이공항역 도착 → 사용한 하루카 티켓/QR로 출구 개찰 → 개찰구 밖 JR 미도리노마도구치에서 카드 반납·환불 → 제1터미널로 이동. 창구 05:30~23:00. 실물 ICOCA와 여권 준비; 어린이용은 본인확인 서류 필요. 무기명 성인용은 반납 가능 표시가 있는 JR 발매기도 대안, 취급 조건·기기 안내 확인. 잔액 0엔이면 500엔 반환 / 100엔이면 500엔 / 500엔이면 780엔. 반납한 카드는 회수되어 사용할 수 없음. 환불은 공항 보안검색 전에 완료. 역 매점에서 남은 잔액부터 쓰려면 반납 전 결제하고, 현금 병용은 점원에게 확인. 대기가 길면 면세 반출 확인·체크인을 우선하고 카드는 다음 일본 여행용으로 보관. 반납을 위해 나라 출발·공항 도착을 늦추지 않기. 2026-10-06 공식 확인.", "map": "JR Kansai-airport Station Ticket Office", "optional": true}, "route": {"kind": "역내 이동 · 카드 환불", "title": "하루카 하차 → JR 개찰 밖 ICOCA 반납 → 면세 반출 확인·체크인", "steps": ["JR 간사이공항역에서 하루카 하차. 사용한 할인권/QR로 출구 개찰을 통과하며 ICOCA를 중복 태그하지 않기.", "개찰구 밖 JR 미도리노마도구치로 이동. 잔액을 매점에서 먼저 쓰려면 반납 전에 결제하고 현금 병용 가능 여부는 점원에게 확인.", "실물 ICOCA를 내고 환불 요청: ‘ICOCAの払い戻しをお願いします’(이코카 환불 부탁합니다). 카드와 보증금 포함 환불액을 확인.", "2층 연결다리로 제1터미널 이동. 면세 구매품 반출 확인을 마친 뒤 수하물 위탁·체크인·보안검색. 창구 대기가 길면 면세·체크인을 우선."], "tip": "반납은 선택. 15:00 전후 공항 도착 목표 유지. 나라/덴노지에서 미리 반납하려고 이동을 지연시키지 않기.", "origin": "JR Kansai-airport Station", "destination": "Kansai International Airport Terminal 1"}, "note": "ICOCA 반납: 하루카 도착·출구 개찰 후 JR 간사이공항역 창구(05:30~23:00). 10~20분＋대기 여유; 줄이 길면 면세·체크인 우선. 반납은 선택."}], "pre": {"id": "pre-icoca", "text": "실물 ICOCA 구매·충전용 엔화 현금 준비 · 기존 Suica/PASMO/ICOCA가 있으면 지참 · 구매·반납 위치 저장", "url": "#icoca-guide", "linkLabel": "교통카드 안내"}, "daily": [{"date": "2026-11-25", "item": {"id": "day1-icoca-buy", "text": "난카이 탑승 전 JR 간사이공항역에서 실물 ICOCA 구매 · 1인 2,000엔 현금 · 기존 IC카드 있으면 생략", "url": "#icoca-guide", "linkLabel": "구매 동선"}}, {"date": "2026-11-27", "item": {"id": "day3-icoca-balance", "text": "한큐·JR·교토 지하철·게이한·오사카 메트로 이용 전 ICOCA 잔액 확인·충전 · 실제 경로 운임은 직전 재확인", "url": "#icoca-guide", "linkLabel": "충전·사용 안내"}}, {"date": "2026-11-28", "item": {"id": "day4-icoca-return", "text": "긴테쓰 나라행 전에 잔액 확인 · KIX 도착·하루카 출구 개찰 후 ICOCA 반납 여부 결정 · 대기 길면 면세·체크인 우선", "url": "#icoca-guide", "linkLabel": "반납·환불 안내"}}]};
+const ICOCA_INFO={
+  "checked": "2026-10-06",
+  "stops": [
+    {
+      "date": "2026-11-25",
+      "plan": {
+        "id": "d1-icoca-buy",
+        "time": "입국 후 · 난카이 탑승 전 (10~20분·대기 별도)",
+        "name": "교통카드 구매 · 간사이공항역 JR ICOCA",
+        "fee": "1인 2,000엔 (잔액 1,500엔＋보증금 500엔)",
+        "note": "실물 무기명 ICOCA 권장. 제1터미널 입국장 → 2층 연결다리 → 간사이공항역 개찰구 밖 JR 쪽 ICOCA 표시 자동발매기. 사용 가능한 기계가 없거나 도움이 필요하면 JR 미도리노마도구치(05:30~23:00). 구입은 엔화 현금; 1인 1매, 4명 각 2,000엔 구매 시 8,000엔. 이미 Suica/PASMO/ICOCA가 있으면 신규 구매 생략 가능. 현금이 없으면 제1터미널 1층 도착층 세븐은행 ATM에서 먼저 출금. 구매 뒤 JR 개찰구로 들어가지 않고 난카이 쪽으로 이동해 난바행 탑승. 처음 2,000엔으로 시작하고 필요할 때 현금 추가 충전. 삼성월렛 트래블로그와 별개의 선불 교통카드. 자세한 구매·환불 방법은 교통카드 안내. 2026-10-06 공식 확인.",
+        "map": "JR Kansai-airport Station Ticket Office",
+        "optional": true
+      },
+      "route": {
+        "kind": "공항 내 도보 · 교통카드 구매",
+        "title": "KIX 제1터미널 입국장 → JR ICOCA 구매 → 난카이 탑승",
+        "steps": [
+          "입국·수하물 수취·세관 통과 후 제1터미널 1층 도착장으로 나옴. 현금이 없으면 도착층 세븐은행 ATM에서 실물 해외출금 카드로 출금.",
+          "2층으로 올라가 Railway/鉄道 표지를 따라 연결다리를 건너 간사이공항역으로 이동.",
+          "개찰구 밖 JR 쪽 ICOCA 표시 발매기에서 무기명 성인용 카드를 현금 구매. 창구가 필요하면 JR 미도리노마도구치(05:30~23:00).",
+          "카드 수령 뒤 같은 역의 난카이 쪽으로 이동해 난바행 열차 탑승. JR에서 카드를 샀어도 난카이에서 사용 가능."
+        ],
+        "tip": "카드 구매·충전 10~20분 확보, 창구 대기는 별도. 난카이 할인권/라피트 티켓을 샀다면 해당 티켓으로 입장하고 ICOCA를 중복 태그하지 않기.",
+        "origin": "Kansai International Airport Terminal 1",
+        "destination": "JR Kansai-airport Station Ticket Office"
+      },
+      "note": "ICOCA 구매: 입국 후 난카이 탑승 전에 JR 간사이공항역 발매기/창구에서 현금 구매. 2,000엔 중 500엔은 보증금, 잔액은 1,500엔. 1인 1매."
+    },
+    {
+      "date": "2026-11-28",
+      "plan": {
+        "id": "d4-icoca-return",
+        "time": "KIX 도착 직후 · 10~20분 (대기 별도)",
+        "name": "ICOCA 반납 · JR 간사이공항역 미도리노마도구치",
+        "fee": "환불액＝잔액에서 최대 220엔 공제＋보증금 500엔",
+        "note": "난카이 간사이공항역 개찰에서 나온 뒤 같은 역사 개찰구 밖 JR 미도리노마도구치에서 선택 반납. 줄이 길면 면세 반출 확인·체크인을 우선해요.",
+        "map": "JR Kansai-airport Station Ticket Office",
+        "optional": true
+      },
+      "route": {
+        "kind": "도보",
+        "title": "난카이 간사이공항역 개찰 밖 → JR 창구",
+        "steps": [
+          "난카이 개찰을 나와 같은 역사 개찰구 밖 JR 미도리노마도구치로 이동.",
+          "반납 여부는 선택. 10~20분과 대기를 고려하고 줄이 길면 면세 반출 확인·체크인 우선."
+        ],
+        "origin": "Nankai Kansai Airport Station",
+        "destination": "JR Kansai Airport Station Ticket Office"
+      },
+      "note": "ICOCA 반납: 난카이 간사이공항역 개찰 밖 JR 창구에서 선택 반납. 줄이 길면 면세·체크인을 우선해요."
+    }
+  ],
+  "pre": {
+    "id": "pre-icoca",
+    "text": "실물 ICOCA 구매·충전용 엔화 현금 준비 · 기존 Suica/PASMO/ICOCA가 있으면 지참 · 구매·반납 위치 저장",
+    "url": "#icoca-guide",
+    "linkLabel": "교통카드 안내"
+  },
+  "daily": [
+    {
+      "date": "2026-11-25",
+      "item": {
+        "id": "day1-icoca-buy",
+        "text": "난카이 탑승 전 JR 간사이공항역에서 실물 ICOCA 구매 · 1인 2,000엔 현금 · 기존 IC카드 있으면 생략",
+        "url": "#icoca-guide",
+        "linkLabel": "구매 동선"
+      }
+    },
+    {
+      "date": "2026-11-27",
+      "item": {
+        "id": "day3-icoca-balance",
+        "text": "한큐·JR·교토 지하철·게이한·오사카 메트로 이용 전 ICOCA 잔액 확인·충전 · 실제 경로 운임은 직전 재확인",
+        "url": "#icoca-guide",
+        "linkLabel": "충전·사용 안내"
+      }
+    },
+    {
+      "date": "2026-11-28",
+      "item": {
+        "id": "day4-icoca-return",
+        "text": "난카이 간사이공항역에 도착한 뒤 개찰구 밖 JR 창구에서 ICOCA 반납 여부 결정",
+        "url": "#icoca-guide",
+        "linkLabel": "반납·환불 안내"
+      }
+    }
+  ]
+};
 function applyIcocaInfo(x,saveBackup=true){
   if(x.icocaUpdate==='2026-10-06')return x;
   if(saveBackup){
@@ -483,6 +788,8 @@ function applyFlightUpdate(x){
 }
 
 function scheduleBackupKey(){
+  const returnBackup=STORAGE_KEY+'-before-'+OSAKA_RETURN_UPDATE;
+  if(localStorage.getItem(returnBackup))return returnBackup;
   const kyoto=STORAGE_KEY+'-before-'+KYOTO_UPDATE;
   if(localStorage.getItem(kyoto))return kyoto;
   const flight=STORAGE_KEY+'-before-'+FLIGHT_BOOKING.version;
@@ -493,7 +800,7 @@ function scheduleBackupKey(){
   return localStorage.getItem(previousKyoto)?previousKyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
-function freshState(){return {kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
+function freshState(){return {osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
   // Keep the complete pre-update state recoverable, including personal edits.
@@ -578,6 +885,49 @@ function applyKuromonSanpeiUpdate(x){
   return x;
 }
 
+const OSAKA_RETURN_UPDATE='2026-11-23-tennoji-return';
+function applyOsakaReturnUpdate(x){
+  if(x.osakaReturnUpdate===OSAKA_RETURN_UPDATE)return x;
+  const backupKey=STORAGE_KEY+'-before-'+OSAKA_RETURN_UPDATE;
+  if(!localStorage.getItem(backupKey))localStorage.setItem(backupKey,JSON.stringify(x));
+  const harukasPattern=/하루카스|ハルカス|harukas/i;
+  const legacyNara=/나라공원|긴테쓰나라|JR나라|도다이지|나라마치|가스가타이샤|奈良|東大寺|\bNara\b|Todaiji|Todai-ji/i;
+  const osakaDay=x.data.days.find(day=>day.date==='2026-11-26');
+  const revisedOsaka=defaults.days.find(day=>day.date==='2026-11-26');
+  if(osakaDay){
+    const retired=new Set(['d2p1']);
+    const revised=new Set(['d2-seven-atm','d2-walk-shitennoji']);
+    osakaDay.plans=osakaDay.plans.filter(p=>!retired.has(p.id)&&!harukasPattern.test(p.name+' '+p.map))
+      .map(p=>revised.has(p.id)?clone(revisedOsaka.plans.find(item=>item.id===p.id)):p);
+    const outdated=new Set(["쓰텐카쿠 → 시텐노지 → 오사카성 → 역사박물관 → 공중정원. 이동시간은 예상값.", "주유패스 이용자는 쓰텐카쿠 1층 티켓센터에서 당일 시간지정권 교환. 09:00 입장은 확정이 아니므로 일찍 방문.", "시텐노지는 중심가람 45분 우선. 정원은 여유가 있을 때만. 중심가람·정원은 주유패스 무료, 보물관은 별도.", "주유패스 사용 시 포함 지하철은 패스로 입장. 트래블로그를 태그하면 별도 운임 발생.", "우메다 공중정원 16:15 입장은 주유패스 무료 시간대가 아님. 옥상 강풍·추위 대비.", "숙소에서 쓰텐카쿠까지 도보 약 5분. 08:35 근처 ATM은 필요 시만 방문, 관람 종료 뒤 도부쓰엔마에역 경유 같은 호텔 복귀."]);
+    osakaDay.notes=[...new Set([...revisedOsaka.notes,...(osakaDay.notes||[]).filter(note=>!outdated.has(note)&&!harukasPattern.test(note)&&!/^出金 \/ 출금: .*쓰텐카쿠/.test(note))])];
+  }
+  const index=x.data.days.findIndex(day=>day.date===TRIP_END);
+  const revisedReturn=clone(defaults.days.find(day=>day.date===TRIP_END));
+  if(index>=0){
+    const old=x.data.days[index];
+    const revisedIds=new Set(revisedReturn.plans.map(p=>p.id));
+    const retained=old.plans.filter(p=>!/^d4p[1-6]$/.test(p.id)&&!revisedIds.has(p.id)&&!legacyNara.test(p.name+' '+p.map));
+    const outdatedNotes=new Set(["16:00 전 공항 도착이 목표지만 실제 이동은 15:00 전후 KIX 도착 목표.", "긴테쓰나라역 도착 즉시 짐 보관. 유인 수하물 보관은 09:00부터.", "나라→KIX 추천은 JR나라 → 덴노지 → 하루카.", "정확한 11/28 열차 시간은 출발 1개월 전과 여행 직전 재확인.", "면세 환급: KIX 도착 후 짐을 부치기 전에 여권·구매품 전부로 반출 확인 → 초록색은 완료, 빨간색은 세관 검사 → 수하물 위탁. 환급 방법·시기·수수료는 구매 매장 안내 확인.", "ICOCA 반납: 하루카 도착·출구 개찰 후 JR 간사이공항역 창구(05:30~23:00). 10~20분＋대기 여유; 줄이 길면 면세·체크인 우선. 반납은 선택.", "07:00 전후 호텔 체크아웃·짐 전부 지참 → 에비스초→닛폰바시/긴테쓰닛폰바시→나라. 호텔에 짐을 남기지 않고 긴테쓰나라역 보관 후 공항 직행. 12:20 공항 이동·16:00 전 KIX 도착 우선.", "항공 예약 확인(2026-11-03): ZE0614 · 간사이 KIX 출발 터미널 1 · 무료 수하물 15kg. 18:00→19:50는 기존 계획으로, E-Ticket에서 재확인. 공항 15:00 목표·16:00 전 도착 계획 유지."]);
+    revisedReturn.notes.push(...(old.notes||[]).filter(note=>!outdatedNotes.has(note)&&!legacyNara.test(note)&&!revisedReturn.notes.includes(note)));
+    revisedReturn.plans.push(...retained);
+    x.data.days[index]=revisedReturn;
+  }
+  for(const group of x.data.dailyChecklist){
+    if(group.date!=='2026-11-26'&&group.date!==TRIP_END)continue;
+    const defaultsForDay=defaults.dailyChecklist.find(entry=>entry.date===group.date).items;
+    const removed=new Set(['day2-tsuten','day4-locker','day4-cash','day4-hotel-checkout']);
+    const managed=new Set(defaultsForDay.map(item=>item.id));
+    group.items=[...clone(defaultsForDay),...group.items.filter(item=>!managed.has(item.id)&&!removed.has(item.id)&&!legacyNara.test(item.text)&&!(group.date==='2026-11-26'&&harukasPattern.test(item.text)))];
+  }
+  for(const item of x.data.preTripChecklist){
+    if(['pre-tickets','pre-haruka','pre-weather'].includes(item.id))item.text=defaults.preTripChecklist.find(p=>p.id===item.id).text;
+  }
+  x.osakaReturnUpdate=OSAKA_RETURN_UPDATE;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -587,7 +937,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))))))));
+      return applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))))));
     }
   }catch(e){}
   return freshState();
@@ -755,11 +1105,11 @@ function renderTimeline(){
     const naverQueries={
       'd1-naniwa-lunch':'浪速日本橋食堂 오사카','d1p2':'오사카 구로몬시장','d1-kuromon-sanpei':'오사카 구로몬 산페이','d1-yasaka':'오사카 난바 야사카 신사',
       'd1p4':'오사카 호젠지','d1p5':'오사카 도톤보리','d1p6':'오사카 신사이바시스지',
-      'd2p1':'오사카 쓰텐카쿠','d2-shitennoji':'오사카 시텐노지',
+      'd2-shitennoji':'오사카 시텐노지',
       'd2p2':'오사카성 천수각','d2-museum':'오사카 역사박물관','d2p4':'오사카 우메다 스카이빌딩 공중정원',
       'd3-togetsukyo':'교토 도게츠교','d3-tenryuji':'교토 덴류지','d3-bamboo':'교토 아라시야마 대나무숲','d3p3':'교토 산넨자카 니넨자카',
       'd3p5':'교토 기온 하나미코지','d3-romantic-train':'사가노 도롯코 단풍열차','d3p8':'교토 청수사 기요미즈데라',
-      'd4p3':'일본 나라공원','d4p4':'일본 나라 도다이지'
+      'd4-tsutenkaku':'오사카 쓰텐카쿠','d4-tennoji':'오사카 덴노지 텐시바','d4-harukas':'아베노 하루카스 300 전망대'
     };
     const naver=node.querySelector('.naver-link');
     const original=defaults.days.flatMap(d=>d.plans).find(p=>p.id===plan.id);
@@ -896,7 +1246,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
@@ -923,12 +1273,12 @@ function renderTravelTools(){
     '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
     '시텐노지 10:40 → 역사박물관 14:05 → 공중정원 16:15 목표 · 지연 시 시텐노지 정원부터 생략.',
     '09:30 도롯코 가메오카 출발 → 아라시야마 오전 관람 → 청수사 입장 준비 17:10 · 야간 17:30~19:00.',
-    '12:20 공항 이동 시작 · 긴테쓰나라에서 짐 회수 후 JR나라로 이동 · KIX 15:00 목표, 16:00 전 도착 · 면세 반출 확인 후 수하물 위탁.'
+    '12:00 전망대 관람 종료 → 호텔 짐 회수 → 13:00 전후 숙소 출발 → 난카이 공항급행 · KIX 14:30 전후 목표.'
   ][selectedDay];
   const choices=state.admissionOptions||{};
   document.querySelectorAll('[data-admission]').forEach(el=>{el.checked=!!choices[el.dataset.admission];el.onchange=()=>{state.admissionOptions=state.admissionOptions||{};state.admissionOptions[el.dataset.admission]=el.checked;save();renderTravelTools();};});
   const extra=choices.shitenGarden?300:0;
-  document.querySelector('#admissionTotal').textContent=yen(7600+extra);
+  document.querySelector('#admissionTotal').textContent=yen(9000+extra);
   document.querySelector('#previousBackupBtn').hidden=!localStorage.getItem(scheduleBackupKey());
 }
 document.querySelector('#previousBackupBtn').onclick=function(){
