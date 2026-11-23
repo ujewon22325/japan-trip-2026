@@ -1,15 +1,14 @@
 {
   "d1p1": {
     "kind": "난카이 전철 + 도보",
-    "title": "KIX → 신이마미야역 북쪽 출구 → 호텔",
+    "title": "간사이공항역 → 난카이 신이마미야역 → 숙소",
     "steps": [
-      "제1터미널 2층 연결통로 → 간사이공항역 난카이 개찰. 난바 방면 공항급행에 승차. 라피트는 별도 지정석 티켓 필요.",
-      "신이마미야역에서 하차(난바 종점 이전). 난카이 북쪽 출구에서 恵美須西2-8-6 호텔까지 도보 약 10분. 이동 약 55~75분 계획.",
-      "보행을 줄이는 대안: 덴가차야역에서 사카이스지선 북행 환승 → 에비스초역 4번 출구 → 호텔 약 1~2분. 엘리베이터는 3번 출구라 지상 보행이 달라짐."
+      "제1터미널 입국장 → 2층 연결다리 → 간사이공항역 난카이 개찰구.",
+      "난카이 일반 승차권을 발매기에서 구매하거나 지원하는 컨택리스 카드로 전용 개찰구를 이용해요. 난바 방면 공항급행(空港急行) 탑승.",
+      "신이마미야역에 내려 난카이 북쪽 출구에서 호텔까지 도보 약 7~10분."
     ],
-    "origin": "Kansai-Airport Station Nankai",
-    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
-    "tip": "출처: 호텔 공식 접근 안내. 열차 대기·보행 예상이며 실제 출발편은 미확정."
+    "origin": "Nankai Kansai Airport Station",
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6"
   },
   "d1p2": {
     "kind": "도보",
@@ -44,24 +43,14 @@
     "origin": "Kuromon Ichiba Market",
     "destination": "Namba Yasaka Shrine"
   },
-  "d1p4": {
-    "kind": "도보",
-    "title": "난바 야사카 신사 → 호젠지",
-    "steps": [
-      "신사에서 북쪽 난카이 난바역·난바시티 방향으로 이동.",
-      "센니치마에 상점가를 지나 호젠지 요코초 표지를 찾아 골목으로 진입. 호젠지는 도톤보리 남쪽."
-    ],
-    "origin": "Namba Yasaka Shrine",
-    "destination": "Hozenji Temple Osaka"
-  },
   "d1p5": {
     "kind": "도보",
-    "title": "호젠지 → 도톤보리 에비스바시",
+    "title": "빅카메라 난바점 → 도톤보리 에비스바시",
     "steps": [
-      "호젠지 요코초에서 북쪽 도톤보리 강변으로 이동.",
-      "글리코 간판 앞 에비스바시(戎橋) 쪽으로 서쪽 이동해 저녁 동선을 시작."
+      "빅카메라에서 센니치마에·도톤보리 방향으로 이동.",
+      "강변 에비스바시와 글리코 간판 쪽으로 걸어요. 도보 약 5~10분 예상."
     ],
-    "origin": "Hozenji Temple Osaka",
+    "origin": "Bic Camera Namba Store Osaka 2-10-1 Sennichimae",
     "destination": "Ebisubashi Bridge Dotonbori"
   },
   "d1p6": {
@@ -468,14 +457,15 @@
     "destination": "Kansai International Airport Terminal 1",
     "tip": "난카이 공식 시간표: https://www.nankai.co.jp/en_railway/access-timetable"
   },
-  "d4-icoca-return": {
+  "d1-bic-namba": {
     "kind": "도보",
-    "title": "난카이 간사이공항역 개찰 밖 → JR 창구",
+    "title": "난바 야사카 신사 → 빅카메라 난바점",
     "steps": [
-      "난카이 개찰을 나와 같은 역사 개찰구 밖 JR 미도리노마도구치로 이동.",
-      "반납 여부는 선택. 10~20분과 대기를 고려하고 줄이 길면 면세 반출 확인·체크인 우선."
+      "신사에서 난카이 난바역·난바시티 쪽으로 북상.",
+      "센니치마에2-10-1 빅카메라 난바점으로 이동. 신사에서 도보 약 15~20분 예상."
     ],
-    "origin": "Nankai Kansai Airport Station",
-    "destination": "JR Kansai Airport Station Ticket Office"
+    "origin": "Namba Yasaka Shrine Osaka",
+    "destination": "Bic Camera Namba Store Osaka 2-10-1 Sennichimae",
+    "tip": "https://www.biccamera.com/bc/i/shop/shoplist/shop013.jsp"
   }
 }

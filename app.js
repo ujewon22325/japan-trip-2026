@@ -59,24 +59,36 @@ const KUROMON_SANPEI_PLAN={
   }
 };
 const KUROMON_MARKET_EVENT="11/25는 구로몬시장 블랙프라이데이 기간(11/18~28)이에요. 참여 점포의 행사 상품은 현장에서 확인하세요.";
+const NANKAI_ARRIVAL_NOTE="공항에서는 난카이 난바 방면 공항급행을 타고 신이마미야역에서 내려요. 구간별 승차권이나 지원되는 개찰구에서 컨택리스 결제를 이용해요.";
+const NAMBA_SHOPPING_NOTE="17:00~18:00 난바 야사카 신사 → 빅카메라 난바점 → 도톤보리 순서.";
+const NAMBA_SHOPPING_PLAN={
+  "id": "d1-bic-namba",
+  "time": "17:00-18:00",
+  "name": "빅카메라 난바점 (Bic Camera Namba Store)",
+  "fee": "쇼핑 비용 별도",
+  "note": "난바 야사카 신사에서 센니치마에 방향으로 걸어가요. 이동·쇼핑 포함 60분. 주소 大阪市中央区千日前2-10-1. 매장 10:00~22:00, 일부 층·매장은 21:00까지. 18:00에는 도톤보리 저녁 일정으로 이동해요.",
+  "map": "Bic Camera Namba Store Osaka 2-10-1 Sennichimae"
+};
 const defaults={
   days:[
     {
       date:'2026-11-25',city:'오사카 남부',short:'오사카',
       notes:[
         '첫날은 항공편 지연에 대응하기 쉽도록 난바 중심으로 이동.',
+        NANKAI_ARRIVAL_NOTE,
+        NAMBA_SHOPPING_NOTE,
         '구로몬시장은 늦은 오후부터 일부 점포가 닫을 수 있어 도착 후 우선 방문.',
         '항공편이 늦으면 난바 야사카 신사을 먼저 생략.',
         KUROMON_MARKET_EVENT
       ],
       fallback:'난바 야사카 신사 → 신사이바시 일부 순서로 생략',
       plans:[
-        {id:'d1p1',time:'공항 도착 후',name:'KIX → 난바 (난카이)',fee:'교통비 별도',note:'라피트 최단 약 34분. 항공편 도착시간에 맞춰 선택.',map:'Nankai Namba Station Osaka'},
+        {id:'d1p1',time:'공항 도착 후',...HOTEL_TRIP_UPDATE.plans.d1p1,fee:'교통비 별도'},
         {"id":"d1-naniwa-lunch","time":"13:30-14:15 (도착 후 조정)","name":"점심 · 마이도 오오키니 浪速日本橋食堂","fee":"1인 약 1,000~2,000엔 · 4인 약 4,000~8,000엔","note":"난바 도착·숙소 짐 보관 후 점심 30~45분. 닛폰바시역 10번 출구 옆 → 구로몬시장까지 도보 약 2~5분. 14:15까지 식사가 어렵거나 시장 먹거리를 먹으려면 생략. 주소: 大阪府大阪市中央区日本橋1-17-20 日本橋丸中ビル 1F. 공식 영업 09:00~다음 날 07:00, 일요일 휴무. 다른 사이트와 영업시간 차이가 있어 출발 전 재확인. 타베로그: 신용카드·전자머니 불가, QR결제 가능(브랜드 미확인); 엔화 현금 준비. 반찬을 고르고 밥·국을 추가하는 셀프 식당. 예약 불가 안내. 전화 +81-6-6630-7595. 2026-10-05 확인.","map":"浪速日本橋食堂 大阪府大阪市中央区日本橋1-17-20","optional":true},
         {id:'d1p2',time:'14:30-16:00',name:'구로몬시장',fee:'무료',note:'먹거리부터 우선. 점포별 영업시간 상이, 늦은 오후 이른 마감 주의.',map:'Kuromon Ichiba Market Osaka'},
         KUROMON_SANPEI_PLAN,
         {id:'d1-yasaka',time:'16:00-17:00',name:'난바 야사카 신사',fee:'무료',note:'06:00-17:00 개문. 구로몬시장에서 이동 포함, 17시 폐문 전에 관람. 지연 시 먼저 생략.',map:'Namba Yasaka Shrine Osaka'},
-        {id:'d1p4',time:'17:00-18:00',name:'호젠지 · 호젠지요코초',fee:'무료',note:'경내 상시 참배 가능. 사무소/고슈인 10:00-18:00 기준.',map:'Hozenji Temple Osaka'},
+        NAMBA_SHOPPING_PLAN,
         {id:'d1p5',time:'18:00-20:00',name:'도톤보리',fee:'무료',note:"저녁 인파가 많고 식당 대기 가능. 다리 위 통행 방해 주의.\n타코야키 선택 후보 (둘 중 원하는 곳 방문 · 도톤보리 18:00~20:00 안에 20~30분, 대기 별도):\n① 크레오루 도톤보리점 くれおーる: 道頓堀1-6-4. 공식 10:00~23:00·무휴. 기본 8개 803엔 / 반숙계란+파 6개 803엔(공식 매장식사 메뉴; 포장 가격 다를 수 있음). 카드 Visa·Mastercard 등 가능 안내, 포장 판매대는 확인. 매장 식사는 1인 1음료·1주문 안내.\n② 오도리다코 도톤보리점 踊りだこ: 道頓堀1-7-24. 11:00~21:00·부정기 휴무 안내. 한 알마다 통쭈꾸미 1마리. 4개 600엔 / 6개 800엔 / 8개 1,200엔(게시 메뉴 기준). 카드·전자머니·QR 불가 안내, 현금 준비.\n2026-10-05 확인, 여행 전 가격·영업 재확인. 두 곳 모두 방문할 필요 없이 현장에서 선택.",map:'Dotonbori Osaka'},
         {id:'d1p6',time:'20:00-21:30',name:'신사이바시스지',fee:'무료',note:'점포별 폐점시간 상이. 쇼핑이 중요하면 도톤보리 저녁을 조금 앞당겨도 됨.',map:'Shinsaibashi-suji Shopping Street Osaka'}
       ]
@@ -350,12 +362,7 @@ const defaults={
           "id": "day3-rest",
           "text": "13:10~14:10 가와라마치·기온 점심 및 휴식 · 19:00~20:00 저녁과 역 이동."
         },
-        {
-          "id": "day3-icoca-balance",
-          "text": "JR·한큐·게이한·오사카 메트로 이용 전 ICOCA 잔액 확인. 도롯코는 별도 지정석 승차권 확인.",
-          "url": "#icoca-guide",
-          "linkLabel": "충전·사용 안내"
-        }
+        {"id": "day3-rail-tickets", "text": "JR·한큐·게이한·지하철은 구간별 승차권 또는 이용 가능한 결제수단 확인. 도롯코는 별도 지정석 승차권 준비.", "url": "#icoca-guide", "linkLabel": "승차권 안내"}
       ]
     },
     {
@@ -600,129 +607,6 @@ ATM_STOPS.forEach(stop=>{
 
 function clone(v){return JSON.parse(JSON.stringify(v));}
 function newId(){return (crypto.randomUUID&&crypto.randomUUID())||('id'+Date.now()+Math.random().toString(16).slice(2));}
-const ICOCA_INFO={
-  "checked": "2026-10-06",
-  "stops": [
-    {
-      "date": "2026-11-25",
-      "plan": {
-        "id": "d1-icoca-buy",
-        "time": "입국 후 · 난카이 탑승 전 (10~20분·대기 별도)",
-        "name": "교통카드 구매 · 간사이공항역 JR ICOCA",
-        "fee": "1인 2,000엔 (잔액 1,500엔＋보증금 500엔)",
-        "note": "실물 무기명 ICOCA 권장. 제1터미널 입국장 → 2층 연결다리 → 간사이공항역 개찰구 밖 JR 쪽 ICOCA 표시 자동발매기. 사용 가능한 기계가 없거나 도움이 필요하면 JR 미도리노마도구치(05:30~23:00). 구입은 엔화 현금; 1인 1매, 4명 각 2,000엔 구매 시 8,000엔. 이미 Suica/PASMO/ICOCA가 있으면 신규 구매 생략 가능. 현금이 없으면 제1터미널 1층 도착층 세븐은행 ATM에서 먼저 출금. 구매 뒤 JR 개찰구로 들어가지 않고 난카이 쪽으로 이동해 난바행 탑승. 처음 2,000엔으로 시작하고 필요할 때 현금 추가 충전. 삼성월렛 트래블로그와 별개의 선불 교통카드. 자세한 구매·환불 방법은 교통카드 안내. 2026-10-06 공식 확인.",
-        "map": "JR Kansai-airport Station Ticket Office",
-        "optional": true
-      },
-      "route": {
-        "kind": "공항 내 도보 · 교통카드 구매",
-        "title": "KIX 제1터미널 입국장 → JR ICOCA 구매 → 난카이 탑승",
-        "steps": [
-          "입국·수하물 수취·세관 통과 후 제1터미널 1층 도착장으로 나옴. 현금이 없으면 도착층 세븐은행 ATM에서 실물 해외출금 카드로 출금.",
-          "2층으로 올라가 Railway/鉄道 표지를 따라 연결다리를 건너 간사이공항역으로 이동.",
-          "개찰구 밖 JR 쪽 ICOCA 표시 발매기에서 무기명 성인용 카드를 현금 구매. 창구가 필요하면 JR 미도리노마도구치(05:30~23:00).",
-          "카드 수령 뒤 같은 역의 난카이 쪽으로 이동해 난바행 열차 탑승. JR에서 카드를 샀어도 난카이에서 사용 가능."
-        ],
-        "tip": "카드 구매·충전 10~20분 확보, 창구 대기는 별도. 난카이 할인권/라피트 티켓을 샀다면 해당 티켓으로 입장하고 ICOCA를 중복 태그하지 않기.",
-        "origin": "Kansai International Airport Terminal 1",
-        "destination": "JR Kansai-airport Station Ticket Office"
-      },
-      "note": "ICOCA 구매: 입국 후 난카이 탑승 전에 JR 간사이공항역 발매기/창구에서 현금 구매. 2,000엔 중 500엔은 보증금, 잔액은 1,500엔. 1인 1매."
-    },
-    {
-      "date": "2026-11-28",
-      "plan": {
-        "id": "d4-icoca-return",
-        "time": "KIX 도착 직후 · 10~20분 (대기 별도)",
-        "name": "ICOCA 반납 · JR 간사이공항역 미도리노마도구치",
-        "fee": "환불액＝잔액에서 최대 220엔 공제＋보증금 500엔",
-        "note": "난카이 간사이공항역 개찰에서 나온 뒤 같은 역사 개찰구 밖 JR 미도리노마도구치에서 선택 반납. 줄이 길면 면세 반출 확인·체크인을 우선해요.",
-        "map": "JR Kansai-airport Station Ticket Office",
-        "optional": true
-      },
-      "route": {
-        "kind": "도보",
-        "title": "난카이 간사이공항역 개찰 밖 → JR 창구",
-        "steps": [
-          "난카이 개찰을 나와 같은 역사 개찰구 밖 JR 미도리노마도구치로 이동.",
-          "반납 여부는 선택. 10~20분과 대기를 고려하고 줄이 길면 면세 반출 확인·체크인 우선."
-        ],
-        "origin": "Nankai Kansai Airport Station",
-        "destination": "JR Kansai Airport Station Ticket Office"
-      },
-      "note": "ICOCA 반납: 난카이 간사이공항역 개찰 밖 JR 창구에서 선택 반납. 줄이 길면 면세·체크인을 우선해요."
-    }
-  ],
-  "pre": {
-    "id": "pre-icoca",
-    "text": "실물 ICOCA 구매·충전용 엔화 현금 준비 · 기존 Suica/PASMO/ICOCA가 있으면 지참 · 구매·반납 위치 저장",
-    "url": "#icoca-guide",
-    "linkLabel": "교통카드 안내"
-  },
-  "daily": [
-    {
-      "date": "2026-11-25",
-      "item": {
-        "id": "day1-icoca-buy",
-        "text": "난카이 탑승 전 JR 간사이공항역에서 실물 ICOCA 구매 · 1인 2,000엔 현금 · 기존 IC카드 있으면 생략",
-        "url": "#icoca-guide",
-        "linkLabel": "구매 동선"
-      }
-    },
-    {
-      "date": "2026-11-27",
-      "item": {
-        "id": "day3-icoca-balance",
-        "text": "한큐·JR·교토 지하철·게이한·오사카 메트로 이용 전 ICOCA 잔액 확인·충전 · 실제 경로 운임은 직전 재확인",
-        "url": "#icoca-guide",
-        "linkLabel": "충전·사용 안내"
-      }
-    },
-    {
-      "date": "2026-11-28",
-      "item": {
-        "id": "day4-icoca-return",
-        "text": "난카이 간사이공항역에 도착한 뒤 개찰구 밖 JR 창구에서 ICOCA 반납 여부 결정",
-        "url": "#icoca-guide",
-        "linkLabel": "반납·환불 안내"
-      }
-    }
-  ]
-};
-function applyIcocaInfo(x,saveBackup=true){
-  if(x.icocaUpdate==='2026-10-06')return x;
-  if(saveBackup){
-    const key=STORAGE_KEY+'-before-icoca-2026-10-06';
-    if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(x));
-  }
-  ICOCA_INFO.stops.forEach(function(stop){
-    const day=x.data.days.find(d=>d.date===stop.date);
-    if(!day)return;
-    if(!day.plans.some(p=>p.id===stop.plan.id)){
-      if(stop.date===TRIP_START)day.plans.unshift(clone(stop.plan));
-      else{
-        const i=day.plans.findIndex(p=>p.id==='day4-tax-refund');
-        day.plans.splice(i>=0?i:day.plans.length,0,clone(stop.plan));
-      }
-    }
-    if(!Array.isArray(day.notes))day.notes=[];
-    if(!day.notes.some(n=>n===stop.note))day.notes.push(stop.note);
-  });
-  x.data.preTripChecklist=x.data.preTripChecklist||[];
-  if(!x.data.preTripChecklist.some(i=>i.id===ICOCA_INFO.pre.id))x.data.preTripChecklist.push(clone(ICOCA_INFO.pre));
-  x.data.dailyChecklist=x.data.dailyChecklist||[];
-  ICOCA_INFO.daily.forEach(function(entry){
-    let group=x.data.dailyChecklist.find(g=>g.date===entry.date);
-    if(!group){group={date:entry.date,items:[]};x.data.dailyChecklist.push(group);}
-    if(!group.items.some(i=>i.id===entry.item.id))group.items.push(clone(entry.item));
-  });
-  x.icocaUpdate='2026-10-06';
-  if(saveBackup)localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
-  return x;
-}
-ICOCA_INFO.stops.forEach(stop=>{ROUTE_DETAILS[stop.plan.id]=stop.route;});
-applyIcocaInfo({data:defaults},false);
-
 ATM_STOPS.forEach(stop=>{const p=HOTEL_TRIP_UPDATE.plans[stop.plan.id];if(p){Object.assign(stop.plan,clone(p));stop.note=p.note;if(HOTEL_TRIP_UPDATE.routes[stop.plan.id])stop.route=clone(HOTEL_TRIP_UPDATE.routes[stop.plan.id]);}});
 updateHotelTripData(defaults);
 updateFlightTripData(defaults);
@@ -788,6 +672,8 @@ function applyFlightUpdate(x){
 }
 
 function scheduleBackupKey(){
+  const arrivalBackup=STORAGE_KEY+'-before-'+NAMBA_ARRIVAL_UPDATE;
+  if(localStorage.getItem(arrivalBackup))return arrivalBackup;
   const returnBackup=STORAGE_KEY+'-before-'+OSAKA_RETURN_UPDATE;
   if(localStorage.getItem(returnBackup))return returnBackup;
   const kyoto=STORAGE_KEY+'-before-'+KYOTO_UPDATE;
@@ -800,7 +686,7 @@ function scheduleBackupKey(){
   return localStorage.getItem(previousKyoto)?previousKyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
-function freshState(){return {osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
+function freshState(){return {nambaArrivalUpdate:NAMBA_ARRIVAL_UPDATE,osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
   // Keep the complete pre-update state recoverable, including personal edits.
@@ -928,6 +814,42 @@ function applyOsakaReturnUpdate(x){
   return x;
 }
 
+const NAMBA_ARRIVAL_UPDATE='2026-11-23-nankai-bic';
+function applyNambaArrivalUpdate(x){
+  if(x.nambaArrivalUpdate===NAMBA_ARRIVAL_UPDATE)return x;
+  const backup=STORAGE_KEY+'-before-'+NAMBA_ARRIVAL_UPDATE;
+  if(!localStorage.getItem(backup))localStorage.setItem(backup,JSON.stringify(x));
+  const retired=new Set(['d1p4','d1-icoca-buy','d4-icoca-return']);
+  for(const day of x.data.days){
+    const oldSlot=day.plans.findIndex(plan=>plan.id==='d1p4');
+    const oldIndex=oldSlot<0?-1:day.plans.slice(0,oldSlot).filter(plan=>!retired.has(plan.id)).length;
+    day.plans=day.plans.filter(plan=>!retired.has(plan.id));
+    day.notes=(day.notes||[]).filter(note=>!/^ICOCA (?:구매|반납):/.test(note));
+    if(day.date!==TRIP_START)continue;
+    const arrival=day.plans.find(plan=>plan.id==='d1p1');
+    if(arrival)Object.assign(arrival,clone(HOTEL_TRIP_UPDATE.plans.d1p1));
+    if(!day.plans.some(plan=>plan.id===NAMBA_SHOPPING_PLAN.id)){
+      const dinner=day.plans.findIndex(plan=>plan.id==='d1p5');
+      day.plans.splice(oldIndex>=0?oldIndex:dinner>=0?dinner:day.plans.length,0,clone(NAMBA_SHOPPING_PLAN));
+    }
+    day.notes=[...new Set([...day.notes,NANKAI_ARRIVAL_NOTE,NAMBA_SHOPPING_NOTE])];
+  }
+  const oldChecks=new Set(['pre-icoca','day1-icoca-buy','day3-icoca-balance','day4-icoca-return']);
+  x.data.preTripChecklist=x.data.preTripChecklist.filter(item=>!oldChecks.has(item.id));
+  for(const group of x.data.dailyChecklist){
+    group.items=group.items.filter(item=>!oldChecks.has(item.id));
+    const arrival=group.items.find(item=>item.id==='day1-nankai');
+    const updated=defaults.dailyChecklist.find(day=>day.date===group.date);
+    if(arrival)arrival.text=updated.items.find(item=>item.id==='day1-nankai').text;
+    if(group.date==='2026-11-27'&&!group.items.some(item=>item.id==='day3-rail-tickets')){
+      group.items.push(clone(updated.items.find(item=>item.id==='day3-rail-tickets')));
+    }
+  }
+  x.nambaArrivalUpdate=NAMBA_ARRIVAL_UPDATE;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -937,7 +859,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))))));
+      return applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))))));
     }
   }catch(e){}
   return freshState();
@@ -1104,7 +1026,7 @@ function renderTimeline(){
     node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
     const naverQueries={
       'd1-naniwa-lunch':'浪速日本橋食堂 오사카','d1p2':'오사카 구로몬시장','d1-kuromon-sanpei':'오사카 구로몬 산페이','d1-yasaka':'오사카 난바 야사카 신사',
-      'd1p4':'오사카 호젠지','d1p5':'오사카 도톤보리','d1p6':'오사카 신사이바시스지',
+      'd1-bic-namba':'오사카 빅카메라 난바점','d1p5':'오사카 도톤보리','d1p6':'오사카 신사이바시스지',
       'd2-shitennoji':'오사카 시텐노지',
       'd2p2':'오사카성 천수각','d2-museum':'오사카 역사박물관','d2p4':'오사카 우메다 스카이빌딩 공중정원',
       'd3-togetsukyo':'교토 도게츠교','d3-tenryuji':'교토 덴류지','d3-bamboo':'교토 아라시야마 대나무숲','d3p3':'교토 산넨자카 니넨자카',
@@ -1246,7 +1168,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyIcocaInfo(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
