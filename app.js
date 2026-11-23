@@ -4,6 +4,13 @@ const STORAGE_KEY='kansai-trip-manager-v2';
 
 const SCHEDULE_VERSION='2026-09-22-shitennoji';
 const ABENO_UNIQLO_UPDATE='2026-11-23-uniqlo-abeno';
+const SHINSEKAI_DONKI_UPDATE='2026-11-23-donki-evening-3days';
+const SHINSEKAI_DONKI_PLANS=[
+  {date:'2026-11-25',id:'d1-donki-shinsekai',time:'21:30 이후 · 시간 남으면'},
+  {date:'2026-11-26',id:'d2-donki-shinsekai',time:'21:00 이후 · 숙소 복귀 후 선택'},
+  {date:'2026-11-27',id:'d3-donki-shinsekai',time:'21:30 이후 · 숙소 복귀 후 선택'}
+];
+
 const KUROMON_SANPEI_PLAN={
   "id": "d1-kuromon-sanpei",
   "time": "14:40-15:10 전후 (구로몬시장 일정 내)",
@@ -690,7 +697,7 @@ function scheduleBackupKey(){
   return localStorage.getItem(previousKyoto)?previousKyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
-function freshState(){return applyKobeDayUpdate({nambaArrivalUpdate:NAMBA_ARRIVAL_UPDATE,osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]},false);}
+function freshState(){return applyShinsekaiDonkiUpdate(applyKobeDayUpdate({nambaArrivalUpdate:NAMBA_ARRIVAL_UPDATE,osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]},false),false);}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
   // Keep the complete pre-update state recoverable, including personal edits.
@@ -1040,6 +1047,28 @@ function applyAbenoUniqloUpdate(x,persist=true){
   return x;
 }
 
+function applyShinsekaiDonkiUpdate(x,persist=true){
+  if(x.shinsekaiDonkiUpdate===SHINSEKAI_DONKI_UPDATE)return x;
+  const backupKey=STORAGE_KEY+'-before-'+SHINSEKAI_DONKI_UPDATE;
+  if(persist&&!localStorage.getItem(backupKey))localStorage.setItem(backupKey,JSON.stringify(x));
+  SHINSEKAI_DONKI_PLANS.forEach(function(target){
+    const day=x.data.days.find(d=>d.date===target.date);
+    if(!day||day.plans.some(p=>p.id===target.id))return;
+    day.plans.push({
+      id:target.id,
+      time:target.time,
+      name:'[선택] 메가돈키호테 신세카이점 (MEGAドン・キホーテ新世界店)',
+      fee:'쇼핑 비용 별도',
+      note:'저녁 본 일정과 숙소 복귀를 마친 뒤 시간·체력이 남으면 방문. 영업 09:00~다음 날 05:00 · 정기휴무 없음. 주소: 大阪市浪速区恵美須東3-4-36. 도부쓰엔마에역 5번 출구 도보 약 1분. 식품·주류·의약품·면세 대응(의약품은 03:00까지).',
+      map:'MEGA Don Quijote Shinsekai 3-4-36 Ebisuhigashi Osaka',
+      optional:true
+    });
+  });
+  x.shinsekaiDonkiUpdate=SHINSEKAI_DONKI_UPDATE;
+  if(persist)localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -1049,7 +1078,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))))))));
+      return applyShinsekaiDonkiUpdate(applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))))))))))));
     }
   }catch(e){}
   return freshState();
@@ -1234,6 +1263,15 @@ function renderTimeline(){
     if(atmStop){
       const a=document.createElement('a');a.className='map-link';a.textContent='공식 ATM 위치·영업 ↗';a.href=atmStop.plan.atm.official;a.target='_blank';a.rel='noopener noreferrer';node.querySelector('.plan-actions').appendChild(a);
     }
+    if(/^d[123]-donki-shinsekai$/.test(plan.id)){
+      const official=document.createElement('a');
+      official.className='map-link';
+      official.textContent='메가돈키호테 공식 운영정보 ↗';
+      official.href='https://www.donki.com/store/shop_detail.php?shop_id=356';
+      official.target='_blank';
+      official.rel='noopener noreferrer';
+      node.querySelector('.plan-actions').appendChild(official);
+    }
     if(plan.id==='d1-naniwa-lunch'){
       const links=node.querySelector('.plan-actions');
       [['매장 공식 정보 ↗','https://www.fujiofood.com/shop_search/shokudo/shop_1061.php'],['結제·예산 정보 ↗','https://tabelog.com/osaka/A2701/A270202/27048770/']].forEach(([label,url])=>{
@@ -1254,6 +1292,7 @@ function renderTimeline(){
     const naverQueries={
       'd1-naniwa-lunch':'浪速日本橋食堂 오사카','d1p2':'오사카 구로몬시장','d1-kuromon-sanpei':'오사카 구로몬 산페이','d1-yasaka':'오사카 난바 야사카 신사',
       'd1-bic-namba':'오사카 빅카메라 난바점','d1p5':'오사카 도톤보리','d1p6':'오사카 신사이바시스지',
+      'd1-donki-shinsekai':'메가돈키호테 신세카이점','d2-donki-shinsekai':'메가돈키호테 신세카이점','d3-donki-shinsekai':'메가돈키호테 신세카이점',
       'd2-shitennoji':'오사카 시텐노지',
       'd2p2':'오사카성 천수각','d2-museum':'오사카 역사박물관','d2p4':'오사카 우메다 스카이빌딩 공중정원',
       'd3-togetsukyo':'교토 도게츠교','d3-tenryuji':'교토 덴류지','d3-bamboo':'교토 아라시야마 대나무숲','d3p3':'교토 산넨자카 니넨자카',
@@ -1395,7 +1434,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyShinsekaiDonkiUpdate(applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
