@@ -3,6 +3,7 @@ const TRIP_END='2026-11-28';
 const STORAGE_KEY='kansai-trip-manager-v2';
 
 const SCHEDULE_VERSION='2026-09-22-shitennoji';
+const ABENO_UNIQLO_UPDATE='2026-11-23-uniqlo-abeno';
 const KUROMON_SANPEI_PLAN={
   "id": "d1-kuromon-sanpei",
   "time": "14:40-15:10 전후 (구로몬시장 일정 내)",
@@ -234,10 +235,10 @@ const defaults={
     },
     {
       "date": "2026-11-28",
-      "city": "오사카 · 신세카이·덴노지 → KIX",
+      "city": "오사카 · 신세카이·아베노 → KIX",
       "short": "오사카",
       "notes": [
-        "체크아웃 후 호텔 로비 셀프 보관함에 짐을 두고 오전에 쓰텐카쿠 → 덴노지 텐시바 → 하루카스 300. 여권과 귀중품은 지참해요.",
+        "체크아웃 후 호텔 로비 셀프 보관함에 짐을 두고 오전에 쓰텐카쿠 → 유니클로 아베노 큐즈몰점 → 하루카스 300으로 이동해요. 여권과 귀중품은 지참해요.",
         "쓰텐카쿠는 시간지정 입장이라 09:00 전후를 목표로 해요. 하루카스 300은 일반 성인 현장 2,200엔, 공식 웹 사전권 1,980엔이에요.",
         "12:00 전후 전망대에서 나와 호텔 짐을 회수해요. 13:00 전후 숙소에서 출발해 난카이 신이마미야역에서 공항급행을 타고, KIX 제1터미널에 14:30 전후 도착을 목표로 해요."
       ],
@@ -252,12 +253,12 @@ const defaults={
           "map": "Tsutenkaku Osaka"
         },
         {
-          "id": "d4-tennoji",
+          "id": "d4-uniqlo-abeno",
           "time": "10:15-10:55",
-          "name": "덴노지 · 텐시바 산책",
-          "fee": "무료",
-          "note": "신세카이에서 덴노지공원 텐시바를 지나 덴노지역 쪽으로 걸어요. 도보와 짧은 산책 포함 약 40분.",
-          "map": "Tenshiba Tennoji Park Osaka"
+          "name": "유니클로 아베노 큐즈몰점 (UNIQLO Abeno Q's Mall)",
+          "fee": "쇼핑 비용 별도",
+          "note": "쓰텐카쿠에서 아베노 큐즈몰 1층 유니클로로 걸어가요. 10:00~21:00 영업. 10:15~10:55에는 도보 이동·쇼핑·하루카스 쪽 이동이 포함되어 쇼핑 시간은 짧을 수 있어요. 주소: 大阪府大阪市阿倍野区阿倍野筋1-6-1 あべのキューズモール1F.",
+          "map": "UNIQLO Abeno Q's Mall 1-6-1 Abenosuji Osaka"
         },
         {
           "id": "d4-harukas",
@@ -1015,6 +1016,30 @@ function applyKobeDayUpdate(x,persist=true){
   return x;
 }
 
+function applyAbenoUniqloUpdate(x,persist=true){
+  if(x.abenoUniqloUpdate===ABENO_UNIQLO_UPDATE)return x;
+  const backupKey=STORAGE_KEY+'-before-'+ABENO_UNIQLO_UPDATE;
+  if(persist&&!localStorage.getItem(backupKey))localStorage.setItem(backupKey,JSON.stringify(x));
+  const day=x.data.days.find(d=>d.date==='2026-11-28');
+  const revised=defaults.days.find(d=>d.date==='2026-11-28');
+  if(day&&revised){
+    const oldNote='체크아웃 후 호텔 로비 셀프 보관함에 짐을 두고 오전에 쓰텐카쿠 → 덴노지 텐시바 → 하루카스 300. 여권과 귀중품은 지참해요.';
+    day.city=revised.city;
+    day.notes=(day.notes||[]).filter(note=>note!==oldNote);
+    if(!day.notes.includes(revised.notes[0]))day.notes.unshift(revised.notes[0]);
+    day.plans=day.plans.filter(p=>p.id!=='d4-tennoji');
+    const uniqlo=revised.plans.find(p=>p.id==='d4-uniqlo-abeno');
+    if(!day.plans.some(p=>p.id===uniqlo.id)){
+      const i=day.plans.findIndex(p=>p.id==='d4-harukas');
+      day.plans.splice(i>=0?i:day.plans.length,0,clone(uniqlo));
+    }
+    if(x.completed)delete x.completed['d4-tennoji'];
+  }
+  x.abenoUniqloUpdate=ABENO_UNIQLO_UPDATE;
+  if(persist)localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -1024,7 +1049,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))))))))));
+      return applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))))))));
     }
   }catch(e){}
   return freshState();
@@ -1233,7 +1258,7 @@ function renderTimeline(){
       'd2p2':'오사카성 천수각','d2-museum':'오사카 역사박물관','d2p4':'오사카 우메다 스카이빌딩 공중정원',
       'd3-togetsukyo':'교토 도게츠교','d3-tenryuji':'교토 덴류지','d3-bamboo':'교토 아라시야마 대나무숲','d3p3':'교토 산넨자카 니넨자카',
       'd3p5':'교토 기온 하나미코지','d3-romantic-train':'사가노 도롯코 단풍열차','d3p8':'교토 청수사 기요미즈데라',
-      'd4-tsutenkaku':'오사카 쓰텐카쿠','d4-tennoji':'오사카 덴노지 텐시바','d4-harukas':'아베노 하루카스 300 전망대'
+      'd4-tsutenkaku':'오사카 쓰텐카쿠','d4-uniqlo-abeno':'유니클로 아베노 큐즈몰점','d4-harukas':'아베노 하루카스 300 전망대'
     };
     const naver=node.querySelector('.naver-link');
     const original=defaults.days.flatMap(d=>d.plans).find(p=>p.id===plan.id);
@@ -1370,7 +1395,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
