@@ -108,3 +108,94 @@ Object.assign(ROUTE_DETAILS,{
 
 // Confirmed three-night accommodation and station access, 2026-11-01.
 Object.assign(ROUTE_DETAILS, HOTEL_TRIP_UPDATE.routes);
+
+Object.assign(ROUTE_DETAILS, {
+  "d2-seven-atm": {
+    "kind": "도보 · 출금",
+    "title": "호텔 → 에비스니시 1초메 세븐일레븐",
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+    "steps": [
+      "호텔에서 북쪽 에비스초역 방향으로 약 3~5분 걸어요.",
+      "출금은 08:20 고베 출발 전에 마쳐요."
+    ]
+  },
+  "d2-kobe-to-shinkobe": {
+    "kind": "JR 전철 + 지하철 + 도보",
+    "title": "JR 신이마미야 → 오사카 → 산노미야 → 신고베",
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
+    "steps": [
+      "호텔에서 JR 신이마미야역으로 약 7~10분 걸어 오사카역행 열차를 타요.",
+      "JR 오사카역에서 고베 방면 JR 고베선 신쾌속 또는 쾌속으로 환승해 JR 산노미야역(三ノ宮)에서 내려요.",
+      "고베 시영 지하철 산노미야역(三宮)에서 세이신·야마테선 신고베 방면으로 한 정거장. 신고베역에서 허브원 로프웨이 산로쿠역 표지를 따라가요."
+    ]
+  },
+  "d2-kobe-herb-gardens": {
+    "kind": "도보 · 로프웨이",
+    "title": "신고베역 → 누노비키 허브원 로프웨이",
+    "origin": "Kobe Subway Shin-Kobe Station",
+    "destination": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
+    "steps": [
+      "신고베역에서 허브원 로프웨이 산로쿠역(山麓駅)으로 걸어가요.",
+      "왕복권으로 정상 전망 구역에 올라가 크리스마스 마켓을 보고, 로프웨이로 산로쿠역에 돌아와요."
+    ]
+  },
+  "d2-kobe-kitano": {
+    "kind": "도보",
+    "title": "로프웨이 산로쿠역 → 기타노 이진칸 거리",
+    "origin": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
+    "destination": "Kitano Ijinkan-gai Kobe",
+    "steps": [
+      "로프웨이 산로쿠역에서 기타노도리를 따라 서쪽으로 걸어요.",
+      "기타노 이진칸 거리에서 외관 위주로 구경해요."
+    ]
+  },
+  "d2-kobe-lunch": {
+    "kind": "도보",
+    "title": "기타노 → 산노미야 중심가",
+    "origin": "Kitano Ijinkan-gai Kobe",
+    "destination": "Sannomiya Center Gai Kobe",
+    "steps": [
+      "기타노에서 남쪽 비탈길을 내려와 산노미야역과 산노미야 센터가이 주변에서 식사해요."
+    ]
+  },
+  "d2-kobe-nankinmachi": {
+    "kind": "도보",
+    "title": "산노미야 → 모토마치 → 난킨마치",
+    "origin": "Sannomiya Center Gai Kobe",
+    "destination": "Nankinmachi Chinatown Kobe",
+    "steps": [
+      "산노미야 센터가이에서 서쪽 모토마치 쪽으로 이동해 난킨마치 입구로 들어가요."
+    ]
+  },
+  "d2-kobe-meriken": {
+    "kind": "도보",
+    "title": "난킨마치 → 메리켄파크·포트타워",
+    "origin": "Nankinmachi Chinatown Kobe",
+    "destination": "Meriken Park Kobe",
+    "steps": [
+      "난킨마치에서 남쪽 항구 방면으로 내려가 메리켄파크의 BE KOBE 조형물과 포트타워를 둘러봐요."
+    ]
+  },
+  "d2-kobe-harborland": {
+    "kind": "도보",
+    "title": "메리켄파크 → 하버랜드 모자이크",
+    "origin": "Meriken Park Kobe",
+    "destination": "Kobe Harborland umie Mosaic",
+    "steps": [
+      "포트타워 쪽에서 항구 산책로를 따라 하버랜드 umie 모자이크로 걸어요."
+    ]
+  },
+  "d2-kobe-return": {
+    "kind": "도보 + JR 전철",
+    "title": "모자이크 → JR 고베 → 오사카 → 신이마미야",
+    "origin": "Kobe Harborland umie Mosaic",
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "steps": [
+      "모자이크에서 JR 고베역(神戸駅)으로 걸어가요.",
+      "JR 고베선 오사카 방면 신쾌속 또는 쾌속으로 오사카역에 가요.",
+      "JR 오사카역에서 순환선 니시쿠조·벤텐초 쪽으로 환승해 신이마미야역에 내려 숙소까지 걸어요."
+    ]
+  }
+});

@@ -63,102 +63,6 @@
     "origin": "Ebisubashi Bridge Dotonbori",
     "destination": "Shinsaibashi-suji Shopping Street"
   },
-  "d2-walk-shitennoji": {
-    "kind": "도보",
-    "title": "숙소 → 시텐노지 서문",
-    "steps": [
-      "숙소에서 동쪽 덴노지 방면으로 걸어 시텐노지 서문(石鳥居·西大門) 쪽으로 접근.",
-      "서문에서 중심가람 안내 표지를 따라 이동."
-    ],
-    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
-    "destination": "Shitennoji Temple West Gate Osaka"
-  },
-  "d2-shitennoji": {
-    "kind": "경내 도보",
-    "title": "시텐노지 서문 → 중심가람",
-    "steps": [
-      "서대문에서 경내 안쪽 중심가람 입구를 찾아 입장권·주유패스 대상 구역을 확인.",
-      "중심가람 관람 후 북서쪽 시텐노지마에유히가오카역 방면으로 이동할 준비."
-    ],
-    "origin": "Shitennoji Temple west gate",
-    "destination": "Shitennoji Temple"
-  },
-  "d2-to-castle": {
-    "kind": "지하철 + 도보",
-    "title": "시텐노지마에유히가오카역 → 다니마치욘초메역 → 오사카성",
-    "steps": [
-      "시텐노지 서쪽에서 북쪽으로 걸어 오사카 메트로 시텐노지마에유히가오카역(T26)으로 이동.",
-      "다니마치선 다이니치 방면 승차, 다니마치욘초메역(T23) 하차(다니마치큐초메·다니마치로쿠초메 다음). 환승 없음.",
-      "9번 출구 쪽으로 나와 바바초·오테몬 방향으로 걸어 오사카성 공원 진입 → 오테몬·사쿠라몬을 지나 천수각."
-    ],
-    "tip": "하차역부터 천수각까지 공원 내 보행이 길어 40분 이동칸은 빠듯할 수 있음.",
-    "origin": "Shitennoji-mae Yuhigaoka Station",
-    "destination": "Osaka Castle Main Tower"
-  },
-  "d2p2": {
-    "kind": "경내 도보",
-    "title": "오사카성 천수각 → 사쿠라몬·오테몬",
-    "steps": [
-      "천수각 본마루에서 내려와 사쿠라몬을 거쳐 서쪽 오테몬으로 이동.",
-      "오테몬 밖 오테마에 식당가와 역사박물관 쪽으로 나올 수 있도록 서쪽 출구 사용."
-    ],
-    "origin": "Osaka Castle Main Tower",
-    "destination": "Otemon Gate Osaka Castle"
-  },
-  "d2-lunch": {
-    "kind": "도보",
-    "title": "오사카성 오테몬 → 오테마에·역사박물관",
-    "steps": [
-      "오테몬을 나와 서쪽 오테마에 거리·오사카부청 앞을 따라 이동.",
-      "오사카 역사박물관(다니마치욘초메역 9번 출구 바로 옆) 근처에서 식사 후 박물관으로 이동."
-    ],
-    "tip": "원래 50분 칸에 걷기와 점심이 모두 포함되므로 대기가 길면 박물관 관람을 줄여야 함.",
-    "origin": "Otemon Gate Osaka Castle",
-    "destination": "Osaka Museum of History"
-  },
-  "d2-museum": {
-    "kind": "박물관 내 이동",
-    "title": "오사카 역사박물관 입구 → 상설전시",
-    "steps": [
-      "오테마에 거리의 박물관 입구로 진입. 가까운 지하철역은 다니마치욘초메역(T23/C18), 9번 출구.",
-      "상설전시 관람 후 같은 출입구로 나와 지하철 다니마치선 개찰구로 이동."
-    ],
-    "origin": "Osaka Museum of History",
-    "destination": "Tanimachi 4-chome Station"
-  },
-  "d2-to-umeda": {
-    "kind": "지하철 + 도보",
-    "title": "다니마치욘초메역 → 히가시우메다역 → 스카이빌딩",
-    "steps": [
-      "역사박물관 앞 다니마치욘초메역(T23)에서 다니마치선 다이니치 방면 승차.",
-      "히가시우메다역(T20) 하차(덴마바시·미나미모리마치 다음). 환승 없이 중앙 개찰구에서 JR 오사카역·그랜드프런트 오사카 안내를 따라 서쪽 이동.",
-      "오사카역 북쪽 우메키타 광장 쪽으로 나와 스카이빌딩·공중정원 표지를 따라 도보 이동."
-    ],
-    "tip": "히가시우메다역에서 빌딩까지 역내 통로와 지상 보행이 길다. 횡단보도·공사 동선은 현장 표지 우선.",
-    "origin": "Tanimachi 4-chome Station",
-    "destination": "Umeda Sky Building"
-  },
-  "d2-sky-entry": {
-    "kind": "건물 내 이동",
-    "title": "우메다 스카이빌딩 1층 → 공중정원 접수",
-    "steps": [
-      "스카이빌딩 사이의 공중정원(空中庭園展望台) 입구 표지를 찾아 입장 동선으로 이동.",
-      "엘리베이터·에스컬레이터를 따라 39층 티켓 카운터로 올라가 입장 준비."
-    ],
-    "origin": "Umeda Sky Building",
-    "destination": "Kuchu Teien Observatory"
-  },
-  "d2p4": {
-    "kind": "관람 중 도보",
-    "title": "공중정원 관람 → 숙소 복귀 준비",
-    "steps": [
-      "공중정원 실내·옥상 관람.",
-      "18:30 관람 종료 뒤 아래 숙소 복귀 카드 참고."
-    ],
-    "origin": "Kuchu Teien Observatory",
-    "destination": "Umeda Sky Building",
-    "tip": ""
-  },
   "d3-arashiyama-transit": {
     "kind": "JR 전철 + 도보",
     "title": "호텔 → 신이마미야 → 오사카 → 교토 → 우마호리",
@@ -333,18 +237,6 @@
     "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
     "tip": ""
   },
-  "d2-return-hotel": {
-    "kind": "지하철 + 도보",
-    "title": "스카이빌딩 → 우메다 → 도부쓰엔마에 → 호텔",
-    "steps": [
-      "스카이빌딩에서 오사카역 남쪽 메트로 우메다역(M16)까지 도보 약 15~25분 추정.",
-      "미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역(M22).",
-      "호텔까지 도보 약 10~15분 추정. 저녁 식사는 별도 배분."
-    ],
-    "origin": "Umeda Sky Building",
-    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
-    "tip": "전체 약 40~60분 계획. 주유패스 유효·대상 구간은 해당 패스로 입장."
-  },
   "d4-hotel-checkout": {
     "kind": "도보",
     "title": "객실 → 로비 셀프 보관함",
@@ -355,17 +247,6 @@
     "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
     "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
     "tip": "호텔 공식: https://www.eslead-hotel.com/en/namba-3/"
-  },
-  "d2-seven-atm": {
-    "kind": "도보 · 출금",
-    "title": "호텔 → 에비스니시 1초메점 → 다음 일정",
-    "steps": [
-      "호텔(恵美須西2-8-6)에서 북쪽 에비스초역 주변 恵美須西1-2-1 점포로 도보 약 3~5분 추정.",
-      "출금 후 10:15 전후 시텐노지로 이동할 준비를 해요."
-    ],
-    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
-    "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
-    "tip": "출금 선택 일정. 공식 ATM 24시간·1대, 대기·점검 별도."
   },
   "d3-seven-atm": {
     "kind": "도보 · 출금",
@@ -467,5 +348,93 @@
     "origin": "Namba Yasaka Shrine Osaka",
     "destination": "Bic Camera Namba Store Osaka 2-10-1 Sennichimae",
     "tip": "https://www.biccamera.com/bc/i/shop/shoplist/shop013.jsp"
+  },
+  "d2-seven-atm": {
+    "kind": "도보 · 출금",
+    "title": "호텔 → 에비스니시 1초메 세븐일레븐",
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+    "steps": [
+      "호텔에서 북쪽 에비스초역 방향으로 약 3~5분 걸어요.",
+      "출금은 08:20 고베 출발 전에 마쳐요."
+    ]
+  },
+  "d2-kobe-to-shinkobe": {
+    "kind": "JR 전철 + 지하철 + 도보",
+    "title": "JR 신이마미야 → 오사카 → 산노미야 → 신고베",
+    "origin": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "destination": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
+    "steps": [
+      "호텔에서 JR 신이마미야역으로 약 7~10분 걸어 오사카역행 열차를 타요.",
+      "JR 오사카역에서 고베 방면 JR 고베선 신쾌속 또는 쾌속으로 환승해 JR 산노미야역(三ノ宮)에서 내려요.",
+      "고베 시영 지하철 산노미야역(三宮)에서 세이신·야마테선 신고베 방면으로 한 정거장. 신고베역에서 허브원 로프웨이 산로쿠역 표지를 따라가요."
+    ]
+  },
+  "d2-kobe-herb-gardens": {
+    "kind": "도보 · 로프웨이",
+    "title": "신고베역 → 누노비키 허브원 로프웨이",
+    "origin": "Kobe Subway Shin-Kobe Station",
+    "destination": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
+    "steps": [
+      "신고베역에서 허브원 로프웨이 산로쿠역(山麓駅)으로 걸어가요.",
+      "왕복권으로 정상 전망 구역에 올라가 크리스마스 마켓을 보고, 로프웨이로 산로쿠역에 돌아와요."
+    ]
+  },
+  "d2-kobe-kitano": {
+    "kind": "도보",
+    "title": "로프웨이 산로쿠역 → 기타노 이진칸 거리",
+    "origin": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
+    "destination": "Kitano Ijinkan-gai Kobe",
+    "steps": [
+      "로프웨이 산로쿠역에서 기타노도리를 따라 서쪽으로 걸어요.",
+      "기타노 이진칸 거리에서 외관 위주로 구경해요."
+    ]
+  },
+  "d2-kobe-lunch": {
+    "kind": "도보",
+    "title": "기타노 → 산노미야 중심가",
+    "origin": "Kitano Ijinkan-gai Kobe",
+    "destination": "Sannomiya Center Gai Kobe",
+    "steps": [
+      "기타노에서 남쪽 비탈길을 내려와 산노미야역과 산노미야 센터가이 주변에서 식사해요."
+    ]
+  },
+  "d2-kobe-nankinmachi": {
+    "kind": "도보",
+    "title": "산노미야 → 모토마치 → 난킨마치",
+    "origin": "Sannomiya Center Gai Kobe",
+    "destination": "Nankinmachi Chinatown Kobe",
+    "steps": [
+      "산노미야 센터가이에서 서쪽 모토마치 쪽으로 이동해 난킨마치 입구로 들어가요."
+    ]
+  },
+  "d2-kobe-meriken": {
+    "kind": "도보",
+    "title": "난킨마치 → 메리켄파크·포트타워",
+    "origin": "Nankinmachi Chinatown Kobe",
+    "destination": "Meriken Park Kobe",
+    "steps": [
+      "난킨마치에서 남쪽 항구 방면으로 내려가 메리켄파크의 BE KOBE 조형물과 포트타워를 둘러봐요."
+    ]
+  },
+  "d2-kobe-harborland": {
+    "kind": "도보",
+    "title": "메리켄파크 → 하버랜드 모자이크",
+    "origin": "Meriken Park Kobe",
+    "destination": "Kobe Harborland umie Mosaic",
+    "steps": [
+      "포트타워 쪽에서 항구 산책로를 따라 하버랜드 umie 모자이크로 걸어요."
+    ]
+  },
+  "d2-kobe-return": {
+    "kind": "도보 + JR 전철",
+    "title": "모자이크 → JR 고베 → 오사카 → 신이마미야",
+    "origin": "Kobe Harborland umie Mosaic",
+    "destination": "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6",
+    "steps": [
+      "모자이크에서 JR 고베역(神戸駅)으로 걸어가요.",
+      "JR 고베선 오사카 방면 신쾌속 또는 쾌속으로 오사카역에 가요.",
+      "JR 오사카역에서 순환선 니시쿠조·벤텐초 쪽으로 환승해 신이마미야역에 내려 숙소까지 걸어요."
+    ]
   }
 }

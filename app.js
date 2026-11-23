@@ -581,6 +581,7 @@ function applyAtmStops(x){
   const key=STORAGE_KEY+'-before-seven-atm-2026-10-06';
   if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(x));
   ATM_STOPS.forEach(stop=>{
+    if(x.kobeDayUpdate===KOBE_DAY_UPDATE&&stop.date===KOBE_DAY.date)return;
     const day=x.data.days.find(d=>d.date===stop.date);
     if(!day)return;
     if(!day.plans.some(p=>p.id===stop.plan.id)){
@@ -672,6 +673,8 @@ function applyFlightUpdate(x){
 }
 
 function scheduleBackupKey(){
+  const kobeBackup=STORAGE_KEY+'-before-'+KOBE_DAY_UPDATE;
+  if(localStorage.getItem(kobeBackup))return kobeBackup;
   const arrivalBackup=STORAGE_KEY+'-before-'+NAMBA_ARRIVAL_UPDATE;
   if(localStorage.getItem(arrivalBackup))return arrivalBackup;
   const returnBackup=STORAGE_KEY+'-before-'+OSAKA_RETURN_UPDATE;
@@ -686,7 +689,7 @@ function scheduleBackupKey(){
   return localStorage.getItem(previousKyoto)?previousKyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
-function freshState(){return {nambaArrivalUpdate:NAMBA_ARRIVAL_UPDATE,osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]};}
+function freshState(){return applyKobeDayUpdate({nambaArrivalUpdate:NAMBA_ARRIVAL_UPDATE,osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]},false);}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
   // Keep the complete pre-update state recoverable, including personal edits.
@@ -850,6 +853,168 @@ function applyNambaArrivalUpdate(x){
   return x;
 }
 
+const KOBE_DAY_UPDATE='2026-11-23-kobe-day-2';
+const KOBE_DAY = {
+  "date": "2026-11-26",
+  "city": "고베 · 누노비키에서 하버랜드까지",
+  "short": "고베",
+  "notes": [
+    "11/26 (목) 08:20 숙소 출발. 신고베에서 시작해 기타노·산노미야·난킨마치·메리켄파크를 거쳐 하버랜드로 내려와요.",
+    "누노비키 크리스마스 시즌 목요일 로프웨이 상행 마지막 16:45 · 하행 마지막 17:15. 강풍 운휴 여부를 출발 전에 확인하세요.",
+    "포트타워 전망대는 선택이에요. 하버랜드에서는 17:30부터 KOBE UMIAKARI 조명과 저녁을 즐겨요."
+  ],
+  "fallback": "로프웨이가 운휴하면 신고베에서 기타노로 바로 이동해 이후 일정을 앞당겨요. 시간이 밀리면 기타노 실내 관람과 포트타워 전망대부터 생략하세요.",
+  "plans": [
+    {
+      "id": "d2-seven-atm",
+      "time": "08:05-08:15 (필요 시)",
+      "name": "출금 · 세븐일레븐 오사카 에비스니시 1초메점",
+      "fee": "인출금은 지출 아님 · 수수료 조건 확인",
+      "note": "숙소 근처 大阪市浪速区恵美須西1-2-1 점포. 호텔에서 도보 약 3~5분 추정. 세븐은행 공식 24시간·ATM 1대(2026-11-01 확인, 점검·카드사 제한 별도). 출금은 08:20 고베 출발 전에 마쳐요. 현금이 있거나 대기 줄이 길면 생략하세요. 실물 카드·PIN·엔화 잔액 준비, 출금 5~10분·대기 별도.",
+      "map": "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1",
+      "atm": {
+        "label": "세븐일레븐 오사카 에비스니시 1초메점",
+        "jp": "セブン-イレブン 大阪恵美須西1丁目店",
+        "address": "大阪府大阪市浪速区恵美須西1-2-1",
+        "hours": "24시간 · ATM 1대 (점검·카드사 제한 별도)",
+        "official": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000007338",
+        "checked": "2026-11-01"
+      },
+      "optional": true
+    },
+    {
+      "id": "d2-kobe-to-shinkobe",
+      "time": "08:20",
+      "name": "오사카 숙소 → 신고베",
+      "fee": "철도 운임 별도",
+      "note": "JR 신이마미야 → 오사카역 → JR 고베선 산노미야역. 산노미야에서 고베 시영 지하철로 신고베역까지 한 정거장. 환승·도보 포함 약 80~100분 배정.",
+      "map": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station"
+    },
+    {
+      "id": "d2-kobe-herb-gardens",
+      "time": "10:00",
+      "name": "누노비키 허브원 · 로프웨이",
+      "fee": "왕복 성인 2,500엔 (크리스마스 시즌)",
+      "note": "신고베역에서 산로쿠역(山麓駅) 매표소까지 도보. 정상 전망과 고베 크리스마스 마켓을 둘러본 뒤, 기타노로 가기 전 로프웨이로 내려와요. 강풍 시 운휴할 수 있어요.",
+      "map": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station"
+    },
+    {
+      "id": "d2-kobe-kitano",
+      "time": "12:30",
+      "name": "기타노 이진칸 거리",
+      "fee": "거리 무료 · 내부 관람 선택",
+      "note": "서양식 건축 거리 산책에 40~60분 배정. 건물 내부 유료 관람은 여유 있을 때 선택해요.",
+      "map": "Kitano Ijinkan-gai Kobe"
+    },
+    {
+      "id": "d2-kobe-lunch",
+      "time": "13:40",
+      "name": "산노미야 점심",
+      "fee": "식비 별도",
+      "note": "기타노에서 산노미야 번화가로 내려와 고베규 런치나 카페를 선택해요. 식당 대기 약 30분을 감안해요.",
+      "map": "Sannomiya Center Gai Kobe"
+    },
+    {
+      "id": "d2-kobe-nankinmachi",
+      "time": "15:00",
+      "name": "난킨마치 · 모토마치",
+      "fee": "거리 무료 · 식비·쇼핑 별도",
+      "note": "산노미야에서 모토마치 방면으로 걸어 차이나타운 먹거리와 상점을 둘러봐요. 점포별 영업시간은 달라요.",
+      "map": "Nankinmachi Chinatown Kobe"
+    },
+    {
+      "id": "d2-kobe-meriken",
+      "time": "16:15",
+      "name": "메리켄파크 · 고베 포트타워",
+      "fee": "공원 무료 · 전망대 선택 1,000엔 / 옥상 포함 1,200엔",
+      "note": "BE KOBE 조형물과 항구 풍경을 보고, 전망대는 시간이 남을 때 선택해요. 전망대는 시간 지정권이 필요하고, 당일권은 빈자리가 있을 때 구매 가능해요.",
+      "map": "Meriken Park Kobe"
+    },
+    {
+      "id": "d2-kobe-harborland",
+      "time": "17:30",
+      "name": "하버랜드 모자이크 · KOBE UMIAKARI",
+      "fee": "조명 관람 무료 · 저녁 별도",
+      "note": "메리켄파크에서 항구를 따라 모자이크로 걸어가요. 항구 야경과 하버랜드 일루미네이션을 보고 저녁을 먹어요.",
+      "map": "Kobe Harborland umie Mosaic"
+    },
+    {
+      "id": "d2-kobe-return",
+      "time": "19:30",
+      "name": "JR 고베역 → 오사카 숙소 복귀",
+      "fee": "철도 운임 별도",
+      "note": "모자이크에서 JR 고베역으로 이동. JR 고베선으로 오사카역, 오사카 순환선으로 신이마미야역까지 간 뒤 숙소로 걸어요. 환승·도보 포함 약 70~90분 배정.",
+      "map": "JR Kobe Station"
+    }
+  ]
+};
+const KOBE_CHECKLIST = [
+  {
+    "id": "d2-seven-atm-check",
+    "text": "08:05~08:15 · 필요하면 숙소 근처 세븐일레븐에서 출금",
+    "url": "https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000007338",
+    "linkLabel": "공식 ATM 위치"
+  },
+  {
+    "id": "day2-kobe-depart",
+    "text": "08:20 호텔 출발 · JR 신이마미야에서 오사카역으로 이동"
+  },
+  {
+    "id": "day2-kobe-ropeway",
+    "text": "누노비키 로프웨이 운휴 공지와 목요일 운행시간 확인",
+    "url": "https://www.kobeherb.com/topics/40537",
+    "linkLabel": "허브원 공식 안내"
+  },
+  {
+    "id": "day2-kobe-port",
+    "text": "포트타워 전망대 방문 시 시간 지정권 확인",
+    "url": "https://www.kobe-port-tower.com/en/ticket/",
+    "linkLabel": "포트타워 공식 요금"
+  },
+  {
+    "id": "day2-kobe-lights",
+    "text": "하버랜드 모자이크 일루미네이션 확인",
+    "url": "https://harborland.co.jp/special/kobe-umiakari/",
+    "linkLabel": "KOBE UMIAKARI 공식 안내"
+  }
+];
+const PREVIOUS_DAY_TWO_PLANS = new Set([
+  ...defaults.days.find(day=>day.date===KOBE_DAY.date).plans.map(plan=>plan.id),
+  'd2p1', 'd2p3', 'd2-return-hotel',
+]);
+const PREVIOUS_DAY_TWO_CHECKS = new Set([
+  ...defaults.dailyChecklist.find(day=>day.date===KOBE_DAY.date).items.map(item=>item.id),
+  'day2-tsuten',
+]);
+
+function applyKobeDayUpdate(x,persist=true){
+  if(x.kobeDayUpdate===KOBE_DAY_UPDATE)return x;
+  const backupKey=STORAGE_KEY+'-before-'+KOBE_DAY_UPDATE;
+  if(persist&&!localStorage.getItem(backupKey))localStorage.setItem(backupKey,JSON.stringify(x));
+
+  const index=x.data.days.findIndex(day=>day.date===KOBE_DAY.date);
+  const revised=clone(KOBE_DAY);
+  if(index>=0){
+    const previous=x.data.days[index];
+    revised.plans.push(...previous.plans.filter(plan=>!PREVIOUS_DAY_TWO_PLANS.has(plan.id)));
+    const previousNotes=new Set(defaults.days.find(day=>day.date===KOBE_DAY.date).notes);
+    revised.notes.push(...(previous.notes||[]).filter(note=>!previousNotes.has(note)&&!/(시텐노지|오사카성|오사카 역사박물관|우메다 공중정원|주유패스)/.test(note)));
+    x.data.days[index]=revised;
+  }
+
+  const group=x.data.dailyChecklist.find(day=>day.date===KOBE_DAY.date);
+  if(group){
+    group.items=clone(KOBE_CHECKLIST).concat(group.items.filter(item=>!PREVIOUS_DAY_TWO_CHECKS.has(item.id)));
+  }else{
+    x.data.dailyChecklist.push({date:KOBE_DAY.date,items:clone(KOBE_CHECKLIST)});
+  }
+  const ticketReminder=x.data.preTripChecklist.find(item=>item.id==='pre-tickets');
+  if(ticketReminder)ticketReminder.text=ticketReminder.text.replace('우메다 스카이빌딩·','');
+  x.kobeDayUpdate=KOBE_DAY_UPDATE;
+  if(persist)localStorage.setItem(STORAGE_KEY,JSON.stringify(x));
+  return x;
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -859,7 +1024,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))))));
+      return applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))))))))));
     }
   }catch(e){}
   return freshState();
@@ -1205,7 +1370,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported)))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
@@ -1230,14 +1395,14 @@ function renderTravelTools(){
   }
   document.querySelector('#deadlineNote').textContent=[
     '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
-    '시텐노지 10:40 → 역사박물관 14:05 → 공중정원 16:15 목표 · 지연 시 시텐노지 정원부터 생략.',
+    '08:20 숙소 출발 · 10:00 누노비키 로프웨이 · 17:30 하버랜드 야경. 로프웨이 운휴 시 기타노부터 시작.',
     '09:30 도롯코 가메오카 출발 → 아라시야마 오전 관람 → 청수사 입장 준비 17:10 · 야간 17:30~19:00.',
     '12:00 전망대 관람 종료 → 호텔 짐 회수 → 13:00 전후 숙소 출발 → 난카이 공항급행 · KIX 14:30 전후 목표.'
   ][selectedDay];
   const choices=state.admissionOptions||{};
   document.querySelectorAll('[data-admission]').forEach(el=>{el.checked=!!choices[el.dataset.admission];el.onchange=()=>{state.admissionOptions=state.admissionOptions||{};state.admissionOptions[el.dataset.admission]=el.checked;save();renderTravelTools();};});
-  const extra=choices.shitenGarden?300:0;
-  document.querySelector('#admissionTotal').textContent=yen(9000+extra);
+  const extra=choices.kobePortTower?1000:0;
+  document.querySelector('#admissionTotal').textContent=yen(7200+extra);
   document.querySelector('#previousBackupBtn').hidden=!localStorage.getItem(scheduleBackupKey());
 }
 document.querySelector('#previousBackupBtn').onclick=function(){
