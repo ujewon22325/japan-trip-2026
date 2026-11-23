@@ -991,6 +991,42 @@ function appendSanpeiInfo(node,plan){
   node.querySelector('.plan-note').after(details);
 }
 
+const AIRPORT_EXPRESS_SCHEDULES = {
+  "d1p1": {
+    "title": "난카이 공항급행 · 간사이공항역 → 신이마미야역",
+    "lines": [
+      "11:39 → 12:22 · 11:56 → 12:38",
+      "12:09 → 12:52 · 12:26 → 13:08",
+      "12:39 → 13:22 · 12:56 → 13:38"
+    ],
+    "url": "https://kensaku.nankai.co.jp/pc/T5?USR=PC&d=1&dw=0&slCode=311-2"
+  },
+  "d4-nankai-kix": {
+    "title": "난카이 공항급행 · 신이마미야역 → 간사이공항역",
+    "lines": [
+      "13:10 → 13:52 · 13:25 → 14:08 (추천)",
+      "13:40 → 14:22 · 13:55 → 14:38"
+    ],
+    "url": "https://kensaku.nankai.co.jp/pc/T5?USR=PC&d=2&dw=1&slCode=306-1"
+  }
+};
+
+function appendAirportExpressInfo(node, planId) {
+  const schedule = AIRPORT_EXPRESS_SCHEDULES[planId];
+  if (!schedule) return;
+  const info = document.createElement('p');
+  info.className = 'plan-note';
+  const title = document.createElement('strong');
+  title.textContent = schedule.title;
+  const official = document.createElement('a');
+  official.href = schedule.url;
+  official.target = '_blank';
+  official.rel = 'noopener noreferrer';
+  official.textContent = '난카이 공식 시각표';
+  info.append(title, '\n' + schedule.lines.join('\n') + '\n', official);
+  node.querySelector('.plan-note').after(info);
+}
+
 function renderTimeline(){
   const wrap=document.querySelector('#timeline'); wrap.innerHTML='';
   const tpl=document.querySelector('#timelineItemTemplate');
@@ -1023,6 +1059,7 @@ function renderTimeline(){
     appendSanpeiInfo(node,plan);
     appendWalkingGuide(node,plan);
     appendRouteGuide(node,plan);
+    appendAirportExpressInfo(node,plan.id);
     node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
     const naverQueries={
       'd1-naniwa-lunch':'浪速日本橋食堂 오사카','d1p2':'오사카 구로몬시장','d1-kuromon-sanpei':'오사카 구로몬 산페이','d1-yasaka':'오사카 난바 야사카 신사',
