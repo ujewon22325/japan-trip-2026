@@ -697,7 +697,7 @@ function scheduleBackupKey(){
   return localStorage.getItem(previousKyoto)?previousKyoto:STORAGE_KEY+'-before-'+SCHEDULE_VERSION;
 }
 
-function freshState(){return applyShinsekaiDonkiUpdate(applyKobeDayUpdate({nambaArrivalUpdate:NAMBA_ARRIVAL_UPDATE,osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]},false),false);}
+function freshState(){return applyVerifiedScheduleCorrections(applyShinsekaiDonkiUpdate(applyKobeDayUpdate({nambaArrivalUpdate:NAMBA_ARRIVAL_UPDATE,osakaReturnUpdate:OSAKA_RETURN_UPDATE,kuromonSanpeiUpdate:true,flightUpdate:FLIGHT_BOOKING.version,hotelUpdate:HOTEL_TRIP_UPDATE.version,kyotoUpdate:KYOTO_UPDATE,scheduleVersion:SCHEDULE_VERSION,data:clone(defaults),completed:{},checklistDone:{},expenses:[]},false),false));}
 function migrateSchedule(x){
   if(x.scheduleVersion===SCHEDULE_VERSION)return x;
   // Keep the complete pre-update state recoverable, including personal edits.
@@ -1069,6 +1069,10 @@ function applyShinsekaiDonkiUpdate(x,persist=true){
   return x;
 }
 
+function upgradeStoredSchedule(x){
+  return applyVerifiedScheduleCorrections(applyShinsekaiDonkiUpdate(applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x)))))))))))))));
+}
+
 function loadState(){
   try{
     const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -1078,11 +1082,257 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return applyShinsekaiDonkiUpdate(applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(x))))))))))))));
+      return upgradeStoredSchedule(x);
     }
   }catch(e){}
   return freshState();
 }
+const VERIFIED_SCHEDULE_FIELDS = {
+  "d1-donki-shinsekai": {
+    "time": [
+      "21:30 이후 · 시간 남으면",
+      "21:30 이후 · 숙소 체크인 후 선택"
+    ]
+  },
+  "d2-kobe-herb-gardens": {
+    "fee": [
+      "왕복 성인 2,500엔 (크리스마스 시즌)",
+      "크리스마스 시즌 성인 왕복 3,300엔 · 4인 13,200엔"
+    ]
+  },
+  "d2-kobe-harborland": {
+    "note": [
+      "메리켄파크에서 항구를 따라 모자이크로 걸어가요. 항구 야경과 하버랜드 일루미네이션을 보고 저녁을 먹어요.",
+      "메리켄파크에서 항구를 따라 모자이크로 걸어가요. 17:30은 모자이크 방문 예정 시각입니다. 조명 운영 시간은 장소마다 다릅니다. 야경을 보고 저녁을 먹어요."
+    ]
+  },
+  "d3-romantic-train": {
+    "note": [
+      "도롯코 가메오카역 09:30 출발 사가노 2호. 도롯코 아라시야마역에서 09:53 전후 내려 대나무숲으로 이어가요.",
+      "도롯코 가메오카역 09:30 출발 사가노 2호. 도롯코 아라시야마역에서 09:53 전후 내려 대나무숲으로 이어가요. 09:53은 공식 시간표의 아라시야마역 출발 시각이므로 하차는 그 직전입니다."
+    ]
+  },
+  "d4-tsutenkaku": {
+    "note": [
+      "숙소에서 도보 약 5분. 일반 전망대 09:00 개장, 시간지정 입장. 대기와 관람을 함께 잡은 시간이에요.",
+      "숙소에서 도보 약 5분. 일반 전망대 09:00 개장, 시간지정 입장. 09:00은 개장 시각입니다. 패스·교환권 사용 시 당일 현장에서 입장 시간을 지정하므로 바로 입장하지 못할 수 있어요."
+    ]
+  },
+  "d4-harukas": {
+    "fee": [
+      "성인 현장 2,200엔 · 공식 웹 사전권 1,980엔",
+      "성인 현장 2,200엔 · 웹 사전권 1,980엔(전날인 11/27까지 구매)"
+    ]
+  },
+  "d4-nankai-kix": {
+    "note": [
+      "숙소에서 난카이 신이마미야역까지 도보 약 7~10분. 간사이공항행 공항급행으로 직행, 승차 약 40~45분. 14:30 전후 제1터미널 도착 목표. ZE0614 최신 출발 시각은 E-Ticket에서 확인해요.",
+      "숙소에서 난카이 신이마미야역까지 도보 약 7~10분. 간사이공항행 공항급행으로 직행, 승차 약 40~45분. 제1터미널 14:30 전후 도착 목표예요. 아래 도착 시각은 공항역 기준입니다. 13:55 열차는 14:38 역 도착이라 목표보다 늦는 대체편입니다. ZE0614 최신 출발 시각은 E-Ticket에서 확인해요."
+    ]
+  }
+};
+const VERIFIED_DAY_NOTES = {
+  "포트타워 전망대는 선택이에요. 하버랜드에서는 17:30부터 KOBE UMIAKARI 조명과 저녁을 즐겨요.": "포트타워 전망대는 선택이에요. 17:30에는 하버랜드 모자이크를 방문해요. KOBE UMIAKARI 점등 시간은 장소마다 달라요.",
+  "쓰텐카쿠는 시간지정 입장이라 09:00 전후를 목표로 해요. 하루카스 300은 일반 성인 현장 2,200엔, 공식 웹 사전권 1,980엔이에요.": "쓰텐카쿠는 09:00 개장, 입장 시간 지정제예요. 하루카스 300은 성인 현장 2,200엔, 11/27까지 웹 사전 구매 시 1,980엔이에요."
+};
+const VERIFIED_PLAN_LINKS = {
+  "d2-kobe-to-shinkobe": {
+    "map": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
+    "links": [
+      [
+        "https://www.google.com/maps/search/?api=1&query=Kobe+Nunobiki+Herb+Gardens+Ropeway+Sanroku+Station",
+        "로프웨이 하부역 지도"
+      ],
+      [
+        "https://www.kobeherb.com/access/",
+        "신고베역에서 산로쿠역 가는 길"
+      ]
+    ]
+  },
+  "d2-kobe-herb-gardens": {
+    "map": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
+    "links": [
+      [
+        "https://www.google.com/maps/search/?api=1&query=Kobe+Nunobiki+Herb+Gardens+Ropeway+Sanroku+Station",
+        "로프웨이 하부역 지도"
+      ],
+      [
+        "https://www.kobeherb.com/tips/kobechristmasmarket/",
+        "크리스마스 시즌 공식 요금"
+      ]
+    ]
+  },
+  "d2-kobe-meriken": {
+    "map": "Meriken Park Kobe",
+    "links": [
+      [
+        "https://www.google.com/maps/search/?api=1&query=Meriken+Park+Kobe",
+        "메리켄파크 지도"
+      ],
+      [
+        "https://www.kobe-port-tower.com/ticket/",
+        "포트타워 입장권·공식 안내"
+      ]
+    ]
+  },
+  "d2-kobe-harborland": {
+    "map": "Kobe Harborland umie Mosaic",
+    "links": [
+      [
+        "https://www.google.com/maps/search/?api=1&query=Kobe+Harborland+umie+Mosaic",
+        "모자이크 지도"
+      ],
+      [
+        "https://harborland.co.jp/special/kobe-umiakari/",
+        "장소별 점등 시간"
+      ]
+    ]
+  },
+  "d3-arashiyama-transit": {
+    "map": "Torokko Kameoka Station Kyoto",
+    "links": [
+      [
+        "https://www.google.com/maps/search/?api=1&query=Torokko+Kameoka+Station+Kyoto",
+        "도롯코 가메오카 탑승역 지도"
+      ],
+      [
+        "https://timetable.jr-odekake.net/train-timetable/22821?date=20261127",
+        "JR 교토 08:16 공식 시간표"
+      ],
+      [
+        "https://timetable.jr-odekake.net/train-timetable/4571?date=20261127",
+        "JR 교토 08:27 공식 시간표"
+      ]
+    ]
+  },
+  "d3-romantic-train": {
+    "map": "Torokko Arashiyama Station Kyoto",
+    "links": [
+      [
+        "https://www.google.com/maps/search/?api=1&query=Torokko+Kameoka+Station+Kyoto",
+        "탑승 · 도롯코 가메오카역"
+      ],
+      [
+        "https://www.google.com/maps/search/?api=1&query=Torokko+Arashiyama+Station+Kyoto",
+        "하차 · 도롯코 아라시야마역"
+      ],
+      [
+        "https://www.sagano-kanko.co.jp/cms/wp-content/uploads/2026/01/260120_00_%E3%80%90%E7%A2%BA%E5%AE%9A%E3%80%912026%E5%B9%B4%E9%81%8B%E8%A1%8C%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%80%90HP%E3%80%91.pdf",
+        "도롯코 2026년 시간표"
+      ]
+    ]
+  },
+  "d4-tsutenkaku": {
+    "map": "Tsutenkaku Osaka",
+    "links": [
+      [
+        "https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka",
+        "쓰텐카쿠 지도"
+      ],
+      [
+        "https://www.tsutenkaku.co.jp/annai/index.html",
+        "입장 시간 지정 공식 안내"
+      ]
+    ]
+  },
+  "d4-uniqlo-abeno": {
+    "map": "UNIQLO Abeno Q's Mall 1-6-1 Abenosuji Osaka",
+    "links": [
+      [
+        "https://map.uniqlo.com/jp/ja/detail/10101346",
+        "유니클로 공식 점포 지도"
+      ]
+    ]
+  },
+  "d4-harukas": {
+    "map": "Harukas 300 Observatory Osaka",
+    "links": [
+      [
+        "https://www.google.com/maps/search/?api=1&query=Harukas+300+Observatory+Osaka",
+        "하루카스 300 지도"
+      ],
+      [
+        "https://www.abenoharukas-300.jp/observatory/information.html",
+        "하루카스 300 공식 요금·구매 안내"
+      ]
+    ]
+  },
+  "day4-tax-refund": {
+    "map": "Kansai International Airport",
+    "links": [
+      [
+        "https://www.nta.go.jp/publication/pamph/shohi/menzei/201805/pdf/caution_kr.pdf",
+        "일본 국세청 한국어 안내"
+      ],
+      [
+        "https://www.kixdutyfree.jp/en/airport_tax_refund_guide_info.html",
+        "간사이공항 출국장 면세 절차"
+      ]
+    ]
+  }
+};
+const PINNED_TRIP_PLACES = {
+  "Eslead Hotel Namba South III Osaka Ebisunishi 2-8-6": {
+    "id": "ChIJ_4AIjDbnAGARV489qXmh8vE",
+    "label": "에스리드 난바 사우스 III 지도"
+  },
+  "セブン-イレブン 大阪恵美須西1丁目店 大阪府大阪市浪速区恵美須西1-2-1": {
+    "id": "ChIJi6GBTGfnAGAR2OQy2ktNC_E",
+    "label": "에비스니시 1초메점 지도"
+  }
+};
+
+function applyVerifiedScheduleCorrections(trip) {
+  for (const day of trip.data.days) {
+    for (const plan of day.plans) {
+      for (const [key, [before, after]] of Object.entries(VERIFIED_SCHEDULE_FIELDS[plan.id] ?? {})) {
+        if (plan[key] === before) plan[key] = after;
+      }
+    }
+    if (Array.isArray(day.notes)) day.notes = day.notes.map(note => Object.hasOwn(VERIFIED_DAY_NOTES, note) ? VERIFIED_DAY_NOTES[note] : note);
+  }
+  return trip;
+}
+
+function tripDirectionsUrl(destination, origin, mode) {
+  const params = new URLSearchParams({api: '1', destination});
+  if (origin) params.set('origin', origin);
+  if (mode) params.set('travelmode', mode);
+  const destinationId = PINNED_TRIP_PLACES[destination]?.id;
+  const originId = PINNED_TRIP_PLACES[origin]?.id;
+  if (destinationId) params.set('destination_place_id', destinationId);
+  if (originId) params.set('origin_place_id', originId);
+  return 'https://www.google.com/maps/dir/?' + params;
+}
+
+function setPlanMapLinks(node, plan) {
+  const mainLink = node.querySelector('.map-link');
+  const verified = VERIFIED_PLAN_LINKS[plan.id];
+  if (verified?.links && verified.map === plan.map) {
+    const [[primaryUrl, primaryLabel], ...extraLinks] = verified.links;
+    mainLink.href = primaryUrl;
+    mainLink.textContent = primaryLabel + ' ↗';
+    for (const [url, label] of extraLinks) {
+      const link = mainLink.cloneNode();
+      link.href = url;
+      link.textContent = label + ' ↗';
+      node.querySelector('.plan-actions').appendChild(link);
+    }
+    return;
+  }
+  if (!plan.map) {
+    mainLink.hidden = true;
+    return;
+  }
+  const params = new URLSearchParams({api: '1', query: plan.map});
+  const place = PINNED_TRIP_PLACES[plan.map];
+  if (place?.id) {
+    params.set('query_place_id', place.id);
+    mainLink.textContent = place.label + ' ↗';
+  }
+  mainLink.href = 'https://www.google.com/maps/search/?' + params;
+}
+
 let state=loadState();
 let selectedDay=chooseInitialDay();
 let deferredInstallPrompt=null;
@@ -1224,7 +1474,7 @@ const AIRPORT_EXPRESS_SCHEDULES = {
     "title": "난카이 공항급행 · 신이마미야역 → 간사이공항역",
     "lines": [
       "13:10 → 13:52 · 13:25 → 14:08 (추천)",
-      "13:40 → 14:22 · 13:55 → 14:38"
+      "13:40 → 14:22 · 13:55 → 14:38 (대체편)"
     ],
     "url": "https://kensaku.nankai.co.jp/pc/T5?USR=PC&d=2&dw=1&slCode=306-1"
   }
@@ -1308,8 +1558,7 @@ function renderTimeline(){
       naver.title='네이버에서 '+query+' 장소 정보 검색';
       naver.setAttribute('aria-label',plan.name+' 네이버 장소 정보 검색 (새 창)');
     }else naver.hidden=true;
-    const map=node.querySelector('.map-link');
-    if(plan.map)map.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(plan.map); else map.hidden=true;
+    setPlanMapLinks(node,plan);
     node.querySelector('.edit-link').onclick=function(){openPlanDialog(plan);};
     wrap.appendChild(node);
   });
@@ -1434,7 +1683,7 @@ document.querySelector('#importInput').onchange=async function(e){
     if(!Array.isArray(imported.data.dailyChecklist))imported.data.dailyChecklist=clone(defaults.dailyChecklist);
     if(!Array.isArray(imported.data.days)||imported.data.days.length!==4||!imported.data.days.every(d=>typeof d.date==='string'&&Array.isArray(d.plans)&&d.plans.every(p=>typeof p.id==='string'&&typeof p.name==='string')))throw new Error();
     imported.completed=imported.completed||{};imported.checklistDone=imported.checklistDone||{};imported.expenses=Array.isArray(imported.expenses)?imported.expenses:[];
-    state=applyShinsekaiDonkiUpdate(applyAbenoUniqloUpdate(applyKobeDayUpdate(applyNambaArrivalUpdate(applyOsakaReturnUpdate(applyKuromonSanpeiUpdate(applyFlightUpdate(applyHotelUpdate(applyKyotoUpdate(applyAtmStops(addTaxRefundInfo(addTakoyakiChoices(addOokiniLunch(migrateSchedule(imported))))))))))))));selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
+    state=upgradeStoredSchedule(imported);selectedDay=chooseInitialDay();save();render();alert('백업을 불러왔습니다.');
   }
   catch(err){alert('올바른 백업 파일이 아닙니다.');}
   e.target.value='';
@@ -1455,7 +1704,7 @@ function renderTravelTools(){
   if(next){
     const b=document.createElement('button');b.className='ghost-btn';b.textContent='일정으로 이동';
     b.onclick=()=>document.getElementById('plan-'+next.id).scrollIntoView({behavior:'smooth',block:'center'});wrap.appendChild(b);
-    if(next.map){const a=document.createElement('a');a.className='ghost-btn';a.textContent='현재 위치에서 길찾기 ↗';a.target='_blank';a.rel='noopener';a.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(next.map);wrap.appendChild(a);}
+    if(next.map){const a=document.createElement('a');a.className='ghost-btn';a.textContent='현재 위치에서 길찾기 ↗';a.target='_blank';a.rel='noopener';a.href=tripDirectionsUrl(next.map);wrap.appendChild(a);}
   }
   document.querySelector('#deadlineNote').textContent=[
     '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
@@ -1466,7 +1715,7 @@ function renderTravelTools(){
   const choices=state.admissionOptions||{};
   document.querySelectorAll('[data-admission]').forEach(el=>{el.checked=!!choices[el.dataset.admission];el.onchange=()=>{state.admissionOptions=state.admissionOptions||{};state.admissionOptions[el.dataset.admission]=el.checked;save();renderTravelTools();};});
   const extra=choices.kobePortTower?1000:0;
-  document.querySelector('#admissionTotal').textContent=yen(7200+extra);
+  document.querySelector('#admissionTotal').textContent=yen(8000+extra);
   document.querySelector('#previousBackupBtn').hidden=!localStorage.getItem(scheduleBackupKey());
 }
 document.querySelector('#previousBackupBtn').onclick=function(){
