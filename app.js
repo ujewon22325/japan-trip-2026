@@ -1692,6 +1692,12 @@ document.querySelector('#importInput').onchange=async function(e){
 window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredInstallPrompt=e;document.querySelector('#installBtn').hidden=false;});
 document.querySelector('#installBtn').onclick=async function(){if(!deferredInstallPrompt)return;deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;document.querySelector('#installBtn').hidden=true;};
 if('serviceWorker' in navigator)window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(function(){});});
+const versionLabel=document.querySelector('#appVersion');
+const assetVersion=new URL(document.currentScript.src).searchParams.get('v');
+if (/^\d+$/.test(assetVersion ?? '')) {
+  versionLabel.textContent=' · 앱 v'+assetVersion;
+  versionLabel.hidden=false;
+}
 render();
 initViewTabs();
 
