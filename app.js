@@ -1083,9 +1083,9 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      const needsAirportUpdate=!x.airportIcocaUpdate;
+      const needsScheduleUpdate=!x.airportIcocaUpdate||!x.finalItineraryUpdate;
       const upgraded=upgradeStoredSchedule(x);
-      if(needsAirportUpdate&&upgraded.airportIcocaUpdate){
+      if(needsScheduleUpdate){
         try{localStorage.setItem(STORAGE_KEY,JSON.stringify(upgraded));}catch(e){}
       }
       return upgraded;
@@ -1200,7 +1200,8 @@ const VERIFIED_PLAN_LINKS = {
       [
         "https://www.kobeherb.com/tips/kobechristmasmarket/",
         "크리스마스 시즌 공식 요금"
-      ]
+      ],
+      ["https://travelcontentsapp.com/en/have-fun-pass/kansai/","간사이 조이패스 안내"]
     ]
   },
   "d2-kobe-meriken": {
@@ -1273,7 +1274,8 @@ const VERIFIED_PLAN_LINKS = {
       [
         "https://www.tsutenkaku.co.jp/annai/index.html",
         "입장 시간 지정 공식 안내"
-      ]
+      ],
+      ["https://travelcontentsapp.com/en/have-fun-pass/kansai/","간사이 조이패스 안내"]
     ]
   },
   "d4-uniqlo-abeno": {
@@ -1295,20 +1297,17 @@ const VERIFIED_PLAN_LINKS = {
       [
         "https://www.abenoharukas-300.jp/observatory/information.html",
         "하루카스 300 공식 요금·구매 안내"
-      ]
+      ],
+      ["https://travelcontentsapp.com/en/have-fun-pass/kansai/","간사이 조이패스 안내"]
     ]
   },
   "day4-tax-refund": {
     "map": "Kansai International Airport",
     "links": [
-      [
-        "https://www.nta.go.jp/publication/pamph/shohi/menzei/201805/pdf/caution_kr.pdf",
-        "일본 국세청 한국어 안내"
-      ],
-      [
-        "https://www.kixdutyfree.jp/en/airport_tax_refund_guide_info.html",
-        "간사이공항 출국장 면세 절차"
-      ]
+      ["https://platinumaps.jp/d/kix-airport?area=32&floor=4F&list=1&q=%E5%85%8D%E7%A8%8E%E6%89%8B%E7%B6%9A","KIX T1 4층 세관 키오스크 지도"],
+      ["https://www.kansai-airport.or.jp/tax-refund","간사이공항 면세 절차"],
+      ["https://www.customs.go.jp/kaigairyoko/taxrefund/C-details.html","일본 세관 출국 절차"],
+      ["https://www.cashjapan.com/get-your-refund/","Cash Japan 현금 환급 안내"]
     ]
   }
 };
@@ -1323,6 +1322,147 @@ const PINNED_TRIP_PLACES = {
   }
 };
 
+const FINAL_ITINERARY_FIELDS = {
+  "d1p1": {
+    "note": [
+      "간사이공항역 빨간색 난카이 개찰구에서 ICOCA를 찍고 난바 방면 공항급행으로 신이마미야역까지 직행해요. 하차 후 같은 카드를 찍고 난카이 북쪽 출구로 나오면 호텔까지 도보 약 7~10분이에요. 공항역부터 약 55~75분 계획(열차 대기·도보 포함).",
+      "간사이공항역 빨간색 난카이 개찰구에서 ICOCA를 찍고 난바 방면 공항급행으로 신이마미야역까지 직행해요. 하차 후 같은 카드를 찍고 현장 표지의 북쪽 출구 또는 동쪽·쓰텐카쿠 방면 출구를 확인해 나오면 호텔까지 도보 약 7~10분이에요. 공항역부터 약 55~75분 계획(열차 대기·도보 포함)."
+    ]
+  },
+  "d1-hotel-bags": {
+    "note": [
+      "에슬리드 호텔 난바 사우스 III(恵美須西2-8-6). 15:00 전에는 로비 체인 잠금식 셀프 보관 공간 이용, 빈자리 보장 없음. 귀중품·여권은 지참. 입실 전 사전등록·출입 안내를 준비하고, 오늘 정식 체크인은 저녁 관광 후 복귀 때 진행(00:30 전).",
+      "에슬리드 호텔 난바 사우스 III(恵美須西2-8-6). 입구 비밀번호는 여행 정보의 개인 예약 정보 또는 예약 안내에서 확인하세요. 15:00 전에는 1층 로비의 무료 체인 잠금식 셀프 보관 공간을 이용할 수 있어요. 빈자리를 확인하고 여권·귀중품은 지참하세요. 저녁 복귀 후 00:30 전에 태블릿 체크인과 현장 결제(¥55,444)를 진행해요."
+    ],
+    "fee": [
+      "숙박비 별도 · 예약내역 확인",
+      "현장 결제 ¥55,444 · 숙박세 ¥0(예약 조건 기준) · 카드·QR·엔화 현금"
+    ]
+  },
+  "d1p5": {
+    "note": [
+      "저녁 인파가 많고 식당 대기 가능. 다리 위 통행 방해 주의.\n타코야키 선택 후보 (둘 중 원하는 곳 방문 · 도톤보리 18:00~20:00 안에 20~30분, 대기 별도):\n① 크레오루 도톤보리점 くれおーる: 道頓堀1-6-4. 공식 10:00~23:00·무휴. 기본 8개 803엔 / 반숙계란+파 6개 803엔(공식 매장식사 메뉴; 포장 가격 다를 수 있음). 카드 Visa·Mastercard 등 가능 안내, 포장 판매대는 확인. 매장 식사는 1인 1음료·1주문 안내.\n② 오도리다코 도톤보리점 踊りだこ: 道頓堀1-7-24. 11:00~21:00·부정기 휴무 안내. 한 알마다 통쭈꾸미 1마리. 4개 600엔 / 6개 800엔 / 8개 1,200엔(게시 메뉴 기준). 카드·전자머니·QR 불가 안내, 현금 준비.\n2026-10-05 확인, 여행 전 가격·영업 재확인. 두 곳 모두 방문할 필요 없이 현장에서 선택.",
+      "저녁 인파가 많고 식당 대기 가능. 다리 위 통행 방해 주의.\n타코야키 선택 후보 (둘 중 원하는 곳 방문 · 도톤보리 18:00~20:00 안에 20~30분, 대기 별도):\n① 크레오루 도톤보리점 くれおーる: 道頓堀1-6-4. 공식 10:00~23:00·무휴(수정본의 구글지도 표기는 23:15). 기본 8개 803엔 / 반숙계란+파 6개 803엔(공식 매장식사 메뉴; 포장 가격 다를 수 있음). 카드 Visa·Mastercard 등 가능 안내, 포장 판매대는 확인. 매장 식사는 1인 1음료·1주문 안내.\n② 오도리다코 도톤보리점 踊りだこ: 道頓堀1-7-24. 11:00~21:00·부정기 휴무 안내. 한 알마다 통쭈꾸미 1마리. 4개 600엔 / 6개 800엔 / 8개 1,200엔(게시 메뉴 기준). 카드·전자머니·QR 불가 안내, 현금 준비.\n2026-10-05 확인, 여행 전 가격·영업 재확인. 두 곳 모두 방문할 필요 없이 현장에서 선택."
+    ]
+  },
+  "d1-return-hotel": {
+    "note": [
+      "신사이바시역 미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역 → 호텔까지 도보 약 10~15분 추정. 쇼핑 종료 지점에 따라 닛폰바시역 사카이스지선 에비스초역 경유도 가능. 00:30 전 호텔 태블릿 체크인, 맡긴 짐 회수. 사전등록·전날 받은 출입 안내를 미리 저장.",
+      "신사이바시역 미도스지선 덴노지·나카모즈 방면 → 도부쓰엔마에역 → 호텔까지 도보 약 10~15분 추정. 쇼핑 종료 지점에 따라 닛폰바시역 사카이스지선 에비스초역 경유도 가능. 입구 비밀번호와 체크인 코드는 여행 정보의 개인 예약 정보 또는 예약 안내에서 확인하세요. 00:30 전 로비 태블릿에서 체크인하고 숙박비 ¥55,444(카드·QR·엔화 현금 가능)를 결제한 뒤 맡긴 짐을 찾아요."
+    ],
+    "fee": [
+      "교통비 별도",
+      "교통비 별도 · 숙박비 ¥55,444 현장 결제"
+    ]
+  },
+  "d2-kobe-herb-gardens": {
+    "note": [
+      "신고베역에서 산로쿠역(山麓駅) 매표소까지 도보. 정상 전망과 고베 크리스마스 마켓을 둘러본 뒤, 기타노로 가기 전 로프웨이로 내려와요. 강풍 시 운휴할 수 있어요.",
+      "신고베역에서 산로쿠역(山麓駅) 매표소까지 도보. 정상 전망과 고베 크리스마스 마켓을 둘러본 뒤, 기타노로 가기 전 로프웨이로 내려와요. 강풍 시 운휴할 수 있어요. 간사이 조이패스 바우처를 매표소에 먼저 보여주고 11/26 크리스마스 시즌에도 교환 가능한지 확인하세요."
+    ],
+    "fee": [
+      "크리스마스 시즌 성인 왕복 3,300엔 · 4인 13,200엔",
+      "크리스마스 시즌 성인 왕복 ¥3,300 · 4인 ¥13,200 · 조이패스 적용 여부 확인"
+    ]
+  },
+  "d3p8": {
+    "note": [
+      "2026/11/21~30 야간관람. 17:30 시작, 21:00 접수 종료·21:30 폐문. 약 90분 계획. 이번 일정은 청수사 야간 1회 방문. 공식·교토시 관광정보 2026-10-22 확인.",
+      "2026/11/21~30 야간관람. 17:30 시작, 21:00 접수 종료·21:30 폐문. 약 90분 계획. 이번 일정은 청수사 야간 1회 방문. 공식·교토시 관광정보 확인."
+    ]
+  },
+  "d4-hotel-checkout": {
+    "note": [
+      "체크아웃 후 로비 체인 잠금식 셀프 보관함 이용. 빈자리가 없으면 난카이 신이마미야역 코인로커에 맡기고, 공항행 열차 탑승 전에 그곳에서 찾아요.",
+      "여행 정보의 개인 예약 정보 또는 예약 안내에서 체크아웃 코드를 확인해 태블릿에 입력하세요. 체크아웃 뒤 1층 로비의 무료 체인 잠금식 셀프 보관함을 이용해요. 빈자리가 없으면 난카이 신이마미야역 코인로커를 이용하고 공항행 열차 타기 전에 찾아요."
+    ],
+    "fee": [
+      "호텔 셀프 보관함",
+      "호텔 셀프 보관함 무료"
+    ]
+  },
+  "d4-tsutenkaku": {
+    "note": [
+      "숙소에서 도보 약 5분. 일반 전망대 09:00 개장, 시간지정 입장. 09:00은 개장 시각입니다. 패스·교환권 사용 시 당일 현장에서 입장 시간을 지정하므로 바로 입장하지 못할 수 있어요.",
+      "숙소에서 도보 약 5분. 일반 전망대 09:00 개장. 간사이 조이패스 바우처로 현장에서 입장 시간을 지정해 교환해요. 원하는 시각이 매진되면 기다릴 수 있어요."
+    ],
+    "fee": [
+      "성인 1,500엔",
+      "간사이 조이패스 바우처 확인 · 일반 성인 ¥1,500"
+    ]
+  },
+  "d4-harukas": {
+    "note": [
+      "B1층 또는 2층에서 셔틀 엘리베이터를 타고 16층 입장 게이트로 가요. 현장권은 16층에서 구매. 기본 운영 09:00~22:00.",
+      "B1층 또는 2층에서 셔틀 엘리베이터로 16층 입장 게이트에 가요. 운영 09:00~22:00. 클룩 바우처에 포함된 조이패스로 입장하면 웹 사전권은 별도로 구매할 필요가 없어요."
+    ],
+    "fee": [
+      "성인 현장 2,200엔 · 웹 사전권 1,980엔(전날인 11/27까지 구매)",
+      "간사이 조이패스 바우처 확인 · 일반 성인 현장 ¥2,200 · 웹 사전권 ¥1,980"
+    ]
+  },
+  "day4-tax-refund": {
+    "name": [
+      "KIX 면세 반출 확인 → 수하물 위탁",
+      "KIX 신 면세 반출 확인 → 수하물 위탁"
+    ],
+    "note": [
+      "면세 환급: KIX 도착 후 짐을 부치기 전에 여권·구매품 전부로 반출 확인 → 초록색은 완료, 빨간색은 세관 검사 → 수하물 위탁. 환급 방법·시기·수수료는 구매 매장 안내 확인. 단말기 또는 출국장 전용 Wi-Fi의 Visit Japan Web 이용. 구매자 여권·영수증·환급 안내서 준비. 자세한 내용은 면세 환급 안내에서 확인.",
+      "수하물을 맡기기 전에 제1터미널 4층 국제선 출발 로비 체크인 B·E 카운터 부근에서 여권과 면세 등록품 전부를 준비하세요. 세관 키오스크 또는 전용 Wi-Fi에 연결한 Visit Japan Web에서 반출 확인을 해요. 초록색이면 짐을 위탁하고, 빨간색이면 옆 세관 검사대에 구매품을 보여준 뒤 짐을 위탁하세요.\n카드·온라인 환급은 매장에 등록한 방식으로 처리돼요. 공항 현금 환급 지원 구매분은 출국심사 후 Cash Japan 안내를 따라 수령하세요. 현금 수령 위치와 기기 운영시간은 공항 지도·현장 안내를 확인하세요."
+    ],
+    "fee": [
+      "환급 수수료는 매장·업체 조건 확인",
+      "환급 수수료는 매장·대행사 조건 확인"
+    ]
+  },
+  "d1-donki-shinsekai": {
+    "note": [
+      "저녁 본 일정과 숙소 복귀를 마친 뒤 시간·체력이 남으면 방문. 영업 09:00~다음 날 05:00 · 정기휴무 없음. 주소: 大阪市浪速区恵美須東3-4-36. 도부쓰엔마에역 5번 출구 도보 약 1분. 식품·주류·의약품·면세 대응(의약품은 03:00까지).",
+      "저녁 본 일정과 숙소 복귀를 마친 뒤 시간·체력이 남으면 방문. 수정본 표기는 08:00~다음 날 05:00, 매장 공식 페이지는 09:00~다음 날 05:00 · 정기휴무 없음. 주소: 大阪市浪速区恵美須東3-4-36. 도부쓰엔마에역 5번 출구 도보 약 1분. 식품·주류·의약품·면세 대응(의약품은 03:00까지)."
+    ]
+  },
+  "d2-donki-shinsekai": {
+    "note": [
+      "저녁 본 일정과 숙소 복귀를 마친 뒤 시간·체력이 남으면 방문. 영업 09:00~다음 날 05:00 · 정기휴무 없음. 주소: 大阪市浪速区恵美須東3-4-36. 도부쓰엔마에역 5번 출구 도보 약 1분. 식품·주류·의약품·면세 대응(의약품은 03:00까지).",
+      "저녁 본 일정과 숙소 복귀를 마친 뒤 시간·체력이 남으면 방문. 수정본 표기는 08:00~다음 날 05:00, 매장 공식 페이지는 09:00~다음 날 05:00 · 정기휴무 없음. 주소: 大阪市浪速区恵美須東3-4-36. 도부쓰엔마에역 5번 출구 도보 약 1분. 식품·주류·의약품·면세 대응(의약품은 03:00까지)."
+    ]
+  },
+  "d3-donki-shinsekai": {
+    "note": [
+      "저녁 본 일정과 숙소 복귀를 마친 뒤 시간·체력이 남으면 방문. 영업 09:00~다음 날 05:00 · 정기휴무 없음. 주소: 大阪市浪速区恵美須東3-4-36. 도부쓰엔마에역 5번 출구 도보 약 1분. 식품·주류·의약품·면세 대응(의약품은 03:00까지).",
+      "저녁 본 일정과 숙소 복귀를 마친 뒤 시간·체력이 남으면 방문. 수정본 표기는 08:00~다음 날 05:00, 매장 공식 페이지는 09:00~다음 날 05:00 · 정기휴무 없음. 주소: 大阪市浪速区恵美須東3-4-36. 도부쓰엔마에역 5번 출구 도보 약 1분. 식품·주류·의약품·면세 대응(의약품은 03:00까지)."
+    ]
+  }
+};
+const FINAL_ITINERARY_CHECKS = {
+  "day1-hotel-checkin": [
+    "호텔 사전등록·출입 안내 저장 · 짐 보관 → 저녁 복귀 시 00:30 전 태블릿 체크인",
+    "호텔 사전등록·출입 코드 확인 · 00:30 전 태블릿 체크인과 숙박비 ¥55,444 현장 결제"
+  ],
+  "day4-tsuten": [
+    "쓰텐카쿠 09:00 전후 일반 전망대 입장 시간 확인",
+    "쓰텐카쿠 09:00 전후 · 조이패스 바우처로 현장 입장 시간 지정"
+  ],
+  "day4-harukas": [
+    "하루카스 300 현장권은 16층에서 구매 · 공식 웹 사전권 조건 확인",
+    "하루카스 300 16층 · 조이패스 바우처 적용 확인"
+  ],
+  "day4-tax-before-bag": [
+    "KIX 짐 위탁 전 면세 단말기/Visit Japan Web 반출 확인 → 빨간색이면 검사 → 확인 후 짐 위탁",
+    "KIX T1 4층 B·E 카운터 부근 키오스크 또는 Visit Japan Web → 세관 확인 후 짐 위탁"
+  ],
+  "pre-tickets": [
+    "쓰텐카쿠 시간지정 입장과 하루카스 300 예매 조건 확인",
+    "조이패스 클룩 바우처 저장 · 누노비키 시즌 조건, 쓰텐카쿠·하루카스 이용 조건 확인"
+  ]
+};
+const FINAL_ITINERARY_NOTES = {
+  "숙소 확정: 에슬리드 호텔 난바 사우스 III · 11/25 체크인~11/28 체크아웃 3박 연박(사용자 지정). KIX→신이마미야→호텔 짐 보관 후 점심·관광. 정식 체크인은 저녁 복귀 때 00:30 전.": "숙소 확정: 에슬리드 호텔 난바 사우스 III · 11/25 체크인~11/28 체크아웃 3박 연박(사용자 지정). KIX→신이마미야→호텔 짐 보관 후 점심·관광. 정식 체크인은 저녁 복귀 때 00:30 전. 현장 결제 ¥55,444, 연박 에코 플랜은 객실 청소·타월 보충 없이 이용해요.",
+  "누노비키 크리스마스 시즌 목요일 로프웨이 상행 마지막 16:45 · 하행 마지막 17:15. 강풍 운휴 여부를 출발 전에 확인하세요.": "누노비키 크리스마스 시즌 목요일 로프웨이 상행 마지막 16:45 · 하행 마지막 17:15. 강풍 운휴 여부를 출발 전에 확인하세요. 조이패스는 매표소에서 크리스마스 시즌 적용 여부를 먼저 확인하세요.",
+  "쓰텐카쿠는 09:00 개장, 입장 시간 지정제예요. 하루카스 300은 성인 현장 2,200엔, 11/27까지 웹 사전 구매 시 1,980엔이에요.": "쓰텐카쿠는 09:00 개장·시간 지정제예요. 쓰텐카쿠와 하루카스 300은 클룩 바우처에 포함된 조이패스 사용 조건을 현장에서 확인하세요.",
+  "면세 환급: KIX 도착 후 짐을 부치기 전에 여권·구매품 전부로 반출 확인 → 초록색은 완료, 빨간색은 세관 검사 → 수하물 위탁. 환급 방법·시기·수수료는 구매 매장 안내 확인.": "간사이공항 T1 4층 국제선 출발 로비에서 면세 반출 확인을 마친 뒤 수하물을 맡겨요. 공항 현금 환급은 지원 구매분만 출국심사 후 수령해요."
+};
+
 function applyVerifiedScheduleCorrections(trip) {
   for (const day of trip.data.days) {
     for (const plan of day.plans) {
@@ -1333,7 +1473,26 @@ function applyVerifiedScheduleCorrections(trip) {
     if (Array.isArray(day.notes)) day.notes = day.notes.map(note => Object.hasOwn(VERIFIED_DAY_NOTES, note) ? VERIFIED_DAY_NOTES[note] : note);
   }
   applyAirportIcocaUpdate(trip);
+  applyFinalItineraryUpdate(trip);
   return trip;
+}
+
+function applyFinalItineraryUpdate(trip) {
+  if(trip.finalItineraryUpdate)return;
+  for(const day of trip.data.days){
+    for(const plan of day.plans){
+      for(const [key,[before,after]] of Object.entries(FINAL_ITINERARY_FIELDS[plan.id]??{})){
+        if(plan[key]===before)plan[key]=after;
+      }
+    }
+    if(Array.isArray(day.notes))day.notes=day.notes.map(note=>FINAL_ITINERARY_NOTES[note]??note);
+  }
+  const checks=trip.data.preTripChecklist.concat(trip.data.dailyChecklist.flatMap(group=>group.items));
+  for(const check of checks){
+    const [before,after]=FINAL_ITINERARY_CHECKS[check.id]??[];
+    if(before&&check.text===before)check.text=after;
+  }
+  trip.finalItineraryUpdate=true;
 }
 
 function applyAirportIcocaUpdate(trip) {
@@ -1631,6 +1790,13 @@ function renderTimeline(){
       naver.setAttribute('aria-label',plan.name+' 네이버 장소 정보 검색 (새 창)');
     }else naver.hidden=true;
     setPlanMapLinks(node,plan);
+    if(['d1-hotel-bags','d1-return-hotel','d4-hotel-checkout'].includes(plan.id)){
+      const access=document.createElement('a');
+      access.className='map-link';
+      access.href='#reservation-details';
+      access.textContent='숙소 출입·체크인 코드';
+      node.querySelector('.plan-actions').appendChild(access);
+    }
     node.querySelector('.edit-link').onclick=function(){openPlanDialog(plan);};
     wrap.appendChild(node);
   });
@@ -1796,6 +1962,54 @@ function renderTravelTools(){
   document.querySelector('#admissionTotal').textContent=yen(8000+extra);
   document.querySelector('#previousBackupBtn').hidden=!localStorage.getItem(scheduleBackupKey());
 }
+
+const RESERVATION_STORAGE_KEY=STORAGE_KEY+'-reservations';
+const reservationValues=document.querySelector('#reservationValues');
+const reservationStatus=document.querySelector('#reservationStatus');
+const clearReservation=document.querySelector('#clearReservation');
+
+function readReservationDetails(html){
+  const template=document.createElement('template');
+  template.innerHTML=html;
+  const overview=template.content.querySelector('#overview')?.textContent??'';
+  const entrance=overview.match(/입구\s*비밀번호\s*[:：]?\s*(\d{4,10}\*?)/)?.[1];
+  const checkin=overview.match(/체크인\s*\/\s*아웃\s*코드\s*[:：]?\s*(\d{4,10})/)?.[1];
+  const voucher=overview.match(/클룩\s*예약번호\s*[:：]?\s*([A-Z]{2,5}\d{5,12})\b/i)?.[1];
+  if(!entrance||!checkin||!voucher)throw new Error('예약 정보가 포함된 최종 일정 수정본을 선택해 주세요.');
+  return {entrance,checkin,voucher};
+}
+
+function displayReservationDetails(details){
+  reservationValues.hidden=!details;
+  clearReservation.hidden=!details;
+  document.querySelector('#hotelEntranceValue').textContent=details?.entrance??'';
+  document.querySelector('#hotelCheckinValue').textContent=details?.checkin??'';
+  document.querySelector('#joyPassVoucherValue').textContent=details?.voucher??'';
+}
+
+try{displayReservationDetails(JSON.parse(localStorage.getItem(RESERVATION_STORAGE_KEY)));}catch(e){}
+
+document.querySelector('#reservationFile').onchange=async function(){
+  const file=this.files[0];
+  if(!file)return;
+  try{
+    const details=readReservationDetails(await file.text());
+    localStorage.setItem(RESERVATION_STORAGE_KEY,JSON.stringify(details));
+    displayReservationDetails(details);
+    reservationStatus.textContent='이 기기에 개인 예약 정보를 저장했어요.';
+  }catch(error){
+    reservationStatus.textContent=error.name==='Error'?error.message:'개인 예약 정보를 가져오지 못했어요.';
+  }finally{
+    this.value='';
+  }
+};
+
+clearReservation.onclick=function(){
+  localStorage.removeItem(RESERVATION_STORAGE_KEY);
+  displayReservationDetails(null);
+  reservationStatus.textContent='이 기기에서 개인 예약 정보를 지웠어요.';
+};
+
 document.querySelector('#previousBackupBtn').onclick=function(){
   const raw=localStorage.getItem(scheduleBackupKey());if(!raw)return;
   const url=URL.createObjectURL(new Blob([raw],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='kansai-before-schedule-update.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
