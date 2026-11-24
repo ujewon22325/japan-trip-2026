@@ -1083,7 +1083,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      const needsScheduleUpdate=!x.airportIcocaUpdate||!x.finalItineraryUpdate||!x.kobeLunchUpdate;
+      const needsScheduleUpdate=!x.airportIcocaUpdate||!x.finalItineraryUpdate||!x.kobeLunchUpdate||!x.kobeOptionsUpdate;
       const upgraded=upgradeStoredSchedule(x);
       if(needsScheduleUpdate){
         try{localStorage.setItem(STORAGE_KEY,JSON.stringify(upgraded));}catch(e){}
@@ -1171,6 +1171,29 @@ const KOBE_LUNCH = {
     +'고베점(神戸店) · 기타나가사도리 1-8-2, 미야사코 빌딩 1·2층. 11:00~21:30(주문 마감 20:30), 브레이크 타임 없음. 롱 카운터에서 철판 조리를 볼 수 있어요. 전화 078-332-1653.\n'
     +'14:00 이후에는 고베점에서 만조쿠 세트(¥3,280~)로 식사할 수 있어요. 양쪽 모두 카드(Visa·Mastercard·JCB·Amex·Diners)와 PayPay·Alipay 결제 안내가 있어요.'
 };
+const KOBE_LUNCH_FALLBACK = "로프웨이가 운휴하면 신고베에서 기타노로 바로 이동해요. 시간이 밀리면 기타노 산책을 줄여 스테이크 랜드에 13:20 전후까지 도착하세요. 14:00 이후에는 브레이크 타임 없는 고베점에서 만조쿠 세트로 식사하고, 오후에는 포트타워 전망대부터 생략하세요.";
+const KOBE_LUNCH_BACKUP_NOTE = "고베관·고베점 두 곳 모두 대기가 길거나 이용하기 어려우면 같은 점심 시간대에 하나타바로 바꿔요.";
+const KOBE_SHRINE_SKIP_NOTE = "점심이 늦어지면 이쿠타 신사는 생략하고 15:00 난킨마치로 이동해요.";
+const KOBE_OPTIONAL_PLANS = [
+  {
+    "id": "d2-kobe-hanataba",
+    "time": "13:15 전후 · 스테이크 랜드 대체",
+    "name": "대체 점심 · 참돔소바 하나타바 (真鯛そば はなたば)",
+    "fee": "1인 약 ¥1,000~2,000",
+    "note": "고베관·고베점 두 곳 모두 대기가 길거나 이용하기 어려우면 같은 점심 시간대에 하나타바로 바꿔요. 산노미야점은 下山手通2-1-1 KE빌딩 1층. 목요일 점심 11:00~15:30, 주문 마감 15:00. 참돔 육수 라멘집으로 예약은 받지 않아요. 4인 테이블은 2개라 자리가 없으면 나눠 앉을 수 있어요.",
+    "map": "真鯛そば はなたば 神戸市中央区下山手通2-1-1 KEビル1F",
+    "optional": true
+  },
+  {
+    "id": "d2-kobe-ikuta-shrine",
+    "time": "14:15~14:40 전후 · 점심 후 여유 시",
+    "name": "이쿠타 신사 (生田神社)",
+    "fee": "참배 무료 · 오미쿠지 등 별도",
+    "note": "점심이 일찍 끝나면 산노미야에서 도보로 들러 본전 위주로 15~20분 둘러봐요. 점심이 늦어지면 이쿠타 신사는 생략하고 15:00 난킨마치로 이동해요. 폐문 17:00, 부적·고슈인 접수는 16:30까지예요.",
+    "map": "生田神社 神戸市中央区下山手通1-2-1",
+    "optional": true
+  }
+];
 const KOBE_TEN_MAP='ステーキランド神戸店 神戸市中央区北長狭通1-8-2';
 const STEAKLAND_MENU_URL='https://steakland-kobe.jp/pages/22/';
 const VERIFIED_PLAN_LINKS = {
@@ -1224,6 +1247,22 @@ const VERIFIED_PLAN_LINKS = {
       ['https://www.google.com/maps/search/?'+new URLSearchParams({api:'1',query:KOBE_TEN_MAP}), '고베점 1·2층 지도'],
       ['https://steakland-kobe.jp/pages/4/', '공식 매장·영업시간'],
       [STEAKLAND_MENU_URL, '공식 메뉴·가격']
+    ]
+  },
+  "d2-kobe-hanataba": {
+    map: "真鯛そば はなたば 神戸市中央区下山手通2-1-1 KEビル1F",
+    links: [
+      ["https://www.google.com/maps/search/?api=1&query=%E7%9C%9F%E9%AF%9B%E3%81%9D%E3%81%B0+%E3%81%AF%E3%81%AA%E3%81%9F%E3%81%B0+%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E4%B8%8B%E5%B1%B1%E6%89%8B%E9%80%9A2-1-1+KE%E3%83%93%E3%83%AB1F", "대체 점심 · 참돔소바 하나타바 지도"],
+      ["https://tabelog.com/hyogo/A2801/A280101/28075687/", "산노미야점 영업시간·좌석"],
+      ["https://www.google.com/maps/dir/?api=1&origin=%E7%9C%9F%E9%AF%9B%E3%81%9D%E3%81%B0+%E3%81%AF%E3%81%AA%E3%81%9F%E3%81%B0+%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E4%B8%8B%E5%B1%B1%E6%89%8B%E9%80%9A2-1-1+KE%E3%83%93%E3%83%AB1F&destination=Nankinmachi+Chinatown+Kobe&travelmode=walking", "여기서 난킨마치까지 도보 길찾기"],
+    ]
+  },
+  "d2-kobe-ikuta-shrine": {
+    map: "生田神社 神戸市中央区下山手通1-2-1",
+    links: [
+      ["https://www.google.com/maps/search/?api=1&query=%E7%94%9F%E7%94%B0%E7%A5%9E%E7%A4%BE+%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E4%B8%8B%E5%B1%B1%E6%89%8B%E9%80%9A1-2-1", "이쿠타 신사 지도"],
+      ["https://ikutajinja.or.jp/access", "신사 공식 위치·폐문 안내"],
+      ["https://www.google.com/maps/dir/?api=1&origin=%E7%94%9F%E7%94%B0%E7%A5%9E%E7%A4%BE+%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E4%B8%8B%E5%B1%B1%E6%89%8B%E9%80%9A1-2-1&destination=Nankinmachi+Chinatown+Kobe&travelmode=walking", "여기서 난킨마치까지 도보 길찾기"],
     ]
   },
   "d2-kobe-meriken": {
@@ -1497,6 +1536,7 @@ function applyVerifiedScheduleCorrections(trip) {
   applyAirportIcocaUpdate(trip);
   applyFinalItineraryUpdate(trip);
   applyKobeLunchUpdate(trip);
+  applyKobeOptionsUpdate(trip);
   return trip;
 }
 
@@ -1524,9 +1564,31 @@ function applyKobeLunchUpdate(trip) {
     }
   }
   if(day.fallback===KOBE_DAY.fallback){
-    day.fallback='로프웨이가 운휴하면 신고베에서 기타노로 바로 이동해요. 시간이 밀리면 기타노 산책을 줄여 스테이크 랜드에 13:20 전후까지 도착하세요. 14:00 이후에는 브레이크 타임 없는 고베점에서 만조쿠 세트로 식사하고, 오후에는 포트타워 전망대부터 생략하세요.';
+    day.fallback=KOBE_LUNCH_FALLBACK;
   }
   trip.kobeLunchUpdate=true;
+}
+
+function applyKobeOptionsUpdate(trip) {
+  if (trip.kobeOptionsUpdate) return;
+  const day = trip.data.days.find(entry => entry.date === KOBE_DAY.date);
+  if (!day) return;
+
+  const lunch = day.plans.find(plan => plan.id === KOBE_LUNCH.id);
+  const nankinmachi = day.plans.find(plan => plan.id === 'd2-kobe-nankinmachi');
+  const newPlans = KOBE_OPTIONAL_PLANS.filter(option => !day.plans.some(plan => plan.id === option.id));
+  const lunchIndex = day.plans.indexOf(lunch);
+  const insertAt = lunchIndex >= 0 ? lunchIndex + 1 : day.plans.indexOf(nankinmachi);
+  day.plans.splice(insertAt >= 0 ? insertAt : day.plans.length, 0, ...clone(newPlans));
+
+  if (lunch?.note === KOBE_LUNCH.note) lunch.note += '\n' + KOBE_LUNCH_BACKUP_NOTE;
+  if (nankinmachi?.note === "스테이크 랜드에서 서쪽 모토마치 방면으로 약 10분 걸어 차이나타운 먹거리와 상점을 둘러봐요. 점포별 영업시간은 달라요.") {
+    nankinmachi.note = "점심 식당 또는 이쿠타 신사에서 서쪽 모토마치 방면으로 걸어 차이나타운 먹거리와 상점을 둘러봐요. 점포별 영업시간은 달라요.";
+  }
+  if (day.fallback === KOBE_LUNCH_FALLBACK) {
+    day.fallback += ' ' + KOBE_LUNCH_BACKUP_NOTE + ' ' + KOBE_SHRINE_SKIP_NOTE;
+  }
+  trip.kobeOptionsUpdate = true;
 }
 
 function applyFinalItineraryUpdate(trip) {
