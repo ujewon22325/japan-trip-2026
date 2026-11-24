@@ -68,6 +68,7 @@ const KUROMON_SANPEI_PLAN={
 };
 const KUROMON_MARKET_EVENT="11/25는 구로몬시장 블랙프라이데이 기간(11/18~28)이에요. 참여 점포의 행사 상품은 현장에서 확인하세요.";
 const NANKAI_ARRIVAL_NOTE="공항에서는 난카이 난바 방면 공항급행을 타고 신이마미야역에서 내려요. 구간별 승차권이나 지원되는 개찰구에서 컨택리스 결제를 이용해요.";
+const AIRPORT_ICOCA_NOTE="제1터미널 1층 세븐은행 ATM에서 엔화를 뽑고, 2층 연결통로 건너 간사이공항역 JR 발매기에서 ICOCA를 사요. 난카이 공항급행 개찰구에서 ICOCA를 찍고 신이마미야역에서 내려요.";
 const NAMBA_SHOPPING_NOTE="17:00~18:00 난바 야사카 신사 → 빅카메라 난바점 → 도톤보리 순서.";
 const NAMBA_SHOPPING_PLAN={
   "id": "d1-bic-namba",
@@ -1082,7 +1083,12 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      return upgradeStoredSchedule(x);
+      const needsAirportUpdate=!x.airportIcocaUpdate;
+      const upgraded=upgradeStoredSchedule(x);
+      if(needsAirportUpdate&&upgraded.airportIcocaUpdate){
+        try{localStorage.setItem(STORAGE_KEY,JSON.stringify(upgraded));}catch(e){}
+      }
+      return upgraded;
     }
   }catch(e){}
   return freshState();
@@ -1132,10 +1138,45 @@ const VERIFIED_SCHEDULE_FIELDS = {
   }
 };
 const VERIFIED_DAY_NOTES = {
+  [NANKAI_ARRIVAL_NOTE]: AIRPORT_ICOCA_NOTE,
   "포트타워 전망대는 선택이에요. 하버랜드에서는 17:30부터 KOBE UMIAKARI 조명과 저녁을 즐겨요.": "포트타워 전망대는 선택이에요. 17:30에는 하버랜드 모자이크를 방문해요. KOBE UMIAKARI 점등 시간은 장소마다 달라요.",
   "쓰텐카쿠는 시간지정 입장이라 09:00 전후를 목표로 해요. 하루카스 300은 일반 성인 현장 2,200엔, 공식 웹 사전권 1,980엔이에요.": "쓰텐카쿠는 09:00 개장, 입장 시간 지정제예요. 하루카스 300은 성인 현장 2,200엔, 11/27까지 웹 사전 구매 시 1,980엔이에요."
 };
+const AIRPORT_CASH_STOP = {
+  id:'d1-kix-seven-bank',
+  time:'입국·세관 통과 직후',
+  name:'간사이공항 T1 1층 · 세븐은행 ATM에서 엔화 출금',
+  fee:'ICOCA 4장 구매용 현금 ¥8,000 확보',
+  note:'ZE0611 도착 뒤 세관을 지나 제1터미널 1층 국제선 도착 로비로 나와요. 같은 층에서 ATM 코너의 セブン銀行 표시를 찾으세요. 세븐은행 공식 안내에 따르면 1층 도착층에 2대가 있어요. 해외 출금 가능한 실물 카드와 PIN을 준비하세요. 1층에서 출금이 어려우면 같은 터미널 2층 ATM 코너에도 세븐은행 기기가 1대 있어요.',
+  map:'34.434403,135.244435'
+};
+const AIRPORT_ICOCA_STOP = {
+  id:'d1-kix-icoca',
+  time:'출금 후 · 공항급행 타기 전',
+  name:'간사이공항역 2층 · 실물 ICOCA 구매',
+  fee:'성인 1장 ¥2,000 · 4장 ¥8,000',
+  note:'제1터미널 2층으로 올라가 철도(鉄道 / Railway) 표지와 연결통로를 따라 간사이공항역으로 가요. 파란색 JR 개찰구 옆 ICOCA 표시가 있는 발매기에서 Purchase ICOCA를 누르고 현금으로 한 사람당 한 장씩 구매해요. ¥2,000을 넣으면 보증금 ¥500을 제외한 ¥1,500이 충전돼요. 구매 후 빨간색 난카이 개찰구로 이동해서 난바 방면 공항급행을 타요.',
+  map:'JR Kansai-airport Station 関西空港駅'
+};
+const AIRPORT_CASH_LOCATION='https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000021348';
+const AIRPORT_STATION_MAP='https://eki.jr-odekake.net/premises/0622602_8f02dfc2-8d5c-4f53-ab76-4a33728b7ca6.pdf';
 const VERIFIED_PLAN_LINKS = {
+  [AIRPORT_CASH_STOP.id]: {
+    map:AIRPORT_CASH_STOP.map,
+    links:[
+      ['https://www.google.com/maps/search/?api=1&query=34.434403%2C135.244435','세븐은행 T1 핀 · Google 지도'],
+      [AIRPORT_CASH_LOCATION,'세븐은행 공식 층별 위치'],
+      ['https://www.kansai-airport.or.jp/spot/atm/7961','공항 공식 1층 ATM 안내']
+    ]
+  },
+  [AIRPORT_ICOCA_STOP.id]: {
+    map:AIRPORT_ICOCA_STOP.map,
+    links:[
+      ['https://www.google.com/maps/search/?api=1&query=JR+Kansai-airport+Station+%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF%E9%A7%85','JR 간사이공항역 · Google 지도'],
+      [AIRPORT_STATION_MAP,'JR 개찰·발매기 구내도'],
+      ['https://www.westjr.co.jp/global/en/howto/guide/movie03.html','ICOCA 발매기 사용법']
+    ]
+  },
   "d2-kobe-to-shinkobe": {
     "map": "Kobe Nunobiki Herb Gardens Ropeway Sanroku Station",
     "links": [
@@ -1291,7 +1332,38 @@ function applyVerifiedScheduleCorrections(trip) {
     }
     if (Array.isArray(day.notes)) day.notes = day.notes.map(note => Object.hasOwn(VERIFIED_DAY_NOTES, note) ? VERIFIED_DAY_NOTES[note] : note);
   }
+  applyAirportIcocaUpdate(trip);
   return trip;
+}
+
+function applyAirportIcocaUpdate(trip) {
+  if(trip.airportIcocaUpdate)return;
+  const day=trip.data.days.find(entry=>entry.date===TRIP_START);
+  if(!day)return;
+  const arrival=day.plans.find(plan=>plan.id==='d1p1');
+  const airportStops=[AIRPORT_CASH_STOP,AIRPORT_ICOCA_STOP];
+  const newStops=airportStops.filter(stop=>!day.plans.some(plan=>plan.id===stop.id));
+  const arrivalIndex=day.plans.findIndex(plan=>plan.id==='d1p1');
+  day.plans.splice(arrivalIndex<0?0:arrivalIndex,0,...clone(newStops));
+  if(arrival?.note===HOTEL_TRIP_UPDATE.plans.d1p1.note){
+    arrival.note="간사이공항역 빨간색 난카이 개찰구에서 ICOCA를 찍고 난바 방면 공항급행으로 신이마미야역까지 직행해요. 하차 후 같은 카드를 찍고 난카이 북쪽 출구로 나오면 호텔까지 도보 약 7~10분이에요. 공항역부터 약 55~75분 계획(열차 대기·도보 포함).";
+  }
+  let checklist=trip.data.dailyChecklist.find(entry=>entry.date===TRIP_START);
+  if(!checklist){
+    checklist={date:TRIP_START,items:[]};
+    trip.data.dailyChecklist.push(checklist);
+  }
+  const checks=[
+    {id:'day1-kix-seven-bank',text:'제1터미널 1층 세븐은행 ATM에서 엔화 출금',url:AIRPORT_CASH_LOCATION,linkLabel:'공식 ATM 위치'},
+    {id:'day1-kix-icoca',text:'2층 연결통로 건너 JR 발매기에서 일행 4명 ICOCA 구매',url:AIRPORT_STATION_MAP,linkLabel:'역 구내도'}
+  ].filter(item=>!checklist.items.some(existing=>existing.id===item.id));
+  const checkIndex=checklist.items.findIndex(item=>item.id==='day1-nankai');
+  checklist.items.splice(checkIndex<0?checklist.items.length:checkIndex,0,...checks);
+  const railCheck=checklist.items.find(item=>item.id==='day1-nankai');
+  if(railCheck&&(railCheck.text===HOTEL_TRIP_UPDATE.checks['day1-nankai']||railCheck.text==='KIX 도착 후 난카이 난바 이동편 확인')){
+    railCheck.text='ICOCA로 난카이 난바 방면 공항급행 탑승 → 신이마미야 하차 → 호텔에 짐 보관';
+  }
+  trip.airportIcocaUpdate=true;
 }
 
 function tripDirectionsUrl(destination, origin, mode) {

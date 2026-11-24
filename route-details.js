@@ -109,6 +109,14 @@ Object.assign(ROUTE_DETAILS,{
 
 // Confirmed three-night accommodation and station access, 2026-11-01.
 Object.assign(ROUTE_DETAILS, HOTEL_TRIP_UPDATE.routes);
+ROUTE_DETAILS.d1p1 = {
+  ...ROUTE_DETAILS.d1p1,
+  steps: [
+    "제1터미널 1층 세븐은행 ATM에서 출금 → 2층 연결통로 → 간사이공항역 파란색 JR 개찰구 옆 발매기에서 ICOCA 구매.",
+    "빨간색 난카이 개찰구에 ICOCA를 찍고 난바 방면 공항급행(空港急行)을 타요.",
+    "신이마미야역에서 같은 ICOCA를 찍고 난카이 북쪽 출구로 나와 호텔까지 도보 약 7~10분."
+  ]
+};
 
 Object.assign(ROUTE_DETAILS, {
   "d2-seven-atm": {
