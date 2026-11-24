@@ -1,6 +1,6 @@
 const CACHE_PREFIX='kansai-trip-pwa-';
-const CACHE=CACHE_PREFIX+'v33';
-const ASSETS=['./','./index.html','./styles.css?v=33','./app.js?v=33','./hotel.js?v=33','./flight.js?v=33','./walking.js?v=33','./route-details.js?v=33','./manifest.json?v=33','./icon.svg','./icon-192.png','./icon-512.png'];
+const CACHE=CACHE_PREFIX+'v34';
+const ASSETS=['./','./index.html','./styles.css?v=34','./app.js?v=34','./hotel.js?v=34','./flight.js?v=34','./walking.js?v=34','./route-details.js?v=34','./manifest.json?v=34','./icon.svg','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',function(e){
   e.waitUntil(

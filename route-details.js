@@ -40,7 +40,7 @@ const ROUTE_DETAILS={
 function appendRouteGuide(node,plan){
   const route=ROUTE_DETAILS[plan.id];
   if(!route)return;
-  const original=defaults.days.flatMap(d=>d.plans).find(p=>p.id===plan.id);
+  const original=plan.id===KOBE_LUNCH.id?KOBE_LUNCH:defaults.days.flatMap(d=>d.plans).find(p=>p.id===plan.id);
   const changed=original&&(original.name!==plan.name||original.map!==plan.map);
   const box=document.createElement('details');box.className='route-guide';
   const summary=document.createElement('summary');
@@ -157,25 +157,27 @@ Object.assign(ROUTE_DETAILS, {
     "destination": "Kitano Ijinkan-gai Kobe",
     "steps": [
       "로프웨이 산로쿠역에서 기타노도리를 따라 서쪽으로 걸어요.",
-      "기타노 이진칸 거리에서 외관 위주로 구경해요."
+      "기타노 이진칸 거리에서 외관 위주로 구경하고 13:00 전후 남쪽 산노미야 방면으로 내려가요."
     ]
   },
   "d2-kobe-lunch": {
     "kind": "도보",
-    "title": "기타노 → 산노미야 중심가",
+    "title": "기타노 이진칸 거리 → 스테이크 랜드 고베관 / 고베점",
     "origin": "Kitano Ijinkan-gai Kobe",
-    "destination": "Sannomiya Center Gai Kobe",
+    "destination": "ステーキランド神戸館 神戸市中央区北長狭通1-9-17",
     "steps": [
-      "기타노에서 남쪽 비탈길을 내려와 산노미야역과 산노미야 센터가이 주변에서 식사해요."
+      "기타노에서 남쪽 비탈길을 내려와 한큐 고베산노미야역 서쪽 출구 인근까지 약 10~15분 걸어요.",
+      "고베관은 三宮興業ビル 6층, 고베점은 인근 宮迫ビル 1·2층이에요. 런치 마감과 대기를 고려해 13:20 전후까지 도착하세요.",
+      "14:00 이후에는 브레이크 타임 없이 영업하는 고베점에서 만조쿠 세트로 식사해요."
     ]
   },
   "d2-kobe-nankinmachi": {
     "kind": "도보",
-    "title": "산노미야 → 모토마치 → 난킨마치",
-    "origin": "Sannomiya Center Gai Kobe",
+    "title": "스테이크 랜드 → 모토마치 → 난킨마치",
+    "origin": "ステーキランド神戸館 神戸市中央区北長狭通1-9-17",
     "destination": "Nankinmachi Chinatown Kobe",
     "steps": [
-      "산노미야 센터가이에서 서쪽 모토마치 쪽으로 이동해 난킨마치 입구로 들어가요."
+      "고베관·고베점에서 서쪽 모토마치 방면으로 약 10분 걸어 난킨마치 입구로 들어가요."
     ]
   },
   "d2-kobe-meriken": {

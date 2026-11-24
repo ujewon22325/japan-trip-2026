@@ -1083,7 +1083,7 @@ function loadState(){
       if(!x.completed)x.completed={};
       if(!x.checklistDone)x.checklistDone={};
       if(!Array.isArray(x.expenses))x.expenses=[];
-      const needsScheduleUpdate=!x.airportIcocaUpdate||!x.finalItineraryUpdate;
+      const needsScheduleUpdate=!x.airportIcocaUpdate||!x.finalItineraryUpdate||!x.kobeLunchUpdate;
       const upgraded=upgradeStoredSchedule(x);
       if(needsScheduleUpdate){
         try{localStorage.setItem(STORAGE_KEY,JSON.stringify(upgraded));}catch(e){}
@@ -1160,6 +1160,19 @@ const AIRPORT_ICOCA_STOP = {
 };
 const AIRPORT_CASH_LOCATION='https://location.sevenbank.co.jp/sevenbank/spot/detail?code=0000021348';
 const AIRPORT_STATION_MAP='https://eki.jr-odekake.net/premises/0622602_8f02dfc2-8d5c-4f53-ab76-4a33728b7ca6.pdf';
+const KOBE_LUNCH = {
+  id:'d2-kobe-lunch',
+  time:'13:15 (런치 11:00~14:00)',
+  name:'점심 · 스테이크 랜드 고베관 / 고베점 (ステーキランド神戸館・神戸店)',
+  map:'ステーキランド神戸館 神戸市中央区北長狭通1-9-17',
+  fee:'고베규 런치 ¥3,500~ · 일반 스테이크 런치 ¥1,380~ · 1인 세금 포함',
+  note:'한큐 고베산노미야역 서쪽 출구 인근. 두 지점은 도보 약 1분 거리이고 공식 메뉴는 동일해요. 13:15 도착을 목표로 하고, 대기를 고려해 13:20 전후까지 도착하세요. 한쪽이 붐비면 다른 지점의 대기를 확인해요.\n'
+    +'고베관(神戸館) · 기타나가사도리 1-9-17, 산노미야 고교 빌딩 6층. 11:00~14:00 / 17:00~21:30(저녁 주문 마감 20:30). 370석으로 일행 4명이 함께 앉기 좋은 대형 매장. 전화 078-332-2900.\n'
+    +'고베점(神戸店) · 기타나가사도리 1-8-2, 미야사코 빌딩 1·2층. 11:00~21:30(주문 마감 20:30), 브레이크 타임 없음. 롱 카운터에서 철판 조리를 볼 수 있어요. 전화 078-332-1653.\n'
+    +'14:00 이후에는 고베점에서 만조쿠 세트(¥3,280~)로 식사할 수 있어요. 양쪽 모두 카드(Visa·Mastercard·JCB·Amex·Diners)와 PayPay·Alipay 결제 안내가 있어요.'
+};
+const KOBE_TEN_MAP='ステーキランド神戸店 神戸市中央区北長狭通1-8-2';
+const STEAKLAND_MENU_URL='https://steakland-kobe.jp/pages/22/';
 const VERIFIED_PLAN_LINKS = {
   [AIRPORT_CASH_STOP.id]: {
     map:AIRPORT_CASH_STOP.map,
@@ -1202,6 +1215,15 @@ const VERIFIED_PLAN_LINKS = {
         "크리스마스 시즌 공식 요금"
       ],
       ["https://travelcontentsapp.com/en/have-fun-pass/kansai/","간사이 조이패스 안내"]
+    ]
+  },
+  [KOBE_LUNCH.id]: {
+    map:KOBE_LUNCH.map,
+    links:[
+      ['https://www.google.com/maps/search/?'+new URLSearchParams({api:'1',query:KOBE_LUNCH.map}), '고베관 6층 지도'],
+      ['https://www.google.com/maps/search/?'+new URLSearchParams({api:'1',query:KOBE_TEN_MAP}), '고베점 1·2층 지도'],
+      ['https://steakland-kobe.jp/pages/4/', '공식 매장·영업시간'],
+      [STEAKLAND_MENU_URL, '공식 메뉴·가격']
     ]
   },
   "d2-kobe-meriken": {
@@ -1474,7 +1496,37 @@ function applyVerifiedScheduleCorrections(trip) {
   }
   applyAirportIcocaUpdate(trip);
   applyFinalItineraryUpdate(trip);
+  applyKobeLunchUpdate(trip);
   return trip;
+}
+
+function applyKobeLunchUpdate(trip) {
+  if(trip.kobeLunchUpdate)return;
+  const day=trip.data.days.find(entry=>entry.date===KOBE_DAY.date);
+  if(!day)return;
+  const revisions={
+    'd2-kobe-kitano':{
+      time:'12:15',
+      note:'서양식 건축 외관 위주로 약 45분 산책해요. 스테이크 랜드 런치 마감(14:00)을 고려해 13:00 전후 산노미야 방면으로 내려가요.'
+    },
+    [KOBE_LUNCH.id]:KOBE_LUNCH,
+    'd2-kobe-nankinmachi':{
+      note:'스테이크 랜드에서 서쪽 모토마치 방면으로 약 10분 걸어 차이나타운 먹거리와 상점을 둘러봐요. 점포별 영업시간은 달라요.'
+    }
+  };
+  for(const plan of day.plans){
+    const revision=revisions[plan.id];
+    if(!revision)continue;
+    const baseline=KOBE_DAY.plans.find(entry=>entry.id===plan.id);
+    if(plan.name!==baseline.name||plan.map!==baseline.map)continue;
+    for(const [key,value] of Object.entries(revision)){
+      if(plan[key]===baseline[key])plan[key]=value;
+    }
+  }
+  if(day.fallback===KOBE_DAY.fallback){
+    day.fallback='로프웨이가 운휴하면 신고베에서 기타노로 바로 이동해요. 시간이 밀리면 기타노 산책을 줄여 스테이크 랜드에 13:20 전후까지 도착하세요. 14:00 이후에는 브레이크 타임 없는 고베점에서 만조쿠 세트로 식사하고, 오후에는 포트타워 전망대부터 생략하세요.';
+  }
+  trip.kobeLunchUpdate=true;
 }
 
 function applyFinalItineraryUpdate(trip) {
@@ -1691,6 +1743,61 @@ function appendSanpeiInfo(node,plan){
   node.querySelector('.plan-note').after(details);
 }
 
+function appendSteaklandMenu(node,plan){
+  if(plan.id!==KOBE_LUNCH.id||plan.map!==KOBE_LUNCH.map)return;
+  const details=document.createElement('details');
+  details.className='route-guide';
+  const summary=document.createElement('summary');
+  summary.textContent='두 지점 공통 메뉴 · 런치·세트·디너·단품';
+  details.appendChild(summary);
+  const table=document.createElement('table');
+  table.createCaption().textContent='1인 기준 · 세금 포함';
+  const header=table.createTHead().insertRow();
+  for(const label of ['구분','구성·대표 메뉴']){
+    const cell=document.createElement('th');
+    cell.scope='col';
+    cell.textContent=label;
+    header.appendChild(cell);
+  }
+  const body=table.createTBody();
+  const menu=[
+    ['런치 · 11:00~14:00','¥1,380~6,880. 샐러드·구운 채소·밥·된장국·절임·커피. 스테이크 S(100g) ¥1,380 / L(150g) ¥1,880, 텐더 S(100g) ¥2,380 / L(150g) ¥2,980, 고베규(150g) ¥3,500, 고베규 텐더(150g) ¥4,880, 특선 고베규 로스(120g) ¥6,880.'],
+    ['만조쿠 세트','¥3,280~14,800. 수프·샐러드·구운 채소·빵 또는 밥·커피. 일반 스테이크(180g) ¥3,280, 고베규(180g) ¥5,480, 특선 고베규 로스(160g) 할인가 ¥9,800, 특선 고베규 필레(140g) ¥14,800.'],
+    ['디너 코스','¥6,280~17,800. 전채·수프·해산물·샐러드·채소·빵 또는 밥·디저트·커피. 텐더(160g) ¥6,280, 고베규(180g) ¥7,480, 특선 고베규 로스(160g) ¥15,800, 특선 고베규 필레(140g) ¥17,800.'],
+    ['단품','흑모와규 스테이크(180g) ¥2,580, 고베규(180g) ¥4,480, 활차새우 또는 관자 버터구이 ¥2,480, 활전복 ¥4,880.']
+  ];
+  for(const [category,description] of menu){
+    const row=body.insertRow();
+    const label=document.createElement('th');
+    label.scope='row';
+    label.textContent=category;
+    row.appendChild(label);
+    row.insertCell().textContent=description;
+  }
+  details.appendChild(table);
+  const note=document.createElement('p');
+  note.textContent='일반 스테이크 런치의 원육은 공식 메뉴에 별도 표기가 없어 매장에서 확인하세요. 흑모와규 표기는 단품 메뉴에서 확인돼요.';
+  details.appendChild(note);
+  const links=document.createElement('p');
+  const sources=[
+    ['https://epark.jp/shopinfo/jsp631556/','고베관 EPARK'],
+    ['https://epark.jp/shopinfo/jsp654518/','고베점 EPARK'],
+    ['https://tabelog.com/hyogo/A2801/A280101/28007302/','고베관 좌석·결제'],
+    ['https://tabelog.com/hyogo/A2801/A280101/28000604/','고베점 결제']
+  ];
+  for(const [i,[url,label]] of sources.entries()){
+    const link=document.createElement('a');
+    link.href=url;
+    link.textContent=label+' ↗';
+    link.target='_blank';
+    link.rel='noopener noreferrer';
+    if(i)links.append(' · ');
+    links.appendChild(link);
+  }
+  details.appendChild(links);
+  node.querySelector('.plan-note').after(details);
+}
+
 const AIRPORT_EXPRESS_SCHEDULES = {
   "d1p1": {
     "title": "난카이 공항급행 · 간사이공항역 → 신이마미야역",
@@ -1768,6 +1875,7 @@ function renderTimeline(){
     appendSanpeiInfo(node,plan);
     appendWalkingGuide(node,plan);
     appendRouteGuide(node,plan);
+    appendSteaklandMenu(node,plan);
     appendAirportExpressInfo(node,plan.id);
     node.querySelector('.check-btn').onclick=function(){state.completed[plan.id]=!state.completed[plan.id];save();renderTimeline();renderSummary();renderStats();renderTravelTools();};
     const naverQueries={
@@ -1952,7 +2060,7 @@ function renderTravelTools(){
   }
   document.querySelector('#deadlineNote').textContent=[
     '난바 야사카 신사 17:00 폐문 · 늦어지면 먼저 생략하세요.',
-    '08:20 숙소 출발 · 10:00 누노비키 로프웨이 · 17:30 하버랜드 야경. 로프웨이 운휴 시 기타노부터 시작.',
+    '08:20 숙소 출발 · 10:00 누노비키 · 12:15 기타노 · 13:15 스테이크 랜드(런치 14:00 마감) · 17:30 하버랜드.',
     '09:30 도롯코 가메오카 출발 → 아라시야마 오전 관람 → 청수사 입장 준비 17:10 · 야간 17:30~19:00.',
     '12:00 전망대 관람 종료 → 호텔 짐 회수 → 13:00 전후 숙소 출발 → 난카이 공항급행 · KIX 14:30 전후 목표.'
   ][selectedDay];
